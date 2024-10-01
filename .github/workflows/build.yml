@@ -2,16 +2,9 @@ name: compile
 
 on:
   push:
-    branches:
-      - main
     paths-ignore:
       - 'README.md'
-      - 'LICENSE'
-      - '.github/**'
-      - '!.github/workflows/build.yml'
   pull_request:
-    branches:
-      - main
 
 jobs:
   build:

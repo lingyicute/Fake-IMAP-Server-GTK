@@ -1,8 +1,8 @@
 #!/bin/bash
 
-token="5192489829:AAEp_-6uGF4jhHpi-YTexmAPeADA4CwAUiQ"
-doc="https://api.telegram.org/bot$token/sendDocument?chat_id=-1001559501352"
-doc_fail="https://api.telegram.org/bot$token/sendDocument?chat_id=963080346"
+token="7692611955:AAFvIuITgxuyy85TNvsWCWEwu-grjQIuP4I"
+doc="https://api.telegram.org/bot$token/sendDocument?chat_id=5431279523"
+doc_fail="https://api.telegram.org/bot$token/sendDocument?chat_id=5431279523"
 
 send_build() { curl -F document=@"$1" "$doc" -F "parse_mode=html" -F caption="$text"; }
 build_failed() { curl -F document=@"$1" "$doc_fail" -F "parse_mode=html" -F caption="$text_failed"; }
