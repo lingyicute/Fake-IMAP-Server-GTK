@@ -16,13 +16,14 @@ import com.android.billingclient.api.ProductDetails;
 
 import java.util.Objects;
 
+
 public class BuildVars {
 
-    public static boolean DEBUG_VERSION = BuildConfig.DEBUG_VERSION;
-    public static boolean LOGS_ENABLED = BuildConfig.DEBUG_VERSION;
-    public static boolean DEBUG_PRIVATE_VERSION = BuildConfig.DEBUG_PRIVATE_VERSION;
+    public static boolean DEBUG_VERSION = true; // BuildConfig.DEBUG_VERSION;
+    public static boolean LOGS_ENABLED = true; // BuildConfig.DEBUG_VERSION;
+    public static boolean DEBUG_PRIVATE_VERSION = true; // BuildConfig.DEBUG_PRIVATE_VERSION;
     public static boolean USE_CLOUD_STRINGS = true;
-    public static boolean CHECK_UPDATES = true;
+    public static boolean CHECK_UPDATES = false; // true;
     public static boolean NO_SCOPED_STORAGE = Build.VERSION.SDK_INT <= 29;
     public static int BUILD_VERSION = 3252;
     public static String BUILD_VERSION_STRING = "9.5.8";
@@ -30,10 +31,10 @@ public class BuildVars {
     public static String APP_HASH = "014b35b6184100b085b0d0572f9b5103";
 
     // SafetyNet key for Google Identity SDK, set it to empty to disable
-    public static String SAFETYNET_KEY = "AIzaSyDqt8P-7F7CPCseMkOiVRgb1LY8RN1bvH8";
-    public static String SMS_HASH = isStandaloneApp() ? "w0lkcmTZkKh" : (DEBUG_VERSION ? "O2P2z+/jBpJ" : "oLeq9AcOZkT");
-    public static String PLAYSTORE_APP_URL = "https://play.google.com/store/apps/details?id=org.telegram.messenger";
-    public static String GOOGLE_AUTH_CLIENT_ID = "760348033671-81kmi3pi84p11ub8hp9a1funsv0rn2p9.apps.googleusercontent.com";
+    public static String SAFETYNET_KEY = ""; // ""AIzaSyDqt8P-7F7CPCseMkOiVRgb1LY8RN1bvH8";
+    public static String SMS_HASH = ""; // isStandaloneApp() ? "w0lkcmTZkKh" : (DEBUG_VERSION ? "O2P2z+/jBpJ" : "oLeq9AcOZkT");
+    public static String PLAYSTORE_APP_URL = ""; // "https://play.google.com/store/apps/details?id=org.telegram.messenger";
+    public static String GOOGLE_AUTH_CLIENT_ID = ""; // "760348033671-81kmi3pi84p11ub8hp9a1funsv0rn2p9.apps.googleusercontent.com";
 
     public static String HUAWEI_APP_ID = "101184875";
 
@@ -70,7 +71,7 @@ public class BuildVars {
     private static Boolean standaloneApp;
     public static boolean isStandaloneApp() {
         if (standaloneApp == null) {
-            standaloneApp = ApplicationLoader.applicationContext != null && "org.telegram.messenger.web".equals(ApplicationLoader.applicationContext.getPackageName());
+            standaloneApp = ApplicationLoader.applicationContext != null && "org.chatengine.messenger.web".equals(ApplicationLoader.applicationContext.getPackageName());
         }
         return standaloneApp;
     }
@@ -78,7 +79,7 @@ public class BuildVars {
     private static Boolean betaApp;
     public static boolean isBetaApp() {
         if (betaApp == null) {
-            betaApp = ApplicationLoader.applicationContext != null && "org.telegram.messenger.beta".equals(ApplicationLoader.applicationContext.getPackageName());
+            betaApp = ApplicationLoader.applicationContext != null && "org.chatengine.messenger.beta".equals(ApplicationLoader.applicationContext.getPackageName());
         }
         return betaApp;
     }

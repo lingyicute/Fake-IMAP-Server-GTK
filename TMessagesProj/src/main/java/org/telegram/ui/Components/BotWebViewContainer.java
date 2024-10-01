@@ -1291,7 +1291,7 @@ public class BotWebViewContainer extends FrameLayout implements NotificationCent
                     if (pathFull.startsWith("/")) {
                         pathFull = pathFull.substring(1);
                     }
-                    onOpenUri(Uri.parse("https://t.me/" + pathFull));
+                    onOpenUri(Uri.parse("https://teamgram.me/" + pathFull));
                 } catch (JSONException e) {
                     FileLog.e(e);
                 }

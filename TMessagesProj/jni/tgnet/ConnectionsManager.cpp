@@ -434,7 +434,7 @@ void ConnectionsManager::loadConfig() {
             RAND_bytes((uint8_t *) &pushSessionId, 8);
         }
         if (currentDatacenterId == 0) {
-            currentDatacenterId = 2;
+            currentDatacenterId = 1;
         }
         saveConfig();
     }
@@ -699,7 +699,8 @@ void ConnectionsManager::onConnectionClosed(Connection *connection, int reason) 
                         } else {
                             requestingSecondAddress = 0;
                         }
-                        delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
+                        // FIXME(@teamgram):
+                        // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
                     } else {
                         if (LOGS_ENABLED) DEBUG_D("connection has usefull data, don't request anything");
                     }
@@ -982,12 +983,15 @@ bool ConnectionsManager::hasPendingRequestsForConnection(Connection *connection)
         uint32_t token = connection->getConnectionToken();
         if (type == ConnectionTypeGeneric) {
             if (sendingPing && type == ConnectionTypeGeneric && datacenter->getDatacenterId() == currentDatacenterId) {
+                if (LOGS_ENABLED) DEBUG_E("connection(%p) sendingPing", connection);
                 return true;
             } else if (datacenter->isHandshaking(false)) {
+                if (LOGS_ENABLED) DEBUG_E("connection(%p) not sendingPing", connection);
                 return true;
             }
         } else if (type == ConnectionTypeGenericMedia) {
             if (datacenter->isHandshaking(true)) {
+                if (LOGS_ENABLED) DEBUG_E("connection(%p) type is ConnectionTypeGenericMedia", connection);
                 return true;
             }
         }
@@ -996,11 +1000,14 @@ bool ConnectionsManager::hasPendingRequestsForConnection(Connection *connection)
             auto connectionNum = (uint8_t) (request->connectionType >> 16);
             auto connectionType = (ConnectionType) (request->connectionType & 0x0000ffff);
             if ((connectionType == type && connectionNum == num) || request->connectionToken == token) {
+                if (LOGS_ENABLED) DEBUG_E("connection(%p) request (msg_id: %lld)", request->messageId);
+                if (LOGS_ENABLED) DEBUG_E("connection(%p) (type: %d == %d && num: %d == %d) || (token: %d == %d)", connection, connectionType, type, connectionNum, num, request->connectionToken, token);
                 return true;
             }
         }
         return false;
     }
+    if (LOGS_ENABLED) DEBUG_E("connection(%p) return true", connection);
     return true;
 }
 
@@ -1688,59 +1695,16 @@ void ConnectionsManager::initDatacenters() {
     if (!testBackend) {
         if (datacenters.find(1) == datacenters.end()) {
             datacenter = new Datacenter(instanceNum, 1);
-            datacenter->addAddressAndPort("149.154.175.50", 443, 0, "");
-            datacenter->addAddressAndPort("2001:b28:f23d:f001:0000:0000:0000:000a", 443, 1, "");
+            datacenter->addAddressAndPort("43.155.11.190", 10443, 0, "");
+            // datacenter->addAddressAndPort("2001:b28:f23d:f001:0000:0000:0000:000a", 443, 1, "");
             datacenters[1] = datacenter;
-        }
-
-        if (datacenters.find(2) == datacenters.end()) {
-            datacenter = new Datacenter(instanceNum, 2);
-            datacenter->addAddressAndPort("149.154.167.51", 443, 0, "");
-            datacenter->addAddressAndPort("95.161.76.100", 443, 0, "");
-            datacenter->addAddressAndPort("2001:67c:4e8:f002:0000:0000:0000:000a", 443, 1, "");
-            datacenters[2] = datacenter;
-        }
-
-        if (datacenters.find(3) == datacenters.end()) {
-            datacenter = new Datacenter(instanceNum, 3);
-            datacenter->addAddressAndPort("149.154.175.100", 443, 0, "");
-            datacenter->addAddressAndPort("2001:b28:f23d:f003:0000:0000:0000:000a", 443, 1, "");
-            datacenters[3] = datacenter;
-        }
-
-        if (datacenters.find(4) == datacenters.end()) {
-            datacenter = new Datacenter(instanceNum, 4);
-            datacenter->addAddressAndPort("149.154.167.91", 443, 0, "");
-            datacenter->addAddressAndPort("2001:67c:4e8:f004:0000:0000:0000:000a", 443, 1, "");
-            datacenters[4] = datacenter;
-        }
-
-        if (datacenters.find(5) == datacenters.end()) {
-            datacenter = new Datacenter(instanceNum, 5);
-            datacenter->addAddressAndPort("149.154.171.5", 443, 0, "");
-            datacenter->addAddressAndPort("2001:b28:f23f:f005:0000:0000:0000:000a", 443, 1, "");
-            datacenters[5] = datacenter;
         }
     } else {
         if (datacenters.find(1) == datacenters.end()) {
             datacenter = new Datacenter(instanceNum, 1);
-            datacenter->addAddressAndPort("149.154.175.40", 443, 0, "");
-            datacenter->addAddressAndPort("2001:b28:f23d:f001:0000:0000:0000:000e", 443, 1, "");
+            datacenter->addAddressAndPort("43.155.11.190", 10443, 0, "");
+            // datacenter->addAddressAndPort("2001:b28:f23d:f001:0000:0000:0000:000e", 443, 1, "");
             datacenters[1] = datacenter;
-        }
-
-        if (datacenters.find(2) == datacenters.end()) {
-            datacenter = new Datacenter(instanceNum, 2);
-            datacenter->addAddressAndPort("149.154.167.40", 443, 0, "");
-            datacenter->addAddressAndPort("2001:67c:4e8:f002:0000:0000:0000:000e", 443, 1, "");
-            datacenters[2] = datacenter;
-        }
-
-        if (datacenters.find(3) == datacenters.end()) {
-            datacenter = new Datacenter(instanceNum, 3);
-            datacenter->addAddressAndPort("149.154.175.117", 443, 0, "");
-            datacenter->addAddressAndPort("2001:b28:f23d:f003:0000:0000:0000:000e", 443, 1, "");
-            datacenters[3] = datacenter;
         }
     }
 }
@@ -2251,7 +2215,7 @@ void ConnectionsManager::processRequestQueue(uint32_t connectionTypes, uint32_t 
         Datacenter *requestDatacenter = getDatacenterWithId(datacenterId);
         if (requestDatacenter == nullptr) {
             if (std::find(unknownDatacenterIds.begin(), unknownDatacenterIds.end(), datacenterId) == unknownDatacenterIds.end()) {
-                unknownDatacenterIds.push_back(datacenterId);
+                // unknownDatacenterIds.push_back(datacenterId);
             }
             iter++;
             continue;
@@ -2494,7 +2458,7 @@ void ConnectionsManager::processRequestQueue(uint32_t connectionTypes, uint32_t 
         Datacenter *requestDatacenter = getDatacenterWithId(datacenterId);
         if (requestDatacenter == nullptr) {
             if (std::find(unknownDatacenterIds.begin(), unknownDatacenterIds.end(), datacenterId) == unknownDatacenterIds.end()) {
-                unknownDatacenterIds.push_back(datacenterId);
+                // unknownDatacenterIds.push_back(datacenterId);
             }
             iter++;
             continue;
@@ -3308,13 +3272,16 @@ void ConnectionsManager::applyDnsConfig(NativeByteBuffer *buffer, std::string ph
             }
             if (requestingSecondAddress == 2) {
                 requestingSecondAddress = 3;
-                delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
+                // FIXME(@teamgram)
+                // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
             } else if (requestingSecondAddress == 1) {
                 requestingSecondAddress = 2;
-                delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
+                // FIXME(@teamgram)
+                // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
             } else if (requestingSecondAddress == 0) {
                 requestingSecondAddress = 1;
-                delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
+                // FIXME(@teamgram)
+                // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
             } else {
                 requestingSecondAddress = 0;
             }

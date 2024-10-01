@@ -208,8 +208,8 @@ public class Browser {
     public static boolean urlMustNotHaveConfirmation(String url) {
         return (
             isTelegraphUrl(url, false, true) ||
-            url.matches("^(https://)?t\\.me/iv\\??(/.*|$)") || // t.me/iv?
-            url.matches("^(https://)?telegram\\.org/(blog|tour)(/.*|$)") || // telegram.org/blog, telegram.org/tour
+            url.matches("^(https://)?teamgram\\.me/iv\\??(/.*|$)") || // t.me/iv?
+            url.matches("^(https://)?teamgram\\.net/(blog|tour)(/.*|$)") || // telegram.org/blog, telegram.org/tour
             url.matches("^(https://)?fragment\\.com(/.*|$)") // fragment.com
         );
     }
@@ -250,7 +250,7 @@ public class Browser {
         if (tryTelegraph) {
             try {
                 String host = AndroidUtilities.getHostAuthority(uri);
-                if (isTelegraphUrl(host, true) || uri.toString().toLowerCase().contains("telegram.org/faq") || uri.toString().toLowerCase().contains("telegram.org/privacy")) {
+                if (isTelegraphUrl(host, true) || uri.toString().toLowerCase().contains("www2.teamgram.net/faq") || uri.toString().toLowerCase().contains("www2.teamgram.net/privacy")) {
                     final AlertDialog[] progressDialog = new AlertDialog[] {
                         new AlertDialog(context, AlertDialog.ALERT_TYPE_SPINNER)
                     };
@@ -461,7 +461,7 @@ public class Browser {
 
         Matcher prefixMatcher = LaunchActivity.PREFIX_T_ME_PATTERN.matcher(host);
         if (prefixMatcher.find()) {
-            uri = Uri.parse("https://t.me/" + prefixMatcher.group(1) + (TextUtils.isEmpty(uri.getPath()) ? "" : "/" + uri.getPath()) + (TextUtils.isEmpty(uri.getQuery()) ? "" : "?" + uri.getQuery()));
+            uri = Uri.parse("https://teamgram.me/" + prefixMatcher.group(1) + (TextUtils.isEmpty(uri.getPath()) ? "" : "/" + uri.getPath()) + (TextUtils.isEmpty(uri.getQuery()) ? "" : "?" + uri.getQuery()));
 
             host = uri.getHost();
             host = host != null ? host.toLowerCase() : "";
@@ -478,7 +478,7 @@ public class Browser {
 
             }
             return true;
-        } else if ("tg".equals(uri.getScheme())) {
+        } else if ("tg2".equals(uri.getScheme())) {
             return true;
         } else if ("telegram.dog".equals(host)) {
             String path = uri.getPath();
@@ -495,7 +495,7 @@ public class Browser {
                 }
                 return true;
             }
-        } else if ("telegram.me".equals(host) || "t.me".equals(host)) {
+        } else if ("teamgram.me".equals(host))  {
             String path = uri.getPath();
             if (path != null && path.length() > 1) {
                 if (all) {
@@ -511,7 +511,7 @@ public class Browser {
                 return true;
             }
         } else if (all) {
-            if (host.endsWith("telegram.org") || host.endsWith("telegra.ph") || host.endsWith("telesco.pe")) {
+            if (host.endsWith("teamgram.net")) {
                 return true;
             }
         }
