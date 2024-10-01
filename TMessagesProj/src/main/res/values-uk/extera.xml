@@ -1,6 +1,6 @@
     <!--
 
-     This is the source code of exteraGram for Android.
+     This is the source code of Papercraft for Android.
 
      We do not and cannot prevent the use of our code,
      but be respectful and credit the original author.
@@ -9,7 +9,7 @@
 
      -->
 <resources>
-    <string name="Preferences">параметри exteraGram</string>
+    <string name="Preferences">параметри Papercraft</string>
     <!--  Main Menu  -->
     <string name="Links">Посилання</string>
     <string name="AboutExteraDescription">Експериментальний клієнт Telegram заснований на офіційних джерелах!</string>
@@ -122,7 +122,7 @@ CameraX підтримується тільки на
     <string name="RememberLastUsedCamera">Запам\'ятати останню використану камеру</string>
     <string name="RememberLastUsedCameraInfo">При записі відеоповідомлень, буде вибрано останню використану камеру.</string>
     <string name="PauseOnMinimize">Автопауза</string>
-    <string name="PauseOnMinimizeInfo">Призупиняє відтворення відео, коли пристрій заблоковано або згорнуто exteraGram.</string>
+    <string name="PauseOnMinimizeInfo">Призупиняє відтворення відео, коли пристрій заблоковано або згорнуто Papercraft.</string>
     <string name="DisablePlayback">Вимкнути відтворення</string>
     <string name="DisablePlaybackInfo">Вимикає відтворення при натисканні кнопки гучності.</string>
     <!--  Updates  -->

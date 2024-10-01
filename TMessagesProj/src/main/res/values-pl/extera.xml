@@ -1,6 +1,6 @@
     <!--
 
-     This is the source code of exteraGram for Android.
+     This is the source code of Papercraft for Android.
 
      We do not and cannot prevent the use of our code,
      but be respectful and credit the original author.
@@ -9,7 +9,7 @@
 
      -->
 <resources>
-    <string name="Preferences">Preferencje exteraGram</string>
+    <string name="Preferences">Preferencje Papercraft</string>
     <!--  Main Menu  -->
     <string name="Links">Linki</string>
     <string name="AboutExteraDescription">Eksperymentalny klient Telegram oparty na oficjalnym kodzie źródłowym!</string>
@@ -122,7 +122,7 @@ CameraX wspierana jest tylko na
     <string name="RememberLastUsedCamera">Pamiętaj ostatnio używany aparat</string>
     <string name="RememberLastUsedCameraInfo">Podczas nagrywania wiadomości wideo, wybrany zostanie ostatnia używany aparat.</string>
     <string name="PauseOnMinimize">Auto-pauza</string>
-    <string name="PauseOnMinimizeInfo">Wstrzymuje odtwarzanie wideo, gdy urządzenie jest zablokowane lub exteraGram jest zminimalizowany.</string>
+    <string name="PauseOnMinimizeInfo">Wstrzymuje odtwarzanie wideo, gdy urządzenie jest zablokowane lub Papercraft jest zminimalizowany.</string>
     <string name="DisablePlayback">Wyłącz odtwarzanie</string>
     <string name="DisablePlaybackInfo">Wyłącz odtwarzanie po naciśnięciu przycisku głośności.</string>
     <!--  Updates  -->

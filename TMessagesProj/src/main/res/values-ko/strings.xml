@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="AppName">텔레그램</string>
-    <string name="AppNameBeta">Teamgram Beta</string>
+    <string name="AppNameBeta">Papercraft Beta</string>
     <string name="LanguageName">한국어</string>
     <string name="English">영어</string>
     <string name="LanguageNameInEnglish">한국어</string>
@@ -1886,7 +1886,7 @@
     <string name="TelegramFAQ">자주 묻는 질문</string>
     <string name="TelegramFaq">자주 묻는 질문</string>
     <string name="TelegramFeatures">텔레그램 기능 소개</string>
-    <string name="TelegramFeaturesUrl">https://teamgram.me/TeamgramTipsKo</string>
+    <string name="TelegramFeaturesUrl">https://teamgram.me/PapercraftTipsKo</string>
     <string name="AddAccount">계정 추가</string>
     <string name="SelectAccount">계정을 선택하세요</string>
     <string name="TelegramFaqUrl">https://teamgram.org/faq/ko</string>

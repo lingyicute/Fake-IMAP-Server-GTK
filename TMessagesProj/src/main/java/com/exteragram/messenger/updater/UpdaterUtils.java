@@ -1,6 +1,6 @@
 /*
 
- This is the source code of exteraGram for Android.
+ This is the source code of Papercraft for Android.
 
  We do not and cannot prevent the use of our code,
  but be respectful and credit the original author.
@@ -54,7 +54,7 @@ public class UpdaterUtils {
 
     public static final DispatchQueue otaQueue = new DispatchQueue("otaQueue");
 
-    private static String uri = "https://api.github.com/repos/exteraSquad/exteraGram/releases/latest";
+    private static String uri = "https://api.github.com/repos/exteraSquad/Papercraft/releases/latest";
     private static String downloadURL = null;
     public static String version, changelog, size, uploadDate;
     public static File otaPath, versionPath, apkFile;
@@ -102,7 +102,7 @@ public class UpdaterUtils {
             ExteraConfig.editor.putLong("lastUpdateCheckTime", ExteraConfig.lastUpdateCheckTime = System.currentTimeMillis()).apply();
             try {
                 if (BuildVars.isBetaApp())
-                    uri = uri.replace("/exteraGram/", "/exteraGram-Beta/");
+                    uri = uri.replace("/Papercraft/", "/Papercraft-Beta/");
                 var connection = (HttpURLConnection) new URI(uri).toURL().openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", UserAgentGenerator.generate());

@@ -1,6 +1,6 @@
 /*
 
- This is the source code of exteraGram for Android.
+ This is the source code of Papercraft for Android.
 
  We do not and cannot prevent the use of our code,
  but be respectful and credit the original author.
@@ -214,9 +214,9 @@ public class MainPreferencesActivity extends BasePreferencesActivity {
             if (!BuildVars.PM_BUILD)
                 (new UpdaterBottomSheet(getParentActivity(), this, false)).show();
         } else if (position == sourceCodeRow) {
-            Browser.openUrl(getParentActivity(), "https://github.com/exteraSquad/exteraGram");
+            Browser.openUrl(getParentActivity(), "https://github.com/exteraSquad/Papercraft");
         } else if (position == channelRow) {
-            MessagesController.getInstance(currentAccount).openByUserName(("exteraGram"), this, 1);
+            MessagesController.getInstance(currentAccount).openByUserName(("Papercraft"), this, 1);
         } else if (position == groupRow) {
             MessagesController.getInstance(currentAccount).openByUserName(("exteraChat"), this, 1);
         } else if (position == crowdinRow) {
@@ -275,7 +275,7 @@ public class MainPreferencesActivity extends BasePreferencesActivity {
                     } else if (position == otherRow) {
                         textCell.setTextAndIcon(LocaleController.getString("LocalOther", R.string.LocalOther), R.drawable.msg_fave, false);
                     } else if (position == channelRow) {
-                        textCell.setTextAndValueAndIcon(LocaleController.getString("Channel", R.string.Channel), "@exteraGram", R.drawable.msg_channel, true);
+                        textCell.setTextAndValueAndIcon(LocaleController.getString("Channel", R.string.Channel), "@Papercraft", R.drawable.msg_channel, true);
                     } else if (position == groupRow) {
                         textCell.setTextAndValueAndIcon(LocaleController.getString("SearchAllChatsShort", R.string.SearchAllChatsShort), "@exteraChat", R.drawable.msg_groups, true);
                     } else if (position == crowdinRow) {

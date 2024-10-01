@@ -949,7 +949,7 @@ public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLa
         if (files != null) {
             for (int a = 0; a < files.length; a++) {
                 File file = files[a];
-                if (file.isDirectory() && file.getName().equals("exteraGram")) {
+                if (file.isDirectory() && file.getName().equals("Papercraft")) {
                     checkDirectory(file);
                     continue;
                 }
@@ -1314,10 +1314,10 @@ public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLa
 
         ListItem fs;
         try {
-            File telegramPath = new File(ApplicationLoader.applicationContext.getExternalFilesDir(null), "exteraGram");
+            File telegramPath = new File(ApplicationLoader.applicationContext.getExternalFilesDir(null), "Papercraft");
             if (telegramPath.exists()) {
                 fs = new ListItem();
-                fs.title = "Teamgram";
+                fs.title = "Papercraft";
                 fs.subtitle = LocaleController.getString("AppFolderInfo", R.string.AppFolderInfo);
                 fs.icon = R.drawable.files_folder;
                 fs.file = telegramPath;

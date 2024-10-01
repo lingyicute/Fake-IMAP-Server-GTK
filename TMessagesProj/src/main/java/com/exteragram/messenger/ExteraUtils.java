@@ -1,6 +1,6 @@
 /*
 
- This is the source code of exteraGram for Android.
+ This is the source code of Papercraft for Android.
 
  We do not and cannot prevent the use of our code,
  but be respectful and credit the original author.
@@ -148,7 +148,7 @@ public final class ExteraUtils {
         } catch (Exception e) {
             FileLog.e(e);
         }
-        return "exteraGram";
+        return "Papercraft";
     }
 
     public static boolean notSubbedTo(long id) {

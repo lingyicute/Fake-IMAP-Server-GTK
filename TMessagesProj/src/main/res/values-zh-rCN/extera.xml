@@ -1,6 +1,6 @@
     <!--
 
-     This is the source code of exteraGram for Android.
+     This is the source code of Papercraft for Android.
 
      We do not and cannot prevent the use of our code,
      but be respectful and credit the original author.
@@ -9,13 +9,13 @@
 
      -->
 <resources>
-    <string name="Preferences">exteraGram 设置</string>
+    <string name="Preferences">Papercraft 设置</string>
     <!--  Main Menu  -->
     <string name="Links">链接</string>
     <string name="AboutExteraDescription">基于官方Telegram源码制作的第三方客户端</string>
     <string name="Channel">通知频道</string>
     <string name="Crowdin">翻译</string>
-    <string name="SourceCode">exteraGram 源码</string>
+    <string name="SourceCode">Papercraft 源码</string>
     <string name="Categories">设置分类</string>
     <!--  Appearance  -->
     <string name="AvatarCorners">头像圆角</string>
