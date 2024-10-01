@@ -1,7 +1,7 @@
 <img src="https://i.imgur.com/5EmxevP.png" width="150" align="left"/>
 
 ## Papercraft
-*[Licensed under the GNU General Public License v2.0](https://github.com/exteraSquad/Papercraft/blob/default/LICENSE)*
+*[Licensed under the GNU General Public License v2.0](https://github.com/lingyicute/Papercraft/blob/default/LICENSE)*
 
 Experimental **third-party** Telegram client based on [official sources](https://github.com/DrKLO/Telegram).
 
@@ -22,8 +22,8 @@ MAPS_V2_API = abcdef01234567-abcdef012345678910111213
 ```
 
 ## Compilation Guide
-1. Clone Papercraft's source code using `git clone https://github.com/exteraSquad/Papercraft/`
-2. Fill out values in `API_KEYS` like [here](https://github.com/exteraSquad/Papercraft#importing-api-hash-and-keys)
+1. Clone Papercraft's source code using `git clone https://github.com/lingyicute/Papercraft/`
+2. Fill out values in `API_KEYS` like [here](https://github.com/lingyicute/Papercraft#importing-api-hash-and-keys)
 3. Open the project in Android Studio. It should be opened, **not imported**
 4. You are ready to compile `Papercraft`
 

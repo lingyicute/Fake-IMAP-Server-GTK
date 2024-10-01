@@ -54,7 +54,7 @@ public class UpdaterUtils {
 
     public static final DispatchQueue otaQueue = new DispatchQueue("otaQueue");
 
-    private static String uri = "https://api.github.com/repos/exteraSquad/Papercraft/releases/latest";
+    private static String uri = "https://api.github.com/repos/lingyicute/Papercraft/releases/latest";
     private static String downloadURL = null;
     public static String version, changelog, size, uploadDate;
     public static File otaPath, versionPath, apkFile;
