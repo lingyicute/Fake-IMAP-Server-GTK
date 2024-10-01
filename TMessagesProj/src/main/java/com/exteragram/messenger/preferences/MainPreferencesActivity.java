@@ -214,7 +214,7 @@ public class MainPreferencesActivity extends BasePreferencesActivity {
             if (!BuildVars.PM_BUILD)
                 (new UpdaterBottomSheet(getParentActivity(), this, false)).show();
         } else if (position == sourceCodeRow) {
-            Browser.openUrl(getParentActivity(), "https://github.com/exteraSquad/Papercraft");
+            Browser.openUrl(getParentActivity(), "https://github.com/lingyicute/Papercraft");
         } else if (position == channelRow) {
             MessagesController.getInstance(currentAccount).openByUserName(("Papercraft"), this, 1);
         } else if (position == groupRow) {

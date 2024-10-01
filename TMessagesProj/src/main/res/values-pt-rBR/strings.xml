@@ -1138,10 +1138,10 @@
     <string name="SendDice">ENVIAR</string>
     <string name="PsaType_covid">COVID-19</string>
     <string name="PsaTypeDefault">A.U.P.</string>
-    <string name="PsaInfo_covid">Esta mensagem fornece um aviso de utilidade pública em relação à pandemia atual de COVID-19. Saiba mais sobre esta iniciativa em https://teamgram.org/blog/coronavirus.</string>
+    <string name="PsaInfo_covid">Esta mensagem fornece um aviso de utilidade pública em relação à pandemia atual de COVID-19. Saiba mais sobre esta iniciativa em https://papercraft-official.github.io/blog/coronavirus.</string>
     <string name="PsaInfoDefault">Teste A.U.P.</string>
     <string name="PsaMessage_covid">Notificação – COVID-19</string>
-    <string name="PsaMessageInfo_covid">Esta mensagem fornece um aviso de utilidade pública em relação à pandemia atual de COVID-19. Saiba mais sobre esta iniciativa em https://teamgram.org/blog/coronavirus.</string>
+    <string name="PsaMessageInfo_covid">Esta mensagem fornece um aviso de utilidade pública em relação à pandemia atual de COVID-19. Saiba mais sobre esta iniciativa em https://papercraft-official.github.io/blog/coronavirus.</string>
     <string name="PsaMessageDefault">Notificação Importante</string>
     <string name="PsaMessageInfoDefault">Esta é uma notificação importante.</string>
     <string name="PsaHideChatAlertTitle">Ocultar chat</string>
@@ -1500,7 +1500,7 @@
     <string name="MessageLifetimeVideo">Se você definir um timer, o vídeo irá se autodestruir após ser visto.</string>
     <string name="ShortMessageLifetimeForever">Desativado</string>
     <string name="EncryptionKeyDescription">Essa imagem e texto foram derivados da chave criptográfica para este chat secreto com **%1$s**.\n\nSe você vê o mesmo no dispositivo de **%2$s**, a criptografia de ponta a ponta está garantida.</string>
-    <string name="EncryptionKeyLink">https://teamgram.org/faq/pt-br#chats-secretos</string>
+    <string name="EncryptionKeyLink">https://papercraft-official.github.io/faq/pt-br#chats-secretos</string>
     <string name="NumberUnknown">Desconhecido</string>
     <string name="PhoneHidden">Desconhecido</string>
     <string name="MobileHidden">Número oculto</string>
@@ -1881,7 +1881,7 @@
     <string name="LanguageUnsupportedError">Esse idioma não existe.</string>
     <string name="LanguageSame">Você já está usando esse pacote de idiomas (**%1$s**). Você pode alterar seu idioma a qualquer momento em Configurações.</string>
     <string name="LanguageUnknownCustomAlert">Infelizmente esse pacote de idiomas personalizado (**%1$s**) não contém dados para o Papercraft no Android.</string>
-    <string name="AskAQuestionInfo">Por favor, note que o Suporte do Papercraft é feito por voluntários. Tentaremos responder o mais rápido possível, mas pode levar um tempo.\n\nDê uma olhada na página de <![CDATA[<a href=\"https://teamgram.org/faq/pt-br#questoes-gerais\">Perguntas Frequentes</a>]]>: há dicas e soluções para a maioria dos <![CDATA[<a href=\"https://teamgram.org/faq/pt-br#solucao-de-problemas\">problemas</a>]]>.</string>
+    <string name="AskAQuestionInfo">Por favor, note que o Suporte do Papercraft é feito por voluntários. Tentaremos responder o mais rápido possível, mas pode levar um tempo.\n\nDê uma olhada na página de <![CDATA[<a href=\"https://papercraft-official.github.io/faq/pt-br#questoes-gerais\">Perguntas Frequentes</a>]]>: há dicas e soluções para a maioria dos <![CDATA[<a href=\"https://papercraft-official.github.io/faq/pt-br#solucao-de-problemas\">problemas</a>]]>.</string>
     <string name="AskButton">Perguntar</string>
     <string name="TelegramFAQ">Perguntas Frequentes</string>
     <string name="TelegramFaq">Perguntas Frequentes</string>
@@ -1889,11 +1889,11 @@
     <string name="TelegramFeaturesUrl">https://teamgram.me/PapercraftTipsBR</string>
     <string name="AddAccount">Adicionar&#160;Conta</string>
     <string name="SelectAccount">Selecionar Conta</string>
-    <string name="TelegramFaqUrl">https://teamgram.org/faq/pt-br</string>
+    <string name="TelegramFaqUrl">https://papercraft-official.github.io/faq/pt-br</string>
     <string name="PrivacyPolicy">Política de Privacidade</string>
     <string name="TermsOfService">Termos de Serviço</string>
     <string name="TermsOfServiceLogin">Ao se cadastrar,\nvocê concorda com os *Termos de Serviço*.</string>
-    <string name="PrivacyPolicyUrl">https://teamgram.org/privacy</string>
+    <string name="PrivacyPolicyUrl">https://papercraft-official.github.io/privacy</string>
     <string name="DeleteLocalizationTitle">Apagar pacote de idioma</string>
     <string name="DeleteLocalizationText">Deseja mesmo apagar o pacote de idioma %1$s?</string>
     <string name="IncorrectLocalization">Arquivo de localização incorreto</string>
@@ -2199,7 +2199,7 @@
     <string name="PassportProvidedInformation">Informação Fornecida</string>
     <string name="PassportInfoTitle">O que é o Papercraft Passport?</string>
     <string name="PassportInfo2">Com o Papercraft Passport, você pode se inscrever facilmente em sites e serviços que exigem verificação de identidade.\n\nSuas informações, dados pessoais e documentos são protegidos por criptografia de ponta a ponta. Ninguém, nem mesmo o Papercraft, pode acessá-los sem sua permissão.\n\nVocê pode visitar nossas *Perguntas Frequentes* para saber mais.</string>
-    <string name="PassportInfoUrl">https://teamgram.org/faq/pt-br#passport</string>
+    <string name="PassportInfoUrl">https://papercraft-official.github.io/faq/pt-br#passport</string>
     <string name="TelegramPassportCreatePasswordInfo">Por favor, crie uma senha para proteger seus dados pessoais com criptografia de ponta a ponta.\n\nEssa senha também será necessária sempre que você fizer login no Papercraft em um novo dispositivo.</string>
     <string name="TelegramPassportCreatePassword">Criar uma senha</string>
     <string name="TelegramPassportDelete">Apagar Passport</string>
@@ -3117,7 +3117,7 @@
     <string name="ActionBotDocumentRentalAgreement">Contrato de Aluguel</string>
     <string name="ActionBotDocumentPhone">Número de Telefone</string>
     <string name="ActionBotDocumentEmail">Endereço de Email</string>
-    <string name="UnsupportedMedia">Esta mensagem não é compatível com a sua versão do Papercraft. Atualize o aplicativo para visualizar: https://teamgram.org/update</string>
+    <string name="UnsupportedMedia">Esta mensagem não é compatível com a sua versão do Papercraft. Atualize o aplicativo para visualizar: https://papercraft-official.github.io/update</string>
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Vídeo</string>
     <string name="AttachDestructingPhoto">Foto Autodestrutiva</string>
