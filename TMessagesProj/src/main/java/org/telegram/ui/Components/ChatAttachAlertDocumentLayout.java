@@ -915,7 +915,7 @@ public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLa
                         long fileSize = cursor.getLong(3);
                         String mimeType = cursor.getString(4);
 
-                        if (duration > MessagesController.getInstance(UserConfig.selectedAccount).ringtoneDurationMax * 1000 || fileSize > MessagesController.getInstance(UserConfig.selectedAccount).ringtoneSizeMax || (!TextUtils.isEmpty(mimeType) && !("audio/mpeg".equals(mimeType) || !"audio/mpeg4".equals(mimeType)))) {
+                        if (duration > MessagesController.getInstance(UserConfig.selectedAccount).ringtoneDurationMax * 1000L || fileSize > MessagesController.getInstance(UserConfig.selectedAccount).ringtoneSizeMax || (!TextUtils.isEmpty(mimeType) && !("audio/mpeg".equals(mimeType) || !"audio/mpeg4".equals(mimeType)))) {
                             continue;
                         }
                         
@@ -949,7 +949,7 @@ public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLa
         if (files != null) {
             for (int a = 0; a < files.length; a++) {
                 File file = files[a];
-                if (file.isDirectory() && file.getName().equals("Teamgram")) {
+                if (file.isDirectory() && file.getName().equals("exteraGram")) {
                     checkDirectory(file);
                     continue;
                 }
@@ -1314,7 +1314,7 @@ public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLa
 
         ListItem fs;
         try {
-            File telegramPath = new File(ApplicationLoader.applicationContext.getExternalFilesDir(null), "Teamgram");
+            File telegramPath = new File(ApplicationLoader.applicationContext.getExternalFilesDir(null), "exteraGram");
             if (telegramPath.exists()) {
                 fs = new ListItem();
                 fs.title = "Teamgram";

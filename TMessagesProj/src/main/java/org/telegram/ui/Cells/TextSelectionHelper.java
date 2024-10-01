@@ -62,6 +62,8 @@ import org.telegram.ui.RestrictedLanguagesSelectActivity;
 
 import java.util.ArrayList;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.SelectableView> {
 
     protected int textX;

@@ -54,6 +54,8 @@ import org.telegram.ui.Components.WaveDrawable;
 
 import java.util.ArrayList;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class GroupCallUserCell extends FrameLayout {
 
     private AvatarWavesDrawable avatarWavesDrawable;
@@ -263,7 +265,7 @@ public class GroupCallUserCell extends FrameLayout {
         setClipChildren(false);
 
         avatarImageView = new BackupImageView(context);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(24));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(46));
         addView(avatarImageView, LayoutHelper.createFrame(46, 46, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 11, 6, LocaleController.isRTL ? 11 : 0, 0));
 
         avatarProgressView = new RadialProgressView(context) {
@@ -384,11 +386,9 @@ public class GroupCallUserCell extends FrameLayout {
         muteButton = new RLottieImageView(context);
         muteButton.setScaleType(ImageView.ScaleType.CENTER);
         muteButton.setAnimation(muteDrawable);
-        if (Build.VERSION.SDK_INT >= 21) {
-            RippleDrawable rippleDrawable = (RippleDrawable) Theme.createSelectorDrawable(Theme.getColor(grayIconColor) & 0x24ffffff);
-            Theme.setRippleDrawableForceSoftware(rippleDrawable);
-            muteButton.setBackground(rippleDrawable);
-        }
+        RippleDrawable rippleDrawable = (RippleDrawable) Theme.createSelectorDrawable(Theme.getColor(grayIconColor) & 0x24ffffff);
+        Theme.setRippleDrawableForceSoftware(rippleDrawable);
+        muteButton.setBackground(rippleDrawable);
         muteButton.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
         addView(muteButton, LayoutHelper.createFrame(48, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 6, 0, 6, 0));
         muteButton.setOnClickListener(v -> onMuteClick(GroupCallUserCell.this));
@@ -904,7 +904,7 @@ public class GroupCallUserCell extends FrameLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             if (progressToAvatarPreview != 0) {
                 dividerPaint.setAlpha((int) ((1.0f - progressToAvatarPreview) * 255));
             } else {
@@ -1084,7 +1084,7 @@ public class GroupCallUserCell extends FrameLayout {
     @Override
     public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
         super.onInitializeAccessibilityNodeInfo(info);
-        if (info.isEnabled() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (info.isEnabled()) {
             info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, participant.muted && !participant.can_self_unmute ? LocaleController.getString("VoipUnmute", R.string.VoipUnmute) : LocaleController.getString("VoipMute", R.string.VoipMute)));
         }
     }

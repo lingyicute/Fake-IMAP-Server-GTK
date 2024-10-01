@@ -26,6 +26,8 @@ import org.telegram.ui.Components.CombinedDrawable;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.Switch;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class CheckBoxUserCell extends FrameLayout {
 
     private SimpleTextView textView;
@@ -48,7 +50,7 @@ public class CheckBoxUserCell extends FrameLayout {
 
         avatarDrawable = new AvatarDrawable();
         imageView = new BackupImageView(context);
-        imageView.setRoundRadius(AndroidUtilities.dp(36));
+        imageView.setRoundRadius(ExteraConfig.getAvatarCorners(36));
         addView(imageView, LayoutHelper.createFrame(36, 36, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 23, 7, 23, 0));
 
         checkBox = new Switch(context, null);
@@ -110,7 +112,7 @@ public class CheckBoxUserCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(20) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

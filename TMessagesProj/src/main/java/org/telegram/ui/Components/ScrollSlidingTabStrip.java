@@ -39,6 +39,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.DocumentObject;
 import org.telegram.messenger.Emoji;
@@ -219,7 +221,7 @@ public class ScrollSlidingTabStrip extends HorizontalScrollView {
         tabTypes = new HashMap<>();
         futureTabsPositions.clear();
         tabCount = 0;
-        if (animated && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (animated) {
             final AutoTransition transition = new AutoTransition();
             transition.setDuration(250);
             transition.setOrdering(TransitionSet.ORDERING_TOGETHER);

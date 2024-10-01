@@ -35,6 +35,8 @@ import androidx.dynamicanimation.animation.SpringForce;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
@@ -131,7 +133,7 @@ public class SenderSelectPopup extends ActionBarPopupWindow {
         headerText.setTextColor(Theme.getColor(Theme.key_dialogTextBlue));
         headerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         headerText.setText(LocaleController.getString("SendMessageAsTitle", R.string.SendMessageAsTitle));
-        headerText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"), Typeface.BOLD);
+        headerText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         int dp = AndroidUtilities.dp(18);
         headerText.setPadding(dp, AndroidUtilities.dp(12), dp, AndroidUtilities.dp(12));
         recyclerContainer.addView(headerText);
@@ -266,9 +268,7 @@ public class SenderSelectPopup extends ActionBarPopupWindow {
                     params.width = params.height = WindowManager.LayoutParams.MATCH_PARENT;
                     params.format = PixelFormat.TRANSLUCENT;
                     params.type = WindowManager.LayoutParams.LAST_APPLICATION_WINDOW;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        params.flags |= WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
-                    }
+                    params.flags |= WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                         params.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
                     }
@@ -503,6 +503,7 @@ public class SenderSelectPopup extends ActionBarPopupWindow {
             setPadding(padding, padding / 2, padding, padding / 2);
 
             avatar = new SimpleAvatarView(context);
+            avatar.setAvatarCorners(ExteraConfig.getAvatarCorners(AVATAR_SIZE_DP));
             addView(avatar, LayoutHelper.createFrame(AVATAR_SIZE_DP, AVATAR_SIZE_DP));
 
             LinearLayout textRow = new LinearLayout(context);
@@ -514,6 +515,7 @@ public class SenderSelectPopup extends ActionBarPopupWindow {
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             title.setTag(this.title);
             title.setMaxLines(1);
+            title.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             textRow.addView(title);
 
             subtitle = new TextView(context);

@@ -55,6 +55,8 @@ import org.telegram.ui.Components.RadialProgressView;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class StickerSetCell extends FrameLayout {
     private final static String LINK_PREFIX = "teamgram.me/addstickers/";
     private final static String LINK_PREFIX_EMOJI = "teamgram.me/addemoji/";
@@ -519,13 +521,13 @@ public class StickerSetCell extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (Build.VERSION.SDK_INT >= 21 && getBackground() != null && optionsButton != null) {
+        if (getBackground() != null && optionsButton != null) {
             optionsButton.getHitRect(rect);
             if (rect.contains((int) event.getX(), (int) event.getY())) {
                 return true;
             }
         }
-        if (Build.VERSION.SDK_INT >= 21 && getBackground() != null && emojis && sideButtons != null) {
+        if (getBackground() != null && emojis && sideButtons != null) {
             sideButtons.getHitRect(rect);
             if (rect.contains((int) event.getX(), (int) event.getY())) {
                 return true;
@@ -536,7 +538,7 @@ public class StickerSetCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(71), getHeight() - 1, getWidth() - getPaddingRight() - (LocaleController.isRTL ? AndroidUtilities.dp(71) : 0), getHeight() - 1, Theme.dividerPaint);
         }
     }

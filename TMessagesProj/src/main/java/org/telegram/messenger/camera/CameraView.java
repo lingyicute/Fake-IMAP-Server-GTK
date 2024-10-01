@@ -39,20 +39,18 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
+
+import com.exteragram.messenger.camera.BaseCameraView;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;
@@ -62,7 +60,6 @@ import org.telegram.messenger.SharedConfig;
 import org.telegram.messenger.Utilities;
 import org.telegram.messenger.video.MP4Builder;
 import org.telegram.messenger.video.Mp4Movie;
-import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.CubicBezierInterpolator;
 import org.telegram.ui.Components.InstantCameraView;
 import org.telegram.ui.Components.LayoutHelper;
@@ -85,7 +82,7 @@ import javax.microedition.khronos.egl.EGLSurface;
 import javax.microedition.khronos.opengles.GL;
 
 @SuppressLint("NewApi")
-public class CameraView extends FrameLayout implements TextureView.SurfaceTextureListener {
+public class CameraView extends BaseCameraView implements TextureView.SurfaceTextureListener {
 
     private Size previewSize;
     private Size pictureSize;
@@ -737,18 +734,7 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
     }
 
     public void runHaptic() {
-        long[] vibrationWaveFormDurationPattern = {0, 1};
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-
-            final Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            VibrationEffect vibrationEffect = VibrationEffect.createWaveform(vibrationWaveFormDurationPattern, -1);
-
-            vibrator.cancel();
-            vibrator.vibrate(vibrationEffect);
-        } else {
-            performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-        }
+        performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
     }
 
 
@@ -1592,13 +1578,7 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
                     int inputBufferIndex = audioEncoder.dequeueInputBuffer(0);
                     if (inputBufferIndex >= 0) {
                         ByteBuffer inputBuffer;
-                        if (Build.VERSION.SDK_INT >= 21) {
-                            inputBuffer = audioEncoder.getInputBuffer(inputBufferIndex);
-                        } else {
-                            ByteBuffer[] inputBuffers = audioEncoder.getInputBuffers();
-                            inputBuffer = inputBuffers[inputBufferIndex];
-                            inputBuffer.clear();
-                        }
+                        inputBuffer = audioEncoder.getInputBuffer(inputBufferIndex);
                         long startWriteTime = input.offset[input.lastWroteBuffer];
                         for (int a = input.lastWroteBuffer; a <= input.results; a++) {
                             if (a < input.results) {
@@ -1938,9 +1918,6 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
             }
 
             ByteBuffer[] encoderOutputBuffers = null;
-            if (Build.VERSION.SDK_INT < 21) {
-                encoderOutputBuffers = videoEncoder.getOutputBuffers();
-            }
             while (true) {
                 int encoderStatus = videoEncoder.dequeueOutputBuffer(videoBufferInfo, 10000);
                 if (encoderStatus == MediaCodec.INFO_TRY_AGAIN_LATER) {
@@ -1948,9 +1925,6 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
                         break;
                     }
                 } else if (encoderStatus == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) {
-                    if (Build.VERSION.SDK_INT < 21) {
-                        encoderOutputBuffers = videoEncoder.getOutputBuffers();
-                    }
                 } else if (encoderStatus == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
                     MediaFormat newFormat = videoEncoder.getOutputFormat();
                     if (videoTrackIndex == -5) {
@@ -1963,11 +1937,7 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
                     }
                 } else if (encoderStatus >= 0) {
                     ByteBuffer encodedData;
-                    if (Build.VERSION.SDK_INT < 21) {
-                        encodedData = encoderOutputBuffers[encoderStatus];
-                    } else {
-                        encodedData = videoEncoder.getOutputBuffer(encoderStatus);
-                    }
+                    encodedData = videoEncoder.getOutputBuffer(encoderStatus);
                     if (encodedData == null) {
                         throw new RuntimeException("encoderOutputBuffer " + encoderStatus + " was null");
                     }
@@ -2033,9 +2003,6 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
                 }
             }
 
-            if (Build.VERSION.SDK_INT < 21) {
-                encoderOutputBuffers = audioEncoder.getOutputBuffers();
-            }
             boolean encoderOutputAvailable = true;
             while (true) {
                 int encoderStatus = audioEncoder.dequeueOutputBuffer(audioBufferInfo, 0);
@@ -2044,9 +2011,6 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
                         break;
                     }
                 } else if (encoderStatus == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) {
-                    if (Build.VERSION.SDK_INT < 21) {
-                        encoderOutputBuffers = audioEncoder.getOutputBuffers();
-                    }
                 } else if (encoderStatus == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
                     MediaFormat newFormat = audioEncoder.getOutputFormat();
                     if (audioTrackIndex == -5) {
@@ -2054,11 +2018,7 @@ public class CameraView extends FrameLayout implements TextureView.SurfaceTextur
                     }
                 } else if (encoderStatus >= 0) {
                     ByteBuffer encodedData;
-                    if (Build.VERSION.SDK_INT < 21) {
-                        encodedData = encoderOutputBuffers[encoderStatus];
-                    } else {
-                        encodedData = audioEncoder.getOutputBuffer(encoderStatus);
-                    }
+                    encodedData = audioEncoder.getOutputBuffer(encoderStatus);
                     if (encodedData == null) {
                         throw new RuntimeException("encoderOutputBuffer " + encoderStatus + " was null");
                     }

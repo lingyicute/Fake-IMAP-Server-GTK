@@ -18,8 +18,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Outline;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -51,7 +49,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.NotificationCenter;
@@ -59,7 +56,6 @@ import org.telegram.messenger.R;
 import org.telegram.messenger.SharedConfig;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
-import org.telegram.messenger.support.fingerprint.FingerprintManagerCompat;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
@@ -73,7 +69,6 @@ import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.CombinedDrawable;
 import org.telegram.ui.Components.CubicBezierInterpolator;
 import org.telegram.ui.Components.CustomPhoneKeyboardView;
 import org.telegram.ui.Components.Easings;
@@ -92,6 +87,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import com.exteragram.messenger.ExteraUtils;
+import com.exteragram.messenger.ExteraConfig;
 
 public class PasscodeActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
     public final static int TYPE_MANAGE_CODE_SETTINGS = 0,
@@ -309,7 +307,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                         builder.setTitle(LocaleController.getString("AutoLock", R.string.AutoLock));
                         final NumberPicker numberPicker = new NumberPicker(getParentActivity());
                         numberPicker.setMinValue(0);
-                        numberPicker.setMaxValue(4);
+                        numberPicker.setMaxValue(5);
                         if (SharedConfig.autoLockIn == 0) {
                             numberPicker.setValue(0);
                         } else if (SharedConfig.autoLockIn == 60) {
@@ -429,7 +427,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
                 titleTextView = new TextView(context);
                 titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
-                titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+                titleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
                 if (type == TYPE_SETUP_CODE) {
                     if (SharedConfig.passcodeHash.length() != 0) {
                         titleTextView.setText(LocaleController.getString("EnterNewPasscode", R.string.EnterNewPasscode));
@@ -465,7 +463,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 forgotPasswordButton.setOnClickListener(v -> AlertsCreator.createForgotPasscodeDialog(context).show());
                 forgotPasswordButton.setVisibility(type == TYPE_ENTER_CODE_TO_MANAGE_SETTINGS ? View.VISIBLE : View.GONE);
                 forgotPasswordButton.setText(LocaleController.getString(R.string.ForgotPasscode));
-                frameLayout.addView(forgotPasswordButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 56 : 60, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 16));
+                frameLayout.addView(forgotPasswordButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 16));
                 VerticalPositionAutoAnimator.attach(forgotPasswordButton);
 
                 passcodesDoNotMatchTextView = new TextView(context);
@@ -641,21 +639,23 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 }
 
                 floatingButtonContainer = new FrameLayout(context);
-                if (Build.VERSION.SDK_INT >= 21) {
-                    StateListAnimator animator = new StateListAnimator();
-                    animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
-                    animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
-                    floatingButtonContainer.setStateListAnimator(animator);
-                    floatingButtonContainer.setOutlineProvider(new ViewOutlineProvider() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void getOutline(View view, Outline outline) {
+                StateListAnimator animator = new StateListAnimator();
+                animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
+                animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
+                floatingButtonContainer.setStateListAnimator(animator);
+                floatingButtonContainer.setOutlineProvider(new ViewOutlineProvider() {
+                    @SuppressLint("NewApi")
+                    @Override
+                    public void getOutline(View view, Outline outline) {
+                        if (ExteraConfig.squareFab) {
+                            outline.setRoundRect(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56), AndroidUtilities.dp(16));
+                        } else {
                             outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
                         }
-                    });
-                }
+                    }
+                });
                 floatingAutoAnimator = VerticalPositionAutoAnimator.attach(floatingButtonContainer);
-                frameLayout.addView(floatingButtonContainer, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 24, 16));
+                frameLayout.addView(floatingButtonContainer, LayoutHelper.createFrame(56, 56, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 24, 16));
                 floatingButtonContainer.setOnClickListener(view -> {
                     if (type == TYPE_SETUP_CODE) {
                         if (passcodeSetStep == 0) {
@@ -674,16 +674,9 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 floatingButtonIcon.setColor(Theme.getColor(Theme.key_chats_actionIcon));
                 floatingButtonIcon.setDrawBackground(false);
                 floatingButtonContainer.setContentDescription(LocaleController.getString(R.string.Next));
-                floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60));
+                floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(56, 56));
 
-                Drawable drawable = Theme.createSimpleSelectorCircleDrawable(AndroidUtilities.dp(56), Theme.getColor(Theme.key_chats_actionBackground), Theme.getColor(Theme.key_chats_actionPressedBackground));
-                if (Build.VERSION.SDK_INT < 21) {
-                    Drawable shadowDrawable = context.getResources().getDrawable(R.drawable.floating_shadow).mutate();
-                    shadowDrawable.setColorFilter(new PorterDuffColorFilter(0xff000000, PorterDuff.Mode.MULTIPLY));
-                    CombinedDrawable combinedDrawable = new CombinedDrawable(shadowDrawable, drawable, 0, 0);
-                    combinedDrawable.setIconSize(AndroidUtilities.dp(56), AndroidUtilities.dp(56));
-                    drawable = combinedDrawable;
-                }
+                Drawable drawable = ExteraUtils.drawFab();
                 floatingButtonContainer.setBackground(drawable);
 
                 updateFields();
@@ -876,8 +869,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
         changePasscodeRow = rowCount++;
         try {
             if (Build.VERSION.SDK_INT >= 23) {
-                FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(ApplicationLoader.applicationContext);
-                if (fingerprintManager.isHardwareDetected() && AndroidUtilities.isKeyguardSecure()) {
+                if (ExteraUtils.hasBiometrics()) {
                     fingerprintRow = rowCount++;
                 } else {
                     fingerprintRow = -1;

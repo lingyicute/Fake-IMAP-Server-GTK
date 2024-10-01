@@ -26,6 +26,8 @@ import java.io.RandomAccessFile;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class FileUploadOperation {
 
     private static class UploadCachedResult {
@@ -38,6 +40,7 @@ public class FileUploadOperation {
     private boolean nextPartFirst;
     private int operationGuid;
     private static final int minUploadChunkSize = 128;
+    private static final int minUploadChunkBoostSize = 512;
     private static final int minUploadChunkSlowNetworkSize = 32;
     private static final int initialRequestsCount = 8;
     private static final int initialRequestsSlowNetworkCount = 1;
@@ -186,7 +189,7 @@ public class FileUploadOperation {
                 remove(fileKey + "_id").
                 remove(fileKey + "_iv").
                 remove(fileKey + "_key").
-                remove(fileKey + "_ivc").commit();
+                remove(fileKey + "_ivc").apply();
         try {
             if (stream != null) {
                 stream.close();
@@ -226,7 +229,7 @@ public class FileUploadOperation {
             editor.putString(fileKey + "_ivc", Utilities.bytesToHex(ivChange));
             editor.putString(fileKey + "_key", Utilities.bytesToHex(key));
         }
-        editor.commit();
+        editor.apply();
     }
 
     private void calcTotalPartsCount() {
@@ -289,7 +292,7 @@ public class FileUploadOperation {
                 if (AccountInstance.getInstance(currentAccount).getUserConfig().isPremium() && totalFileSize > FileLoader.DEFAULT_MAX_FILE_SIZE) {
                     maxUploadParts = MessagesController.getInstance(currentAccount).uploadMaxFilePartsPremium;
                 }
-                uploadChunkSize = (int) Math.max(slowNetwork ? minUploadChunkSlowNetworkSize : minUploadChunkSize, (totalFileSize + 1024L * maxUploadParts - 1) / (1024L * maxUploadParts));
+                uploadChunkSize = (int) Math.max(slowNetwork ? minUploadChunkSlowNetworkSize : ExteraConfig.uploadSpeedBoost ? minUploadChunkBoostSize : minUploadChunkSize, (totalFileSize + 1024L * maxUploadParts - 1) / (1024L * maxUploadParts));
                 if (1024 % uploadChunkSize != 0) {
                     int chunkSize = 64;
                     while (uploadChunkSize > chunkSize) {
@@ -625,7 +628,7 @@ public class FileUploadOperation {
                                 if (isEncrypted) {
                                     editor.putString(fileKey + "_ivc", Utilities.bytesToHex(ivToSave));
                                 }
-                                editor.commit();
+                                editor.apply();
                             }
                         } else {
                             UploadCachedResult result = new UploadCachedResult();

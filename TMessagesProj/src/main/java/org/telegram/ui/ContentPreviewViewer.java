@@ -323,7 +323,7 @@ public class ContentPreviewViewer {
 
                 int insets = 0;
                 int top;
-                if (Build.VERSION.SDK_INT >= 21 && lastInsets != null) {
+                if (lastInsets != null) {
                     insets = lastInsets.getStableInsetBottom() + lastInsets.getStableInsetTop();
                     top = lastInsets.getStableInsetTop();
                 } else {
@@ -448,7 +448,7 @@ public class ContentPreviewViewer {
 
                 int insets = 0;
                 int top;
-                if (Build.VERSION.SDK_INT >= 21 && lastInsets != null) {
+                if (lastInsets != null) {
                     insets = lastInsets.getStableInsetBottom() + lastInsets.getStableInsetTop();
                     top = lastInsets.getStableInsetTop();
                 } else {
@@ -587,7 +587,7 @@ public class ContentPreviewViewer {
 
                 int insets = 0;
                 int top;
-                if (Build.VERSION.SDK_INT >= 21 && lastInsets != null) {
+                if (lastInsets != null) {
                     insets = lastInsets.getStableInsetBottom() + lastInsets.getStableInsetTop();
                     top = lastInsets.getStableInsetTop();
                 } else {
@@ -863,7 +863,6 @@ public class ContentPreviewViewer {
                                 open(document, null, MessageObject.findAnimatedEmojiEmoticon(document, null), null, null, contentType, false, null, resourcesProvider);
                             }
                             runSmoothHaptic();
-
                             return true;
                         }
                     }
@@ -884,18 +883,8 @@ public class ContentPreviewViewer {
         return false;
     }
 
-    VibrationEffect vibrationEffect;
-
     protected void runSmoothHaptic() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            final Vibrator vibrator = (Vibrator) containerView.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            if (vibrationEffect == null) {
-                long[] vibrationWaveFormDurationPattern = {0, 2};
-                vibrationEffect = VibrationEffect.createWaveform(vibrationWaveFormDurationPattern, -1);
-            }
-            vibrator.cancel();
-            vibrator.vibrate(vibrationEffect);
-        }
+        containerView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
     }
 
     public boolean onInterceptTouchEvent(MotionEvent event, final RecyclerListView listView, final int height, ContentPreviewViewerDelegate contentPreviewViewerDelegate, Theme.ResourcesProvider resourcesProvider) {
@@ -1062,13 +1051,11 @@ public class ContentPreviewViewer {
         windowView = new FrameLayout(activity);
         windowView.setFocusable(true);
         windowView.setFocusableInTouchMode(true);
-        if (Build.VERSION.SDK_INT >= 21) {
-            windowView.setFitsSystemWindows(true);
-            windowView.setOnApplyWindowInsetsListener((v, insets) -> {
-                lastInsets = insets;
-                return insets;
-            });
-        }
+        windowView.setFitsSystemWindows(true);
+        windowView.setOnApplyWindowInsetsListener((v, insets) -> {
+            lastInsets = insets;
+            return insets;
+        });
 
         containerView = new FrameLayoutDrawer(activity) {
             @Override
@@ -1104,11 +1091,7 @@ public class ContentPreviewViewer {
         windowLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         windowLayoutParams.gravity = Gravity.TOP;
         windowLayoutParams.type = WindowManager.LayoutParams.LAST_APPLICATION_WINDOW;
-        if (Build.VERSION.SDK_INT >= 21) {
-            windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS | WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-        } else {
-            windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        }
+        windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS | WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
         centerImage.setAspectFit(true);
         centerImage.setInvalidateAll(true);
         centerImage.setParentView(containerView);
@@ -1158,7 +1141,7 @@ public class ContentPreviewViewer {
                 }
                 if ((newSet != null || contentType == CONTENT_TYPE_EMOJI) && (delegate == null || delegate.needMenu())) {
                     AndroidUtilities.cancelRunOnUIThread(showSheetRunnable);
-                    AndroidUtilities.runOnUIThread(showSheetRunnable, 1300);
+                    AndroidUtilities.runOnUIThread(showSheetRunnable, 350);
                 }
                 currentStickerSet = newSet;
                 TLRPC.PhotoSize thumb = FileLoader.getClosestPhotoSizeWithSize(document.thumbs, 90);
@@ -1192,7 +1175,7 @@ public class ContentPreviewViewer {
                 }
                 if (delegate.needMenu()) {
                     AndroidUtilities.cancelRunOnUIThread(showSheetRunnable);
-                    AndroidUtilities.runOnUIThread(showSheetRunnable, 1300);
+                    AndroidUtilities.runOnUIThread(showSheetRunnable, 350);
                 }
             }
         } else {
@@ -1219,7 +1202,7 @@ public class ContentPreviewViewer {
                 return;
             }
             AndroidUtilities.cancelRunOnUIThread(showSheetRunnable);
-            AndroidUtilities.runOnUIThread(showSheetRunnable, 2000);
+            AndroidUtilities.runOnUIThread(showSheetRunnable, 500);
         }
 
         if (centerImage.getLottieAnimation() != null) {
@@ -1369,7 +1352,7 @@ public class ContentPreviewViewer {
         int size;
         int insets = 0;
         int top;
-        if (Build.VERSION.SDK_INT >= 21 && lastInsets != null) {
+        if (lastInsets != null) {
             insets = lastInsets.getStableInsetBottom() + lastInsets.getStableInsetTop();
             top = lastInsets.getStableInsetTop();
         } else {

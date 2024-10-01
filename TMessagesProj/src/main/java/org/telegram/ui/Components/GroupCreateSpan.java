@@ -38,6 +38,10 @@ import org.telegram.messenger.UserObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.Theme;
 
+import androidx.core.graphics.ColorUtils;
+
+import com.exteragram.messenger.ExteraConfig;
+
 public class GroupCreateSpan extends View {
 
     private long uid;
@@ -169,7 +173,7 @@ public class GroupCreateSpan extends View {
         }
 
         imageReceiver = new ImageReceiver();
-        imageReceiver.setRoundRadius(AndroidUtilities.dp(16));
+        imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(32));
         imageReceiver.setParentView(this);
         imageReceiver.setImageCoords(0, 0, AndroidUtilities.dp(32), AndroidUtilities.dp(32));
 
@@ -304,7 +308,7 @@ public class GroupCreateSpan extends View {
     public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
         super.onInitializeAccessibilityNodeInfo(info);
         info.setText(nameLayout.getText());
-        if (isDeleting() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        if (isDeleting())
             info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK.getId(), LocaleController.getString("Delete", R.string.Delete)));
     }
 }

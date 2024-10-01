@@ -93,7 +93,8 @@ import org.telegram.ui.Components.URLSpanNoUnderline;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
-@TargetApi(18)
+import com.exteragram.messenger.extras.PermissionUtils;
+
 public class CameraScanActivity extends BaseFragment {
 
     private TextView titleTextView;
@@ -611,7 +612,7 @@ public class CameraScanActivity extends BaseFragment {
                             index1 += 1;
                             index2 += 1;
                             spanned.setSpan(new URLSpanNoUnderline(links[i], true), index1, index2 - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            spanned.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface("fonts/rmedium.ttf")), index1, index2 - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            spanned.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM)), index1, index2 - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                         } else {
                             break;
                         }
@@ -649,8 +650,8 @@ public class CameraScanActivity extends BaseFragment {
                         return;
                     }
                     if (Build.VERSION.SDK_INT >= 23) {
-                        if (getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                            getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, BasePermissionsActivity.REQUEST_CODE_EXTERNAL_STORAGE);
+                        if (!PermissionUtils.isImagesAndVideoPermissionGranted()) {
+                            PermissionUtils.requestImagesAndVideoPermission(getParentActivity());
                             return;
                         }
                     }
@@ -921,6 +922,7 @@ public class CameraScanActivity extends BaseFragment {
             cameraView.destroy(async, beforeDestroyRunnable);
             cameraView = null;
         }
+        flashButton.setTag(null);
         backgroundHandlerThread.quitSafely();
     }
 

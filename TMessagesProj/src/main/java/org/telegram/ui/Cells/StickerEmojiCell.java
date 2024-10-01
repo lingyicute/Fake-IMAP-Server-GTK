@@ -14,6 +14,7 @@ import android.graphics.Paint;
 import android.os.Vibrator;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.AccelerateInterpolator;
@@ -76,6 +77,7 @@ public class StickerEmojiCell extends FrameLayout implements NotificationCenter.
 
         imageView = new ImageReceiver();
         imageView.setAspectFit(true);
+        imageView.setRoundRadius(AndroidUtilities.dp(4));
         imageView.setLayerNum(1);
 
         emojiTextView = new TextView(context);
@@ -86,7 +88,6 @@ public class StickerEmojiCell extends FrameLayout implements NotificationCenter.
         paint.setColor(Theme.getColor(Theme.key_featuredStickers_addButton));
 
         premiumIconView = new PremiumLockIconView(context, PremiumLockIconView.TYPE_STICKERS_PREMIUM_LOCKED);
-        premiumIconView.setImageReceiver(imageView);
         premiumIconView.setPadding(AndroidUtilities.dp(4), AndroidUtilities.dp(4), AndroidUtilities.dp(4), AndroidUtilities.dp(4));
         premiumIconView.setImageReceiver(imageView);
         addView(premiumIconView, LayoutHelper.createFrame(24, 24, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0 ,0, 0, 0));
@@ -316,11 +317,7 @@ public class StickerEmojiCell extends FrameLayout implements NotificationCenter.
 
     public void showRequirePremiumAnimation() {
         if (premiumIconView != null) {
-            Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            if (v != null) {
-                v.vibrate(200);
-            }
-            AndroidUtilities.shakeView(premiumIconView);
+            premiumIconView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         }
     }
 

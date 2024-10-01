@@ -79,6 +79,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class MemberRequestsDelegate implements MemberRequestCell.OnClickListener {
 
     public final boolean isChannel;
@@ -470,7 +472,7 @@ public class MemberRequestsDelegate implements MemberRequestCell.OnClickListener
                     onImportersChanged(query, false, true);
                     if (isApproved) {
                         Bulletin.MultiLineLayout layout = new Bulletin.MultiLineLayout(fragment.getParentActivity(), fragment.getResourceProvider());
-                        layout.imageView.setRoundRadius(AndroidUtilities.dp(15));
+                        layout.imageView.setRoundRadius(ExteraConfig.getAvatarCorners(32));
                         layout.imageView.setForUserOrChat(user, new AvatarDrawable(user));
                         String userName = UserObject.getFirstName(user);
                         String message = isChannel
@@ -786,11 +788,9 @@ public class MemberRequestsDelegate implements MemberRequestCell.OnClickListener
             params.dimAmount = 0;
             params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
             params.gravity = Gravity.TOP | Gravity.LEFT;
-            if (Build.VERSION.SDK_INT >= 21) {
-                params.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
-                        WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
-                        WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
-            }
+            params.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
+                    WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
+                    WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
             if (Build.VERSION.SDK_INT >= 28) {
                 params.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
             }
@@ -915,7 +915,7 @@ public class MemberRequestsDelegate implements MemberRequestCell.OnClickListener
 
         private void updateBackgroundBitmap() {
             int oldAlpha = 255;
-            if (backgroundDrawable != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (backgroundDrawable != null) {
                 oldAlpha = backgroundDrawable.getAlpha();
             }
             backgroundDrawable = new BitmapDrawable(getContext().getResources(), getBlurredBitmap());

@@ -29,10 +29,15 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.StateSet;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 
 import androidx.annotation.Keep;
+
+import com.exteragram.messenger.ExteraConfig;
+
+import java.lang.reflect.Method;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.ui.ActionBar.Theme;
@@ -153,7 +158,7 @@ public class Switch extends View {
     }
 
     public void setDrawRipple(boolean value) {
-        if (Build.VERSION.SDK_INT < 21 || value == drawRipple) {
+        if (value == drawRipple) {
             return;
         }
         drawRipple = value;
@@ -369,12 +374,18 @@ public class Switch extends View {
         if (getVisibility() != VISIBLE) {
             return;
         }
-
+        int x;
+        float y;
         int width = AndroidUtilities.dp(31);
         int thumb = AndroidUtilities.dp(20);
-        int x = (getMeasuredWidth() - width) / 2;
-        float y = (getMeasuredHeight() - AndroidUtilities.dpf2(14)) / 2;
-        int tx = x + AndroidUtilities.dp(7) + (int) (AndroidUtilities.dp(17) * progress);
+        if (ExteraConfig.newSwitchStyle) {
+            x = 0;
+            y = getMeasuredHeight() / 2 - thumb / 2;
+        } else {
+            x = (getMeasuredWidth() - width) / 2;
+            y = (getMeasuredHeight() - AndroidUtilities.dpf2(14)) / 2;
+        }
+        int tx = ((getMeasuredWidth() - width) / 2) + AndroidUtilities.dp(7) + (int) (AndroidUtilities.dp(17) * progress);
         int ty = getMeasuredHeight() / 2;
 
 
@@ -438,10 +449,15 @@ public class Switch extends View {
             paint.setColor(color);
             paint2.setColor(color);
 
-            rectF.set(x, y, x + width, y + AndroidUtilities.dpf2(14));
-            canvasToDraw.drawRoundRect(rectF, AndroidUtilities.dpf2(7), AndroidUtilities.dpf2(7), paint);
-            canvasToDraw.drawCircle(tx, ty, AndroidUtilities.dpf2(10), paint);
-
+            if (ExteraConfig.newSwitchStyle) {
+                rectF.set(x, y, getMeasuredWidth(), getMeasuredHeight() / 2 + thumb / 2);
+                canvasToDraw.drawRoundRect(rectF, AndroidUtilities.dpf2(14), AndroidUtilities.dpf2(14), paint);
+                canvasToDraw.drawCircle(tx, ty, AndroidUtilities.dpf2(9), paint);
+            } else {
+                rectF.set(x, y, x + width, y + AndroidUtilities.dpf2(14));
+                canvasToDraw.drawRoundRect(rectF, AndroidUtilities.dpf2(7), AndroidUtilities.dpf2(7), paint);
+                canvasToDraw.drawCircle(tx, ty, AndroidUtilities.dpf2(10), paint);
+            }
             if (a == 0 && rippleDrawable != null) {
                 rippleDrawable.setBounds(tx - AndroidUtilities.dp(18), ty - AndroidUtilities.dp(18), tx + AndroidUtilities.dp(18), ty + AndroidUtilities.dp(18));
                 rippleDrawable.draw(canvasToDraw);
@@ -487,9 +503,13 @@ public class Switch extends View {
             alpha = (int) (a1 + (a2 - a1) * colorProgress);
             paint.setColor(((alpha & 0xff) << 24) | ((red & 0xff) << 16) | ((green & 0xff) << 8) | (blue & 0xff));
 
-            canvasToDraw.drawCircle(tx, ty, AndroidUtilities.dp(8), paint);
+            if (ExteraConfig.newSwitchStyle) {
+                canvasToDraw.drawCircle(tx, ty, AndroidUtilities.dp(2) * progress + AndroidUtilities.dp(5), paint);
+            } else {
+                canvasToDraw.drawCircle(tx, ty, AndroidUtilities.dp(8), paint);
+            }
 
-            if (a == 0) {
+            if (a == 0 && !ExteraConfig.newSwitchStyle) {
                 if (iconDrawable != null) {
                     iconDrawable.setBounds(tx - iconDrawable.getIntrinsicWidth() / 2, ty - iconDrawable.getIntrinsicHeight() / 2, tx + iconDrawable.getIntrinsicWidth() / 2, ty + iconDrawable.getIntrinsicHeight() / 2);
                     iconDrawable.draw(canvasToDraw);
@@ -548,11 +568,8 @@ public class Switch extends View {
 
     private void vibrateChecked(boolean toCheck) {
         try {
-            if (isHapticFeedbackEnabled() && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-                Vibrator vibrator = AndroidUtilities.getVibrator();
-                VibrationEffect vibrationEffect = VibrationEffect.createWaveform(new long[]{75,10,5,10}, new int[] {5,20,110,20}, -1);
-                vibrator.cancel();
-                vibrator.vibrate(vibrationEffect);
+            if (isHapticFeedbackEnabled() && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 semHaptics = true;
             }
         } catch (Exception ignore) {}

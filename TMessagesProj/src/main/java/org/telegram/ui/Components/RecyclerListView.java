@@ -67,6 +67,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
 
+import com.exteragram.messenger.ExteraConfig;
+
 @SuppressWarnings("JavaReflectionMemberAccess")
 public class RecyclerListView extends RecyclerView {
     public final static int SECTIONS_TYPE_SIMPLE = 0,
@@ -1088,12 +1090,12 @@ public class RecyclerListView extends RecyclerView {
                     View child = currentChildView;
                     if (onItemLongClickListener != null) {
                         if (onItemLongClickListener.onItemClick(currentChildView, currentChildPosition)) {
-                            child.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                            child.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                             child.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_LONG_CLICKED);
                         }
                     } else {
                         if (onItemLongClickListenerExtended.onItemClick(currentChildView, currentChildPosition, event.getX() - currentChildView.getX(), event.getY() - currentChildView.getY())) {
-                            child.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                            child.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                             child.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_LONG_CLICKED);
                             longPressCalled = true;
                         }
@@ -1189,9 +1191,7 @@ public class RecyclerListView extends RecyclerView {
                                     ((TransitionDrawable) d).resetTransition();
                                 }
                             }
-                            if (Build.VERSION.SDK_INT >= 21) {
-                                selectorDrawable.setHotspot(event.getX(), event.getY());
-                            }
+                            selectorDrawable.setHotspot(event.getX(), event.getY());
                         }
                         updateSelectorState();
                     } else {
@@ -1289,7 +1289,7 @@ public class RecyclerListView extends RecyclerView {
                 if (d instanceof TransitionDrawable) {
                     ((TransitionDrawable) d).resetTransition();
                 }
-                if (event != null && Build.VERSION.SDK_INT >= 21) {
+                if (event != null) {
                     selectorDrawable.setHotspot(event.getX(), event.getY());
                 }
             }
@@ -1611,7 +1611,9 @@ public class RecyclerListView extends RecyclerView {
         if (selectorDrawable != null) {
             selectorDrawable.setCallback(null);
         }
-        if (selectorType == 8) {
+        if (selectorType == 100) {
+            selectorDrawable = Theme.createSimpleSelectorRoundRectDrawable(0, 0x00, 0x00, 0x00);
+        } else if (selectorType == 8) {
             selectorDrawable = Theme.createRadSelectorDrawable(color, selectorRadius, 0);
         } else if (topBottomSelectorRadius > 0) {
             selectorDrawable = Theme.createRadSelectorDrawable(color, topBottomSelectorRadius, topBottomSelectorRadius);
@@ -2013,9 +2015,7 @@ public class RecyclerListView extends RecyclerView {
                         ((TransitionDrawable) d).resetTransition();
                     }
                 }
-                if (Build.VERSION.SDK_INT >= 21) {
-                    selectorDrawable.setHotspot(holder.itemView.getMeasuredWidth() / 2, holder.itemView.getMeasuredHeight() / 2);
-                }
+                selectorDrawable.setHotspot(holder.itemView.getMeasuredWidth() / 2, holder.itemView.getMeasuredHeight() / 2);
             }
             if (selectorDrawable != null && selectorDrawable.isStateful()) {
                 if (selectorDrawable.setState(getDrawableStateForSelector())) {
@@ -2279,7 +2279,7 @@ public class RecyclerListView extends RecyclerView {
                 selectorDrawable.setVisible(true, false);
             }
         }
-        if (Build.VERSION.SDK_INT >= 21 && manageHotspot) {
+        if (manageHotspot) {
             selectorDrawable.setHotspot(x, y);
         }
     }

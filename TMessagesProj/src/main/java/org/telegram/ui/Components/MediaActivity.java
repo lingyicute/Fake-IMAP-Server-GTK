@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.DialogObject;
@@ -144,17 +146,15 @@ public class MediaActivity extends BaseFragment implements SharedMediaLayout.Sha
                 super.onInitializeAccessibilityNodeInfo(info);
                 if (getImageReceiver().hasNotThumb()) {
                     info.setText(LocaleController.getString("AccDescrProfilePicture", R.string.AccDescrProfilePicture));
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("Open", R.string.Open)));
-                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_LONG_CLICK, LocaleController.getString("AccDescrOpenInPhotoViewer", R.string.AccDescrOpenInPhotoViewer)));
-                    }
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("Open", R.string.Open)));
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_LONG_CLICK, LocaleController.getString("AccDescrOpenInPhotoViewer", R.string.AccDescrOpenInPhotoViewer)));
                 } else {
                     info.setVisibleToUser(false);
                 }
             }
         };
         avatarImageView.getImageReceiver().setAllowDecodeSingleFrame(true);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(21));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(42));
         avatarImageView.setPivotX(0);
         avatarImageView.setPivotY(0);
         AvatarDrawable avatarDrawable = new AvatarDrawable();

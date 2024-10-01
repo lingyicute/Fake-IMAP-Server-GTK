@@ -33,13 +33,18 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.ActionBar.ThemeDescription;
 import org.telegram.ui.Components.EditTextBoldCursor;
 import org.telegram.ui.Components.LayoutHelper;
+import org.telegram.ui.Components.OutlineTextContainerView;
 
 import java.util.ArrayList;
 
 public class ChangeNameActivity extends BaseFragment {
 
     private EditTextBoldCursor firstNameField;
+    private OutlineTextContainerView firstNameFieldContainer;
+
     private EditTextBoldCursor lastNameField;
+    private OutlineTextContainerView lastNameFieldContainer;
+
     private View headerLabelView;
     private View doneButton;
 
@@ -86,6 +91,10 @@ public class ChangeNameActivity extends BaseFragment {
         ((LinearLayout) fragmentView).setOrientation(LinearLayout.VERTICAL);
         fragmentView.setOnTouchListener((v, event) -> true);
 
+        firstNameFieldContainer = new OutlineTextContainerView(context);
+        firstNameFieldContainer.setText(LocaleController.getString("FirstName", R.string.FirstName));
+        linearLayout.addView(firstNameFieldContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 24, 24, 24, 0));
+
         firstNameField = new EditTextBoldCursor(context) {
             @Override
             protected Theme.ResourcesProvider getResourcesProvider() {
@@ -93,29 +102,31 @@ public class ChangeNameActivity extends BaseFragment {
             }
         };
         firstNameField.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        firstNameField.setHintTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteHintText, resourcesProvider));
         firstNameField.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
-        firstNameField.setBackgroundDrawable(null);
-        firstNameField.setLineColors(getThemedColor(Theme.key_windowBackgroundWhiteInputField), getThemedColor(Theme.key_windowBackgroundWhiteInputFieldActivated), getThemedColor(Theme.key_windowBackgroundWhiteRedText3));
-        firstNameField.setMaxLines(1);
-        firstNameField.setLines(1);
+        firstNameField.setBackground(null);
         firstNameField.setSingleLine(true);
-        firstNameField.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         firstNameField.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
         firstNameField.setImeOptions(EditorInfo.IME_ACTION_NEXT);
-        firstNameField.setHint(LocaleController.getString("FirstName", R.string.FirstName));
-        firstNameField.setCursorColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
-        firstNameField.setCursorSize(AndroidUtilities.dp(20));
+        firstNameField.setCursorColor(Theme.getColor(Theme.key_windowBackgroundWhiteInputFieldActivated, resourcesProvider));
         firstNameField.setCursorWidth(1.5f);
-        linearLayout.addView(firstNameField, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 36, 24, 24, 24, 0));
+        firstNameField.setCursorSize(AndroidUtilities.dp(20));
+        firstNameField.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        firstNameField.setOnFocusChangeListener((v, hasFocus) -> firstNameFieldContainer.animateSelection(hasFocus ? 1 : 0));
+        int padding = AndroidUtilities.dp(16);
+        firstNameField.setPadding(padding, padding, padding, padding);
+        firstNameFieldContainer.addView(firstNameField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        firstNameFieldContainer.attachEditText(firstNameField);
         firstNameField.setOnEditorActionListener((textView, i, keyEvent) -> {
-            if (i == EditorInfo.IME_ACTION_NEXT) {
-                lastNameField.requestFocus();
-                lastNameField.setSelection(lastNameField.length());
+            if (i == EditorInfo.IME_ACTION_NEXT || i == EditorInfo.IME_ACTION_DONE) {
+                doneButton.performClick();
                 return true;
             }
             return false;
         });
+
+        lastNameFieldContainer = new OutlineTextContainerView(context);
+        lastNameFieldContainer.setText(LocaleController.getString("LastName", R.string.LastName));
+        linearLayout.addView(lastNameFieldContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 24, 24, 24, 0));
 
         lastNameField = new EditTextBoldCursor(context) {
             @Override
@@ -124,21 +135,19 @@ public class ChangeNameActivity extends BaseFragment {
             }
         };
         lastNameField.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        lastNameField.setHintTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteHintText, resourcesProvider));
         lastNameField.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
-        lastNameField.setBackgroundDrawable(null);
-        lastNameField.setLineColors(getThemedColor(Theme.key_windowBackgroundWhiteInputField), getThemedColor(Theme.key_windowBackgroundWhiteInputFieldActivated), getThemedColor(Theme.key_windowBackgroundWhiteRedText3));
-        lastNameField.setMaxLines(1);
-        lastNameField.setLines(1);
+        lastNameField.setBackground(null);
         lastNameField.setSingleLine(true);
-        lastNameField.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         lastNameField.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
-        lastNameField.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        lastNameField.setHint(LocaleController.getString("LastName", R.string.LastName));
-        lastNameField.setCursorColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
-        lastNameField.setCursorSize(AndroidUtilities.dp(20));
+        lastNameField.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        lastNameField.setCursorColor(Theme.getColor(Theme.key_windowBackgroundWhiteInputFieldActivated, resourcesProvider));
         lastNameField.setCursorWidth(1.5f);
-        linearLayout.addView(lastNameField, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 36, 24, 16, 24, 0));
+        lastNameField.setCursorSize(AndroidUtilities.dp(20));
+        lastNameField.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        lastNameField.setOnFocusChangeListener((v, hasFocus) -> lastNameFieldContainer.animateSelection(hasFocus ? 1 : 0));
+        lastNameField.setPadding(padding, padding, padding, padding);
+        lastNameFieldContainer.addView(lastNameField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        lastNameFieldContainer.attachEditText(lastNameField);
         lastNameField.setOnEditorActionListener((textView, i, keyEvent) -> {
             if (i == EditorInfo.IME_ACTION_DONE) {
                 doneButton.performClick();

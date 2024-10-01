@@ -10,7 +10,6 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.text.TextUtils;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
@@ -26,6 +25,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Consumer;
 import androidx.core.util.Preconditions;
+
+import com.exteragram.messenger.ExteraConfig;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLoader;
@@ -100,12 +101,10 @@ public class AvatarPreviewer {
                     WindowManager.LayoutParams.LAST_APPLICATION_WINDOW,
                     0, PixelFormat.TRANSLUCENT
             );
-            if (Build.VERSION.SDK_INT >= 21) {
-                layoutParams.flags = WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS |
-                        WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
-                        WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
-                        WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
-            }
+            layoutParams.flags = WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS |
+                    WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
+                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
+                    WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
             windowManager.addView(layout, layoutParams);
             parentContainer.requestDisallowInterceptTouchEvent(true);
             visible = true;
@@ -142,12 +141,13 @@ public class AvatarPreviewer {
         void onMenuClick(MenuItem item);
     }
 
-    public static enum MenuItem {
+    public enum MenuItem {
         OPEN_PROFILE("OpenProfile", R.string.OpenProfile, R.drawable.msg_openprofile),
         OPEN_CHANNEL("OpenChannel2", R.string.OpenChannel2, R.drawable.msg_channel),
         OPEN_GROUP("OpenGroup2", R.string.OpenGroup2, R.drawable.msg_discussion),
         SEND_MESSAGE("SendMessage", R.string.SendMessage, R.drawable.msg_discussion),
-        MENTION("Mention", R.string.Mention, R.drawable.msg_mention);
+        MENTION("Mention", R.string.Mention, R.drawable.msg_mention),
+        MSG_HISTORY("MessageHistory", R.string.MessageHistory, R.drawable.msg_recent);
 
         private final String labelKey;
         private final int labelResId;
@@ -371,7 +371,7 @@ public class AvatarPreviewer {
             setFitsSystemWindows(true);
             imageReceiver.setAspectFit(true);
             imageReceiver.setInvalidateAll(true);
-            imageReceiver.setRoundRadius(AndroidUtilities.dp(6));
+            imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(42));
             imageReceiver.setParentView(this);
             radialProgress = new RadialProgress2(this);
             radialProgress.setOverrideAlpha(0.0f);
@@ -493,15 +493,13 @@ public class AvatarPreviewer {
 
             backgroundDrawable.setBounds(0, 0, width, height);
 
-            final int padding = AndroidUtilities.dp(8);
+            final int padding = AndroidUtilities.dp(17);
 
             int lPadding = padding, rPadding = padding, vPadding = padding;
 
-            if (Build.VERSION.SDK_INT >= 21) {
-                lPadding += insets.getStableInsetLeft();
-                rPadding += insets.getStableInsetRight();
-                vPadding += Math.max(insets.getStableInsetTop(), insets.getStableInsetBottom());
-            }
+            lPadding += insets.getStableInsetLeft();
+            rPadding += insets.getStableInsetRight();
+            vPadding += Math.max(insets.getStableInsetTop(), insets.getStableInsetBottom());
 
             final int arrowWidth = arrowDrawable.getIntrinsicWidth();
             final int arrowHeight = arrowDrawable.getIntrinsicHeight();
@@ -555,8 +553,8 @@ public class AvatarPreviewer {
                 canvas.scale(AndroidUtilities.lerp(0.95f, 1.0f, interpolatedProgress), AndroidUtilities.lerp(0.95f, 1.0f, interpolatedProgress), imageReceiver.getCenterX(), imageReceiver.getCenterY());
             }
 
-            final int statusBarHeight = Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0;
-            final int navBarHeight = Build.VERSION.SDK_INT >= 21 ? insets.getStableInsetBottom() : 0;
+            final int statusBarHeight = AndroidUtilities.statusBarHeight;
+            final int navBarHeight = insets.getStableInsetBottom();
             final int sheetHeight = menuItems.length * AndroidUtilities.dp(48) + AndroidUtilities.dp(16);
             final float maxBottom = getHeight() - (navBarHeight + sheetHeight + AndroidUtilities.dp(16));
             final float translationY = Math.min(0, maxBottom - imageReceiver.getImageY2());

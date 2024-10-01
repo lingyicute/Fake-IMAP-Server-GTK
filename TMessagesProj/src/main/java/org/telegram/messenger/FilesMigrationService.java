@@ -21,16 +21,14 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.core.graphics.ColorUtils;
 
-import com.google.android.exoplayer2.util.Log;
+import com.exteragram.messenger.ExteraUtils;
 
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.BottomSheet;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.StickerImageView;
-import org.telegram.ui.DialogsActivity;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -67,7 +65,6 @@ public class FilesMigrationService extends Service {
                 .setAutoCancel(false)
                 .setSmallIcon(R.drawable.notification)
                 .build();
-
         isRunning = true;
         new Thread() {
             @Override
@@ -87,7 +84,7 @@ public class FilesMigrationService extends Service {
 
     public void migrateOldFolder() {
         File path = Environment.getExternalStorageDirectory();
-        if (Build.VERSION.SDK_INT >= 19 && !TextUtils.isEmpty(SharedConfig.storageCacheDir)) {
+        if (!TextUtils.isEmpty(SharedConfig.storageCacheDir)) {
             ArrayList<File> dirs = AndroidUtilities.getRootDirs();
             if (dirs != null) {
                 for (int a = 0, N = dirs.size(); a < N; a++) {
@@ -149,7 +146,7 @@ public class FilesMigrationService extends Service {
                     try {
                         Files.move(path, dest.toPath());
                     } catch (Exception e) {
-                        FileLog.e(e, false);
+                        FileLog.e(e);
                         try {
                             path.toFile().delete();
                         } catch (Exception e1) {

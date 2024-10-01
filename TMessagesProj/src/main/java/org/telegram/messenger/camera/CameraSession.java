@@ -137,20 +137,25 @@ public class CameraSession {
         currentFlashMode = mode;
         configurePhotoCamera();
         SharedPreferences sharedPreferences = ApplicationLoader.applicationContext.getSharedPreferences("camera", Activity.MODE_PRIVATE);
-        sharedPreferences.edit().putString(cameraInfo.frontCamera != 0 ? "flashMode_front" : "flashMode", mode).commit();
+        sharedPreferences.edit().putString(cameraInfo.frontCamera != 0 ? "flashMode_front" : "flashMode", mode).apply();
     }
 
     public void setCurrentFlashMode(String mode) {
         currentFlashMode = mode;
         configurePhotoCamera();
         SharedPreferences sharedPreferences = ApplicationLoader.applicationContext.getSharedPreferences("camera", Activity.MODE_PRIVATE);
-        sharedPreferences.edit().putString(cameraInfo.frontCamera != 0 ? "flashMode_front" : "flashMode", mode).commit();
+        sharedPreferences.edit().putString(cameraInfo.frontCamera != 0 ? "flashMode_front" : "flashMode", mode).apply();
     }
 
     public void setTorchEnabled(boolean enabled) {
         try {
+            useTorch = enabled;
             currentFlashMode = enabled ? Camera.Parameters.FLASH_MODE_TORCH : Camera.Parameters.FLASH_MODE_OFF;
-            configurePhotoCamera();
+            if (isRound) {
+                configureRoundCamera(false);
+            } else {
+                configurePhotoCamera();
+            }
         } catch (Exception e) {
             FileLog.e(e);
         }
@@ -259,7 +264,7 @@ public class CameraSession {
                     } catch (Exception e) {
                         //
                     }
-                    params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                    params.setFlashMode(useTorch ? Camera.Parameters.FLASH_MODE_TORCH : currentFlashMode);
                     params.setZoom((int) (currentZoom * maxZoom));
                     try {
                         camera.setParameters(params);
@@ -461,7 +466,7 @@ public class CameraSession {
 
     public void setZoom(float value) {
         currentZoom = value;
-        if (isVideo && Camera.Parameters.FLASH_MODE_ON.equals(currentFlashMode)) {
+        if (isVideo && Camera.Parameters.FLASH_MODE_ON.equals(currentFlashMode) || isRound && Camera.Parameters.FLASH_MODE_TORCH.equals(currentFlashMode)) {
             useTorch = true;
         }
         if (isRound) {

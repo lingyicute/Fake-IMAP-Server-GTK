@@ -18,7 +18,7 @@ import java.util.concurrent.CountDownLatch;
 public class DispatchQueue extends Thread {
 
     private volatile Handler handler = null;
-    private CountDownLatch syncLatch = new CountDownLatch(1);
+    private final CountDownLatch syncLatch = new CountDownLatch(1);
     private long lastTaskTime;
     private static int indexPointer = 0;
     public final int index = indexPointer++;
@@ -52,18 +52,18 @@ public class DispatchQueue extends Thread {
             syncLatch.await();
             handler.removeCallbacks(runnable);
         } catch (Exception e) {
-            FileLog.e(e, false);
+            FileLog.e(e);
         }
     }
 
     public void cancelRunnables(Runnable[] runnables) {
         try {
             syncLatch.await();
-            for (int i = 0; i < runnables.length; i++) {
-                handler.removeCallbacks(runnables[i]);
+            for (Runnable runnable : runnables) {
+                handler.removeCallbacks(runnable);
             }
         } catch (Exception e) {
-            FileLog.e(e, false);
+            FileLog.e(e);
         }
     }
 
@@ -76,7 +76,7 @@ public class DispatchQueue extends Thread {
         try {
             syncLatch.await();
         } catch (Exception e) {
-            FileLog.e(e, false);
+            FileLog.e(e);
         }
         if (delay <= 0) {
             return handler.post(runnable);
@@ -90,7 +90,7 @@ public class DispatchQueue extends Thread {
             syncLatch.await();
             handler.removeCallbacksAndMessages(null);
         } catch (Exception e) {
-            FileLog.e(e, false);
+            FileLog.e(e);
         }
     }
 

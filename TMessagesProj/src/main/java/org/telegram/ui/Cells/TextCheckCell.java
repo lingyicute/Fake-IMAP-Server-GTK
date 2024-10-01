@@ -30,8 +30,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.components.VerticalImageSpan;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.R;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.AnimationProperties;
 import org.telegram.ui.Components.CubicBezierInterpolator;
@@ -40,7 +44,6 @@ import org.telegram.ui.Components.RLottieImageView;
 import org.telegram.ui.Components.Switch;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class TextCheckCell extends FrameLayout {
     private boolean isAnimatingToThumbInsteadOfTouch;
@@ -100,6 +103,7 @@ public class TextCheckCell extends FrameLayout {
         textView = new TextView(context);
         textView.setTextColor(Theme.getColor(dialog ? Theme.key_dialogTextBlack : Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setLines(1);
         textView.setMaxLines(1);
         textView.setSingleLine(true);
@@ -109,6 +113,7 @@ public class TextCheckCell extends FrameLayout {
 
         valueTextView = new TextView(context);
         valueTextView.setTextColor(Theme.getColor(dialog ? Theme.key_dialogIcon : Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
+        valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         valueTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         valueTextView.setLines(1);
@@ -215,8 +220,12 @@ public class TextCheckCell extends FrameLayout {
     }
 
     public void setTextAndValueAndCheck(String text, String value, boolean checked, boolean multiline, boolean divider) {
+        if (value != null && value.contains("->")) {
+            valueTextView.setText(VerticalImageSpan.createSpan(getContext(), R.drawable.search_arrow, value, "->", Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
+        } else {
+            valueTextView.setText(value);
+        }
         textView.setText(text);
-        valueTextView.setText(value);
         checkBox.setChecked(checked, false);
         needDivider = divider;
         valueTextView.setVisibility(VISIBLE);
@@ -351,7 +360,7 @@ public class TextCheckCell extends FrameLayout {
             float animatedRad = rad * animationProgress;
             canvas.drawCircle(cx, cy, animatedRad, animationPaint);
         }
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             if (imageView != null) {
                 canvas.drawLine(LocaleController.isRTL ? 0 : padding, getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? padding : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
             } else {
@@ -405,7 +414,7 @@ public class TextCheckCell extends FrameLayout {
         imageView.setVisibility(VISIBLE);
         imageView.setPadding(AndroidUtilities.dp(2), AndroidUtilities.dp(2), AndroidUtilities.dp(2), AndroidUtilities.dp(2));
         imageView.setImageResource(resId);
-        imageView.setColorFilter(new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN));
-        imageView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(9), color));
+        imageView.setColorFilter(new PorterDuffColorFilter(Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chats_actionIcon) : Color.WHITE, PorterDuff.Mode.SRC_IN));
+        imageView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(9), Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chats_actionBackground) : color));
     }
 }

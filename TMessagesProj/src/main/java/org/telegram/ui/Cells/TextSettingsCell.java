@@ -37,6 +37,8 @@ import org.telegram.ui.Components.RLottieImageView;
 
 import java.util.ArrayList;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class TextSettingsCell extends FrameLayout {
 
     private Theme.ResourcesProvider resourcesProvider;
@@ -79,6 +81,7 @@ public class TextSettingsCell extends FrameLayout {
 
         textView = new TextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setLines(1);
         textView.setMaxLines(1);
         textView.setSingleLine(true);
@@ -90,6 +93,7 @@ public class TextSettingsCell extends FrameLayout {
         valueTextView = new AnimatedTextView(context, true, true, !LocaleController.isRTL);
         valueTextView.setAnimationProperties(.55f, 0, 320, CubicBezierInterpolator.EASE_OUT_QUINT);
         valueTextView.setTextSize(AndroidUtilities.dp(16));
+        valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         valueTextView.setGravity((LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL);
         valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteValueText, resourcesProvider));
         addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP, padding, 0, padding, 0));
@@ -346,7 +350,7 @@ public class TextSettingsCell extends FrameLayout {
         valueTextView.setAlpha(1f - drawLoadingProgress);
         super.dispatchDraw(canvas);
 
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             int offset = AndroidUtilities.dp(imageView.getVisibility() == View.VISIBLE ? 71 : 20);
             canvas.drawLine(LocaleController.isRTL ? 0 : offset, getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? offset : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }

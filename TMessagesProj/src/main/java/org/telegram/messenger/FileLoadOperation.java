@@ -29,6 +29,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipException;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class FileLoadOperation {
 
     private final static int FINISH_CODE_DEFAULT = 0;
@@ -220,7 +222,11 @@ public class FileLoadOperation {
     }
 
     private void updateParams() {
-        if (MessagesController.getInstance(currentAccount).getfileExperimentalParams && !forceSmallChunk) {
+        if (ExteraConfig.downloadSpeedBoost == 2) {
+            downloadChunkSizeBig = 1024 * 1024;
+            maxDownloadRequests = 16;
+            maxDownloadRequestsBig = 16;
+        } else if (ExteraConfig.downloadSpeedBoost == 1 || MessagesController.getInstance(currentAccount).getfileExperimentalParams) {
             downloadChunkSizeBig = 1024 * 512;
             maxDownloadRequests = 8;
             maxDownloadRequestsBig = 8;
@@ -558,7 +564,7 @@ public class FileLoadOperation {
                             filePartsStream.write(filesQueueByteBuffer.buf, 0, bufferSize);
                         }
                     } catch (Exception e) {
-                        FileLog.e(e, false);
+                        FileLog.e(e);
                         if (AndroidUtilities.isENOSPC(e)) {
                             LaunchActivity.checkFreeDiscSpaceStatic(1);
                         } else if (AndroidUtilities.isEROFS(e)) {
@@ -895,10 +901,10 @@ public class FileLoadOperation {
                 } catch (Exception e) {
                     if (AndroidUtilities.isENOSPC(e)) {
                         LaunchActivity.checkFreeDiscSpaceStatic(1);
-                        FileLog.e(e, false);
+                        FileLog.e(e);
                     } else if (AndroidUtilities.isEROFS(e)) {
                         SharedConfig.checkSdCard(cacheFileFinal);
-                        FileLog.e(e, false);
+                        FileLog.e(e);
                     } else {
                         FileLog.e(e);
                     }
@@ -961,7 +967,7 @@ public class FileLoadOperation {
                     }
                     preloadStream.seek(preloadStreamFileOffset);
                 } catch (Exception e) {
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                 }
                 if (!isPreloadVideoOperation && preloadedBytesRanges == null) {
                     cacheFilePreload = null;
@@ -999,7 +1005,7 @@ public class FileLoadOperation {
                         }
                     }
                 } catch (Exception e) {
-                    FileLog.e(e, !AndroidUtilities.isFilNotFoundException(e));
+                    FileLog.e(e);
                 }
             }
 
@@ -1062,10 +1068,10 @@ public class FileLoadOperation {
                     requestedBytesCount = downloadedBytes = 0;
                     if (AndroidUtilities.isENOSPC(e)) {
                         LaunchActivity.checkFreeDiscSpaceStatic(1);
-                        FileLog.e(e, false);
+                        FileLog.e(e);
                     } else if (AndroidUtilities.isEROFS(e)) {
                         SharedConfig.checkSdCard(cacheFileFinal);
-                        FileLog.e(e, false);
+                        FileLog.e(e);
                     } else {
                         FileLog.e(e);
                     }
@@ -1081,14 +1087,14 @@ public class FileLoadOperation {
                     fileOutputStream.seek(downloadedBytes);
                 }
             } catch (Exception e) {
-                FileLog.e(e, false);
+                FileLog.e(e);
                 if (AndroidUtilities.isENOSPC(e)) {
                     LaunchActivity.checkFreeDiscSpaceStatic(1);
                     onFail(true, -1);
                     return false;
                 } else if (AndroidUtilities.isEROFS(e)) {
                     SharedConfig.checkSdCard(cacheFileFinal);
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                     onFail(true, -1);
                     return false;
                 }
@@ -1117,7 +1123,7 @@ public class FileLoadOperation {
                     delegate.saveFilePath(pathSaveData, cacheFileFinal);
                 }
             } catch (Exception e) {
-                FileLog.e(e, false);
+                FileLog.e(e);
                 if (AndroidUtilities.isENOSPC(e)) {
                     LaunchActivity.checkFreeDiscSpaceStatic(1);
                     onFail(true, -1);
@@ -1382,7 +1388,7 @@ public class FileLoadOperation {
                         } catch (ZipException zipException) {
                             ungzip = false;
                         } catch (Throwable e) {
-                            FileLog.e(e, !AndroidUtilities.isFilNotFoundException(e));
+                            FileLog.e(e);
                             if (BuildVars.LOGS_ENABLED) {
                                 FileLog.e("unable to ungzip temp = " + cacheFileTempFinal + " to final = " + cacheFileFinal);
                             }
@@ -1807,7 +1813,7 @@ public class FileLoadOperation {
                     startDownloadRequest();
                 }
             } catch (Exception e) {
-                FileLog.e(e, !AndroidUtilities.isFilNotFoundException(e) && !AndroidUtilities.isENOSPC(e));
+                FileLog.e(e);
                 if (AndroidUtilities.isENOSPC(e)) {
                     onFail(false, -1);
                 } else if (AndroidUtilities.isEROFS(e)) {

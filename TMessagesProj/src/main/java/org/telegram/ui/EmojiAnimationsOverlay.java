@@ -6,6 +6,8 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -685,7 +687,7 @@ public class EmojiAnimationsOverlay implements NotificationCenter.NotificationCe
     }
 
     private void showStickerSetBulletin(TLRPC.TL_messages_stickerSet stickerSet, MessageObject messageObject) {
-        if (MessagesController.getInstance(currentAccount).premiumLocked || chatActivity.getParentActivity() == null) {
+        if (MessagesController.getInstance(currentAccount).premiumLocked || chatActivity.getParentActivity() == null || stickerSet == null) {
             return;
         }
         StickerSetBulletinLayout layout = new StickerSetBulletinLayout(contentLayout.getContext(), null, StickerSetBulletinLayout.TYPE_EMPTY, messageObject.getDocument(), chatActivity.getResourceProvider());

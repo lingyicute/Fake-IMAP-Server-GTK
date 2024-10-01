@@ -527,7 +527,7 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
                         buttonClicked[0] = true;
                         if (foundContextBotFinal != null) {
                             SharedPreferences preferences1 = MessagesController.getNotificationsSettings(currentAccount);
-                            preferences1.edit().putBoolean("inlinegeo_" + foundContextBotFinal.id, true).commit();
+                            preferences1.edit().putBoolean("inlinegeo_" + foundContextBotFinal.id, true).apply();
                             checkLocationPermissionsOrStart();
                         }
                     });
@@ -1525,7 +1525,7 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
     }
 
     public boolean isLongClickEnabled() {
-        return searchResultHashtags != null || searchResultCommands != null;
+        return searchResultHashtags != null || searchResultCommands != null || searchResultUsernames != null;
     }
 
     public boolean isBotCommands() {

@@ -658,7 +658,7 @@ public class SessionsActivity extends BaseFragment implements NotificationCenter
         ttlRow = -1;
         ttlDivideRow = -1;
 
-        if (currentType == 0 && getMessagesController().qrLoginCamera) {
+        if (currentType == 0) {
             qrCodeRow = rowCount++;
             qrCodeDividerRow = rowCount++;
         }
@@ -978,6 +978,7 @@ public class SessionsActivity extends BaseFragment implements NotificationCenter
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             textView.setLinkTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteLinkText));
             textView.setHighlightColor(Theme.getColor(Theme.key_windowBackgroundWhiteLinkSelection));
             setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));

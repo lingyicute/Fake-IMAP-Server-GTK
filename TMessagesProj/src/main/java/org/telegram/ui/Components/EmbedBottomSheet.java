@@ -19,6 +19,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -264,9 +265,7 @@ public class EmbedBottomSheet extends BottomSheet {
         fullscreenVideoContainer = new FrameLayout(context);
         fullscreenVideoContainer.setKeepScreenOn(true);
         fullscreenVideoContainer.setBackgroundColor(0xff000000);
-        if (Build.VERSION.SDK_INT >= 21) {
-            fullscreenVideoContainer.setFitsSystemWindows(true);
-        }
+        fullscreenVideoContainer.setFitsSystemWindows(true);
         fullscreenVideoContainer.setOnTouchListener((v, event) -> true);
         container.addView(fullscreenVideoContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         fullscreenVideoContainer.setVisibility(View.INVISIBLE);
@@ -322,15 +321,11 @@ public class EmbedBottomSheet extends BottomSheet {
         };
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        if (Build.VERSION.SDK_INT >= 17) {
-            webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-        }
+        webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-            CookieManager cookieManager = CookieManager.getInstance();
-            cookieManager.setAcceptThirdPartyCookies(webView, true);
-        }
+        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptThirdPartyCookies(webView, true);
 
         webView.setWebChromeClient(new WebChromeClient() {
 
@@ -369,6 +364,11 @@ public class EmbedBottomSheet extends BottomSheet {
                 }
                 customView = null;
             }
+
+            @Override
+            public Bitmap getDefaultVideoPoster() {
+                return Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
+            }
         });
 
         webView.setWebViewClient(new WebViewClient() {
@@ -380,7 +380,7 @@ public class EmbedBottomSheet extends BottomSheet {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                if (!isYouTube || Build.VERSION.SDK_INT < 17) {
+                if (!isYouTube) {
                     progressBar.setVisibility(View.INVISIBLE);
                     progressBarBlackBackground.setVisibility(View.INVISIBLE);
                     pipButton.setEnabled(true);
@@ -883,9 +883,7 @@ public class EmbedBottomSheet extends BottomSheet {
                         if (currentYoutubeId != null) {
                             progressBarBlackBackground.setVisibility(View.VISIBLE);
                             isYouTube = true;
-                            if (Build.VERSION.SDK_INT >= 17) {
-                                webView.addJavascriptInterface(new YoutubeProxy(), "YoutubeProxy");
-                            }
+                            webView.addJavascriptInterface(new YoutubeProxy(), "YoutubeProxy");
                             int seekToTime = 0;
                             if (openUrl != null) {
                                 try {
@@ -983,15 +981,7 @@ public class EmbedBottomSheet extends BottomSheet {
     }
 
     private void runJsCode(String code) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            webView.evaluateJavascript(code, null);
-        } else {
-            try {
-                webView.loadUrl("javascript:" + code);
-            } catch (Exception e) {
-                FileLog.e(e);
-            }
-        }
+        webView.evaluateJavascript(code, null);
     }
 
     public boolean checkInlinePermissions() {

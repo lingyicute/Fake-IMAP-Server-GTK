@@ -28,7 +28,7 @@ import android.util.SparseArray;
 
 import androidx.collection.LongSparseArray;
 
-import com.google.android.exoplayer2.util.Log;
+import com.exteragram.messenger.premium.filter.ZalgoFilter;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.tgnet.ConnectionsManager;
@@ -132,7 +132,7 @@ public class ContactsController extends BaseController {
                 cachedCollator = Collator.getInstance(cachedCollatorLocale = Locale.getDefault());
                 cachedCollator.setStrength(Collator.SECONDARY);
             } catch (Exception e) {
-                FileLog.e(e, true);
+                FileLog.e(e);
             }
         }
         if (cachedCollator == null) {
@@ -140,7 +140,7 @@ public class ContactsController extends BaseController {
                 cachedCollator = Collator.getInstance();
                 cachedCollator.setStrength(Collator.SECONDARY);
             } catch (Exception e) {
-                FileLog.e(e, true);
+                FileLog.e(e);
             }
         }
         if (cachedCollator == null) {
@@ -343,7 +343,7 @@ public class ContactsController extends BaseController {
                             SharedPreferences.Editor editor = preferences1.edit();
                             editor.putString("invitelink", inviteLink = res.message);
                             editor.putInt("invitelinktime", (int) (System.currentTimeMillis() / 1000));
-                            editor.commit();
+                            editor.apply();
                         });
                     }
                 }
@@ -1754,7 +1754,7 @@ public class ContactsController extends BaseController {
     private void saveContactsLoadTime() {
         try {
             SharedPreferences preferences = MessagesController.getMainSettings(currentAccount);
-            preferences.edit().putLong("lastReloadStatusTime", System.currentTimeMillis()).commit();
+            preferences.edit().putLong("lastReloadStatusTime", System.currentTimeMillis()).apply();
         } catch (Exception e) {
             FileLog.e(e);
         }
@@ -1980,7 +1980,7 @@ public class ContactsController extends BaseController {
             final SharedPreferences settings = MessagesController.getMainSettings(currentAccount);
             final boolean forceUpdate = !settings.getBoolean("contacts_updated_v7", false);
             if (forceUpdate) {
-                settings.edit().putBoolean("contacts_updated_v7", true).commit();
+                settings.edit().putBoolean("contacts_updated_v7", true).apply();
             }
             final ContentResolver contentResolver = ApplicationLoader.applicationContext.getContentResolver();
             Uri rawContactUri = ContactsContract.RawContacts.CONTENT_URI;
@@ -2290,7 +2290,7 @@ public class ContactsController extends BaseController {
             Uri rawContactUri = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter(ContactsContract.CALLER_IS_SYNCADAPTER, "true").appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_NAME, systemAccount.name).appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_TYPE, systemAccount.type).build();
             int value = contentResolver.delete(rawContactUri, ContactsContract.RawContacts.SYNC2 + " = " + uid, null);
         } catch (Exception e) {
-            FileLog.e(e, false);
+            FileLog.e(e);
         }
         synchronized (observerLock) {
             ignoreChanges = false;
@@ -2453,12 +2453,12 @@ public class ContactsController extends BaseController {
         getMessagesController().clearFullUsers();
         SharedPreferences preferences = MessagesController.getMainSettings(currentAccount);
         final SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("needGetStatuses", true).commit();
+        editor.putBoolean("needGetStatuses", true).apply();
         TLRPC.TL_contacts_getStatuses req = new TLRPC.TL_contacts_getStatuses();
         getConnectionsManager().sendRequest(req, (response, error) -> {
             if (error == null) {
                 AndroidUtilities.runOnUIThread(() -> {
-                    editor.remove("needGetStatuses").commit();
+                    editor.remove("needGetStatuses").apply();
                     TLRPC.Vector vector = (TLRPC.Vector) response;
                     if (!vector.objects.isEmpty()) {
                         ArrayList<TLRPC.User> dbUsersStatus = new ArrayList<>();
@@ -2830,10 +2830,10 @@ public class ContactsController extends BaseController {
             return LocaleController.getString("HiddenName", R.string.HiddenName);
         }*/
         if (firstName != null) {
-            firstName = firstName.trim();
+            firstName = (String) ZalgoFilter.filterMessage(firstName.trim());
         }
         if (lastName != null) {
-            lastName = lastName.trim();
+            lastName = (String) ZalgoFilter.filterMessage(lastName.trim());
         }
         StringBuilder result = new StringBuilder((firstName != null ? firstName.length() : 0) + (lastName != null ? lastName.length() : 0) + 1);
         if (LocaleController.nameDisplayOrder == 1) {

@@ -40,6 +40,8 @@ import org.telegram.ui.GroupCallActivity;
 
 import static android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class GroupCallPip implements NotificationCenter.NotificationCenterDelegate {
 
     private static GroupCallPip instance;
@@ -321,7 +323,7 @@ public class GroupCallPip implements NotificationCenter.NotificationCenterDelega
             private void onTap() {
                 if (VoIPService.getSharedInstance() != null) {
                     showAlert(!showAlert);
-                    //performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);x
+                    performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 }
             }
         };

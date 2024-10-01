@@ -5,6 +5,7 @@ import org.telegram.messenger.FileLog;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 
 public class NativeByteBuffer extends AbstractSerializedData {
@@ -15,7 +16,7 @@ public class NativeByteBuffer extends AbstractSerializedData {
     private int len;
     public boolean reused = true;
 
-    private static final ThreadLocal<LinkedList<NativeByteBuffer>> addressWrappers = new ThreadLocal<LinkedList<NativeByteBuffer>>() {
+    private static final ThreadLocal<LinkedList<NativeByteBuffer>> addressWrappers = new ThreadLocal<>() {
         @Override
         protected LinkedList<NativeByteBuffer> initialValue() {
             return new LinkedList<>();
@@ -481,7 +482,7 @@ public class NativeByteBuffer extends AbstractSerializedData {
                 buffer.get();
                 i++;
             }
-            return new String(b, "UTF-8");
+            return new String(b, StandardCharsets.UTF_8);
         } catch (Exception e) {
             if (exception) {
                 throw new RuntimeException("read string error", e);

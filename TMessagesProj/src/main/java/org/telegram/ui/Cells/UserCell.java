@@ -44,6 +44,8 @@ import org.telegram.ui.Components.CheckBoxSquare;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.NotificationsSettingsActivity;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class UserCell extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 
     private BackupImageView avatarImageView;
@@ -55,6 +57,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
     private TextView adminTextView;
     private TextView addButton;
     private Drawable premiumDrawable;
+    private Drawable exteraArrow;
     private AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable emojiStatus;
     private Theme.ResourcesProvider resourcesProvider;
 
@@ -68,6 +71,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
     private int currentDrawable;
 
     private boolean selfAsSavedMessages;
+    private boolean needMutualContact;
 
     private String lastName;
     private int lastStatus;
@@ -118,7 +122,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
         avatarDrawable = new AvatarDrawable();
 
         avatarImageView = new BackupImageView(context);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(24));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(46));
         addView(avatarImageView, LayoutHelper.createFrame(46, 46, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 7 + padding, 6, LocaleController.isRTL ? 7 + padding : 0, 0));
 
         nameTextView = new SimpleTextView(context);
@@ -132,6 +136,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
 
         statusTextView = new SimpleTextView(context);
         statusTextView.setTextSize(15);
+        statusTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         statusTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
         addView(statusTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 28 + additionalPadding : (64 + padding), 32, LocaleController.isRTL ? (64 + padding) : 28 + additionalPadding, 0));
 
@@ -489,21 +494,33 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
                 emojiStatus.setColor(Theme.getColor(Theme.key_chats_verifiedBackground, resourcesProvider));
                 nameTextView.setRightDrawable(emojiStatus);
             } else {
-                if (premiumDrawable == null) {
-                    premiumDrawable = getContext().getResources().getDrawable(R.drawable.msg_premium_liststar).mutate();
-                    premiumDrawable = new AnimatedEmojiDrawable.WrapSizeDrawable(premiumDrawable, AndroidUtilities.dp(14), AndroidUtilities.dp(14)) {
-                        @Override
-                        public void draw(@NonNull Canvas canvas) {
-                            canvas.save();
-                            canvas.translate(0, AndroidUtilities.dp(1));
-                            super.draw(canvas);
-                            canvas.restore();
-                        }
-                    };
-                    premiumDrawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_verifiedBackground, resourcesProvider), PorterDuff.Mode.MULTIPLY));
+                if (ExteraConfig.isExteraDev(currentUser)) {
+                    Drawable arrow = Theme.dialogs_exteraArrowDrawable.getConstantState().newDrawable().mutate();
+                    arrow.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_verifiedBackground, resourcesProvider), PorterDuff.Mode.MULTIPLY));
+                    nameTextView.setRightDrawable(arrow);
+                    nameTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(0.5f));
+                } else {
+                    if (premiumDrawable == null) {
+                        premiumDrawable = getContext().getResources().getDrawable(R.drawable.msg_premium_liststar).mutate();
+                        premiumDrawable = new AnimatedEmojiDrawable.WrapSizeDrawable(premiumDrawable, AndroidUtilities.dp(14), AndroidUtilities.dp(14)) {
+                            @Override
+                            public void draw(@NonNull Canvas canvas) {
+                                canvas.save();
+                                canvas.translate(0, AndroidUtilities.dp(1));
+                                super.draw(canvas);
+                                canvas.restore();
+                            }
+                        };
+                        premiumDrawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_verifiedBackground, resourcesProvider), PorterDuff.Mode.MULTIPLY));
+                    }
+                    nameTextView.setRightDrawable(premiumDrawable);
                 }
-                nameTextView.setRightDrawable(premiumDrawable);
             }
+            nameTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(0.5f));
+        } else if (currentUser != null && ExteraConfig.isExteraDev(currentUser)) {
+            Drawable arrow = Theme.dialogs_exteraArrowDrawable.getConstantState().newDrawable().mutate();
+            arrow.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_verifiedBackground, resourcesProvider), PorterDuff.Mode.MULTIPLY));
+            nameTextView.setRightDrawable(arrow);
             nameTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(0.5f));
         } else {
             nameTextView.setRightDrawable(null);
@@ -545,16 +562,23 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
             avatarImageView.setImageDrawable(avatarDrawable);
         }
 
-        avatarImageView.setRoundRadius(currentChat != null && currentChat.forum ? AndroidUtilities.dp(14) : AndroidUtilities.dp(24));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(currentChat != null && currentChat.forum ? 46 * 0.65f : 46));
 
         nameTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         if (adminTextView != null) {
             adminTextView.setTextColor(Theme.getColor(Theme.key_profile_creatorIcon, resourcesProvider));
         }
+
+        // TODO: rework
+        if (needMutualContact) statusTextView.setText(statusTextView.getText() + " (" + LocaleController.getString("MutualContact", R.string.MutualContact) + ")");
     }
 
     public void setSelfAsSavedMessages(boolean value) {
         selfAsSavedMessages = value;
+    }
+
+    public void setNeedMutualContact(boolean value) {
+        needMutualContact = value;
     }
 
     @Override
@@ -564,7 +588,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(68), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(68) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

@@ -162,25 +162,21 @@ public class EditTextEffects extends EditText {
         if (!suppressOnTextChanged) {
             invalidateEffects();
 
-            try {
-                Layout layout = getLayout();
-                if (text instanceof Spannable && layout != null) {
-                    int line = layout.getLineForOffset(start);
-                    int x = (int) layout.getPrimaryHorizontal(start);
-                    int y = (int) ((layout.getLineTop(line) + layout.getLineBottom(line)) / 2f);
+            Layout layout = getLayout();
+            if (text instanceof Spannable && layout != null) {
+                int line = layout.getLineForOffset(start);
+                int x = (int) layout.getPrimaryHorizontal(line);
+                int y = (int) ((layout.getLineTop(line) + layout.getLineBottom(line)) / 2f);
 
-                    for (SpoilerEffect eff : spoilers) {
-                        if (eff.getBounds().contains(x, y)) {
-                            int selOffset = lengthAfter - lengthBefore;
-                            selStart += selOffset;
-                            selEnd += selOffset;
-                            onSpoilerClicked(eff, x, y);
-                            break;
-                        }
+                for (SpoilerEffect eff : spoilers) {
+                    if (eff.getBounds().contains(x, y)) {
+                        int selOffset = lengthAfter - lengthBefore;
+                        selStart += selOffset;
+                        selEnd += selOffset;
+                        onSpoilerClicked(eff, x, y);
+                        break;
                     }
                 }
-            } catch (Exception e) {
-                FileLog.e(e);
             }
         }
         updateAnimatedEmoji(true);

@@ -29,6 +29,8 @@ import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.AvatarDrawable;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class DialogMeUrlCell extends BaseCell {
 
     private TLRPC.RecentMeUrl recentMeUrl;
@@ -61,7 +63,7 @@ public class DialogMeUrlCell extends BaseCell {
         super(context);
 
         Theme.createDialogsResources(context);
-        avatarImage.setRoundRadius(AndroidUtilities.dp(26));
+        avatarImage.setRoundRadius(ExteraConfig.getAvatarCorners(52));
     }
 
     public void setRecentMeUrl(TLRPC.RecentMeUrl url) {
@@ -327,7 +329,7 @@ public class DialogMeUrlCell extends BaseCell {
             Theme.dialogs_verifiedCheckDrawable.draw(canvas);
         }
 
-        if (useSeparator) {
+        if (useSeparator && !ExteraConfig.disableDividers) {
             if (LocaleController.isRTL) {
                 canvas.drawLine(0, getMeasuredHeight() - 1, getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline), getMeasuredHeight() - 1, Theme.dividerPaint);
             } else {

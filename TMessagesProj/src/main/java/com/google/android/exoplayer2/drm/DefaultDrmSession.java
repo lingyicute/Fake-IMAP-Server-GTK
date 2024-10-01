@@ -57,7 +57,6 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.RequiresNonNull;
 
 /** A {@link DrmSession} that supports playbacks using {@link ExoMediaDrm}. */
-@RequiresApi(18)
 /* package */ class DefaultDrmSession implements DrmSession {
 
   /** Thrown when an unexpected exception or error is thrown during provisioning or key requests. */

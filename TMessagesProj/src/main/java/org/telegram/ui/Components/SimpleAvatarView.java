@@ -17,8 +17,10 @@ import org.telegram.messenger.ImageReceiver;
 import org.telegram.tgnet.TLObject;
 import org.telegram.ui.ActionBar.Theme;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class SimpleAvatarView extends View {
-    public final static int SELECT_ANIMATION_DURATION = 200;
+    public final static int SELECT_ANIMATION_DURATION = 250;
 
     private ImageReceiver avatarImage = new ImageReceiver(this);
     private AvatarDrawable avatarDrawable = new AvatarDrawable();
@@ -40,7 +42,7 @@ public class SimpleAvatarView extends View {
     }
 
     {
-        avatarImage.setRoundRadius(AndroidUtilities.dp(28));
+        avatarImage.setRoundRadius(ExteraConfig.getAvatarCorners(56));
         selectPaint.setStrokeWidth(AndroidUtilities.dp(2));
         selectPaint.setStyle(Paint.Style.STROKE);
     }
@@ -70,11 +72,16 @@ public class SimpleAvatarView extends View {
         selectPaint.setAlpha((int) (Color.alpha(selectPaint.getColor()) * selectProgress));
         float stroke = selectPaint.getStrokeWidth();
         AndroidUtilities.rectTmp.set(stroke, stroke, getWidth() - stroke, getHeight() - stroke);
-        canvas.drawArc(AndroidUtilities.rectTmp, -90, selectProgress * 360, false, selectPaint);
+        if (ExteraConfig.avatarCorners != 30) {
+            canvas.drawRoundRect(AndroidUtilities.rectTmp, ExteraConfig.getAvatarCorners(getWidth() - stroke * 2, true), ExteraConfig.getAvatarCorners(getWidth() - stroke * 2, true), selectPaint);
+        } else {
+            canvas.drawArc(AndroidUtilities.rectTmp, -90, selectProgress * 360, false, selectPaint);
+        }
         canvas.restore();
 
         if (!isAvatarHidden) {
             float pad = selectPaint.getStrokeWidth() * 2.5f * selectProgress;
+            avatarImage.setRoundRadius(ExteraConfig.getAvatarCorners(getWidth() - pad * 2, true));
             avatarImage.setImageCoords(pad, pad, getWidth() - pad * 2, getHeight() - pad * 2);
             avatarImage.draw(canvas);
         }
@@ -87,6 +94,10 @@ public class SimpleAvatarView extends View {
     public void setAvatar(TLObject obj) {
         avatarDrawable.setInfo(obj);
         avatarImage.setForUserOrChat(obj, avatarDrawable);
+    }
+
+    public void setAvatarCorners(int corners) {
+        avatarImage.setRoundRadius(corners);
     }
 
     /**

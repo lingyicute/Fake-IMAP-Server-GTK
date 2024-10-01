@@ -54,6 +54,8 @@ import androidx.dynamicanimation.animation.FloatValueHolder;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
 
+import com.exteragram.messenger.ExteraUtils;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
@@ -1066,8 +1068,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         if (v != null) {
             v.vibrate(200);
-        }
-        shakeTextView(2, 0);
+        }        shakeTextView(2, 0);
     }
 
     public void onResume() {
@@ -1258,15 +1259,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         Activity parentActivity = (Activity) getContext();
         if (Build.VERSION.SDK_INT >= 23 && parentActivity != null && SharedConfig.useFingerprint) {
             try {
-                if (fingerprintDialog != null && fingerprintDialog.isShowing()) {
-                    return;
-                }
-            } catch (Exception e) {
-                FileLog.e(e);
-            }
-            try {
-                FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(ApplicationLoader.applicationContext);
-                if (fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints() && FingerprintController.isKeyReady() && !FingerprintController.checkDeviceFingerprintsChanged()) {
+                if (ExteraUtils.hasBiometrics() && FingerprintController.isKeyReady() && !FingerprintController.checkDeviceFingerprintsChanged()) {
                     fingerprintView.setVisibility(VISIBLE);
                 } else {
                     fingerprintView.setVisibility(GONE);
@@ -1390,87 +1383,82 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                     AnimatorSet animatorSet = new AnimatorSet();
                     ArrayList<Animator> animators = new ArrayList<>();
                     int w = AndroidUtilities.displaySize.x;
-                    int h = AndroidUtilities.displaySize.y + (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
-                    if (Build.VERSION.SDK_INT >= 21) {
-                        double d1 = Math.sqrt((w - x) * (w - x) + (h - y) * (h - y));
-                        double d2 = Math.sqrt(x * x + (h - y) * (h - y));
-                        double d3 = Math.sqrt(x * x + y * y);
-                        double d4 = Math.sqrt((w - x) * (w - x) + y * y);
-                        double finalRadius = Math.max(Math.max(Math.max(d1, d2), d3), d4);
+                    int h = AndroidUtilities.displaySize.y + AndroidUtilities.statusBarHeight;
+                    double d1 = Math.sqrt((w - x) * (w - x) + (h - y) * (h - y));
+                    double d2 = Math.sqrt(x * x + (h - y) * (h - y));
+                    double d3 = Math.sqrt(x * x + y * y);
+                    double d4 = Math.sqrt((w - x) * (w - x) + y * y);
+                    double finalRadius = Math.max(Math.max(Math.max(d1, d2), d3), d4);
 
-                        innerAnimators.clear();
+                    innerAnimators.clear();
 
-                        for (int a = -1, N = numbersFrameLayout.getChildCount(); a < N; a++) {
-                            View child;
-                            if (a == -1) {
-                                child = passcodeTextView;
-                            } else {
-                                child = numbersFrameLayout.getChildAt(a);
-                            }
-                            if (!(child instanceof TextView || child instanceof ImageView)) {
-                                continue;
-                            }
-                            child.setScaleX(0.7f);
-                            child.setScaleY(0.7f);
-                            child.setAlpha(0.0f);
-                            InnerAnimator innerAnimator = new InnerAnimator();
-                            child.getLocationInWindow(pos);
-                            int buttonX = pos[0] + child.getMeasuredWidth() / 2;
-                            int buttonY = pos[1] + child.getMeasuredHeight() / 2;
-                            innerAnimator.startRadius = (float) Math.sqrt((x - buttonX) * (x - buttonX) + (y - buttonY) * (y - buttonY)) - AndroidUtilities.dp(40);
+                    for (int a = -1, N = numbersFrameLayout.getChildCount(); a < N; a++) {
+                        View child;
+                        if (a == -1) {
+                            child = passcodeTextView;
+                        } else {
+                            child = numbersFrameLayout.getChildAt(a);
+                        }
+                        if (!(child instanceof TextView || child instanceof ImageView)) {
+                            continue;
+                        }
+                        child.setScaleX(0.7f);
+                        child.setScaleY(0.7f);
+                        child.setAlpha(0.0f);
+                        InnerAnimator innerAnimator = new InnerAnimator();
+                        child.getLocationInWindow(pos);
+                        int buttonX = pos[0] + child.getMeasuredWidth() / 2;
+                        int buttonY = pos[1] + child.getMeasuredHeight() / 2;
+                        innerAnimator.startRadius = (float) Math.sqrt((x - buttonX) * (x - buttonX) + (y - buttonY) * (y - buttonY)) - AndroidUtilities.dp(40);
 
-                            AnimatorSet animatorSetInner;
-                            if (a != -1) {
-                                animatorSetInner = new AnimatorSet();
-                                animatorSetInner.playTogether(
-                                        ObjectAnimator.ofFloat(child, View.SCALE_X, 1.0f),
-                                        ObjectAnimator.ofFloat(child, View.SCALE_Y, 1.0f));
-                                animatorSetInner.setDuration(140);
-                                animatorSetInner.setInterpolator(new DecelerateInterpolator());
-                            } else {
-                                animatorSetInner = null;
-                            }
-
-                            innerAnimator.animatorSet = new AnimatorSet();
-                            innerAnimator.animatorSet.playTogether(ObjectAnimator.ofFloat(child, View.SCALE_X, a == -1 ? 0.9f : 0.6f, a == -1 ? 1.0f : 1.04f),
-                                    ObjectAnimator.ofFloat(child, View.SCALE_Y, a == -1 ? 0.9f : 0.6f, a == -1 ? 1.0f : 1.04f),
-                                    ObjectAnimator.ofFloat(child, View.ALPHA, 0.0f, 1.0f));
-                            innerAnimator.animatorSet.addListener(new AnimatorListenerAdapter() {
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    if (animatorSetInner != null) {
-                                        animatorSetInner.start();
-                                    }
-                                }
-                            });
-                            innerAnimator.animatorSet.setDuration(a == -1 ? 232 : 200);
-                            innerAnimator.animatorSet.setInterpolator(new DecelerateInterpolator());
-                            innerAnimators.add(innerAnimator);
+                        AnimatorSet animatorSetInner;
+                        if (a != -1) {
+                            animatorSetInner = new AnimatorSet();
+                            animatorSetInner.playTogether(
+                                    ObjectAnimator.ofFloat(child, View.SCALE_X, 1.0f),
+                                    ObjectAnimator.ofFloat(child, View.SCALE_Y, 1.0f));
+                            animatorSetInner.setDuration(140);
+                            animatorSetInner.setInterpolator(new DecelerateInterpolator());
+                        } else {
+                            animatorSetInner = null;
                         }
 
-                        animators.add(ViewAnimationUtils.createCircularReveal(backgroundFrameLayout, x, y, 0, (float) finalRadius));
-                        ValueAnimator animator = ValueAnimator.ofFloat(0, 1f);
-                        animators.add(animator);
-                        animator.addUpdateListener(animation -> {
-                            float fraction = animation.getAnimatedFraction();
-                            double rad = finalRadius * fraction;
-
-                            for (int a = 0; a < innerAnimators.size(); a++) {
-                                InnerAnimator innerAnimator = innerAnimators.get(a);
-                                if (innerAnimator.startRadius > rad) {
-                                    continue;
+                        innerAnimator.animatorSet = new AnimatorSet();
+                        innerAnimator.animatorSet.playTogether(ObjectAnimator.ofFloat(child, View.SCALE_X, a == -1 ? 0.9f : 0.6f, a == -1 ? 1.0f : 1.04f),
+                                ObjectAnimator.ofFloat(child, View.SCALE_Y, a == -1 ? 0.9f : 0.6f, a == -1 ? 1.0f : 1.04f),
+                                ObjectAnimator.ofFloat(child, View.ALPHA, 0.0f, 1.0f));
+                        innerAnimator.animatorSet.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                if (animatorSetInner != null) {
+                                    animatorSetInner.start();
                                 }
-                                innerAnimator.animatorSet.start();
-                                innerAnimators.remove(a);
-                                a--;
                             }
                         });
-                        animatorSet.setInterpolator(Easings.easeInOutQuad);
-                        animatorSet.setDuration(498);
-                    } else {
-                        animators.add(ObjectAnimator.ofFloat(backgroundFrameLayout, View.ALPHA, 0.0f, 1.0f));
-                        animatorSet.setDuration(350);
+                        innerAnimator.animatorSet.setDuration(a == -1 ? 232 : 200);
+                        innerAnimator.animatorSet.setInterpolator(new DecelerateInterpolator());
+                        innerAnimators.add(innerAnimator);
                     }
+
+                    animators.add(ViewAnimationUtils.createCircularReveal(backgroundFrameLayout, x, y, 0, (float) finalRadius));
+                    ValueAnimator animator = ValueAnimator.ofFloat(0, 1f);
+                    animators.add(animator);
+                    animator.addUpdateListener(animation -> {
+                        float fraction = animation.getAnimatedFraction();
+                        double rad = finalRadius * fraction;
+
+                        for (int a = 0; a < innerAnimators.size(); a++) {
+                            InnerAnimator innerAnimator = innerAnimators.get(a);
+                            if (innerAnimator.startRadius > rad) {
+                                continue;
+                            }
+                            innerAnimator.animatorSet.start();
+                            innerAnimators.remove(a);
+                            a--;
+                        }
+                    });
+                    animatorSet.setInterpolator(Easings.easeInOutQuad);
+                    animatorSet.setDuration(498);
                     animatorSet.playTogether(animators);
                     animatorSet.addListener(new AnimatorListenerAdapter() {
                         @Override
@@ -1523,17 +1511,14 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         fingerprintImageView.setImageResource(R.drawable.ic_fingerprint_error);
         fingerprintStatusTextView.setText(error);
         fingerprintStatusTextView.setTextColor(0xfff4511e);
-        Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-        if (v != null) {
-            v.vibrate(200);
-        }
+        fingerprintStatusTextView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         AndroidUtilities.shakeView(fingerprintStatusTextView);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = AndroidUtilities.displaySize.y - (Build.VERSION.SDK_INT >= 21 ? 0 : AndroidUtilities.statusBarHeight);
+        int height = AndroidUtilities.displaySize.y - 0;
 
         LayoutParams layoutParams;
 
@@ -1549,7 +1534,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             layoutParams = (LayoutParams) numbersFrameLayout.getLayoutParams();
             layoutParams.height = height;
             layoutParams.leftMargin = width / 2;
-            layoutParams.topMargin = height - layoutParams.height + (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+            layoutParams.topMargin = height - layoutParams.height + AndroidUtilities.statusBarHeight;
             layoutParams.width = width / 2;
             numbersFrameLayout.setLayoutParams(layoutParams);
         } else {
@@ -1654,7 +1639,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                 t = (Integer) passwordFrameLayout.getTag();
             }
             LayoutParams layoutParams = (LayoutParams) passwordFrameLayout.getLayoutParams();
-            layoutParams.topMargin = t + layoutParams.height - keyboardHeight / 2 - (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+            layoutParams.topMargin = t + layoutParams.height - keyboardHeight / 2 - AndroidUtilities.statusBarHeight;
             passwordFrameLayout.setLayoutParams(layoutParams);
         }
 

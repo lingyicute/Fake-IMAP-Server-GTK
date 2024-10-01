@@ -47,6 +47,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class ReactedUsersListView extends FrameLayout {
 
     public final static int VISIBLE_ITEMS = 6;
@@ -406,7 +408,7 @@ public class ReactedUsersListView extends FrameLayout {
             setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, AndroidUtilities.dp(ITEM_HEIGHT_DP)));
 
             avatarView = new BackupImageView(context);
-            avatarView.setRoundRadius(AndroidUtilities.dp(34));
+            avatarView.setRoundRadius(ExteraConfig.getAvatarCorners(34));
             addView(avatarView, LayoutHelper.createFrameRelatively(34, 34, Gravity.START | Gravity.CENTER_VERTICAL, 10, 0, 0, 0));
 
             titleView = new SimpleTextView(context) {

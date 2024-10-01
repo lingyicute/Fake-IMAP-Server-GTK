@@ -504,11 +504,9 @@ public class UsersAlertBase extends BottomSheet {
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             int totalHeight = View.MeasureSpec.getSize(heightMeasureSpec);
 
-            if (Build.VERSION.SDK_INT >= 21) {
-                ignoreLayout = true;
-                setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
-                ignoreLayout = false;
-            }
+            ignoreLayout = true;
+            setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
+            ignoreLayout = false;
             int availableHeight = totalHeight - getPaddingTop();
             int padding;
             if (keyboardVisible) {
@@ -589,20 +587,18 @@ public class UsersAlertBase extends BottomSheet {
             int height = getMeasuredHeight() + AndroidUtilities.dp(50) + backgroundPaddingTop;
             int statusBarHeight = 0;
             float radProgress = 1.0f;
-            if (Build.VERSION.SDK_INT >= 21) {
-                top += AndroidUtilities.statusBarHeight;
-                y += AndroidUtilities.statusBarHeight;
-                height -= AndroidUtilities.statusBarHeight;
+            top += AndroidUtilities.statusBarHeight;
+            y += AndroidUtilities.statusBarHeight;
+            height -= AndroidUtilities.statusBarHeight;
 
-                if (top + backgroundPaddingTop + getTranslationY() < AndroidUtilities.statusBarHeight * 2) {
-                    int diff = (int) Math.min(AndroidUtilities.statusBarHeight, AndroidUtilities.statusBarHeight * 2 - top - backgroundPaddingTop - getTranslationY());
-                    top -= diff;
-                    height += diff;
-                    radProgress = 1.0f - Math.min(1.0f, (diff * 2) / (float) AndroidUtilities.statusBarHeight);
-                }
-                if (top + backgroundPaddingTop + getTranslationY() < AndroidUtilities.statusBarHeight) {
-                    statusBarHeight = (int) Math.min(AndroidUtilities.statusBarHeight, AndroidUtilities.statusBarHeight - top - backgroundPaddingTop - getTranslationY());
-                }
+            if (top + backgroundPaddingTop + getTranslationY() < AndroidUtilities.statusBarHeight * 2) {
+                int diff = (int) Math.min(AndroidUtilities.statusBarHeight, AndroidUtilities.statusBarHeight * 2 - top - backgroundPaddingTop - getTranslationY());
+                top -= diff;
+                height += diff;
+                radProgress = 1.0f - Math.min(1.0f, (diff * 2) / (float) AndroidUtilities.statusBarHeight);
+            }
+            if (top + backgroundPaddingTop + getTranslationY() < AndroidUtilities.statusBarHeight) {
+                statusBarHeight = (int) Math.min(AndroidUtilities.statusBarHeight, AndroidUtilities.statusBarHeight - top - backgroundPaddingTop - getTranslationY());
             }
 
             shadowDrawable.setBounds(0, top, getMeasuredWidth(), height);

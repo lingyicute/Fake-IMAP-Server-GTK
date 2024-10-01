@@ -117,7 +117,7 @@ public class SharedPhotoVideoCell extends FrameLayout {
             videoInfoContainer.addView(imageView1, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL));
 
             videoTextView = new TextView(context);
-            videoTextView.setTextColor(0xffffffff);
+            videoTextView.setTextColor(Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chat_mediaTimeText) : 0xffffffff);
             videoTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             videoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             videoTextView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
@@ -137,9 +137,7 @@ public class SharedPhotoVideoCell extends FrameLayout {
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
-            if (Build.VERSION.SDK_INT >= 21) {
-                selector.drawableHotspotChanged(event.getX(), event.getY());
-            }
+            selector.drawableHotspotChanged(event.getX(), event.getY());
             return super.onTouchEvent(event);
         }
 

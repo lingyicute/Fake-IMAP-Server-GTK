@@ -20,6 +20,8 @@ import androidx.annotation.CheckResult;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ChatObject;
@@ -158,7 +160,7 @@ public final class BulletinFactory {
     public Bulletin createSimpleBulletin(int iconRawId, CharSequence text) {
         final Bulletin.LottieLayout layout = new Bulletin.LottieLayout(getContext(), resourcesProvider);
         layout.setAnimation(iconRawId, 36, 36);
-        layout.textView.setText(text);
+        layout.textView.setText(AndroidUtilities.replaceTags(text.toString()));
         layout.textView.setSingleLine(false);
         layout.textView.setMaxLines(2);
         return create(layout, text.length() < 20 ? Bulletin.DURATION_SHORT : Bulletin.DURATION_LONG);
@@ -509,6 +511,15 @@ public final class BulletinFactory {
         return create(layout, Bulletin.DURATION_SHORT);
     }
 
+    public Bulletin createStaticBulletin(CharSequence message, int resId, Theme.ResourcesProvider resourcesProvider) {
+        Bulletin.LottieLayout layout = new Bulletin.LottieLayout(getContext(), resourcesProvider);
+        layout.imageView.setImageResource(resId);
+        layout.textView.setText(AndroidUtilities.replaceTags(message.toString()));
+        layout.textView.setSingleLine(false);
+        layout.textView.setMaxLines(2);
+        return create(layout, Bulletin.DURATION_LONG);
+    }
+
     public Bulletin createErrorBulletin(CharSequence errorMessage) {
         return createErrorBulletin(errorMessage, null);
     }
@@ -516,7 +527,7 @@ public final class BulletinFactory {
     public Bulletin createErrorBulletin(CharSequence errorMessage, Theme.ResourcesProvider resourcesProvider) {
         Bulletin.LottieLayout layout = new Bulletin.LottieLayout(getContext(), resourcesProvider);
         layout.setAnimation(R.raw.chats_infotip);
-        layout.textView.setText(errorMessage);
+        layout.textView.setText(AndroidUtilities.replaceTags(errorMessage.toString()));
         layout.textView.setSingleLine(false);
         layout.textView.setMaxLines(2);
         return create(layout, Bulletin.DURATION_SHORT);

@@ -50,8 +50,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BotWebViewVibrationEffect;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.CacheByChatsController;
 import org.telegram.messenger.Emoji;
 import org.telegram.messenger.FileLoader;
@@ -369,42 +372,26 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
             lastTotalSizeCalculatedTime = System.currentTimeMillis();
 
             File path;
-            if (Build.VERSION.SDK_INT >= 19) {
-                ArrayList<File> storageDirs = AndroidUtilities.getRootDirs();
-                String dir = (path = storageDirs.get(0)).getAbsolutePath();
-                if (!TextUtils.isEmpty(SharedConfig.storageCacheDir)) {
-                    for (int a = 0, N = storageDirs.size(); a < N; a++) {
-                        File file = storageDirs.get(a);
-                        if (file.getAbsolutePath().startsWith(SharedConfig.storageCacheDir)) {
-                            path = file;
-                            break;
-                        }
+            ArrayList<File> storageDirs = AndroidUtilities.getRootDirs();
+            String dir = (path = storageDirs.get(0)).getAbsolutePath();
+            if (!TextUtils.isEmpty(SharedConfig.storageCacheDir)) {
+                for (int a = 0, N = storageDirs.size(); a < N; a++) {
+                    File file = storageDirs.get(a);
+                    if (file.getAbsolutePath().startsWith(SharedConfig.storageCacheDir)) {
+                        path = file;
+                        break;
                     }
                 }
-            } else {
-                path = new File(SharedConfig.storageCacheDir);
             }
             try {
                 StatFs stat = new StatFs(path.getPath());
                 long blockSize;
                 long blockSizeExternal;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                    blockSize = stat.getBlockSizeLong();
-                } else {
-                    blockSize = stat.getBlockSize();
-                }
+                blockSize = stat.getBlockSizeLong();
                 long availableBlocks;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                    availableBlocks = stat.getAvailableBlocksLong();
-                } else {
-                    availableBlocks = stat.getAvailableBlocks();
-                }
+                availableBlocks = stat.getAvailableBlocksLong();
                 long blocksTotal;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                    blocksTotal = stat.getBlockCountLong();
-                } else {
-                    blocksTotal = stat.getBlockCount();
-                }
+                blocksTotal = stat.getBlockCountLong();
 
                 totalDeviceSize = blocksTotal * blockSize;
                 totalDeviceFreeSize = availableBlocks * blockSize;
@@ -658,7 +645,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
         String percentString = percent <= 0 ? String.format("<%.1f%%", 1f) : String.format("%d%%", percent);
         SpannableString percentStr = new SpannableString(percentString);
         percentStr.setSpan(new RelativeSizeSpan(.834f), 0, percentStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        percentStr.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface("fonts/rmedium.ttf")), 0, percentStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        percentStr.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM)), 0, percentStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         SpannableStringBuilder string = new SpannableStringBuilder(header);
         string.append("  ");
         string.append(percentStr);
@@ -1066,26 +1053,16 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
         lastTotalSizeCalculatedTime = System.currentTimeMillis();
         Arrays.fill(selected, true);
 
+        if (BuildVars.LOGS_ENABLED) FileLog.cleanupLogs();
+
         File path = Environment.getDataDirectory();
         StatFs stat = new StatFs(path.getPath());
         long blockSize;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            blockSize = stat.getBlockSizeLong();
-        } else {
-            blockSize = stat.getBlockSize();
-        }
+        blockSize = stat.getBlockSizeLong();
         long availableBlocks;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            availableBlocks = stat.getAvailableBlocksLong();
-        } else {
-            availableBlocks = stat.getAvailableBlocks();
-        }
+        availableBlocks = stat.getAvailableBlocksLong();
         long blocksTotal;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            blocksTotal = stat.getBlockCountLong();
-        } else {
-            blocksTotal = stat.getBlockCount();
-        }
+        blocksTotal = stat.getBlockCountLong();
 
         totalDeviceSize = blocksTotal * blockSize;
         totalDeviceFreeSize = availableBlocks * blockSize;
@@ -1214,7 +1191,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
         actionModeTitle = new AnimatedTextView(context, true, true, true);
         actionModeTitle.setAnimationProperties(.35f, 0, 350, CubicBezierInterpolator.EASE_OUT_QUINT);
         actionModeTitle.setTextSize(AndroidUtilities.dp(18));
-        actionModeTitle.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        actionModeTitle.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         actionModeTitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         actionModeLayout.addView(actionModeTitle, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 18, Gravity.LEFT | Gravity.CENTER_VERTICAL, 0, -11, 0, 0));
 
@@ -1229,7 +1206,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
         actionModeClearButton.setPadding(AndroidUtilities.dp(14), 0, AndroidUtilities.dp(14), 0);
         actionModeClearButton.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
         actionModeClearButton.setBackground(Theme.AdaptiveRipple.filledRect(Theme.key_featuredStickers_addButton, 6));
-        actionModeClearButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        actionModeClearButton.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         actionModeClearButton.setGravity(Gravity.CENTER);
         actionModeClearButton.setText(LocaleController.getString("CacheClear", R.string.CacheClear));
         actionModeClearButton.setOnClickListener(e -> clearSelectedFiles());
@@ -1606,7 +1583,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
 
             title = new AnimatedTextView(context);
             title.setAnimationProperties(.35f, 0, 350, CubicBezierInterpolator.EASE_OUT_QUINT);
-            title.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            title.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             title.setTextSize(AndroidUtilities.dp(20));
             title.setText(LocaleController.getString("StorageUsage", R.string.StorageUsage));
             title.setGravity(Gravity.CENTER);
@@ -1766,7 +1743,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
             loadingDrawable.setAlpha((int) (0xFF * barAlpha * loading));
             loadingDrawable.draw(canvas);
 
-            usedPercentPaint.setColor(Theme.percentSV(Theme.getColor(Theme.key_radioBackgroundChecked), Theme.getColor(Theme.key_actionBarActionModeDefaultSelector), .922f, 1.8f));
+            usedPercentPaint.setColor(Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_statisticChartLine_red) : Theme.percentSV(Theme.getColor(Theme.key_radioBackgroundChecked), Theme.getColor(Theme.key_actionBarActionModeDefaultSelector), .922f, 1.8f));
             usedPercentPaint.setAlpha((int) (usedPercentPaint.getAlpha() * barAlpha));
             AndroidUtilities.rectTmp.set(
                 progressRect.left + (1f - loading) * Math.max(AndroidUtilities.dp(4), percent * progressRect.width()) + AndroidUtilities.dp(1),
@@ -2031,7 +2008,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
                 rtlTextView.setText(LocaleController.getString("ClearCache", R.string.ClearCache));
                 rtlTextView.setGravity(Gravity.CENTER);
                 rtlTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-                rtlTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+                rtlTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
                 rtlTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
                 button.addView(rtlTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.CENTER));
             }
@@ -2042,15 +2019,15 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
             textView.setTextSize(AndroidUtilities.dp(14));
             textView.setText(LocaleController.getString("ClearCache", R.string.ClearCache));
             textView.setGravity(Gravity.RIGHT);
-            textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             textView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
 
             valueTextView = new AnimatedTextView.AnimatedTextDrawable(true, true, true);
             valueTextView.setAnimationProperties(.25f, 0, 300, CubicBezierInterpolator.EASE_OUT_QUINT);
             valueTextView.setCallback(button);
             valueTextView.setTextSize(AndroidUtilities.dp(14));
-            valueTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            valueTextView.setTextColor(Theme.adaptHSV(Theme.getColor(Theme.key_featuredStickers_addButton), -.46f, +.08f));
+            valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
+            valueTextView.setTextColor(Theme.adaptHSV(Theme.getColor(Theme.key_featuredStickers_buttonText), -.46f, +.08f));
             valueTextView.setText("");
 
             button.setContentDescription(TextUtils.concat(textView.getText(), "\t", valueTextView.getText()));
@@ -2248,23 +2225,27 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     slideChooseView.setCallback(index -> {
                         if (index == 0) {
-                            SharedConfig.setKeepMedia(3);
+                            SharedConfig.setKeepMedia(4);
                         } else if (index == 1) {
-                            SharedConfig.setKeepMedia(0);
+                            SharedConfig.setKeepMedia(3);
                         } else if (index == 2) {
-                            SharedConfig.setKeepMedia(1);
+                            SharedConfig.setKeepMedia(0);
                         } else if (index == 3) {
+                            SharedConfig.setKeepMedia(1);
+                        } else if (index == 4) {
                             SharedConfig.setKeepMedia(2);
                         }
                     });
                     int keepMedia = SharedConfig.keepMedia;
                     int index;
                     if (keepMedia == 3) {
+                        index = 1;
+                    } else if (keepMedia == 4) {
                         index = 0;
                     } else {
-                        index = keepMedia + 1;
+                        index = keepMedia + 2;
                     }
-                    slideChooseView.setOptions(index, LocaleController.formatPluralString("Days", 3), LocaleController.formatPluralString("Weeks", 1), LocaleController.formatPluralString("Months", 1), LocaleController.getString("KeepMediaForever", R.string.KeepMediaForever));
+                    slideChooseView.setOptions(index, LocaleController.formatPluralString("Days", 1), LocaleController.formatPluralString("Days", 3), LocaleController.formatPluralString("Weeks", 1), LocaleController.formatPluralString("Months", 1), LocaleController.getString("KeepMediaForever", R.string.KeepMediaForever));
                     break;
                 case VIEW_TYPE_CHAT:
                     UserCell userCell = new UserCell(getContext(), getResourceProvider());
@@ -2551,7 +2532,6 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
                     headerCell.setTopMargin(itemInners.get(position).headerTopMargin);
                     headerCell.setBottomMargin(itemInners.get(position).headerBottomMargin);
                     break;
-
             }
         }
 
@@ -2804,7 +2784,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
         @Override
         protected void dispatchDraw(Canvas canvas) {
             super.dispatchDraw(canvas);
-            if (needDivider) {
+            if (needDivider && !ExteraConfig.disableDividers) {
                 canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(72), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(72) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
             }
         }

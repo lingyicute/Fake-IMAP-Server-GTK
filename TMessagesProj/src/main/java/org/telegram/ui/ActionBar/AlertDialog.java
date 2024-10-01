@@ -228,6 +228,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
             textView.setEllipsize(TextUtils.TruncateAt.END);
             textView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL));
         }
 
@@ -249,7 +250,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
             if (icon != 0) {
                 imageView.setImageResource(icon);
                 imageView.setVisibility(VISIBLE);
-                textView.setPadding(LocaleController.isRTL ? 0 : AndroidUtilities.dp(56), 0, LocaleController.isRTL ? AndroidUtilities.dp(56) : 0, 0);
+                textView.setPadding(LocaleController.isRTL ? 0 : AndroidUtilities.dp(46), 0, LocaleController.isRTL ? AndroidUtilities.dp(46) : 0, 0);
             } else {
                 imageView.setVisibility(INVISIBLE);
                 textView.setPadding(0, 0, 0, 0);
@@ -588,7 +589,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
                 drawBackground = false;
             }
         }
-        containerView.setFitsSystemWindows(Build.VERSION.SDK_INT >= 21);
+        containerView.setFitsSystemWindows(true);
         setContentView(containerView);
 
         final boolean hasButtons = positiveButtonText != null || negativeButtonText != null || neutralButtonText != null;

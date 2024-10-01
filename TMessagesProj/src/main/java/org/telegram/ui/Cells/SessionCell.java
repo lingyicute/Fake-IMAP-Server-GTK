@@ -49,6 +49,8 @@ import org.telegram.ui.Components.DotDividerSpan;
 import org.telegram.ui.Components.FlickerLoadingView;
 import org.telegram.ui.Components.LayoutHelper;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class SessionCell extends FrameLayout {
 
     private int currentType;
@@ -110,6 +112,7 @@ public class SessionCell extends FrameLayout {
 
         onlineTextView = new TextView(context);
         onlineTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, type == 0 ? 12 : 13);
+        onlineTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         onlineTextView.setGravity((LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP);
 
         if (LocaleController.isRTL) {
@@ -133,6 +136,7 @@ public class SessionCell extends FrameLayout {
         detailTextView = new TextView(context);
         detailTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         detailTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, type == 0 ? 13 : 14);
+        detailTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         detailTextView.setLines(1);
         detailTextView.setMaxLines(1);
         detailTextView.setSingleLine(true);
@@ -143,6 +147,7 @@ public class SessionCell extends FrameLayout {
         detailExTextView = new TextView(context);
         detailExTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
         detailExTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, type == 0 ? 13 : 14);
+        detailExTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         detailExTextView.setLines(1);
         detailExTextView.setMaxLines(1);
         detailExTextView.setSingleLine(true);
@@ -431,7 +436,7 @@ public class SessionCell extends FrameLayout {
                 canvas.restore();
             }
         }
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             int margin = currentType == 1 ? 49 : 72;
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(margin), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(margin) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }

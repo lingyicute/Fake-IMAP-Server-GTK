@@ -27,7 +27,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import android.os.Build;
 import android.os.Looper;
 import android.os.Parcelable;
 import android.util.TypedValue;
@@ -122,7 +121,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
         MessagesController.getGlobalMainSettings().edit().putLong("intro_crashed_time", System.currentTimeMillis()).apply();
 
         titles = new String[]{
-                LocaleController.getString("Page1Title", R.string.Page1Title),
+                LocaleController.getString("AppName", R.string.AppName),
                 LocaleController.getString("Page2Title", R.string.Page2Title),
                 LocaleController.getString("Page3Title", R.string.Page3Title),
                 LocaleController.getString("Page5Title", R.string.Page5Title),
@@ -343,7 +342,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
         };
         startMessagingButton.setText(LocaleController.getString("StartMessaging", R.string.StartMessaging));
         startMessagingButton.setGravity(Gravity.CENTER);
-        startMessagingButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        startMessagingButton.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         startMessagingButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         startMessagingButton.setPadding(AndroidUtilities.dp(34), 0, AndroidUtilities.dp(34), 0);
         frameContainerView.addView(startMessagingButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 50, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 16, 0, 16, 76));
@@ -569,11 +568,13 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
 
             headerTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             headerTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 26);
+            headerTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             headerTextView.setGravity(Gravity.CENTER);
             frameLayout.addView(headerTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 18, 244, 18, 0));
 
             messageTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+            messageTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             messageTextView.setGravity(Gravity.CENTER);
             frameLayout.addView(messageTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 16, 286, 16, 0));
 
@@ -768,10 +769,14 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             loadTexture(R.drawable.intro_powerful_star, 18);
             loadTexture(R.drawable.intro_private_door, 19);
             loadTexture(R.drawable.intro_private_screw, 20);
-            loadTexture(R.drawable.intro_tg_plane, 21);
+            loadTexture(R.drawable.intro_etg_arrow, 21);
             loadTexture(v -> {
                 Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                paint.setColor(0xFF2CA5E0); // It's logo color, it should not be colored by the theme
+                if (BuildVars.isBetaApp()) {
+                    paint.setColor(0xFF747F9F);
+                } else {
+                    paint.setColor(0xFFF54142);
+                }
                 int size = AndroidUtilities.dp(ICON_HEIGHT_DP);
                 Bitmap bm = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
                 Canvas c = new Canvas(bm);
@@ -841,18 +846,16 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                 lastDrawFrame = current;
 
                 if (maxRefreshRate == 0) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        WindowManager wm = (WindowManager) ApplicationLoader.applicationContext.getSystemService(Context.WINDOW_SERVICE);
-                        Display display = wm.getDefaultDisplay();
-                        float[] rates = display.getSupportedRefreshRates();
-                        float maxRate = 0;
-                        for (float rate : rates) {
-                            if (rate > maxRate) {
-                                maxRate = rate;
-                            }
+                    WindowManager wm = (WindowManager) ApplicationLoader.applicationContext.getSystemService(Context.WINDOW_SERVICE);
+                    Display display = wm.getDefaultDisplay();
+                    float[] rates = display.getSupportedRefreshRates();
+                    float maxRate = 0;
+                    for (float rate : rates) {
+                        if (rate > maxRate) {
+                            maxRate = rate;
                         }
-                        maxRefreshRate = maxRate;
-                    } else maxRefreshRate = 60;
+                    }
+                    maxRefreshRate = maxRate;
                 }
 
                 long drawMs = System.currentTimeMillis() - current;

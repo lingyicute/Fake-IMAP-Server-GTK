@@ -37,6 +37,8 @@ import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RLottieImageView;
 import org.telegram.ui.Components.Switch;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class SessionBottomSheet extends BottomSheet {
 
     TLRPC.TL_authorization session;
@@ -69,7 +71,7 @@ public class SessionBottomSheet extends BottomSheet {
 
         TextView nameView = new TextView(context);
         nameView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-        nameView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        nameView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         nameView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         nameView.setGravity(Gravity.CENTER);
         linearLayout.addView(nameView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 21, 12, 21, 0));
@@ -77,6 +79,7 @@ public class SessionBottomSheet extends BottomSheet {
         TextView timeView = new TextView(context);
         timeView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         timeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+        timeView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         timeView.setGravity(Gravity.CENTER);
         linearLayout.addView(timeView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 21, 4, 21, 21));
 
@@ -235,7 +238,7 @@ public class SessionBottomSheet extends BottomSheet {
             buttonTextView.setPadding(AndroidUtilities.dp(34), 0, AndroidUtilities.dp(34), 0);
             buttonTextView.setGravity(Gravity.CENTER);
             buttonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-            buttonTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            buttonTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             buttonTextView.setText(LocaleController.getString("TerminateSession", R.string.TerminateSession));
 
             buttonTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
@@ -399,12 +402,14 @@ public class SessionBottomSheet extends BottomSheet {
 
             valueText = new TextView(context);
             valueText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+            valueText.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             valueText.setGravity(Gravity.LEFT);
             valueText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             linearLayout.addView(valueText, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, needSwitch ? 64 : 0, 0));
 
             descriptionText = new TextView(context);
             descriptionText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+            descriptionText.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             descriptionText.setGravity(Gravity.LEFT);
             descriptionText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             linearLayout.addView(descriptionText, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 4, needSwitch ? 64 : 0, 0));
@@ -420,7 +425,7 @@ public class SessionBottomSheet extends BottomSheet {
         @Override
         protected void dispatchDraw(Canvas canvas) {
             super.dispatchDraw(canvas);
-            if (needDivider) {
+            if (needDivider && !ExteraConfig.disableDividers) {
                 canvas.drawRect(AndroidUtilities.dp(64), getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight(), Theme.dividerPaint);
             }
         }

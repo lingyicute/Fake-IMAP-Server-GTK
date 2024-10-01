@@ -84,6 +84,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Stack;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class ChatActionCell extends BaseCell implements DownloadController.FileDownloadProgressListener, NotificationCenter.NotificationCenterDelegate {
     private final static boolean USE_PREMIUM_GIFT_LOCAL_STICKER = false;
     private final static boolean USE_PREMIUM_GIFT_MONTHS_AS_EMOJI_NUMBERS = false;
@@ -303,7 +305,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
         this.canDrawInParent = canDrawInParent;
         this.themeDelegate = themeDelegate;
         imageReceiver = new ImageReceiver(this);
-        imageReceiver.setRoundRadius(AndroidUtilities.roundMessageSize / 2);
+        imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(AndroidUtilities.roundMessageSize, true));
         avatarDrawable = new AvatarDrawable();
         TAG = DownloadController.getInstance(currentAccount).generateObserverTag();
 
@@ -405,7 +407,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
         previousWidth = 0;
         imageReceiver.setAutoRepeatCount(0);
         if (messageObject.type == MessageObject.TYPE_SUGGEST_PHOTO) {
-            imageReceiver.setRoundRadius((int) (stickerSize / 2f));
+            imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(stickerSize * 0.7f, true));
             imageReceiver.setAllowStartLottieAnimation(true);
             imageReceiver.setDelegate(null);
             TLRPC.TL_messageActionSuggestProfilePhoto action = (TLRPC.TL_messageActionSuggestProfilePhoto) messageObject.messageOwner.action;
@@ -532,7 +534,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
         } else if (messageObject.type == MessageObject.TYPE_ACTION_PHOTO) {
             imageReceiver.setAllowStartLottieAnimation(true);
             imageReceiver.setDelegate(null);
-            imageReceiver.setRoundRadius(AndroidUtilities.roundMessageSize / 2);
+            imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(AndroidUtilities.roundMessageSize, true));
             imageReceiver.setAutoRepeatCount(1);
             long id = messageObject.getDialogId();
             avatarDrawable.setInfo(id, null, null);
@@ -904,7 +906,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
             giftRectSize = Math.min((int) (AndroidUtilities.isTablet() ? AndroidUtilities.getMinTabletSide() * 0.6f : AndroidUtilities.displaySize.x * 0.6f), AndroidUtilities.displaySize.y - ActionBar.getCurrentActionBarHeight() - AndroidUtilities.statusBarHeight - AndroidUtilities.dp(64));
             stickerSize = giftRectSize - AndroidUtilities.dp(106);
             if (messageObject.type == MessageObject.TYPE_SUGGEST_PHOTO) {
-                imageReceiver.setRoundRadius(stickerSize / 2);
+                imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(stickerSize * 0.7f, true));
             } else {
                 imageReceiver.setRoundRadius(0);
             }
@@ -986,6 +988,17 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                     }
                 } else {
                     text = AnimatedEmojiSpan.cloneSpans(messageObject.messageText);
+                    if (currentMessageObject.messageOwner != null && ExteraConfig.showActionTimestamps) {
+                        if (currentMessageObject.currentEvent != null || currentMessageObject.messageOwner.action != null) {
+                            boolean d = text.charAt(text.length() - 1) == ':';
+                            long date = currentMessageObject.messageOwner.date;
+                            SpannableStringBuilder ssb = new SpannableStringBuilder(text);
+                            if (d)
+                                ssb.delete(text.length() - 1, text.length());
+                            ssb.append(" ").append(LocaleController.formatString("TodayAtFormatted", R.string.TodayAtFormatted, LocaleController.getInstance().formatterDay.format(date * 1000)));
+                            text = ssb + (d ? ":" : "");
+                        }
+                    }
                 }
             }
         } else {

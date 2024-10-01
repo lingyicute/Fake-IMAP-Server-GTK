@@ -222,7 +222,7 @@ public class CameraController implements MediaRecorder.OnInfoListener {
                                 serializedData.writeInt32(size.mHeight);
                             }
                         }
-                        preferences.edit().putString("cameraCache", Base64.encodeToString(serializedData.toByteArray(), Base64.DEFAULT)).commit();
+                        preferences.edit().putString("cameraCache", Base64.encodeToString(serializedData.toByteArray(), Base64.DEFAULT)).apply();
                         serializedData.cleanup();
                     }
                     cameraInfos = result;
@@ -239,7 +239,7 @@ public class CameraController implements MediaRecorder.OnInfoListener {
                     NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.cameraInitied);
                 });
             } catch (Exception e) {
-                FileLog.e(e, !"APP_PAUSED".equals(e.getMessage()));
+                FileLog.e(e);
                 AndroidUtilities.runOnUIThread(() -> {
                     onFinishCameraInitRunnables.clear();
                     loadingCameras = false;

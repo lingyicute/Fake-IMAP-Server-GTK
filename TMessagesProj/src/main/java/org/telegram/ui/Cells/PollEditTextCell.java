@@ -15,6 +15,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.TypedValue;
@@ -27,9 +28,15 @@ import android.view.inputmethod.InputConnection;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.core.content.ContextCompat;
+
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.extras.FolderIcons;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.R;
+import org.telegram.messenger.UserConfig;
 import org.telegram.ui.ActionBar.SimpleTextView;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.CheckBox2;
@@ -44,6 +51,7 @@ public class PollEditTextCell extends FrameLayout {
     private EditTextBoldCursor textView;
     private ImageView deleteImageView;
     private ImageView moveImageView;
+    private ImageView[] iconImageView = new ImageView[2];
     private SimpleTextView textView2;
     private CheckBox2 checkBox;
     private boolean showNextButton;
@@ -56,6 +64,10 @@ public class PollEditTextCell extends FrameLayout {
     }
 
     public PollEditTextCell(Context context, boolean caption, OnClickListener onDelete) {
+        this(context, caption, onDelete, null);
+    }
+
+    public PollEditTextCell(Context context, boolean caption, OnClickListener onDelete, OnClickListener onChangeIcon) {
         super(context);
 
         if (caption) {
@@ -178,9 +190,35 @@ public class PollEditTextCell extends FrameLayout {
                 }
                 onCheckBoxClick(PollEditTextCell.this, !checkBox.isChecked());
             });
+        } else if (onChangeIcon != null) {
+            addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, LocaleController.isRTL ? 19 : 66, 0, !LocaleController.isRTL ? 19 : 66, 0));
+            for (int i = 0; i < iconImageView.length; i++) {
+                iconImageView[i] = new ImageView(context);
+                iconImageView[i].setFocusable(true);
+                iconImageView[i].setVisibility(i == 0 ? VISIBLE : GONE);
+                iconImageView[i].setBackground(Theme.createSelectorDrawable(Theme.getColor(Theme.key_stickers_menuSelector)));
+                iconImageView[i].setScaleType(ImageView.ScaleType.FIT_XY);
+                int p = AndroidUtilities.dp(8);
+                iconImageView[i].setPadding(p, p, p, p);
+                iconImageView[i].setOnClickListener(onChangeIcon);
+                iconImageView[i].setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon), PorterDuff.Mode.MULTIPLY));
+                iconImageView[i].setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
+                addView(iconImageView[i], LayoutHelper.createFrame(48, 48, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 8, 2, 8, 0));
+            }
         } else {
             addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, 19, 0, 19, 0));
         }
+    }
+
+    public void setIcon(int icon, boolean animated) {
+        iconImageView[animated ? 1 : 0].setImageResource(icon);
+        if (animated) {
+            ImageView tmp = iconImageView[0];
+            iconImageView[0] = iconImageView[1];
+            iconImageView[1] = tmp;
+        }
+        AndroidUtilities.updateViewVisibilityAnimated(iconImageView[0], true, 0.5f, animated);
+        AndroidUtilities.updateViewVisibilityAnimated(iconImageView[1], false, 0.5f, animated);
     }
 
     public void createErrorTextView() {
@@ -199,6 +237,9 @@ public class PollEditTextCell extends FrameLayout {
         }
         if (moveImageView != null) {
             moveImageView.measure(MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(48), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(48), MeasureSpec.EXACTLY));
+        }
+        if (iconImageView[0] != null) {
+            iconImageView[0].measure(MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(48), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(48), MeasureSpec.EXACTLY));
         }
         if (textView2 != null) {
             textView2.measure(MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(48), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(24), MeasureSpec.EXACTLY));
@@ -356,7 +397,7 @@ public class PollEditTextCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider && drawDivider()) {
+        if (needDivider && drawDivider() && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(moveImageView != null ? 63 : 20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(moveImageView != null ? 63 : 20) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

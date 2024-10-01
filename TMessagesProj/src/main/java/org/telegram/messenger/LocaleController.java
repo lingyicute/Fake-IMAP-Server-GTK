@@ -45,6 +45,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
+
 public class LocaleController {
 
     static final int QUANTITY_OTHER = 0x0000;
@@ -782,7 +785,7 @@ public class LocaleController {
             }
         }
         editor.putString("unofficial", stringBuilder.toString());
-        editor.commit();
+        editor.apply();
     }
 
     public boolean deleteLanguage(LocaleInfo localeInfo, int currentAccount) {
@@ -991,7 +994,7 @@ public class LocaleController {
                 SharedPreferences preferences = MessagesController.getGlobalMainSettings();
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("language", localeInfo.getKey());
-                editor.commit();
+                editor.apply();
             }
             if (pathToFile == null) {
                 localeValues.clear();
@@ -1073,6 +1076,9 @@ public class LocaleController {
     }
 
     private String getStringInternal(String key, String fallback, int res) {
+        if (key.contains("AppName")) {
+            return ExteraUtils.getAppName();
+        }
         String value = BuildVars.USE_CLOUD_STRINGS ? localeValues.get(key) : null;
         if (value == null) {
             if (BuildVars.USE_CLOUD_STRINGS && fallback != null) {
@@ -1604,7 +1610,7 @@ public class LocaleController {
             date *= 1000;
 
             calendar.setTimeInMillis(date);
-            if (checkYear && currentYear == calendar.get(Calendar.YEAR) || !checkYear && Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
+            if (currentYear == calendar.get(Calendar.YEAR)) {
                 return getInstance().chatDate.format(date);
             }
             return getInstance().chatFullDate.format(date);
@@ -1628,7 +1634,7 @@ public class LocaleController {
                 return getInstance().formatterDay.format(new Date(date));
             } else if (dateDay + 1 == day && year == dateYear) {
                 return getString("Yesterday", R.string.Yesterday);
-            } else if (Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
+            } else if (dateYear == year) {
                 return getInstance().formatterDayMonth.format(new Date(date));
             } else {
                 return getInstance().formatterYear.format(new Date(date));
@@ -1657,7 +1663,7 @@ public class LocaleController {
                 }
             } else if (dateDay + 1 == day && year == dateYear) {
                 return LocaleController.formatString("YesterdayAtFormatted", R.string.YesterdayAtFormatted, getInstance().formatterDay.format(new Date(date)));
-            } else if (Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
+            } else if (dateYear == year) {
                 return LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().formatterDayMonth.format(new Date(date)), getInstance().formatterDay.format(new Date(date)));
             } else {
                 return LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().formatterYear.format(new Date(date)), getInstance().formatterDay.format(new Date(date)));
@@ -1707,7 +1713,7 @@ public class LocaleController {
                 return getInstance().formatterDay.format(new Date(date));
             } else if (dateDay + 1 == day && year == dateYear) {
                 return LocaleController.formatString("YesterdayAtFormatted", R.string.YesterdayAtFormatted, getInstance().formatterDay.format(new Date(date)));
-            } else if (Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
+            } else if (dateYear == year) {
                 return LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().chatDate.format(new Date(date)), getInstance().formatterDay.format(new Date(date)));
             } else {
                 return LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().chatFullDate.format(new Date(date)), getInstance().formatterDay.format(new Date(date)));
@@ -1755,7 +1761,7 @@ public class LocaleController {
                 return LocaleController.formatString("TodayAtFormattedWithToday", R.string.TodayAtFormattedWithToday, getInstance().formatterDay.format(new Date(date)));
             } else if (dateDay + 1 == day && year == dateYear) {
                 return LocaleController.formatString("YesterdayAtFormatted", R.string.YesterdayAtFormatted, getInstance().formatterDay.format(new Date(date)));
-            } else if (Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
+            } else if (dateYear == year) {
                 return LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().chatDate.format(new Date(date)), getInstance().formatterDay.format(new Date(date)));
             } else {
                 return LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().chatFullDate.format(new Date(date)), getInstance().formatterDay.format(new Date(date)));
@@ -1786,7 +1792,7 @@ public class LocaleController {
                 return LocaleController.formatString("LocationUpdatedFormatted", R.string.LocationUpdatedFormatted, LocaleController.formatString("TodayAtFormatted", R.string.TodayAtFormatted, getInstance().formatterDay.format(new Date(date))));
             } else if (dateDay + 1 == day && year == dateYear) {
                 return LocaleController.formatString("LocationUpdatedFormatted", R.string.LocationUpdatedFormatted, LocaleController.formatString("YesterdayAtFormatted", R.string.YesterdayAtFormatted, getInstance().formatterDay.format(new Date(date))));
-            } else if (Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
+            } else if (dateYear == year) {
                 String format = LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().formatterDayMonth.format(new Date(date)), getInstance().formatterDay.format(new Date(date)));
                 return LocaleController.formatString("LocationUpdatedFormatted", R.string.LocationUpdatedFormatted, format);
             } else {
@@ -1899,7 +1905,7 @@ public class LocaleController {
         formatterWeekLong = createFormatter(locale, getStringInternal("formatterWeekLong", R.string.formatterWeekLong), "EEEE");
         formatterScheduleDay = createFormatter(locale, getStringInternal("formatDateSchedule", R.string.formatDateSchedule), "MMM d");
         formatterScheduleYear = createFormatter(locale, getStringInternal("formatDateScheduleYear", R.string.formatDateScheduleYear), "MMM d yyyy");
-        formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, is24HourFormat ? getStringInternal("formatterDay24H", R.string.formatterDay24H) : getStringInternal("formatterDay12H", R.string.formatterDay12H), is24HourFormat ? "HH:mm" : "h:mm a");
+        formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, is24HourFormat ? (ExteraConfig.formatTimeWithSeconds ? getStringInternal("formatterDay24HSec", R.string.formatterDay24HSec) : getStringInternal("formatterDay24H", R.string.formatterDay24H)) : (ExteraConfig.formatTimeWithSeconds ? getStringInternal("formatterDay12HSec", R.string.formatterDay12HSec) : getStringInternal("formatterDay12H", R.string.formatterDay12H)), is24HourFormat ? (ExteraConfig.formatTimeWithSeconds ? "HH:mm:ss" : "HH:mm") : (ExteraConfig.formatTimeWithSeconds ? "h:mm:ss a" : "h:mm a"));
         formatterStats = createFormatter(locale, is24HourFormat ? getStringInternal("formatterStats24H", R.string.formatterStats24H) : getStringInternal("formatterStats12H", R.string.formatterStats12H), is24HourFormat ? "MMM dd yyyy, HH:mm" : "MMM dd yyyy, h:mm a");
         formatterBannedUntil = createFormatter(locale, is24HourFormat ? getStringInternal("formatterBannedUntil24H", R.string.formatterBannedUntil24H) : getStringInternal("formatterBannedUntil12H", R.string.formatterBannedUntil12H), is24HourFormat ? "MMM dd yyyy, HH:mm" : "MMM dd yyyy, h:mm a");
         formatterBannedUntilThisYear = createFormatter(locale, is24HourFormat ? getStringInternal("formatterBannedUntilThisYear24H", R.string.formatterBannedUntilThisYear24H) : getStringInternal("formatterBannedUntilThisYear12H", R.string.formatterBannedUntilThisYear12H), is24HourFormat ? "MMM dd, HH:mm" : "MMM dd, h:mm a");
@@ -2023,10 +2029,12 @@ public class LocaleController {
             date *= 1000;
             Calendar rightNow = Calendar.getInstance();
             int day = rightNow.get(Calendar.DAY_OF_YEAR);
+            int year = rightNow.get(Calendar.YEAR);
             rightNow.setTimeInMillis(date);
             int dateDay = rightNow.get(Calendar.DAY_OF_YEAR);
+            int dateYear = rightNow.get(Calendar.YEAR);
 
-            if (Math.abs(System.currentTimeMillis() - date) >= 31536000000L) {
+            if (dateYear != year) {
                 return getInstance().formatterYear.format(new Date(date));
             } else {
                 int dayDiff = dateDay - day;
@@ -2045,6 +2053,13 @@ public class LocaleController {
     }
 
     public static String formatShortNumber(int number, int[] rounded) {
+        if (ExteraConfig.disableNumberRounding) {
+            StringBuilder stringBuilder = new StringBuilder(String.format(Locale.US, "%d", number));
+            for (int n = stringBuilder.length() - 3; n > 0; n -= 3) {
+                stringBuilder.insert(n, ',');
+            }
+            return stringBuilder.toString();
+        }
         StringBuilder K = new StringBuilder();
         int lastDec = 0;
         int KCount = 0;
@@ -2266,7 +2281,7 @@ public class LocaleController {
                         SharedPreferences preferences = MessagesController.getGlobalMainSettings();
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("language", localeInfo.getKey());
-                        editor.commit();
+                        editor.apply();
 
                         localeValues = valuesToSet;
                         currentLocale = newLocale;

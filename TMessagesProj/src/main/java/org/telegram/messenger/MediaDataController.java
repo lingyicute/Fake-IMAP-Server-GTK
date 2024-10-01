@@ -90,6 +90,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.exteragram.messenger.ExteraConfig;
+
 @SuppressWarnings("unchecked")
 public class MediaDataController extends BaseController {
     public final static String ATTACH_MENU_BOT_ANIMATED_ICON_KEY = "android_animated",
@@ -481,7 +483,7 @@ public class MediaDataController extends BaseController {
                         date = c.intValue(2);
                     }
                 } catch (Exception e) {
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                 } finally {
                     if (c != null) {
                         c.dispose();
@@ -568,7 +570,7 @@ public class MediaDataController extends BaseController {
                         date = c.intValue(1);
                     }
                 } catch (Exception e) {
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                 } finally {
                     if (c != null) {
                         c.dispose();
@@ -659,7 +661,7 @@ public class MediaDataController extends BaseController {
                         date = c.intValue(2);
                     }
                 } catch (Exception e) {
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                 } finally {
                     if (c != null) {
                         c.dispose();
@@ -806,7 +808,8 @@ public class MediaDataController extends BaseController {
         if (type == TYPE_PREMIUM_STICKERS) {
             return new ArrayList<>(recentStickers[type]);
         }
-        return new ArrayList<>(arrayList.subList(0, Math.min(arrayList.size(), 20)));
+        int unlimitedRecentStickers = ExteraConfig.unlimitedRecentStickers ? Integer.MAX_VALUE : 20;
+        return new ArrayList<>(arrayList.subList(0, Math.min(arrayList.size(), unlimitedRecentStickers)));
     }
 
     public ArrayList<TLRPC.Document> getRecentStickersNoCopy(int type) {
@@ -1799,22 +1802,22 @@ public class MediaDataController extends BaseController {
                 if (gif) {
                     loadingRecentGifs = false;
                     recentGifsLoaded = true;
-                    editor.putLong("lastGifLoadTime", System.currentTimeMillis()).commit();
+                    editor.putLong("lastGifLoadTime", System.currentTimeMillis()).apply();
                 } else {
                     loadingRecentStickers[type] = false;
                     recentStickersLoaded[type] = true;
                     if (type == TYPE_IMAGE) {
-                        editor.putLong("lastStickersLoadTime", System.currentTimeMillis()).commit();
+                        editor.putLong("lastStickersLoadTime", System.currentTimeMillis()).apply();
                     } else if (type == TYPE_MASK) {
-                        editor.putLong("lastStickersLoadTimeMask", System.currentTimeMillis()).commit();
+                        editor.putLong("lastStickersLoadTimeMask", System.currentTimeMillis()).apply();
                     } else if (type == TYPE_GREETINGS) {
-                        editor.putLong("lastStickersLoadTimeGreet", System.currentTimeMillis()).commit();
+                        editor.putLong("lastStickersLoadTimeGreet", System.currentTimeMillis()).apply();
                     } else if (type == TYPE_EMOJIPACKS) {
-                        editor.putLong("lastStickersLoadTimeEmojiPacks", System.currentTimeMillis()).commit();
+                        editor.putLong("lastStickersLoadTimeEmojiPacks", System.currentTimeMillis()).apply();
                     } else if (type == TYPE_PREMIUM_STICKERS) {
-                        editor.putLong("lastStickersLoadTimePremiumStickers", System.currentTimeMillis()).commit();
+                        editor.putLong("lastStickersLoadTimePremiumStickers", System.currentTimeMillis()).apply();
                     } else {
-                        editor.putLong("lastStickersLoadTimeFavs", System.currentTimeMillis()).commit();
+                        editor.putLong("lastStickersLoadTimeFavs", System.currentTimeMillis()).apply();
                     }
 
                 }
@@ -2236,7 +2239,7 @@ public class MediaDataController extends BaseController {
                     TLRPC.TL_messages_archivedStickers res = (TLRPC.TL_messages_archivedStickers) response;
                     archivedStickersCount[type] = res.count;
                     SharedPreferences preferences = MessagesController.getNotificationsSettings(currentAccount);
-                    preferences.edit().putInt("archivedStickersCount" + type, res.count).commit();
+                    preferences.edit().putInt("archivedStickersCount" + type, res.count).apply();
                     getNotificationCenter().postNotificationName(NotificationCenter.archivedStickersCountDidLoad, type);
                 }
             }));
@@ -4297,7 +4300,7 @@ public class MediaDataController extends BaseController {
             try {
                 if (SharedConfig.directShareHash == null) {
                     SharedConfig.directShareHash = UUID.randomUUID().toString();
-                    ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE).edit().putString("directShareHash2", SharedConfig.directShareHash).commit();
+                    ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE).edit().putString("directShareHash2", SharedConfig.directShareHash).apply();
                 }
 
                 ArrayList<String> shortcutsToUpdate = new ArrayList<>();
@@ -6466,9 +6469,9 @@ public class MediaDataController extends BaseController {
                 }
             }
             if (threadId == 0) {
-                draftPreferences.edit().remove("" + dialogId).remove("r_" + dialogId).commit();
+                draftPreferences.edit().remove("" + dialogId).remove("r_" + dialogId).apply();
             } else {
-                draftPreferences.edit().remove("t_" + dialogId + "_" + threadId).remove("rt_" + dialogId + "_" + threadId).commit();
+                draftPreferences.edit().remove("t_" + dialogId + "_" + threadId).remove("rt_" + dialogId + "_" + threadId).apply();
             }
             messagesController.removeDraftDialogIfNeed(dialogId);
         } else {
@@ -6515,7 +6518,7 @@ public class MediaDataController extends BaseController {
             editor.putString(threadId == 0 ? ("r_" + dialogId) : ("rt_" + dialogId + "_" + threadId), Utilities.bytesToHex(serializedData.toByteArray()));
             serializedData.cleanup();
         }
-        editor.commit();
+        editor.apply();
         if (fromServer && (threadId == 0 || getMessagesController().isForum(dialogId))) {
             if (draft != null && draft.reply_to_msg_id != 0 && replyToMessage == null) {
                 TLRPC.User user = null;
@@ -6596,7 +6599,7 @@ public class MediaDataController extends BaseController {
                 threads2.put(threadId, message);
                 SerializedData serializedData = new SerializedData(message.getObjectSize());
                 message.serializeToStream(serializedData);
-                draftPreferences.edit().putString(threadId == 0 ? ("r_" + dialogId) : ("rt_" + dialogId + "_" + threadId), Utilities.bytesToHex(serializedData.toByteArray())).commit();
+                draftPreferences.edit().putString(threadId == 0 ? ("r_" + dialogId) : ("rt_" + dialogId + "_" + threadId), Utilities.bytesToHex(serializedData.toByteArray())).apply();
                 getNotificationCenter().postNotificationName(NotificationCenter.newDraftReceived, dialogId);
                 serializedData.cleanup();
             }
@@ -6607,7 +6610,7 @@ public class MediaDataController extends BaseController {
         drafts.clear();
         draftMessages.clear();
         draftsFolderIds.clear();
-        draftPreferences.edit().clear().commit();
+        draftPreferences.edit().clear().apply();
         if (notify) {
             getMessagesController().sortDialogs(null);
             getNotificationCenter().postNotificationName(NotificationCenter.dialogsNeedReload);
@@ -6640,11 +6643,11 @@ public class MediaDataController extends BaseController {
                 }
             }
             if (threadId == 0) {
-                draftPreferences.edit().remove("" + dialogId).remove("r_" + dialogId).commit();
+                draftPreferences.edit().remove("" + dialogId).remove("r_" + dialogId).apply();
                 getMessagesController().sortDialogs(null);
                 getNotificationCenter().postNotificationName(NotificationCenter.dialogsNeedReload);
             } else {
-                draftPreferences.edit().remove("t_" + dialogId + "_" + threadId).remove("rt_" + dialogId + "_" + threadId).commit();
+                draftPreferences.edit().remove("t_" + dialogId + "_" + threadId).remove("rt_" + dialogId + "_" + threadId).apply();
             }
         } else if (draftMessage.reply_to_msg_id != 0) {
             draftMessage.reply_to_msg_id = 0;

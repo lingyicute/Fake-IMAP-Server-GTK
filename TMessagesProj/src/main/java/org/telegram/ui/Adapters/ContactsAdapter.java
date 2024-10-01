@@ -377,7 +377,7 @@ public class ContactsAdapter extends RecyclerListView.SectionsAdapter {
                             height = parent.getMeasuredHeight();
                         }
                         if (height == 0) {
-                            height = AndroidUtilities.displaySize.y - ActionBar.getCurrentActionBarHeight() - (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+                            height = AndroidUtilities.displaySize.y - ActionBar.getCurrentActionBarHeight() - AndroidUtilities.statusBarHeight;
                         }
                         int cellHeight = AndroidUtilities.dp(50);
                         int totalHeight = onlyUsers != 0 ? 0 : cellHeight + AndroidUtilities.dp(30);
@@ -426,6 +426,7 @@ public class ContactsAdapter extends RecyclerListView.SectionsAdapter {
                     arr = usersSectionsDict.get(sortedUsersSectionsArray.get(section - (onlyUsers != 0 && !isAdmin ? 0 : 1)));
                 }
                 TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(arr.get(position).user_id);
+                userCell.setNeedMutualContact(user.mutual_contact && user.id != UserConfig.getInstance(currentAccount).getClientUserId());
                 userCell.setData(user, null, null, 0);
                 if (checkedMap != null) {
                     userCell.setChecked(checkedMap.indexOfKey(user.id) >= 0, !scrolling);

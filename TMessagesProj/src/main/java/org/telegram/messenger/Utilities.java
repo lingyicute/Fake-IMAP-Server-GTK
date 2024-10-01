@@ -78,7 +78,7 @@ public class Utilities {
     private native static int pbkdf2(byte[] password, byte[] salt, byte[] dst, int iterations);
     public static native void stackBlurBitmap(Bitmap bitmap, int radius);
     public static native void drawDitheredGradient(Bitmap bitmap, int[] colors, int startX, int startY, int endX, int endY);
-    public static native int saveProgressiveJpeg(Bitmap bitmap, int width, int height, int stride, int quality, String path);
+    //public static native int saveProgressiveJpeg(Bitmap bitmap, int width, int height, int stride, int quality, String path);
     public static native void generateGradient(Bitmap bitmap, boolean unpin, int phase, float progress, int width, int height, int stride, int[] colors);
     public static native void setupNativeCrashesListener(String path);
 
@@ -141,12 +141,7 @@ public class Utilities {
         if (value == null) {
             return 0;
         }
-        if (BuildConfig.BUILD_HOST_IS_WINDOWS) {
-            Matcher matcher = pattern.matcher(value);
-            if (matcher.find()) {
-                return Integer.valueOf(matcher.group());
-            }
-        } else {
+        if (true) {
             int val = 0;
             try {
                 int start = -1, end;
@@ -162,8 +157,11 @@ public class Utilities {
                 }
                 if (start >= 0) {
                     String str = value.subSequence(start, end).toString();
-//                val = parseInt(str);
-                    val = Integer.parseInt(str);
+                    try {
+                        val = Math.toIntExact(parseLong(str));
+                    } catch (Exception e) {
+                        val = Integer.parseInt(str);
+                    }
                 }
             } catch (Exception ignore) {}
             return val;
@@ -171,7 +169,7 @@ public class Utilities {
         return 0;
     }
 
-    private static int parseInt(final String s) {
+    private static Integer parseInt(final String s) {
         int num = 0;
         boolean negative = true;
         final int len = s.length();
@@ -302,6 +300,7 @@ public class Utilities {
         for (int a = offset1; a < arr1.length; a++) {
             if (arr1[a + offset1] != arr2[a + offset2]) {
                 result = false;
+                break;
             }
         }
         return result;
@@ -362,8 +361,8 @@ public class Utilities {
     public static byte[] computeSHA256(byte[]... args) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            for (int a = 0; a < args.length; a++) {
-                md.update(args[a], 0, args[a].length);
+            for (byte[] arg : args) {
+                md.update(arg, 0, arg.length);
             }
             return md.digest();
         } catch (Exception e) {
@@ -458,8 +457,8 @@ public class Utilities {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
             byte[] array = md.digest(AndroidUtilities.getStringBytes(md5));
             StringBuilder sb = new StringBuilder();
-            for (int a = 0; a < array.length; a++) {
-                sb.append(Integer.toHexString((array[a] & 0xFF) | 0x100).substring(1, 3));
+            for (byte b : array) {
+                sb.append(Integer.toHexString((b & 0xFF) | 0x100).substring(1, 3));
             }
             return sb.toString();
         } catch (java.security.NoSuchAlgorithmException e) {

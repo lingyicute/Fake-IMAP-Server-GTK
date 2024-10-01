@@ -42,6 +42,8 @@ import org.telegram.ui.Components.MediaActionDrawable;
 import org.telegram.ui.Components.RadialProgress2;
 import org.telegram.ui.FilteredSearchView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class SharedAudioCell extends FrameLayout implements DownloadController.FileDownloadProgressListener, NotificationCenter.NotificationCenterDelegate {
 
     private SpannableStringBuilder dotSpan;
@@ -181,8 +183,8 @@ public class SharedAudioCell extends FrameLayout implements DownloadController.F
             captionLayoutEmojis = AnimatedEmojiSpan.update(AnimatedEmojiDrawable.CACHE_TYPE_MESSAGES, this, captionLayoutEmojis, captionLayout);
         }
         try {
-            if (viewType == VIEW_TYPE_GLOBAL_SEARCH && (currentMessageObject.isVoice() || currentMessageObject.isRoundVideo())) {
-                CharSequence duration = AndroidUtilities.formatDuration(currentMessageObject.getDuration(), false);
+            if (currentMessageObject.isVoice() || currentMessageObject.isRoundVideo()) {
+                CharSequence duration = AndroidUtilities.formatDuration(currentMessageObject.getDuration(), false) + " / " + currentMessageObject.getMusicAuthor().replace('\n', ' ');
                 TextPaint paint = viewType == VIEW_TYPE_GLOBAL_SEARCH ? description2TextPaint : Theme.chat_contextResult_descriptionTextPaint;
                 duration = TextUtils.ellipsize(duration, paint, maxWidth, TextUtils.TruncateAt.END);
                 descriptionLayout = new StaticLayout(duration, paint, maxWidth + AndroidUtilities.dp(4), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
@@ -690,7 +692,7 @@ public class SharedAudioCell extends FrameLayout implements DownloadController.F
         radialProgress.setOverlayImageAlpha(showNameProgress);
         radialProgress.draw(canvas);
 
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(AndroidUtilities.dp(72), getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, Theme.dividerPaint);
         }
     }

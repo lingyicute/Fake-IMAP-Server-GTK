@@ -396,7 +396,7 @@ public class Bulletin {
     }
 
     private static boolean isTransitionsEnabled() {
-        return MessagesController.getGlobalMainSettings().getBoolean("view_animations", true) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2;
+        return MessagesController.getGlobalMainSettings().getBoolean("view_animations", true);
     }
 
     public void updatePosition() {
@@ -1073,7 +1073,7 @@ public class Bulletin {
             textView = new TextView(context);
             textView.setSingleLine();
             textView.setTextColor(undoInfoColor);
-            textView.setTypeface(Typeface.SANS_SERIF);
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             addView(textView, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.CENTER_VERTICAL, 56, 0, 16, 0));
         }
@@ -1137,7 +1137,7 @@ public class Bulletin {
             subtitleTextView.setTextColor(undoInfoColor);
             subtitleTextView.setLinkTextColor(getThemedColor(Theme.key_undo_cancelColor));
             subtitleTextView.setMovementMethod(new LinkMovementMethod());
-            subtitleTextView.setTypeface(Typeface.SANS_SERIF);
+            subtitleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             linearLayout.addView(subtitleTextView);
         }
@@ -1189,7 +1189,7 @@ public class Bulletin {
             subtitleTextView.setPadding(AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4), 0);
             subtitleTextView.setTextColor(undoInfoColor);
             subtitleTextView.setLinkTextColor(undoLinkColor);
-            subtitleTextView.setTypeface(Typeface.SANS_SERIF);
+            subtitleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             linearLayout.addView(subtitleTextView);
         }
@@ -1245,7 +1245,7 @@ public class Bulletin {
             NotificationCenter.listenEmojiLoading(textView);
             textView.setDisablePaddingsOffset(true);
             textView.setSingleLine();
-            textView.setTypeface(Typeface.SANS_SERIF);
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             textView.setEllipsize(TextUtils.TruncateAt.END);
             textView.setPadding(0, AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8));
@@ -1753,15 +1753,11 @@ public class Bulletin {
                 params.dimAmount = 0;
                 params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
                 params.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    params.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
-                }
+                params.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
                 params.flags |= WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
-                if (Build.VERSION.SDK_INT >= 21) {
-                    params.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
-                            WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
-                            WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
-                }
+                params.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
+                        WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
+                        WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
                 params.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
                 params.height = ViewGroup.LayoutParams.MATCH_PARENT;
                 if (Build.VERSION.SDK_INT >= 28) {

@@ -312,13 +312,13 @@ public class NotificationCenter {
             this.args = args;
         }
 
-        private int id;
-        private Object[] args;
+        private final int id;
+        private final Object[] args;
     }
 
-    private int currentAccount;
+    private final int currentAccount;
     private int currentHeavyOperationFlags;
-    private static volatile NotificationCenter[] Instance = new NotificationCenter[UserConfig.MAX_ACCOUNT_COUNT];
+    private static final NotificationCenter[] Instance = new NotificationCenter[UserConfig.MAX_ACCOUNT_COUNT];
     private static volatile NotificationCenter globalInstance;
 
     @UiThread
@@ -595,7 +595,7 @@ public class NotificationCenter {
         if (BuildVars.DEBUG_VERSION && !alreadyLogged) {
             if (objects.size() > 1000) {
                 alreadyLogged = true;
-                FileLog.e(new RuntimeException("Total observers more than 1000, need check for memory leak. " + id), true);
+                FileLog.e(new RuntimeException("Total observers more than 1000, need check for memory leak. " + id));
             }
         }
     }

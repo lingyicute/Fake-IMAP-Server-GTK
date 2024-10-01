@@ -27,6 +27,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.DialogObject;
 import org.telegram.messenger.FileLoader;
@@ -61,6 +63,7 @@ import org.telegram.ui.Components.ViewPagerFixed;
 import org.telegram.ui.Storage.CacheModel;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -116,8 +119,13 @@ public class CachedMediaLayout extends FrameLayout implements NestedSizeNotifier
         viewPagerFixed.setAllowDisallowInterceptTouch(false);
         addView(viewPagerFixed, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0, 0, 48, 0, 0));
         addView(tabs = viewPagerFixed.createTabsView(true, 3), LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48));
-        divider = new View(getContext());
-        divider.setBackgroundColor(Theme.getColor(Theme.key_divider));
+        divider = new View(getContext()) {
+            @Override
+            protected void onDraw(Canvas canvas) {
+                if (!ExteraConfig.disableDividers)
+                    canvas.drawLine(0, getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight() - 1, Theme.dividerPaint);
+            }
+        };
         addView(divider, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 1, 0, 0, 48, 0, 0));
         divider.getLayoutParams().height = 1;
         viewPagerFixed.setAdapter(new ViewPagerFixed.Adapter() {
@@ -271,7 +279,7 @@ public class CachedMediaLayout extends FrameLayout implements NestedSizeNotifier
 
         selectedMessagesCountTextView = new AnimatedTextView(context, true, true, true);
         selectedMessagesCountTextView.setTextSize(AndroidUtilities.dp(18));
-        selectedMessagesCountTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        selectedMessagesCountTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         selectedMessagesCountTextView.setTextColor(Theme.getColor(Theme.key_actionBarActionModeDefaultIcon));
         actionModeLayout.addView(selectedMessagesCountTextView, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1.0f, 18, 0, 0, 0));
         actionModeViews.add(selectedMessagesCountTextView);
@@ -551,7 +559,7 @@ public class CachedMediaLayout extends FrameLayout implements NestedSizeNotifier
                         title = DialogObject.setDialogPhotoTitle(userCell.getImageView(), object);
                     }
                     userCell.dialogFileEntities = dialogFileEntities;
-                    userCell.getImageView().setRoundRadius(AndroidUtilities.dp(object instanceof TLRPC.Chat && ((TLRPC.Chat) object).forum ? 12 : 19));
+                    userCell.getImageView().setRoundRadius(ExteraConfig.getAvatarCorners(object instanceof TLRPC.Chat && ((TLRPC.Chat) object).forum ? 28.5f : 38));
                     userCell.setTextAndValue(title, AndroidUtilities.formatFileSize(dialogFileEntities.totalSize), position < getItemCount() - 1);
                     userCell.setChecked(cacheModel.isSelected(dialogFileEntities.dialogId), animated);
                     break;
@@ -872,7 +880,6 @@ public class CachedMediaLayout extends FrameLayout implements NestedSizeNotifier
                                 mediaMetadataRetriever.release();
                             }
                         } catch (Throwable e) {
-
                         }
                     }
                     String finalTitle = title;
@@ -1018,7 +1025,7 @@ public class CachedMediaLayout extends FrameLayout implements NestedSizeNotifier
         @Override
         protected void dispatchDraw(Canvas canvas) {
             super.dispatchDraw(canvas);
-            if (drawDivider) {
+            if (drawDivider && !ExteraConfig.disableDividers) {
                 canvas.drawLine(getMeasuredWidth() - AndroidUtilities.dp(90), getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight() - 1, Theme.dividerPaint);
             }
         }

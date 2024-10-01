@@ -22,6 +22,8 @@ import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.LayoutHelper;
 
+import com.exteragram.messenger.ExteraConfig;
+
 @SuppressWarnings("FieldCanBeLocal")
 public class GroupCallInvitedCell extends FrameLayout {
 
@@ -49,7 +51,7 @@ public class GroupCallInvitedCell extends FrameLayout {
         avatarDrawable = new AvatarDrawable();
 
         avatarImageView = new BackupImageView(context);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(24));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(46));
         addView(avatarImageView, LayoutHelper.createFrame(46, 46, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 11, 6, LocaleController.isRTL ? 11 : 0, 0));
 
         nameTextView = new SimpleTextView(context);
@@ -128,7 +130,7 @@ public class GroupCallInvitedCell extends FrameLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(68), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(68) : 0), getMeasuredHeight() - 1, dividerPaint);
         }
         super.dispatchDraw(canvas);

@@ -46,6 +46,7 @@ import android.util.Base64;
 import android.util.TypedValue;
 import android.view.ActionMode;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -140,6 +141,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.crypto.Cipher;
+
+import com.exteragram.messenger.ExteraConfig;
 
 public class PassportActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -357,7 +360,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             cell.imageView.getLocationInWindow(coords);
             PhotoViewer.PlaceProviderObject object = new PhotoViewer.PlaceProviderObject();
             object.viewX = coords[0];
-            object.viewY = coords[1] - (Build.VERSION.SDK_INT >= 21 ? 0 : AndroidUtilities.statusBarHeight);
+            object.viewY = coords[1] - 0;
             object.parentView = currentPhotoViewerLayout;
             object.imageReceiver = cell.imageView.getImageReceiver();
             object.thumb = object.imageReceiver.getBitmapSafe();
@@ -1525,7 +1528,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         linearLayout2.addView(passwordAvatarContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 100));
 
         BackupImageView avatarImageView = new BackupImageView(context);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(32));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(64));
         passwordAvatarContainer.addView(avatarImageView, LayoutHelper.createFrame(64, 64, Gravity.CENTER, 0, 8, 0, 0));
 
         AvatarDrawable avatarDrawable = new AvatarDrawable(botUser);
@@ -2000,7 +2003,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             linearLayout2.addView(avatarContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 100));
 
             BackupImageView avatarImageView = new BackupImageView(context);
-            avatarImageView.setRoundRadius(AndroidUtilities.dp(32));
+            avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(64));
             avatarContainer.addView(avatarImageView, LayoutHelper.createFrame(64, 64, Gravity.CENTER, 0, 8, 0, 0));
 
             AvatarDrawable avatarDrawable = new AvatarDrawable(botUser);
@@ -2231,20 +2234,14 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
 
                 TLRPC.TL_secureValue value = getValueByType(requiredType, true);
                 if (value == null) {
-                    Vibrator v = (Vibrator) getParentActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                    if (v != null) {
-                        v.vibrate(200);
-                    }
+                    getViewByType(requiredType).performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     AndroidUtilities.shakeView(getViewByType(requiredType));
                     return;
                 }
                 String key = getNameForType(requiredType.type);
                 HashMap<String, String> errors = errorsMap.get(key);
                 if (errors != null && !errors.isEmpty()) {
-                    Vibrator v = (Vibrator) getParentActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                    if (v != null) {
-                        v.vibrate(200);
-                    }
+                    getViewByType(requiredType).performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     AndroidUtilities.shakeView(getViewByType(requiredType));
                     return;
                 }
@@ -3579,10 +3576,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         if (field == null) {
             return;
         }
-        Vibrator v = (Vibrator) getParentActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        if (v != null) {
-            v.vibrate(200);
-        }
+        field.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         AndroidUtilities.shakeView(field);
         scrollToField(field);
     }
@@ -3998,7 +3992,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
                 bottomCellTranslation.setText(text);
                 linearLayout2.addView(bottomCellTranslation, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
             }
-        } else if (Build.VERSION.SDK_INT >= 18) {
+        } else {
             scanDocumentCell = new TextSettingsCell(context);
             scanDocumentCell.setBackgroundDrawable(Theme.getSelectorDrawable(true));
             scanDocumentCell.setText(LocaleController.getString("PassportScanPassport", R.string.PassportScanPassport), false);
@@ -4008,7 +4002,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
                     getParentActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, 22);
                     return;
                 }
-                CameraScanActivity fragment = new CameraScanActivity(org.telegram.ui.CameraScanActivity.TYPE_MRZ);
+                CameraScanActivity fragment = new CameraScanActivity(CameraScanActivity.TYPE_MRZ);
                 fragment.setDelegate(new CameraScanActivity.CameraScanActivityDelegate() {
                     @Override
                     public void didFindMrzInfo(MrzRecognizer.Result result) {
@@ -6259,10 +6253,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         if (getParentActivity() == null) {
             return;
         }
-        Vibrator v = (Vibrator) getParentActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        if (v != null) {
-            v.vibrate(200);
-        }
+        inputFields[FIELD_PASSWORD].performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         if (clear) {
             inputFields[FIELD_PASSWORD].setText("");
         }
@@ -6305,9 +6296,9 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         req.settings.allow_app_hash = PushListenerController.GooglePushListenerServiceProvider.INSTANCE.hasServices();
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         if (req.settings.allow_app_hash) {
-            preferences.edit().putString("sms_hash", BuildVars.SMS_HASH).commit();
+            preferences.edit().putString("sms_hash", BuildVars.SMS_HASH).apply();
         } else {
-            preferences.edit().remove("sms_hash").commit();
+            preferences.edit().remove("sms_hash").apply();
         }
         if (req.settings.allow_flashcall) {
             try {
@@ -6595,9 +6586,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
                 AndroidUtilities.showKeyboard(inputFields[FIELD_EMAIL]);
             }
         } else if (currentActivityType == TYPE_ADDRESS || currentActivityType == TYPE_IDENTITY) {
-            if (Build.VERSION.SDK_INT >= 21) {
-                createChatAttachView();
-            }
+            createChatAttachView();
         }
     }
 
@@ -6920,9 +6909,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
     public void startDocumentSelectActivity() {
         try {
             Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
-            if (Build.VERSION.SDK_INT >= 18) {
-                photoPickerIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-            }
+            photoPickerIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
             photoPickerIntent.setType("*/*");
             startActivityForResult(photoPickerIntent, 21);
         } catch (Exception e) {

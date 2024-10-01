@@ -32,6 +32,8 @@ import org.telegram.ui.Components.RLottieDrawable;
 import org.telegram.ui.Components.RLottieImageView;
 import org.telegram.ui.Components.Switch;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class TextCell extends FrameLayout {
 
     public final SimpleTextView textView;
@@ -79,6 +81,7 @@ public class TextCell extends FrameLayout {
         textView = new SimpleTextView(context);
         textView.setTextColor(Theme.getColor(dialog ? Theme.key_dialogTextBlack : Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         textView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
         addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
@@ -94,6 +97,7 @@ public class TextCell extends FrameLayout {
         valueTextView.setTextColor(Theme.getColor(dialog ? Theme.key_dialogTextBlue2 : Theme.key_windowBackgroundWhiteValueText, resourcesProvider));
         valueTextView.setPadding(0, AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18));
         valueTextView.setTextSize(AndroidUtilities.dp(16));
+        valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         valueTextView.setGravity(LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT);
         valueTextView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
         valueTextView.setTranslationY(AndroidUtilities.dp(-2));
@@ -117,11 +121,10 @@ public class TextCell extends FrameLayout {
         valueImageView.setScaleType(ImageView.ScaleType.CENTER);
         addView(valueImageView);
 
-        if (needCheck) {
-            checkBox = new Switch(context, resourcesProvider);
-            checkBox.setColors(Theme.key_switchTrack, Theme.key_switchTrackChecked, Theme.key_windowBackgroundWhite, Theme.key_windowBackgroundWhite);
-            addView(checkBox, LayoutHelper.createFrame(37, 20, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 22, 0, 22, 0));
-        }
+        checkBox = new Switch(context, resourcesProvider);
+        checkBox.setVisibility(GONE);
+        checkBox.setColors(Theme.key_switchTrack, Theme.key_switchTrackChecked, Theme.key_windowBackgroundWhite, Theme.key_windowBackgroundWhite);
+        addView(checkBox, LayoutHelper.createFrame(37, 20, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 22, 0, 22, 0));
 
         setFocusable(true);
     }
@@ -190,7 +193,7 @@ public class TextCell extends FrameLayout {
         if (valueImageView.getVisibility() == VISIBLE) {
             valueImageView.measure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(height, MeasureSpec.AT_MOST));
         }
-        if (checkBox != null) {
+        if (checkBox.getVisibility() == VISIBLE) {
             checkBox.measure(MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(37), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(20), MeasureSpec.EXACTLY));
         }
         setMeasuredDimension(width, AndroidUtilities.dp(50) + (needDivider ? 1 : 0));
@@ -199,9 +202,7 @@ public class TextCell extends FrameLayout {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if (checkBox != null) {
-            checkBox.setEnabled(enabled);
-        }
+        checkBox.setEnabled(enabled);
     }
 
     @Override
@@ -243,7 +244,7 @@ public class TextCell extends FrameLayout {
             viewLeft = LocaleController.isRTL ? AndroidUtilities.dp(23) : width - valueImageView.getMeasuredWidth() - AndroidUtilities.dp(23);
             valueImageView.layout(viewLeft, viewTop, viewLeft + valueImageView.getMeasuredWidth(), viewTop + valueImageView.getMeasuredHeight());
         }
-        if (checkBox != null && checkBox.getVisibility() == VISIBLE) {
+        if (checkBox.getVisibility() == VISIBLE) {
             viewTop = (height - checkBox.getMeasuredHeight()) / 2;
             viewLeft = LocaleController.isRTL ? AndroidUtilities.dp(22) : width - checkBox.getMeasuredWidth() - AndroidUtilities.dp(22);
             checkBox.layout(viewLeft, viewTop, viewLeft + checkBox.getMeasuredWidth(), viewTop + checkBox.getMeasuredHeight());
@@ -265,7 +266,7 @@ public class TextCell extends FrameLayout {
 
     private CharSequence valueText;
 
-    public void setText(String text, boolean divider) {
+    public void setText(CharSequence text, boolean divider) {
         imageLeft = 21;
         textView.setText(text);
         valueTextView.setText(valueText = null, false);
@@ -346,9 +347,10 @@ public class TextCell extends FrameLayout {
         valueImageView.setVisibility(GONE);
         needDivider = divider;
         setWillNotDraw(!needDivider);
-        if (checkBox != null) {
-            checkBox.setVisibility(GONE);
-        }
+    }
+
+    public void setValue(String value) {
+        valueTextView.setText(value);
     }
 
     public void setTextAndValueAndColorfulIcon(String text, CharSequence value, boolean animated, int resId, int color, boolean divider) {
@@ -422,20 +424,18 @@ public class TextCell extends FrameLayout {
         imageView.setImageResource(resId);
         needDivider = divider;
         setWillNotDraw(!needDivider);
-        if (checkBox != null) {
-            checkBox.setVisibility(GONE);
-        }
     }
 
     public void setColorfulIcon(int color, int resId) {
         offsetFromImage = 65;
+
         imageView.setVisibility(VISIBLE);
         imageView.setPadding(AndroidUtilities.dp(2), AndroidUtilities.dp(2), AndroidUtilities.dp(2), AndroidUtilities.dp(2));
         imageView.setTranslationX(AndroidUtilities.dp(LocaleController.isRTL ? 0 : -3));
         imageView.setTranslationY(AndroidUtilities.dp(6));
         imageView.setImageResource(resId);
-        imageView.setColorFilter(new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN));
-        imageView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(9), color));
+        imageView.setColorFilter(new PorterDuffColorFilter(Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chats_actionIcon) : Color.WHITE, PorterDuff.Mode.SRC_IN));
+        imageView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(9), Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chats_actionBackground) : color));
     }
 
     public void setTextAndCheck(CharSequence text, boolean checked, boolean divider) {
@@ -460,10 +460,8 @@ public class TextCell extends FrameLayout {
         valueTextView.setVisibility(GONE);
         valueSpoilersTextView.setVisibility(GONE);
         valueImageView.setVisibility(GONE);
-        if (checkBox != null) {
-            checkBox.setVisibility(VISIBLE);
-            checkBox.setChecked(checked, false);
-        }
+        checkBox.setVisibility(VISIBLE);
+        checkBox.setChecked(checked, false);
         imageView.setVisibility(VISIBLE);
         imageView.setPadding(0, AndroidUtilities.dp(7), 0, 0);
         imageView.setImageResource(resId);
@@ -502,14 +500,11 @@ public class TextCell extends FrameLayout {
         imageView.setPadding(0, AndroidUtilities.dp(7), 0, 0);
         needDivider = divider;
         setWillNotDraw(!needDivider);
-        if (checkBox != null) {
-            checkBox.setVisibility(GONE);
-        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? (inDialogs ? 72 : 68) : 20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? (inDialogs ? 72 : 68) : 20) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

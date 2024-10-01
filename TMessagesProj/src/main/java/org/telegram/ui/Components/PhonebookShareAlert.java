@@ -58,6 +58,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class PhonebookShareAlert extends BottomSheet {
 
     private ListAdapter listAdapter;
@@ -115,7 +117,7 @@ public class PhonebookShareAlert extends BottomSheet {
             avatarDrawable.setInfo(currentUser);
 
             BackupImageView avatarImageView = new BackupImageView(context);
-            avatarImageView.setRoundRadius(AndroidUtilities.dp(40));
+            avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(80));
             avatarImageView.setForUserOrChat(currentUser, avatarDrawable);
             addView(avatarImageView, LayoutHelper.createLinear(80, 80, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 32, 0, 0));
 
@@ -233,7 +235,7 @@ public class PhonebookShareAlert extends BottomSheet {
 
         @Override
         protected void onDraw(Canvas canvas) {
-            if (needDivider) {
+            if (needDivider && !ExteraConfig.disableDividers) {
                 canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(70), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(70) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
             }
         }
@@ -354,11 +356,9 @@ public class PhonebookShareAlert extends BottomSheet {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 int totalHeight = MeasureSpec.getSize(heightMeasureSpec);
-                if (Build.VERSION.SDK_INT >= 21) {
-                    ignoreLayout = true;
-                    setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
-                    ignoreLayout = false;
-                }
+                ignoreLayout = true;
+                setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
+                ignoreLayout = false;
                 int availableHeight = totalHeight - getPaddingTop();
 
                 int availableWidth = MeasureSpec.getSize(widthMeasureSpec) - backgroundPaddingLeft * 2;
@@ -418,10 +418,8 @@ public class PhonebookShareAlert extends BottomSheet {
                     rad = 1.0f - Math.min(1.0f, (r - top - backgroundPaddingTop) / r);
                 }
 
-                if (Build.VERSION.SDK_INT >= 21) {
-                    top += AndroidUtilities.statusBarHeight;
-                    height -= AndroidUtilities.statusBarHeight;
-                }
+                top += AndroidUtilities.statusBarHeight;
+                height -= AndroidUtilities.statusBarHeight;
 
                 shadowDrawable.setBounds(0, top, getMeasuredWidth(), height);
                 shadowDrawable.draw(canvas);

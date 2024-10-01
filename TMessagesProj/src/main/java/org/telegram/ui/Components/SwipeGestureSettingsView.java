@@ -16,6 +16,8 @@ import android.widget.FrameLayout;
 
 import androidx.core.graphics.ColorUtils;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
@@ -338,9 +340,7 @@ public class SwipeGestureSettingsView extends FrameLayout {
         super.onInitializeAccessibilityNodeInfo(info);
         info.setEnabled(true);
         info.setContentDescription(strings[picker.getValue()]);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, null));
-        }
+        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, null));
     }
 
     @Override

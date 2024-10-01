@@ -42,6 +42,8 @@ import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.ProgressButton;
 import org.telegram.ui.Components.ViewHelper;
 
+import com.exteragram.messenger.ExteraConfig;
+
 @SuppressLint("ViewConstructor")
 public class ArchivedStickerSetCell extends FrameLayout implements Checkable {
 
@@ -82,9 +84,7 @@ public class ArchivedStickerSetCell extends FrameLayout implements Checkable {
             deleteButton.setBackground(Theme.getRoundRectSelectorDrawable(Theme.getColor(Theme.key_featuredStickers_removeButtonText)));
             deleteButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             ViewHelper.setPadding(deleteButton, 8, 0, 8, 0);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                deleteButton.setOutlineProvider(null);
-            }
+            deleteButton.setOutlineProvider(null);
             addView(deleteButton, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, 28, Gravity.TOP | Gravity.END, 0, 18, 14, 0));
 
             final OnClickListener toggleListener = v -> toggle();
@@ -137,7 +137,7 @@ public class ArchivedStickerSetCell extends FrameLayout implements Checkable {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(0, getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, Theme.dividerPaint);
         }
     }

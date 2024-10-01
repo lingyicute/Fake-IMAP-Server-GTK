@@ -33,7 +33,6 @@ import java.util.Map;
 import java.util.UUID;
 
 /** Helper class to download, renew and release offline licenses. */
-@RequiresApi(18)
 public final class OfflineLicenseHelper {
 
   private static final Format FORMAT_WITH_EMPTY_DRM_INIT_DATA =

@@ -404,7 +404,7 @@ public class ProxyListActivity extends BaseFragment implements NotificationCente
                             editor.putString("proxy_user", SharedConfig.currentProxy.username);
                             editor.putInt("proxy_port", SharedConfig.currentProxy.port);
                             editor.putString("proxy_secret", SharedConfig.currentProxy.secret);
-                            editor.commit();
+                            editor.apply();
                         }
                     } else {
                         presentFragment(new ProxySettingsActivity());
@@ -429,7 +429,7 @@ public class ProxyListActivity extends BaseFragment implements NotificationCente
 
                 SharedPreferences.Editor editor = MessagesController.getGlobalMainSettings().edit();
                 editor.putBoolean("proxy_enabled", useProxySettings);
-                editor.commit();
+                editor.apply();
 
                 ConnectionsManager.setProxySettings(useProxySettings, SharedConfig.currentProxy.address, SharedConfig.currentProxy.port, SharedConfig.currentProxy.username, SharedConfig.currentProxy.password, SharedConfig.currentProxy.secret);
                 NotificationCenter.getGlobalInstance().removeObserver(ProxyListActivity.this, NotificationCenter.proxySettingsChanged);
@@ -456,7 +456,7 @@ public class ProxyListActivity extends BaseFragment implements NotificationCente
                 textCheckCell.setChecked(useProxyForCalls);
                 SharedPreferences.Editor editor = MessagesController.getGlobalMainSettings().edit();
                 editor.putBoolean("proxy_enabled_calls", useProxyForCalls);
-                editor.commit();
+                editor.apply();
             } else if (position >= proxyStartRow && position < proxyEndRow) {
                 if (!selectedItems.isEmpty()) {
                     listAdapter.toggleSelected(position);
@@ -475,7 +475,7 @@ public class ProxyListActivity extends BaseFragment implements NotificationCente
                     useProxyForCalls = false;
                     editor.putBoolean("proxy_enabled_calls", false);
                 }
-                editor.commit();
+                editor.apply();
                 SharedConfig.currentProxy = info;
                 for (int a = proxyStartRow; a < proxyEndRow; a++) {
                     RecyclerListView.Holder holder = (RecyclerListView.Holder) listView.findViewHolderForAdapterPosition(a);
@@ -534,7 +534,7 @@ public class ProxyListActivity extends BaseFragment implements NotificationCente
         ActionBarMenu actionMode = actionBar.createActionMode();
         selectedCountTextView = new NumberTextView(actionMode.getContext());
         selectedCountTextView.setTextSize(18);
-        selectedCountTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        selectedCountTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         selectedCountTextView.setTextColor(Theme.getColor(Theme.key_actionBarActionModeDefaultIcon));
         actionMode.addView(selectedCountTextView, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1.0f, 72, 0, 0, 0));
         selectedCountTextView.setOnTouchListener((v, event) -> true);

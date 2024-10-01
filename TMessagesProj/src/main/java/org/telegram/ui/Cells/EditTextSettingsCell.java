@@ -26,6 +26,8 @@ import org.telegram.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class EditTextSettingsCell extends FrameLayout {
 
     private EditTextBoldCursor textView;
@@ -38,6 +40,7 @@ public class EditTextSettingsCell extends FrameLayout {
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setHintTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteHintText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setLines(1);
         textView.setMaxLines(1);
         textView.setSingleLine(true);
@@ -96,7 +99,7 @@ public class EditTextSettingsCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(20) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

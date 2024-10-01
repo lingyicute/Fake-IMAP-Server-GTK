@@ -32,6 +32,8 @@ import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.LayoutHelper;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class ManageChatUserCell extends FrameLayout {
 
     private BackupImageView avatarImageView;
@@ -85,7 +87,7 @@ public class ManageChatUserCell extends FrameLayout {
         avatarDrawable = new AvatarDrawable();
 
         avatarImageView = new BackupImageView(context);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(23));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(46));
         addView(avatarImageView, LayoutHelper.createFrame(46, 46, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 7 + avatarPadding, 8, LocaleController.isRTL ? 7 + avatarPadding : 0, 0));
 
         nameTextView = new SimpleTextView(context);
@@ -351,7 +353,7 @@ public class ManageChatUserCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             if (dividerColor != null) {
                 Theme.dividerExtraPaint.setColor(Theme.getColor(dividerColor, resourcesProvider));
             }

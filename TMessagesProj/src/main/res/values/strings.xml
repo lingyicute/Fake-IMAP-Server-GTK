@@ -2833,7 +2833,7 @@
     <string name="FilterRemoveInclusionText">Are you sure you want to remove \"%1$s\" from always included chats?</string>
     <string name="FilterRemoveInclusionChatText">Are you sure you want to remove \"%1$s\" from always included chats?</string>
     <string name="FilterRemoveInclusionUserText">Are you sure you want to remove \"%1$s\" from always included chats?</string>
-    <string name="FilterAvailableTitle">Chat folders</string>
+    <string name="FilterAvailableTitle">Folders</string>
     <string name="FilterAvailableText">Open *Settings / Folders* to organize your chats into folders.</string>
     <string name="FilterNameNonMuted">Not Muted</string>
     <string name="FilterNameUnread">Unread</string>
@@ -5297,6 +5297,7 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s at %2$s</string>
+    <string name="formatFwdDate">%1$s %2$s</string>
     <string name="formatDateSchedule">MMM d</string>
     <string name="formatDateScheduleYear">MMM d yyyy</string>
     <string name="SendTodayAt">\'Send today at\' HH:mm</string>

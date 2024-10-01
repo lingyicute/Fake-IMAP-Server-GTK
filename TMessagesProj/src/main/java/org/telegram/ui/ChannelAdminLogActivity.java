@@ -65,6 +65,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScrollerCustom;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 
 import org.telegram.messenger.AndroidUtilities;
@@ -251,7 +253,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                     view.getLocationInWindow(coords);
                     PhotoViewer.PlaceProviderObject object = new PhotoViewer.PlaceProviderObject();
                     object.viewX = coords[0];
-                    object.viewY = coords[1] - (Build.VERSION.SDK_INT >= 21 ? 0 : AndroidUtilities.statusBarHeight);
+                    object.viewY = coords[1] - 0;
                     object.parentView = chatListView;
                     object.imageReceiver = imageReceiver;
                     object.thumb = imageReceiver.getBitmapSafe();
@@ -289,6 +291,11 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         });
 
         return true;
+    }
+
+    @Override
+    public int getNavigationBarColor() {
+        return getThemedColor(ExteraUtils.getNavigationBarColorKey());
     }
 
     @Override
@@ -538,7 +545,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         Theme.createChatResources(context, false);
 
         actionBar.setAddToContainer(false);
-        actionBar.setOccupyStatusBar(Build.VERSION.SDK_INT >= 21 && !AndroidUtilities.isTablet());
+        actionBar.setOccupyStatusBar(!AndroidUtilities.isTablet());
         actionBar.setBackButtonDrawable(new BackDrawable(false));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -1005,9 +1012,9 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             @Override
             public void onDraw(Canvas canvas) {
                 int bottom = Theme.chat_composeShadowDrawable.getIntrinsicHeight();
-                Theme.chat_composeShadowDrawable.setBounds(0, 0, getMeasuredWidth(), bottom);
-                Theme.chat_composeShadowDrawable.draw(canvas);
                 canvas.drawRect(0, bottom, getMeasuredWidth(), getMeasuredHeight(), Theme.chat_composeBackgroundPaint);
+                if (!ExteraConfig.disableDividers)
+                    canvas.drawLine(0, bottom, getMeasuredWidth(), bottom, Theme.dividerPaint);
             }
         };
         bottomOverlayChat.setWillNotDraw(false);
@@ -1523,57 +1530,20 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             return null;
         }
         if (roundVideoContainer == null) {
-            if (Build.VERSION.SDK_INT >= 21) {
-                roundVideoContainer = new FrameLayout(getParentActivity()) {
-                    @Override
-                    public void setTranslationY(float translationY) {
-                        super.setTranslationY(translationY);
-                        contentView.invalidate();
-                    }
-                };
-                roundVideoContainer.setOutlineProvider(new ViewOutlineProvider() {
-                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                    @Override
-                    public void getOutline(View view, Outline outline) {
-                        outline.setOval(0, 0, AndroidUtilities.roundMessageSize, AndroidUtilities.roundMessageSize);
-                    }
-                });
-                roundVideoContainer.setClipToOutline(true);
-            } else {
-                roundVideoContainer = new FrameLayout(getParentActivity()) {
-                    @Override
-                    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-                        super.onSizeChanged(w, h, oldw, oldh);
-                        aspectPath.reset();
-                        aspectPath.addCircle(w / 2, h / 2, w / 2, Path.Direction.CW);
-                        aspectPath.toggleInverseFillType();
-                    }
-
-                    @Override
-                    public void setTranslationY(float translationY) {
-                        super.setTranslationY(translationY);
-                        contentView.invalidate();
-                    }
-
-                    @Override
-                    public void setVisibility(int visibility) {
-                        super.setVisibility(visibility);
-                        if (visibility == VISIBLE) {
-                            setLayerType(View.LAYER_TYPE_HARDWARE, null);
-                        }
-                    }
-
-                    @Override
-                    protected void dispatchDraw(Canvas canvas) {
-                        super.dispatchDraw(canvas);
-                        canvas.drawPath(aspectPath, aspectPaint);
-                    }
-                };
-                aspectPath = new Path();
-                aspectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                aspectPaint.setColor(0xff000000);
-                aspectPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-            }
+            roundVideoContainer = new FrameLayout(getParentActivity()) {
+                @Override
+                public void setTranslationY(float translationY) {
+                    super.setTranslationY(translationY);
+                    contentView.invalidate();
+                }
+            };
+            roundVideoContainer.setOutlineProvider(new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View view, Outline outline) {
+                    outline.setOval(0, 0, AndroidUtilities.roundMessageSize, AndroidUtilities.roundMessageSize);
+                }
+            });
+            roundVideoContainer.setClipToOutline(true);
             roundVideoContainer.setWillNotDraw(false);
             roundVideoContainer.setVisibility(View.INVISIBLE);
 
@@ -1602,9 +1572,6 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         contentView.removeView(roundVideoContainer);
         aspectRatioFrameLayout.setDrawingReady(false);
         roundVideoContainer.setVisibility(View.INVISIBLE);
-        if (Build.VERSION.SDK_INT < 21) {
-            roundVideoContainer.setLayerType(View.LAYER_TYPE_NONE, null);
-        }
     }
 
     private void processSelectedOption(int option) {

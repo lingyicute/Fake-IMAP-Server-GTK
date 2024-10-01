@@ -59,6 +59,8 @@ import org.telegram.ui.Components.RecyclerListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class MessageSeenView extends FrameLayout {
 
     ArrayList<Long> peerIds = new ArrayList<>();
@@ -358,7 +360,7 @@ public class MessageSeenView extends FrameLayout {
         public UserCell(Context context) {
             super(context);
             avatarImageView = new BackupImageView(context);
-            avatarImageView.setRoundRadius(AndroidUtilities.dp(18));
+            avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(34));
             addView(avatarImageView, LayoutHelper.createFrame(34, 34, Gravity.CENTER_VERTICAL, 10f, 0, 0, 0));
 
             nameView = new SimpleTextView(context);

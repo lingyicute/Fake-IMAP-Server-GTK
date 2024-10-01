@@ -76,6 +76,8 @@ import org.telegram.ui.Components.RLottieImageView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class ActionBarMenuItem extends FrameLayout {
 
     private FrameLayout wrappedSearchFrameLayout;
@@ -305,12 +307,10 @@ public class ActionBarMenuItem extends FrameLayout {
                         } else {
                             child.setPressed(true);
                             child.setSelected(true);
-                            if (Build.VERSION.SDK_INT >= 21) {
-                                if (Build.VERSION.SDK_INT == 21 && child.getBackground() != null) {
-                                    child.getBackground().setVisible(true, false);
-                                }
-                                child.drawableHotspotChanged(x, y - child.getTop());
+                            if (Build.VERSION.SDK_INT == 21 && child.getBackground() != null) {
+                                child.getBackground().setVisible(true, false);
                             }
+                            child.drawableHotspotChanged(x, y - child.getTop());
                             selectedMenuView = child;
                         }
                     }
@@ -725,7 +725,7 @@ public class ActionBarMenuItem extends FrameLayout {
             popupLayout.setTopView(null);
         }
         popupWindow = new ActionBarPopupWindow(container, LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT);
-        if (animationEnabled && Build.VERSION.SDK_INT >= 19) {
+        if (animationEnabled) {
             popupWindow.setAnimationStyle(0);
         } else {
             popupWindow.setAnimationStyle(R.style.PopupAnimation);
@@ -957,7 +957,7 @@ public class ActionBarMenuItem extends FrameLayout {
         boolean visible = !currentSearchFilters.isEmpty();
         ArrayList<FiltersView.MediaFilterData> localFilters = new ArrayList<>(currentSearchFilters);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && searchContainer.getTag() != null) {
+        if (searchContainer.getTag() != null) {
             TransitionSet transition = new TransitionSet();
             ChangeBounds changeBounds = new ChangeBounds();
             changeBounds.setDuration(150);
@@ -2059,12 +2059,12 @@ public class ActionBarMenuItem extends FrameLayout {
                         Theme.setCombinedDrawableColor(combinedDrawable, getThemedColor(Theme.key_avatar_actionBarIconBlue), true);
                         avatarImageView.setImageDrawable(combinedDrawable);
                     } else {
-                        avatarImageView.getImageReceiver().setRoundRadius(AndroidUtilities.dp(16));
+                        avatarImageView.getImageReceiver().setRoundRadius(ExteraConfig.getAvatarCorners(32));
                         avatarImageView.getImageReceiver().setForUserOrChat(user, thumbDrawable);
                     }
                 } else if (data.chat instanceof TLRPC.Chat) {
                     TLRPC.Chat chat = (TLRPC.Chat) data.chat;
-                    avatarImageView.getImageReceiver().setRoundRadius(AndroidUtilities.dp(16));
+                    avatarImageView.getImageReceiver().setRoundRadius(ExteraConfig.getAvatarCorners(32));
                     avatarImageView.getImageReceiver().setForUserOrChat(chat, thumbDrawable);
                 }
             } else if (data.filterType == FiltersView.FILTER_TYPE_ARCHIVE) {
@@ -2341,7 +2341,7 @@ public class ActionBarMenuItem extends FrameLayout {
 
     private Item putLazyItem(Item item) {
         if (item == null) {
-            return item;
+            return null;
         }
         if (lazyList == null) {
             lazyList = new ArrayList<>();

@@ -89,7 +89,7 @@ public class LiteMode {
         if (!loaded) {
             loadPreference();
         }
-        if (!ignorePowerSaving && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (!ignorePowerSaving) {
             if (getBatteryLevel() <= powerSaverLevel && powerSaverLevel > 0) {
                 if (!lastPowerSaverApplied) {
                     onPowerSaverApplied(lastPowerSaverApplied = true);
@@ -106,7 +106,6 @@ public class LiteMode {
     private static int lastBatteryLevelCached = -1;
     private static long lastBatteryLevelChecked;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static int getBatteryLevel() {
         if (lastBatteryLevelCached < 0 || System.currentTimeMillis() - lastBatteryLevelChecked > 1000 * 12) {
             BatteryManager batteryManager = (BatteryManager) ApplicationLoader.applicationContext.getSystemService(Context.BATTERY_SERVICE);
@@ -287,9 +286,7 @@ public class LiteMode {
         }
         if (onPowerSaverAppliedListeners != null) {
             AndroidUtilities.runOnUIThread(() -> {
-                Iterator<Utilities.Callback<Boolean>> i = onPowerSaverAppliedListeners.iterator();
-                while (i.hasNext()) {
-                    Utilities.Callback<Boolean> callback = i.next();
+                for (Utilities.Callback<Boolean> callback : onPowerSaverAppliedListeners) {
                     if (callback != null) {
                         callback.run(powerSaverApplied);
                     }

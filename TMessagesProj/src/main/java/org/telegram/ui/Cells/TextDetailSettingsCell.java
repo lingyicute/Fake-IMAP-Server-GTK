@@ -25,6 +25,8 @@ import org.telegram.messenger.LocaleController;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class TextDetailSettingsCell extends FrameLayout {
 
     private TextView textView;
@@ -39,6 +41,7 @@ public class TextDetailSettingsCell extends FrameLayout {
         textView = new TextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setLines(1);
         textView.setMaxLines(1);
         textView.setSingleLine(true);
@@ -49,6 +52,7 @@ public class TextDetailSettingsCell extends FrameLayout {
         valueTextView = new TextView(context);
         valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         valueTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         valueTextView.setLines(1);
         valueTextView.setMaxLines(1);
@@ -133,7 +137,7 @@ public class TextDetailSettingsCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider && Theme.dividerPaint != null) {
+        if (needDivider && Theme.dividerPaint != null && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? 71 : 20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? 71 : 20) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

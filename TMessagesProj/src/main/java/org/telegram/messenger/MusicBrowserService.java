@@ -50,7 +50,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class MusicBrowserService extends MediaBrowserService implements NotificationCenter.NotificationCenterDelegate {
 
     private static final String SLOT_RESERVATION_SKIP_TO_NEXT = "com.google.android.gms.car.media.ALWAYS_RESERVE_SPACE_FOR.ACTION_SKIP_TO_NEXT";
@@ -98,7 +97,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
 
         Context context = getApplicationContext();
         Intent intent = new Intent(context, LaunchActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(context, 99, intent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pi = PendingIntent.getActivity(context, 99, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
         mediaSession.setSessionActivity(pi);
 
         Bundle extras = new Bundle();
@@ -411,7 +410,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                     return;
                 }
                 lastSelectedDialog = did;
-                MessagesController.getNotificationsSettings(currentAccount).edit().putLong("auto_lastSelectedDialog", did).commit();
+                MessagesController.getNotificationsSettings(currentAccount).edit().putLong("auto_lastSelectedDialog", did).apply();
                 MediaController.getInstance().setPlaylist(arrayList, arrayList.get(id), 0, false, null);
                 mediaSession.setQueue(arrayList1);
                 if (did > 0) {

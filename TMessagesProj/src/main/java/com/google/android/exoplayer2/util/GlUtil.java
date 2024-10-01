@@ -177,9 +177,6 @@ public final class GlUtil {
    * EGLContext)}.
    */
   public static boolean isSurfacelessContextExtensionSupported() {
-    if (Util.SDK_INT < 17) {
-      return false;
-    }
     EGLDisplay display = EGL14.eglGetDisplay(EGL14.EGL_DEFAULT_DISPLAY);
     @Nullable String eglExtensions = EGL14.eglQueryString(display, EGL10.EGL_EXTENSIONS);
     return eglExtensions != null && eglExtensions.contains(EXTENSION_SURFACELESS_CONTEXT);

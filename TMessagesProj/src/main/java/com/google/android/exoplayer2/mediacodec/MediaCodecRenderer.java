@@ -140,7 +140,7 @@ public abstract class MediaCodecRenderer extends BaseRenderer {
           format.sampleMimeType,
           secureDecoderRequired,
           mediaCodecInfo,
-          Util.SDK_INT >= 21 ? getDiagnosticInfoV21(cause) : null,
+          getDiagnosticInfoV21(cause),
           /* fallbackDecoderInitializationException= */ null);
     }
 
@@ -173,7 +173,6 @@ public abstract class MediaCodecRenderer extends BaseRenderer {
           fallbackException);
     }
 
-    @RequiresApi(21)
     @Nullable
     private static String getDiagnosticInfoV21(@Nullable Throwable cause) {
       if (cause instanceof CodecException) {
@@ -2306,14 +2305,13 @@ public abstract class MediaCodecRenderer extends BaseRenderer {
   }
 
   private static boolean isMediaCodecException(IllegalStateException error) {
-    if (Util.SDK_INT >= 21 && isMediaCodecExceptionV21(error)) {
+    if (isMediaCodecExceptionV21(error)) {
       return true;
     }
     StackTraceElement[] stackTrace = error.getStackTrace();
     return stackTrace.length > 0 && stackTrace[0].getClassName().equals("android.media.MediaCodec");
   }
 
-  @RequiresApi(21)
   private static boolean isMediaCodecExceptionV21(IllegalStateException error) {
     return error instanceof MediaCodec.CodecException;
   }
@@ -2391,9 +2389,7 @@ public abstract class MediaCodecRenderer extends BaseRenderer {
    * @return True if the decoder is known to fail if NAL units are queued before CSD.
    */
   private static boolean codecNeedsDiscardToSpsWorkaround(String name, Format format) {
-    return Util.SDK_INT < 21
-        && format.initializationData.isEmpty()
-        && "OMX.MTK.VIDEO.DECODER.AVC".equals(name);
+    return false;
   }
 
   /**
@@ -2453,11 +2449,7 @@ public abstract class MediaCodecRenderer extends BaseRenderer {
    *     buffer with {@link MediaCodec#BUFFER_FLAG_END_OF_STREAM} set. False otherwise.
    */
   private static boolean codecNeedsEosFlushWorkaround(String name) {
-    return (Util.SDK_INT <= 23 && "OMX.google.vorbis.decoder".equals(name))
-        || (Util.SDK_INT <= 19
-            && ("hb2000".equals(Util.DEVICE) || "stvm8".equals(Util.DEVICE))
-            && ("OMX.amlogic.avc.decoder.awesome".equals(name)
-                || "OMX.amlogic.avc.decoder.awesome.secure".equals(name)));
+    return Util.SDK_INT <= 23 && "OMX.google.vorbis.decoder".equals(name);
   }
 
   /**
@@ -2508,9 +2500,7 @@ public abstract class MediaCodecRenderer extends BaseRenderer {
    *     channel. False otherwise.
    */
   private static boolean codecNeedsMonoChannelCountWorkaround(String name, Format format) {
-    return Util.SDK_INT <= 18
-        && format.channelCount == 1
-        && "OMX.MTK.AUDIO.DECODER.MP3".equals(name);
+    return false;
   }
 
   @RequiresApi(31)

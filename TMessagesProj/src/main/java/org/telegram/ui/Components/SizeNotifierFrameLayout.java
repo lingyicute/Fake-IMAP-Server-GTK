@@ -24,7 +24,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -158,7 +157,7 @@ public class SizeNotifierFrameLayout extends FrameLayout {
                 if (drawable instanceof MotionBackgroundDrawable) {
                     MotionBackgroundDrawable motionBackgroundDrawable = (MotionBackgroundDrawable) drawable;
                     if (motionBackgroundDrawable.hasPattern()) {
-                        int actionBarHeight = (isActionBarVisible() ? ActionBar.getCurrentActionBarHeight() : 0) + (Build.VERSION.SDK_INT >= 21 && occupyStatusBar ? AndroidUtilities.statusBarHeight : 0);
+                        int actionBarHeight = (isActionBarVisible() ? ActionBar.getCurrentActionBarHeight() : 0) + (occupyStatusBar ? AndroidUtilities.statusBarHeight : 0);
                         int viewHeight = getRootView().getMeasuredHeight() - actionBarHeight;
                         float scaleX = (float) getMeasuredWidth() / (float) drawable.getIntrinsicWidth();
                         float scaleY = (float) (viewHeight) / (float) drawable.getIntrinsicHeight();
@@ -224,7 +223,7 @@ public class SizeNotifierFrameLayout extends FrameLayout {
                         checkSnowflake(canvas);
                         canvas.restore();
                     } else {
-                        int actionBarHeight = (isActionBarVisible() ? ActionBar.getCurrentActionBarHeight() : 0) + (Build.VERSION.SDK_INT >= 21 && occupyStatusBar ? AndroidUtilities.statusBarHeight : 0);
+                        int actionBarHeight = (isActionBarVisible() ? ActionBar.getCurrentActionBarHeight() : 0) + (occupyStatusBar ? AndroidUtilities.statusBarHeight : 0);
                         int viewHeight = getRootView().getMeasuredHeight() - actionBarHeight;
                         float scaleX = (float) getMeasuredWidth() / (float) drawable.getIntrinsicWidth();
                         float scaleY = (float) (viewHeight) / (float) drawable.getIntrinsicHeight();

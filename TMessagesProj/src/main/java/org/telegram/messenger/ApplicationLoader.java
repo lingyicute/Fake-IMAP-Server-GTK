@@ -31,8 +31,13 @@ import android.telephony.TelephonyManager;
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
+import com.exteragram.messenger.camera.CameraXUtils;
+import com.exteragram.messenger.extras.ExceptionHandler;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import org.telegram.messenger.voip.VideoCapturerDevice;
 import org.telegram.tgnet.ConnectionsManager;
@@ -70,6 +75,8 @@ public class ApplicationLoader extends Application {
     private static PushListenerController.IPushListenerServiceProvider pushProvider;
     private static IMapsProvider mapsProvider;
     private static ILocationServiceProvider locationServiceProvider;
+
+
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -112,19 +119,7 @@ public class ApplicationLoader extends Application {
     }
 
     public static String getApplicationId() {
-        return applicationLoaderInstance.onGetApplicationId();
-    }
-
-    protected String onGetApplicationId() {
-        return null;
-    }
-
-    public static boolean isHuaweiStoreBuild() {
-        return applicationLoaderInstance.isHuaweiBuild();
-    }
-
-    protected boolean isHuaweiBuild() {
-        return false;
+        return BuildConfig.APPLICATION_ID;
     }
 
     public static File getFilesDirFixed() {
@@ -142,7 +137,7 @@ public class ApplicationLoader extends Application {
         } catch (Exception e) {
             FileLog.e(e);
         }
-        return new File("/data/data/org.telegram.messenger/files");
+        return new File("/data/data/com.exteragram.messenger/files");
     }
 
     public static void postInitApplication() {
@@ -201,6 +196,7 @@ public class ApplicationLoader extends Application {
         }
 
         SharedConfig.loadConfig();
+        CameraXUtils.loadCameraXSizes();
         SharedPrefsHelper.init(applicationContext);
         for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) { //TODO improve account
             UserConfig.getInstance(a).loadConfig();
@@ -275,12 +271,19 @@ public class ApplicationLoader extends Application {
             FileLog.d("load libs time = " + (SystemClock.elapsedRealtime() - startTime));
         }
 
+        if (BuildVars.DEBUG_VERSION) {
+            Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
+        }
+
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
         AndroidUtilities.runOnUIThread(ApplicationLoader::startPushService);
 
         LauncherIconController.tryFixLauncherIconIfNeeded();
         ProxyRotationController.init();
+
+        ApplicationLoader app = (ApplicationLoader) ApplicationLoader.applicationContext;
+        app.initFirebase();
     }
 
     public static void startPushService() {
@@ -315,6 +318,27 @@ public class ApplicationLoader extends Application {
         }
     }
 
+    private static FirebaseAnalytics firebaseAnalytics;
+    private static FirebaseCrashlytics firebaseCrashlytics;
+
+    private void initFirebase() {
+        AndroidUtilities.runOnUIThread(() -> {
+            firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+            firebaseCrashlytics = FirebaseCrashlytics.getInstance();
+            firebaseAnalytics.setAnalyticsCollectionEnabled(ExteraConfig.useGoogleAnalytics);
+            firebaseCrashlytics.setCrashlyticsCollectionEnabled(ExteraConfig.useGoogleCrashlytics);
+            ExteraUtils.logEvents(applicationContext);
+        });
+    }
+
+    public static FirebaseAnalytics getFirebaseAnalytics() {
+        return firebaseAnalytics;
+    }
+
+    public static FirebaseCrashlytics getFirebaseCrashlytics() {
+        return firebaseCrashlytics;
+    }
+
     private void initPushServices() {
         AndroidUtilities.runOnUIThread(() -> {
             if (getPushProvider().hasServices()) {
@@ -327,16 +351,6 @@ public class ApplicationLoader extends Application {
                 PushListenerController.sendRegistrationToServer(getPushProvider().getPushType(), null);
             }
         }, 1000);
-    }
-
-    private boolean checkPlayServices() {
-        try {
-            int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-            return resultCode == ConnectionResult.SUCCESS;
-        } catch (Exception e) {
-            FileLog.e(e);
-        }
-        return true;
     }
 
     private static void ensureCurrentNetworkGet(boolean force) {
@@ -522,29 +536,4 @@ public class ApplicationLoader extends Application {
         }
         return result;
     }
-
-    public static void startAppCenter(Activity context) {
-        applicationLoaderInstance.startAppCenterInternal(context);
-    }
-
-    public static void checkForUpdates() {
-        applicationLoaderInstance.checkForUpdatesInternal();
-    }
-
-    public static void appCenterLog(Throwable e) {
-        applicationLoaderInstance.appCenterLogInternal(e);
-    }
-
-    protected void appCenterLogInternal(Throwable e) {
-
-    }
-
-    protected void checkForUpdatesInternal() {
-
-    }
-
-    protected void startAppCenterInternal(Activity context) {
-
-    }
-
 }

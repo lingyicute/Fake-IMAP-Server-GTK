@@ -58,6 +58,9 @@ import java.io.File;
 import java.util.Date;
 import java.util.Locale;
 
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
+
 public class SharedDocumentCell extends FrameLayout implements DownloadController.FileDownloadProgressListener {
 
     private ImageView placeholderImageView;
@@ -275,7 +278,7 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
                     thumbImageView.setImage(thumb, "42_42", null);
                 }
             } else {
-                Drawable drawable = Theme.createCircleDrawableWithIcon(AndroidUtilities.dp(42), resId);
+                Drawable drawable = ExteraUtils.createCircleDrawableWithIcon(getContext(), resId, AndroidUtilities.dp(42));
                 String iconKey;
                 String backKey;
                 if (resId == R.drawable.files_storage) {
@@ -521,7 +524,7 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
     }
 
     public void updateFileExistIcon(boolean animated) {
-        if (animated && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (animated) {
             TransitionSet transition = new TransitionSet();
             ChangeBounds changeBounds = new ChangeBounds();
             changeBounds.setDuration(150);
@@ -748,7 +751,7 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
     }
 
     private void drawDivider(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(AndroidUtilities.dp(72), getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, Theme.dividerPaint);
         }
     }

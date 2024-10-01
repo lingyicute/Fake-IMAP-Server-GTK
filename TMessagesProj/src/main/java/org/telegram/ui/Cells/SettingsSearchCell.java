@@ -2,19 +2,19 @@ package org.telegram.ui.Cells;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ImageSpan;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.components.VerticalImageSpan;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
@@ -30,53 +30,13 @@ public class SettingsSearchCell extends FrameLayout {
     private boolean needDivider;
     private int left;
 
-    public static class VerticalImageSpan extends ImageSpan {
-
-        public VerticalImageSpan(Drawable drawable) {
-            super(drawable);
-        }
-
-        @Override
-        public int getSize(Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fontMetricsInt) {
-            Drawable drawable = getDrawable();
-            Rect rect = drawable.getBounds();
-            if (fontMetricsInt != null) {
-                Paint.FontMetricsInt fmPaint = paint.getFontMetricsInt();
-                int fontHeight = fmPaint.descent - fmPaint.ascent;
-                int drHeight = rect.bottom - rect.top;
-                int centerY = fmPaint.ascent + fontHeight / 2;
-
-                fontMetricsInt.ascent = centerY - drHeight / 2;
-                fontMetricsInt.top = fontMetricsInt.ascent;
-                fontMetricsInt.bottom = centerY + drHeight / 2;
-                fontMetricsInt.descent = fontMetricsInt.bottom;
-            }
-            return rect.right;
-        }
-
-        @Override
-        public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
-            Drawable drawable = getDrawable();
-            canvas.save();
-            Paint.FontMetricsInt fmPaint = paint.getFontMetricsInt();
-            int fontHeight = fmPaint.descent - fmPaint.ascent;
-            int centerY = y + fmPaint.descent - fontHeight / 2;
-            int transY = centerY - (drawable.getBounds().bottom - drawable.getBounds().top) / 2;
-            canvas.translate(x, transY);
-            if (LocaleController.isRTL) {
-                canvas.scale(-1, 1, drawable.getIntrinsicWidth() / 2, drawable.getIntrinsicHeight() / 2);
-            }
-            drawable.draw(canvas);
-            canvas.restore();
-        }
-    }
-
     public SettingsSearchCell(Context context) {
         super(context);
 
         textView = new TextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         textView.setLines(1);
         textView.setMaxLines(1);
@@ -87,6 +47,7 @@ public class SettingsSearchCell extends FrameLayout {
         valueTextView = new TextView(context);
         valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         valueTextView.setLines(1);
         valueTextView.setMaxLines(1);
         valueTextView.setSingleLine(true);
@@ -198,7 +159,7 @@ public class SettingsSearchCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(left), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(left) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

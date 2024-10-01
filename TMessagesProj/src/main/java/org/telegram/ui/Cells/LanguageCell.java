@@ -22,6 +22,8 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RadioButton;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class LanguageCell extends FrameLayout {
 
     private RadioButton radioButton;
@@ -47,6 +49,7 @@ public class LanguageCell extends FrameLayout {
         textView = new TextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setSingleLine(true);
         textView.setEllipsize(TextUtils.TruncateAt.END);
         textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
@@ -55,6 +58,7 @@ public class LanguageCell extends FrameLayout {
         textView2 = new TextView(context);
         textView2.setTextColor(Theme.getColor(Theme.key_dialogTextGray3));
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        textView2.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView2.setSingleLine(true);
         textView2.setEllipsize(TextUtils.TruncateAt.END);
         textView2.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
@@ -91,7 +95,7 @@ public class LanguageCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(marginStartDp - 3), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(marginStartDp - 3) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

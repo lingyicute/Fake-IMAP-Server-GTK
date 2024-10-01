@@ -69,6 +69,10 @@ public class VoIPHelper {
 	private static final int VOIP_SUPPORT_ID = 4244000;
 
 	public static void startCall(TLRPC.User user, boolean videoCall, boolean canVideoCall, final Activity activity, TLRPC.UserFull userFull, AccountInstance accountInstance) {
+		startCall(user, videoCall, canVideoCall, activity, userFull, accountInstance, false);
+	}
+
+	public static void startCall(TLRPC.User user, boolean videoCall, boolean canVideoCall, final Activity activity, TLRPC.UserFull userFull, AccountInstance accountInstance, boolean confirmed) {
 		if (userFull != null && userFull.phone_calls_private) {
 			new AlertDialog.Builder(activity)
 					.setTitle(LocaleController.getString("VoipFailed", R.string.VoipFailed))
@@ -78,6 +82,15 @@ public class VoIPHelper {
 					.show();
 			return;
 		}
+
+		if (!confirmed) {
+			final BaseFragment lastFragment = ((LaunchActivity) activity).getActionBarLayout().getLastFragment();
+			if (lastFragment != null) {
+				AlertsCreator.createCallDialogAlert(lastFragment, lastFragment.getMessagesController().getUser(user.id), videoCall);
+			}
+			return;
+		}
+
 		if (ConnectionsManager.getInstance(UserConfig.selectedAccount).getConnectionState() != ConnectionsManager.ConnectionStateConnected) {
 			boolean isAirplaneMode = Settings.System.getInt(activity.getContentResolver(), Settings.System.AIRPLANE_MODE_ON, 0) != 0;
 			AlertDialog.Builder bldr = new AlertDialog.Builder(activity)
@@ -106,6 +119,9 @@ public class VoIPHelper {
 			}
 			if (videoCall && activity.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 				permissions.add(Manifest.permission.CAMERA);
+			}
+			if (Build.VERSION.SDK_INT >= 31 && activity.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+				permissions.add(Manifest.permission.BLUETOOTH_CONNECT);
 			}
 			if (permissions.isEmpty()) {
 				initiateCall(user, null, null, videoCall, canVideoCall, false, null, activity, null, accountInstance);
@@ -150,6 +166,9 @@ public class VoIPHelper {
 			ChatObject.Call call = accountInstance.getMessagesController().getGroupCall(chat.id, false);
 			if (activity.checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && !(call != null && call.call.rtmp_stream)) {
 				permissions.add(Manifest.permission.RECORD_AUDIO);
+			}
+			if (Build.VERSION.SDK_INT >= 31 && activity.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+				permissions.add(Manifest.permission.BLUETOOTH_CONNECT);
 			}
 			if (permissions.isEmpty()) {
 				initiateCall(null, chat, hash, false, false, createCall, checkJoiner, activity, fragment, accountInstance);
@@ -336,8 +355,8 @@ public class VoIPHelper {
 		}
 		intent.putExtra("is_outgoing", true);
 		intent.putExtra("start_incall_activity", true);
-		intent.putExtra("video_call", Build.VERSION.SDK_INT >= 18 && videoCall);
-		intent.putExtra("can_video_call", Build.VERSION.SDK_INT >= 18 && canVideoCall);
+		intent.putExtra("video_call", videoCall);
+		intent.putExtra("can_video_call", canVideoCall);
 		intent.putExtra("account", UserConfig.selectedAccount);
 		try {
 			activity.startService(intent);
@@ -643,7 +662,7 @@ public class VoIPHelper {
 			boolean force = preferences.getBoolean("dbg_force_tcp_in_calls", false);
 			SharedPreferences.Editor editor = preferences.edit();
 			editor.putBoolean("dbg_force_tcp_in_calls", !force);
-			editor.commit();
+			editor.apply();
 			tcpCell.setChecked(!force);
 		});
 		ll.addView(tcpCell);
@@ -655,7 +674,7 @@ public class VoIPHelper {
 				boolean force = preferences.getBoolean("dbg_dump_call_stats", false);
 				SharedPreferences.Editor editor = preferences.edit();
 				editor.putBoolean("dbg_dump_call_stats", !force);
-				editor.commit();
+				editor.apply();
 				dumpCell.setChecked(!force);
 			});
 			ll.addView(dumpCell);
@@ -668,7 +687,7 @@ public class VoIPHelper {
 				boolean force = preferences.getBoolean("dbg_force_connection_service", false);
 				SharedPreferences.Editor editor = preferences.edit();
 				editor.putBoolean("dbg_force_connection_service", !force);
-				editor.commit();
+				editor.apply();
 				connectionServiceCell.setChecked(!force);
 			});
 			ll.addView(connectionServiceCell);

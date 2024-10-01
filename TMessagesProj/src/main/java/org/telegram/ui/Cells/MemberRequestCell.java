@@ -22,6 +22,8 @@ import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.LayoutHelper;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class MemberRequestCell extends FrameLayout {
 
     private final AvatarDrawable avatarDrawable = new AvatarDrawable();
@@ -35,7 +37,7 @@ public class MemberRequestCell extends FrameLayout {
     public MemberRequestCell(@NonNull Context context, OnClickListener clickListener, boolean isChannel) {
         super(context);
 
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(23));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(46));
         addView(avatarImageView, LayoutHelper.createFrame(46, 46, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 12, 8, 12, 0));
 
         nameTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
@@ -132,7 +134,7 @@ public class MemberRequestCell extends FrameLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (isNeedDivider) {
+        if (isNeedDivider && !ExteraConfig.disableDividers) {
             canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(72), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(72) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
         }
     }

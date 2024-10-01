@@ -19,6 +19,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
@@ -185,10 +187,11 @@ public class PhotoAttachPhotoCell extends FrameLayout {
 
         ImageView imageView1 = new ImageView(context);
         imageView1.setImageResource(R.drawable.play_mini_video);
+        if (Theme.getActiveTheme().isMonet()) imageView1.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chat_mediaTimeText), PorterDuff.Mode.MULTIPLY));
         videoInfoContainer.addView(imageView1, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL));
 
         videoTextView = new TextView(context);
-        videoTextView.setTextColor(0xffffffff);
+        videoTextView.setTextColor(Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chat_mediaTimeText) : 0xffffffff);
         videoTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         videoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         videoTextView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
@@ -553,9 +556,7 @@ public class PhotoAttachPhotoCell extends FrameLayout {
         if (checkBox.isChecked()) {
             info.setSelected(true);
         }
-        if (Build.VERSION.SDK_INT >= 21) {
-            info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_open_photo, LocaleController.getString("Open", R.string.Open)));
-        }
+        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_open_photo, LocaleController.getString("Open", R.string.Open)));
     }
 
     @Override

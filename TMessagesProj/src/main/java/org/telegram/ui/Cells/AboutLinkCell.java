@@ -63,6 +63,8 @@ import org.telegram.ui.Components.URLSpanNoUnderline;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class AboutLinkCell extends FrameLayout {
 
     private StaticLayout textLayout;
@@ -90,6 +92,8 @@ public class AboutLinkCell extends FrameLayout {
 
     private FrameLayout container;
     private Drawable rippleBackground;
+    
+    private boolean needDivider;
 
     private StaticLayout firstThreeLinesLayout;
     private StaticLayout[] nextLinesLayouts = null;
@@ -119,6 +123,7 @@ public class AboutLinkCell extends FrameLayout {
         valueTextView.setVisibility(GONE);
         valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         valueTextView.setLines(1);
         valueTextView.setMaxLines(1);
         valueTextView.setSingleLine(true);
@@ -162,6 +167,7 @@ public class AboutLinkCell extends FrameLayout {
         };
         showMoreTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText, resourcesProvider));
         showMoreTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        showMoreTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         showMoreTextView.setLines(1);
         showMoreTextView.setMaxLines(1);
         showMoreTextView.setSingleLine(true);
@@ -341,11 +347,11 @@ public class AboutLinkCell extends FrameLayout {
         invalidate();
     }
 
-    public void setText(String text, boolean parseLinks) {
-        setTextAndValue(text, null, parseLinks);
+    public void setText(String text, boolean parseLinks, boolean divider) {
+        setTextAndValue(text, null, parseLinks, divider);
     }
 
-    public void setTextAndValue(String text, String value, boolean parseLinks) {
+    public void setTextAndValue(String text, String value, boolean parseLinks, boolean divider) {
         if (TextUtils.isEmpty(text) || TextUtils.equals(text, oldText)) {
             return;
         }
@@ -355,8 +361,8 @@ public class AboutLinkCell extends FrameLayout {
             oldText = text;
         }
         stringBuilder = new SpannableStringBuilder(oldText);
+        stringBuilder = new SpannableStringBuilder(Emoji.replaceEmoji(stringBuilder, Theme.profile_aboutTextPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false));
         MessageObject.addLinks(false, stringBuilder, false, false, !parseLinks);
-        Emoji.replaceEmoji(stringBuilder, Theme.profile_aboutTextPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
         if (lastMaxWidth <= 0) {
             lastMaxWidth = AndroidUtilities.displaySize.x - AndroidUtilities.dp(23 + 23);
         }
@@ -369,6 +375,7 @@ public class AboutLinkCell extends FrameLayout {
             valueTextView.setText(value);
             valueTextView.setVisibility(VISIBLE);
         }
+        needDivider = divider;
         if (wasValueVisibility != valueTextView.getVisibility()) {
             checkTextLayout(lastMaxWidth, true);
         }
@@ -770,7 +777,12 @@ public class AboutLinkCell extends FrameLayout {
     private float easeInOutCubic(float x) {
         return x < 0.5 ? 4 * x * x * x : 1 - (float) Math.pow(-2 * x + 2, 3) / 2;
     }
-
+    @Override
+    protected void onDraw(Canvas canvas) {
+        if (needDivider && !ExteraConfig.disableDividers) {
+            canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(20) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
+        }
+    }
     @Override
     public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
         super.onInitializeAccessibilityNodeInfo(info);

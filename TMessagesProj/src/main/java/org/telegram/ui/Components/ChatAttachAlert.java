@@ -13,6 +13,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.StateListAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -113,6 +114,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
+import com.exteragram.messenger.extras.PermissionUtils;
 
 public class ChatAttachAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate, BottomSheet.BottomSheetDelegateInterface {
 
@@ -676,6 +681,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
     private AttachAlertLayout currentAttachLayout;
     private AttachAlertLayout nextAttachLayout;
 
+    private FrameLayout floatingButton;
     private FrameLayout frameLayout2;
     protected EditTextEmoji commentTextView;
     private int[] commentTextViewLocation = new int[2];
@@ -887,11 +893,13 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             attachButtonPaint.setStyle(Paint.Style.STROKE);
             attachButtonPaint.setStrokeWidth(AndroidUtilities.dp(3) * scale);
             attachButtonPaint.setAlpha(Math.round(255f * checkedState));
-            canvas.drawCircle(cx, cy, radius - 0.5f * attachButtonPaint.getStrokeWidth(), attachButtonPaint);
+            float width = radius - 0.5f * attachButtonPaint.getStrokeWidth();
+            canvas.drawRoundRect(cx - width, cy - width, cx + width, cy + width, ExteraConfig.getAvatarCorners(50), ExteraConfig.getAvatarCorners(50), attachButtonPaint);
 
+            width = radius - AndroidUtilities.dp(5) * checkedState;
             attachButtonPaint.setAlpha(255);
             attachButtonPaint.setStyle(Paint.Style.FILL);
-            canvas.drawCircle(cx, cy, radius - AndroidUtilities.dp(5) * checkedState, attachButtonPaint);
+            canvas.drawRoundRect(cx - width, cy - width, cx + width, cy + width, ExteraConfig.getAvatarCorners(width * 2, true), ExteraConfig.getAvatarCorners(width * 2, true), attachButtonPaint);
         }
 
         @Override
@@ -942,14 +950,12 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                     AttachBotButton.this.invalidate();
                 }
             };
-            imageView.setRoundRadius(AndroidUtilities.dp(25));
+            imageView.setRoundRadius(ExteraConfig.getAvatarCorners(46));
             addView(imageView, LayoutHelper.createFrame(46, 46, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 9, 0, 0));
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                selector = new View(context);
-                selector.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_dialogButtonSelector), 1, AndroidUtilities.dp(23)));
-                addView(selector, LayoutHelper.createFrame(46, 46, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 9, 0, 0));
-            }
+            selector = new View(context);
+            selector.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_dialogButtonSelector), 1, AndroidUtilities.dp(23)));
+            addView(selector, LayoutHelper.createFrame(46, 46, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 9, 0, 0));
 
             nameTextView = new TextView(context);
             nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
@@ -1004,11 +1010,13 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 attachButtonPaint.setStyle(Paint.Style.STROKE);
                 attachButtonPaint.setStrokeWidth(AndroidUtilities.dp(3) * scale);
                 attachButtonPaint.setAlpha(Math.round(255f * checkedState));
-                canvas.drawCircle(cx, cy, radius - 0.5f * attachButtonPaint.getStrokeWidth(), attachButtonPaint);
+                float width = radius - 0.5f * attachButtonPaint.getStrokeWidth();
+                canvas.drawRoundRect(cx - width, cy - width, cx + width, cy + width, ExteraConfig.getAvatarCorners(50), ExteraConfig.getAvatarCorners(50), attachButtonPaint);
 
+                width = radius - AndroidUtilities.dp(5) * checkedState;
                 attachButtonPaint.setAlpha(255);
                 attachButtonPaint.setStyle(Paint.Style.FILL);
-                canvas.drawCircle(cx, cy, radius - AndroidUtilities.dp(5) * checkedState, attachButtonPaint);
+                canvas.drawRoundRect(cx - width, cy - width, cx + width, cy + width, ExteraConfig.getAvatarCorners(width * 2, true), ExteraConfig.getAvatarCorners(width * 2, true), attachButtonPaint);
             }
         }
 
@@ -1110,8 +1118,8 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                             break;
                     }
                 }
-                textColor = ColorUtils.setAlphaComponent(textColor, 0xFF);
-                iconBackgroundColor = ColorUtils.setAlphaComponent(iconBackgroundColor, 0xFF);
+                textColor = ColorUtils.setAlphaComponent(Theme.getCurrentTheme().isMonet() ? getThemedColor(Theme.key_chat_attachFileText) : textColor, 0xFF);
+                iconBackgroundColor = ColorUtils.setAlphaComponent(Theme.getCurrentTheme().isMonet() ? getThemedColor(Theme.key_chat_attachFileBackground) : iconBackgroundColor, 0xFF);
 
                 TLRPC.Document iconDoc = icon.icon;
                 imageView.getImageReceiver().setAllowStartLottieAnimation(false);
@@ -1272,7 +1280,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 } else {
                     totalHeight = MeasureSpec.getSize(heightMeasureSpec);
                 }
-                if (Build.VERSION.SDK_INT >= 21 && !inBubbleMode) {
+                if (!inBubbleMode) {
                     ignoreLayout = true;
                     setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
                     ignoreLayout = false;
@@ -1497,7 +1505,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                         rad = 1.0f - moveProgress;
                     }
 
-                    if (Build.VERSION.SDK_INT >= 21 && !inBubbleMode) {
+                    if (!inBubbleMode) {
                         top += AndroidUtilities.statusBarHeight;
                         y += AndroidUtilities.statusBarHeight;
                         height -= AndroidUtilities.statusBarHeight;
@@ -1591,7 +1599,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                         rad = 1.0f - moveProgress;
                     }
 
-                    if (Build.VERSION.SDK_INT >= 21 && !inBubbleMode) {
+                    if (!inBubbleMode) {
                         top += AndroidUtilities.statusBarHeight;
                         y += AndroidUtilities.statusBarHeight;
                         height -= AndroidUtilities.statusBarHeight;
@@ -1681,7 +1689,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
 
             private int getCurrentTop() {
                 int y = scrollOffsetY[0] - backgroundPaddingTop * 2 - (AndroidUtilities.dp(13) + (headerView != null ? AndroidUtilities.dp(headerView.getAlpha() * 26) : 0)) + AndroidUtilities.dp(20);
-                if (Build.VERSION.SDK_INT >= 21 && !inBubbleMode) {
+                if (!inBubbleMode) {
                     y += AndroidUtilities.statusBarHeight;
                 }
                 return y;
@@ -1988,6 +1996,46 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         containerView.addView(searchItem, LayoutHelper.createFrame(48, 48, Gravity.TOP | Gravity.RIGHT));
         containerView.addView(doneItem, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 48, Gravity.TOP | Gravity.RIGHT));
 
+        floatingButton = new FrameLayout(context);
+        Drawable drawable = ExteraUtils.drawFab();
+        floatingButton.setBackground(drawable);
+        floatingButton.setVisibility(currentAttachLayout == photoLayout && ExteraConfig.hideCameraTile ? View.VISIBLE : View.GONE);
+        StateListAnimator stateListAnimator = new StateListAnimator();
+        stateListAnimator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
+        stateListAnimator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButton, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
+        floatingButton.setStateListAnimator(stateListAnimator);
+        floatingButton.setOutlineProvider(new ViewOutlineProvider() {
+            @SuppressLint("NewApi")
+            @Override
+            public void getOutline(View view, Outline outline) {
+                if (ExteraConfig.squareFab) {
+                    outline.setRoundRect(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56), AndroidUtilities.dp(16));
+                } else {
+                    outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
+                }
+            }
+        });
+        floatingButton.setOnClickListener(v -> {
+            if (currentAttachLayout == photoLayout) {
+                photoLayout.checkCamera(false);
+                photoLayout.openCamera(true);
+            }
+        });
+        floatingButton.setOnLongClickListener(v -> {
+            if (delegate != null) {
+                delegate.didPressedButton(0, false, true, 0, false);
+            }
+            return true;
+        });
+
+        ImageView floatingButtonIcon = new ImageView(context);
+        floatingButtonIcon.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_actionIcon), PorterDuff.Mode.MULTIPLY));
+        floatingButtonIcon.setImageResource(R.drawable.instant_camera);
+
+        int size = ExteraConfig.useSolarIcons ? 26 : 24;
+        floatingButton.addView(floatingButtonIcon, LayoutHelper.createFrame(size, size, Gravity.CENTER));
+        containerView.addView(floatingButton, LayoutHelper.createFrame(56, 56, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.BOTTOM, LocaleController.isRTL ? 8 : 0, 0, LocaleController.isRTL ? 0 : 8, 84 + 14));
+
         actionBarShadow = new View(context);
         actionBarShadow.setAlpha(0.0f);
         actionBarShadow.setBackgroundColor(getThemedColor(Theme.key_dialogShadowLine));
@@ -2027,14 +2075,14 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                     }
                     showLayout(photoLayout);
                 } else if (num == 3) {
-                    if (Build.VERSION.SDK_INT >= 23 && baseFragment.getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        baseFragment.getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, BasePermissionsActivity.REQUEST_CODE_EXTERNAL_STORAGE);
+                    if (Build.VERSION.SDK_INT >= 23 && !PermissionUtils.isAudioPermissionGranted()) {
+                        PermissionUtils.requestAudioPermission(baseFragment.getParentActivity());
                         return;
                     }
                     openAudioLayout(true);
                 } else if (num == 4) {
-                    if (Build.VERSION.SDK_INT >= 23 && baseFragment.getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        baseFragment.getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, BasePermissionsActivity.REQUEST_CODE_EXTERNAL_STORAGE);
+                    if (Build.VERSION.SDK_INT >= 23 && !PermissionUtils.isStoragePermissionGranted()) {
+                        PermissionUtils.requestStoragePermission(baseFragment.getParentActivity());
                         return;
                     }
                     openDocumentsLayout(true);
@@ -2269,6 +2317,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 bottomPannelTranslation = translation;
                 //     buttonsRecyclerView.setTranslationY(translation);
                 frameLayout2.setTranslationY(translation);
+                floatingButton.setTranslationY(translation);
                 writeButtonContainer.setTranslationY(translation);
                 selectedCountView.setTranslationY(translation);
                 frameLayout2.invalidate();
@@ -2397,29 +2446,24 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         containerView.addView(writeButtonContainer, LayoutHelper.createFrame(60, 60, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 6, 10));
 
         writeButton = new ImageView(context);
-        writeButtonDrawable = Theme.createSimpleSelectorCircleDrawable(AndroidUtilities.dp(56), getThemedColor(Theme.key_dialogFloatingButton), getThemedColor(Build.VERSION.SDK_INT >= 21 ? Theme.key_dialogFloatingButtonPressed : Theme.key_dialogFloatingButton));
-        if (Build.VERSION.SDK_INT < 21) {
-            Drawable shadowDrawable = context.getResources().getDrawable(R.drawable.floating_shadow_profile).mutate();
-            shadowDrawable.setColorFilter(new PorterDuffColorFilter(0xff000000, PorterDuff.Mode.MULTIPLY));
-            CombinedDrawable combinedDrawable = new CombinedDrawable(shadowDrawable, writeButtonDrawable, 0, 0);
-            combinedDrawable.setIconSize(AndroidUtilities.dp(56), AndroidUtilities.dp(56));
-            writeButtonDrawable = combinedDrawable;
-        }
+        writeButtonDrawable = ExteraUtils.drawFab(true);
         writeButton.setBackgroundDrawable(writeButtonDrawable);
         writeButton.setImageResource(R.drawable.attach_send);
         writeButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogFloatingIcon), PorterDuff.Mode.MULTIPLY));
         writeButton.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         writeButton.setScaleType(ImageView.ScaleType.CENTER);
-        if (Build.VERSION.SDK_INT >= 21) {
-            writeButton.setOutlineProvider(new ViewOutlineProvider() {
-                @SuppressLint("NewApi")
-                @Override
-                public void getOutline(View view, Outline outline) {
+        writeButton.setOutlineProvider(new ViewOutlineProvider() {
+            @SuppressLint("NewApi")
+            @Override
+            public void getOutline(View view, Outline outline) {
+                if (ExteraConfig.squareFab) {
+                    outline.setRoundRect(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56), AndroidUtilities.dp(16));
+                } else {
                     outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
                 }
-            });
-        }
-        writeButtonContainer.addView(writeButton, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60, Gravity.LEFT | Gravity.TOP, Build.VERSION.SDK_INT >= 21 ? 2 : 0, 0, 0, 0));
+            }
+        });
+        writeButtonContainer.addView(writeButton, LayoutHelper.createFrame(56, 56, Gravity.LEFT | Gravity.TOP, 2, 0, 0, 0));
         writeButton.setOnClickListener(v -> {
             if (currentLimit - codepointCount < 0) {
                 AndroidUtilities.shakeView(captionLimitView);
@@ -2696,8 +2740,8 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         }
         openTransitionFinished = false;
         if (Build.VERSION.SDK_INT >= 30) {
+            navBarColor = baseFragment.getNavigationBarColor();
             navBarColorKey = null;
-            navBarColor = ColorUtils.setAlphaComponent(getThemedColor(Theme.key_windowBackgroundGray), 0);
             AndroidUtilities.setNavigationBarColor(getWindow(), navBarColor, false);
             AndroidUtilities.setLightNavigationBar(getWindow(), AndroidUtilities.computePerceivedBrightness(navBarColor) > 0.721);
         }
@@ -2738,7 +2782,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             TLRPC.Chat chat = chatActivity.getCurrentChat();
             TLRPC.User user = chatActivity.getCurrentUser();
             if (user != null || ChatObject.isChannel(chat) && chat.megagroup || !ChatObject.isChannel(chat)) {
-                MessagesController.getNotificationsSettings(currentAccount).edit().putBoolean("silent_" + chatActivity.getDialogId(), !notify).commit();
+                MessagesController.getNotificationsSettings(currentAccount).edit().putBoolean("silent_" + chatActivity.getDialogId(), !notify).apply();
             }
         }
         if (checkCaption(commentTextView.getText())) {
@@ -2806,11 +2850,10 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         }
         int t = currentAttachLayout.getFirstOffset() - AndroidUtilities.dp(11) - scrollOffsetY[0];
         nextAttachLayout = layout;
-        if (Build.VERSION.SDK_INT >= 20) {
-            container.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        }
+        container.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         actionBar.setVisibility(nextAttachLayout.needsActionBar() != 0 ? View.VISIBLE : View.INVISIBLE);
         actionBarShadow.setVisibility(actionBar.getVisibility());
+        floatingButton.animate().alpha(nextAttachLayout != photoLayout ? 0f : 1f).scaleX(nextAttachLayout != photoLayout ? 0.2f : 1f).scaleY(nextAttachLayout != photoLayout ? 0.2f : 1f).setDuration(150).start();
         if (actionBar.isSearchFieldVisible()) {
             actionBar.closeSearchField();
         }
@@ -2830,9 +2873,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         }
 
         Runnable onEnd = () -> {
-            if (Build.VERSION.SDK_INT >= 20) {
-                container.setLayerType(View.LAYER_TYPE_NONE, null);
-            }
+            container.setLayerType(View.LAYER_TYPE_NONE, null);
             viewChangeAnimator = null;
             if ((currentAttachLayout != photoLayout && nextAttachLayout != photoPreviewLayout) && (currentAttachLayout != nextAttachLayout && currentAttachLayout != photoPreviewLayout)) {
                 containerView.removeView(currentAttachLayout);
@@ -3084,6 +3125,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 shadow.setVisibility(View.VISIBLE);
             }
         } else if (typeButtonsAvailable) {
+            if (ExteraConfig.hideCameraTile) {
+                floatingButton.setVisibility(View.VISIBLE);
+            }
             buttonsRecyclerView.setVisibility(View.VISIBLE);
         }
         if (animated) {
@@ -3096,11 +3140,19 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             animators.add(ObjectAnimator.ofFloat(selectedCountView, View.SCALE_X, show ? 1.0f : 0.2f));
             animators.add(ObjectAnimator.ofFloat(selectedCountView, View.SCALE_Y, show ? 1.0f : 0.2f));
             animators.add(ObjectAnimator.ofFloat(selectedCountView, View.ALPHA, show ? 1.0f : 0.0f));
+            if (currentAttachLayout != null && currentAttachLayout == photoLayout) {
+                animators.add(ObjectAnimator.ofFloat(floatingButton, View.SCALE_X, show ? 0.2f : 1.0f));
+                animators.add(ObjectAnimator.ofFloat(floatingButton, View.SCALE_Y, show ? 0.2f : 1.0f));
+                animators.add(ObjectAnimator.ofFloat(floatingButton, View.ALPHA, show ? 0.0f : 1.0f));
+            }
             if (actionBar.getTag() != null) {
                 animators.add(ObjectAnimator.ofFloat(frameLayout2, View.TRANSLATION_Y, show ? 0.0f : AndroidUtilities.dp(48)));
                 animators.add(ObjectAnimator.ofFloat(shadow, View.TRANSLATION_Y, show ? AndroidUtilities.dp(36) : AndroidUtilities.dp(48 + 36)));
                 animators.add(ObjectAnimator.ofFloat(shadow, View.ALPHA, show ? 1.0f : 0.0f));
             } else if (typeButtonsAvailable) {
+                if (currentAttachLayout != null && currentAttachLayout == photoLayout) {
+                    animators.add(ObjectAnimator.ofFloat(floatingButton, View.TRANSLATION_Y, show ? AndroidUtilities.dp(84) : 0));
+                }
                 animators.add(ObjectAnimator.ofFloat(buttonsRecyclerView, View.TRANSLATION_Y, show ? AndroidUtilities.dp(36) : 0));
                 animators.add(ObjectAnimator.ofFloat(shadow, View.TRANSLATION_Y, show ? AndroidUtilities.dp(36) : 0));
             } else if (!isSoundPicker) {
@@ -3127,6 +3179,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                             if (currentAttachLayout == null || currentAttachLayout.shouldHideBottomButtons()) {
                                 buttonsRecyclerView.setVisibility(View.INVISIBLE);
                             }
+                            if (ExteraConfig.hideCameraTile) {
+                                floatingButton.setVisibility(View.INVISIBLE);
+                            }
                         }
                         commentsAnimator = null;
                     }
@@ -3148,11 +3203,19 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             selectedCountView.setScaleX(show ? 1.0f : 0.2f);
             selectedCountView.setScaleY(show ? 1.0f : 0.2f);
             selectedCountView.setAlpha(show ? 1.0f : 0.0f);
+            if (currentAttachLayout != null && currentAttachLayout == photoLayout) {
+                floatingButton.setScaleX(show ? 0.2f : 1.0f);
+                floatingButton.setScaleY(show ? 0.2f : 1.0f);
+                floatingButton.setAlpha(show ? 0.0f : 1.0f);
+            }
             if (actionBar.getTag() != null) {
                 frameLayout2.setTranslationY(show ? 0.0f : AndroidUtilities.dp(48));
                 shadow.setTranslationY((show ? AndroidUtilities.dp(36) : AndroidUtilities.dp(48 + 36)) + botMainButtonOffsetY);
                 shadow.setAlpha(show ? 1.0f : 0.0f);
             } else if (typeButtonsAvailable) {
+                if (currentAttachLayout != null && currentAttachLayout == photoLayout) {
+                    floatingButton.setTranslationY(show ? AndroidUtilities.dp(84) : 0);
+                }
                 if (currentAttachLayout == null || currentAttachLayout.shouldHideBottomButtons()) {
                     buttonsRecyclerView.setTranslationY(show ? AndroidUtilities.dp(36) : 0);
                 }
@@ -3164,6 +3227,8 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             if (!show) {
                 frameLayout2.setVisibility(View.INVISIBLE);
                 writeButtonContainer.setVisibility(View.INVISIBLE);
+                if (ExteraConfig.hideCameraTile)
+                    floatingButton.setVisibility(View.VISIBLE);
                 if (!typeButtonsAvailable) {
                     shadow.setVisibility(View.INVISIBLE);
                 }
@@ -3274,7 +3339,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         appearSpringAnimation.getSpring().setStiffness(350.0f);
         appearSpringAnimation.start();
 
-        if (Build.VERSION.SDK_INT >= 20 && useHardwareLayer) {
+        if (useHardwareLayer) {
             container.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         }
         currentSheetAnimationType = 1;
@@ -3336,11 +3401,10 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
 //                ChatAttachAlert.this.delegate.needEnterComment();
 //            }
 //        }, 75);
+        AndroidUtilities.setNavigationBarColor(getWindow(), baseFragment.getNavigationBarColor(), false);
+
         ValueAnimator navigationBarAnimator = ValueAnimator.ofFloat(0, 1);
-        setNavBarAlpha(0);
-        navigationBarAnimator.addUpdateListener(a -> {
-            setNavBarAlpha((float) a.getAnimatedValue());
-        });
+        navigationBarAnimator.addUpdateListener(a -> setNavBarAlpha((float) a.getAnimatedValue()));
         navigationBarAnimator.setStartDelay(25);
         navigationBarAnimator.setDuration(200);
         navigationBarAnimator.setInterpolator(CubicBezierInterpolator.DEFAULT);
@@ -3350,7 +3414,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
     }
 
     private void setNavBarAlpha(float alpha) {
-        navBarColor = ColorUtils.setAlphaComponent(getThemedColor(Theme.key_windowBackgroundGray), Math.min(255, Math.max(0, (int) (255 * alpha))));
+        navBarColor = ColorUtils.blendARGB(baseFragment.getNavigationBarColor(), getThemedColor(Theme.key_dialogBackground), alpha);
         AndroidUtilities.setNavigationBarColor(getWindow(), navBarColor, false);
         AndroidUtilities.setLightNavigationBar(getWindow(), AndroidUtilities.computePerceivedBrightness(navBarColor) > 0.721);
         getContainer().invalidate();
@@ -3441,7 +3505,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         }
 
         Theme.setSelectorDrawableColor(writeButtonDrawable, getThemedColor(Theme.key_dialogFloatingButton), false);
-        Theme.setSelectorDrawableColor(writeButtonDrawable, getThemedColor(Build.VERSION.SDK_INT >= 21 ? Theme.key_dialogFloatingButtonPressed : Theme.key_dialogFloatingButton), true);
+        Theme.setSelectorDrawableColor(writeButtonDrawable, getThemedColor(Theme.key_dialogFloatingButtonPressed), true);
         writeButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogFloatingIcon), PorterDuff.Mode.MULTIPLY));
 
         actionBarShadow.setBackgroundColor(getThemedColor(Theme.key_dialogShadowLine));
@@ -3617,6 +3681,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 ArrayList<Animator> animators = new ArrayList<>();
                 animators.add(ObjectAnimator.ofFloat(actionBar, View.ALPHA, show ? 1.0f : 0.0f));
                 animators.add(ObjectAnimator.ofFloat(actionBarShadow, View.ALPHA, show ? 1.0f : 0.0f));
+                if (currentAttachLayout != null && currentAttachLayout == photoLayout && typeButtonsAvailable) {
+                    animators.add(ObjectAnimator.ofFloat(floatingButton, View.TRANSLATION_Y, show ? AndroidUtilities.dp(84) : 0));
+                }
                 if (needsSearchItem) {
                     animators.add(ObjectAnimator.ofFloat(searchItem, View.ALPHA, show ? 1.0f : 0.0f));
                 }
@@ -3655,6 +3722,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 }
                 actionBar.setAlpha(show ? 1.0f : 0.0f);
                 actionBarShadow.setAlpha(show ? 1.0f : 0.0f);
+                if (currentAttachLayout != null && currentAttachLayout == photoLayout && typeButtonsAvailable) {
+                    floatingButton.setTranslationY(show ? AndroidUtilities.dp(84) : 0);
+                }
                 if (needsSearchItem) {
                     searchItem.setAlpha(show ? 1.0f : 0.0f);
                 }
@@ -3917,9 +3987,6 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         } else {
             albumEntry = MediaController.allPhotosAlbumEntry;
         }
-        if (Build.VERSION.SDK_INT <= 19 && albumEntry == null) {
-            MediaController.loadGalleryPhotosAlbums(0);
-        }
         currentAttachLayout.onOpenAnimationEnd();
         AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString("AccDescrAttachButton", R.string.AccDescrAttachButton));
         openTransitionFinished = true;
@@ -3950,6 +4017,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 buttonsRecyclerView.setVisibility(View.GONE);
                 shadow.setVisibility(View.GONE);
             }
+            floatingButton.setTranslationY(AndroidUtilities.dp(84));
             if (avatarPicker == 2) {
                 selectedTextView.setText(LocaleController.getString("ChoosePhotoOrVideo", R.string.ChoosePhotoOrVideo));
             } else {
@@ -4302,7 +4370,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 layouts[a].onDismiss();
             }
         }
-        AndroidUtilities.setNavigationBarColor(getWindow(), ColorUtils.setAlphaComponent(getThemedColor(Theme.key_windowBackgroundGray), 0), true, tcolor -> {
+        AndroidUtilities.setNavigationBarColor(getWindow(), ColorUtils.setAlphaComponent(baseFragment.getNavigationBarColor(), 0), true, tcolor -> {
             navBarColorKey = null;
             navBarColor = tcolor;
             containerView.invalidate();

@@ -21,6 +21,8 @@ import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.FileLog;
@@ -75,20 +77,18 @@ public class GroupCallPipAlertView extends LinearLayout implements VoIPService.S
             @Override
             public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
                 super.onInitializeAccessibilityNodeInfo(info);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    VoIPService service = VoIPService.getSharedInstance();
-                    if (service != null && ChatObject.isChannelOrGiga(service.getChat())) {
-                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("VoipChannelOpenVoiceChat", R.string.VoipChannelOpenVoiceChat)));
-                    } else {
-                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("VoipGroupOpenVoiceChat", R.string.VoipGroupOpenVoiceChat)));
-                    }
+                VoIPService service = VoIPService.getSharedInstance();
+                if (service != null && ChatObject.isChannelOrGiga(service.getChat())) {
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("VoipChannelOpenVoiceChat", R.string.VoipChannelOpenVoiceChat)));
+                } else {
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("VoipGroupOpenVoiceChat", R.string.VoipGroupOpenVoiceChat)));
                 }
             }
         };
         groupInfoContainer.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(8), AndroidUtilities.dp(8), AndroidUtilities.dp(8));
 
         avatarImageView = new BackupImageView(context);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(22));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(44));
         groupInfoContainer.addView(avatarImageView, LayoutHelper.createFrame(44, 44));
         groupInfoContainer.setBackground(Theme.createSimpleSelectorRoundRectDrawable(AndroidUtilities.dp(6), 0, ColorUtils.setAlphaComponent(Color.WHITE, (int) (255 * 0.3f))));
         groupInfoContainer.setOnClickListener(view -> {

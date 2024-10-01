@@ -81,6 +81,8 @@ import org.telegram.ui.Components.TypingDotsDrawable;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class PopupNotificationActivity extends Activity implements NotificationCenter.NotificationCenterDelegate {
 
     private ActionBar actionBar;
@@ -400,6 +402,11 @@ public class PopupNotificationActivity extends Activity implements NotificationC
             }
 
             @Override
+            public void setFrontface(boolean frontface) {
+
+            }
+
+            @Override
             public void needStartRecordAudio(int state) {
 
             }
@@ -463,7 +470,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         avatarContainer.setLayoutParams(layoutParams2);
 
         avatarImageView = new BackupImageView(this);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(21));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(42));
         avatarContainer.addView(avatarImageView);
         layoutParams2 = (FrameLayout.LayoutParams) avatarImageView.getLayoutParams();
         layoutParams2.width = AndroidUtilities.dp(42);
@@ -479,7 +486,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         nameTextView.setSingleLine(true);
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
         nameTextView.setGravity(Gravity.LEFT);
-        nameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        nameTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         avatarContainer.addView(nameTextView);
         layoutParams2 = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();
         layoutParams2.width = LayoutHelper.WRAP_CONTENT;
@@ -809,7 +816,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                         TextView textView = new TextView(this);
                         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));
-                        textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+                        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
                         textView.setText(button.text.toUpperCase());
                         textView.setTag(button);
                         textView.setGravity(Gravity.CENTER);

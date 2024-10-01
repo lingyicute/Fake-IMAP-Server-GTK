@@ -71,6 +71,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class PollVotesAlert extends BottomSheet {
 
     private RecyclerListView listView;
@@ -285,7 +287,7 @@ public class PollVotesAlert extends BottomSheet {
             avatarDrawable = new AvatarDrawable();
 
             avatarImageView = new BackupImageView(context);
-            avatarImageView.setRoundRadius(AndroidUtilities.dp(18));
+            avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(36));
             addView(avatarImageView, LayoutHelper.createFrame(36, 36, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 14, 6, LocaleController.isRTL ? 14 : 0, 0));
 
             nameTextView = new SimpleTextView(context);
@@ -593,7 +595,7 @@ public class PollVotesAlert extends BottomSheet {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 int totalHeight = MeasureSpec.getSize(heightMeasureSpec);
-                if (Build.VERSION.SDK_INT >= 21 && !isFullscreen) {
+                if (!isFullscreen) {
                     ignoreLayout = true;
                     setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
                     ignoreLayout = false;
@@ -679,10 +681,8 @@ public class PollVotesAlert extends BottomSheet {
                     rad = 1.0f - moveProgress;
                 }
 
-                if (Build.VERSION.SDK_INT >= 21) {
-                    top += AndroidUtilities.statusBarHeight;
-                    y += AndroidUtilities.statusBarHeight;
-                }
+                top += AndroidUtilities.statusBarHeight;
+                y += AndroidUtilities.statusBarHeight;
 
                 shadowDrawable.setBounds(0, top, getMeasuredWidth(), height);
                 shadowDrawable.draw(canvas);
@@ -719,7 +719,7 @@ public class PollVotesAlert extends BottomSheet {
 
             @Override
             protected boolean allowSelectChildAtPosition(float x, float y) {
-                return y >= scrollOffsetY + (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+                return y >= scrollOffsetY + AndroidUtilities.statusBarHeight;
             }
 
             @Override

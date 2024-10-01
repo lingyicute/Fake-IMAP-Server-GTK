@@ -177,6 +177,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicReference;
 
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
+
 @SuppressLint("HardwareIds")
 public class LoginActivity extends BaseFragment {
     public final static boolean ENABLE_PASTED_TEXT_PROCESSING = false;
@@ -278,7 +281,7 @@ public class LoginActivity extends BaseFragment {
     private boolean checkPermissions = true;
     private boolean checkShowPermissions = true;
     private boolean newAccount;
-    private boolean syncContacts = true;
+    private boolean syncContacts = false;
     private boolean testBackend = false;
 
     @ActivityMode
@@ -433,6 +436,17 @@ public class LoginActivity extends BaseFragment {
 
     private boolean isInCancelAccountDeletionMode() {
         return activityMode == MODE_CANCEL_ACCOUNT_DELETION;
+    }
+
+    @Override
+    public int getNavigationBarColor() {
+        return getThemedColor(Theme.key_windowBackgroundWhite);
+    }
+
+    @Override
+    public void setNavigationBarColor(int color) {
+        color = getNavigationBarColor();
+        super.setNavigationBarColor(color);
     }
 
     @Override
@@ -595,7 +609,7 @@ public class LoginActivity extends BaseFragment {
         Bundle savedInstanceState = activityMode == MODE_LOGIN ? loadCurrentState(newAccount, currentAccount) : null;
         if (savedInstanceState != null) {
             currentViewNum = savedInstanceState.getInt("currentViewNum", 0);
-            syncContacts = savedInstanceState.getInt("syncContacts", 1) == 1;
+            syncContacts = savedInstanceState.getInt("syncContacts", 0) == 1;
             if (currentViewNum >= VIEW_CODE_MESSAGE && currentViewNum <= VIEW_CODE_CALL) {
                 int time = savedInstanceState.getInt("open");
                 if (time != 0 && Math.abs(System.currentTimeMillis() / 1000 - time) >= 24 * 60 * 60) {
@@ -622,21 +636,23 @@ public class LoginActivity extends BaseFragment {
 
         floatingButtonContainer = new FrameLayout(context);
         floatingButtonContainer.setVisibility(doneButtonVisible[DONE_TYPE_FLOATING] ? View.VISIBLE : View.GONE);
-        if (Build.VERSION.SDK_INT >= 21) {
-            StateListAnimator animator = new StateListAnimator();
-            animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
-            animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
-            floatingButtonContainer.setStateListAnimator(animator);
-            floatingButtonContainer.setOutlineProvider(new ViewOutlineProvider() {
-                @SuppressLint("NewApi")
-                @Override
-                public void getOutline(View view, Outline outline) {
+        StateListAnimator animator = new StateListAnimator();
+        animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
+        animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
+        floatingButtonContainer.setStateListAnimator(animator);
+        floatingButtonContainer.setOutlineProvider(new ViewOutlineProvider() {
+            @SuppressLint("NewApi")
+            @Override
+            public void getOutline(View view, Outline outline) {
+                if (ExteraConfig.squareFab) {
+                    outline.setRoundRect(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56), AndroidUtilities.dp(16));
+                } else {
                     outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
                 }
-            });
-        }
+            }
+        });
         floatingAutoAnimator = VerticalPositionAutoAnimator.attach(floatingButtonContainer);
-        sizeNotifierFrameLayout.addView(floatingButtonContainer, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 24, 16));
+        sizeNotifierFrameLayout.addView(floatingButtonContainer, LayoutHelper.createFrame(56, 56, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 24, 16));
         floatingButtonContainer.setOnClickListener(view -> onDoneButtonPressed());
         floatingAutoAnimator.addUpdateListener((animation, value, velocity) -> {
             if (phoneNumberConfirmView != null) {
@@ -668,7 +684,7 @@ public class LoginActivity extends BaseFragment {
         floatingButtonIcon.setProgress(1f);
         floatingButtonIcon.setDrawBackground(false);
         floatingButtonContainer.setContentDescription(LocaleController.getString("Done", R.string.Done));
-        floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60));
+        floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(56, 56));
 
         floatingProgressView = new RadialProgressView(context);
         floatingProgressView.setSize(AndroidUtilities.dp(22));
@@ -919,7 +935,7 @@ public class LoginActivity extends BaseFragment {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("logininfo2" + (newAccount ? "_" + currentAccount : ""), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     private void putBundleToEditor(Bundle bundle, SharedPreferences.Editor editor, String prefix) {
@@ -1537,7 +1553,7 @@ public class LoginActivity extends BaseFragment {
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
             putBundleToEditor(bundle, editor, null);
-            editor.commit();
+            editor.apply();
         } catch (Exception e) {
             FileLog.e(e);
         }
@@ -1822,7 +1838,7 @@ public class LoginActivity extends BaseFragment {
 
             titleView = new TextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            titleView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             titleView.setText(LocaleController.getString(activityMode == MODE_CHANGE_PHONE_NUMBER ? R.string.ChangePhoneNewNumber : R.string.YourNumber));
             titleView.setGravity(Gravity.CENTER);
             titleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -1916,9 +1932,7 @@ public class LoginActivity extends BaseFragment {
             codeField.setImeOptions(EditorInfo.IME_ACTION_NEXT | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             codeField.setBackground(null);
 //            codeField.setLineColors(getThemedColor(Theme.key_windowBackgroundWhiteInputField), getThemedColor(Theme.key_windowBackgroundWhiteInputFieldActivated), getThemedColor(Theme.key_windowBackgroundWhiteRedText3));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                codeField.setShowSoftInputOnFocus(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
-            }
+            codeField.setShowSoftInputOnFocus(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
             codeField.setContentDescription(LocaleController.getString(R.string.LoginAccessibilityCountryCode));
             linearLayout.addView(codeField, LayoutHelper.createLinear(55, 36, -9, 0, 0, 0));
             codeField.addTextChangedListener(new TextWatcher() {
@@ -2111,9 +2125,7 @@ public class LoginActivity extends BaseFragment {
             phoneField.setImeOptions(EditorInfo.IME_ACTION_NEXT | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             phoneField.setBackground(null);
 //            phoneField.setLineColors(getThemedColor(Theme.key_windowBackgroundWhiteInputField), getThemedColor(Theme.key_windowBackgroundWhiteInputFieldActivated), getThemedColor(Theme.key_windowBackgroundWhiteRedText3));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                phoneField.setShowSoftInputOnFocus(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
-            }
+            phoneField.setShowSoftInputOnFocus(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
             phoneField.setContentDescription(LocaleController.getString(R.string.PhoneNumber));
             linearLayout.addView(phoneField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 36));
             phoneField.addTextChangedListener(new TextWatcher() {
@@ -2239,11 +2251,24 @@ public class LoginActivity extends BaseFragment {
                 return false;
             });
 
+            TextView proxySettings = new TextView(context);
+            proxySettings.setPadding(AndroidUtilities.dp(34), 0, AndroidUtilities.dp(34), 0);
+            proxySettings.setGravity(Gravity.CENTER);
+            proxySettings.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+            proxySettings.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
+
+            proxySettings.setText(LocaleController.getString("ProxySettings", R.string.ProxySettings));
+            proxySettings.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
+            proxySettings.setBackgroundDrawable(Theme.createSimpleSelectorRoundRectDrawable(AndroidUtilities.dp(6), Theme.getColor(Theme.key_featuredStickers_addButton), Theme.getColor(Theme.key_featuredStickers_addButtonPressed)));
+
+            addView(proxySettings, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM, 16, 15, 16, 16));
+            proxySettings.setOnClickListener(view -> presentFragment(new ProxyListActivity()));
+
             int bottomMargin = 72;
             if (newAccount && activityMode == MODE_LOGIN) {
                 syncContactsBox = new CheckBoxCell(context, 2);
                 syncContactsBox.setText(LocaleController.getString("SyncContacts", R.string.SyncContacts), "", syncContacts, false);
-                addView(syncContactsBox, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP, 16, 0, 16 + (LocaleController.isRTL && AndroidUtilities.isSmallScreen() ? Build.VERSION.SDK_INT >= 21 ? 56 : 60 : 0), 0));
+                addView(syncContactsBox, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP, 16, 0, 16 + (LocaleController.isRTL && AndroidUtilities.isSmallScreen() ? 56 : 0), 0));
                 bottomMargin -= 24;
                 syncContactsBox.setOnClickListener(v -> {
                     if (getParentActivity() == null) {
@@ -2260,10 +2285,10 @@ public class LoginActivity extends BaseFragment {
                 });
             }
 
-            if (BuildVars.DEBUG_VERSION && activityMode == MODE_LOGIN) {
+            if (activityMode == MODE_LOGIN) {
                 testBackendCheckBox = new CheckBoxCell(context, 2);
                 testBackendCheckBox.setText(LocaleController.getString(R.string.DebugTestBackend), "", testBackend, false);
-                addView(testBackendCheckBox, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP, 16, 0, 16 + (LocaleController.isRTL && AndroidUtilities.isSmallScreen() ? Build.VERSION.SDK_INT >= 21 ? 56 : 60 : 0), 0));
+                addView(testBackendCheckBox, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP, 16, 0, 16 + (LocaleController.isRTL && AndroidUtilities.isSmallScreen() ? 56 : 0), 0));
                 bottomMargin -= 24;
                 testBackendCheckBox.setOnClickListener(v -> {
                     if (getParentActivity() == null) {
@@ -2439,6 +2464,17 @@ public class LoginActivity extends BaseFragment {
                                 }
                             }
                         }
+                        CountrySelectActivity.Country countryWithCode = new CountrySelectActivity.Country();
+                        countryWithCode.name = "Test Backend";
+                        countryWithCode.code = "999";
+                        countryWithCode.shortname = "EX";
+                        countriesArray.add(countryWithCode);
+                        List<CountrySelectActivity.Country> countryList = codesMap.get(countryWithCode.code);
+                        if (countryList == null) {
+                            codesMap.put(countryWithCode.code, countryList = new ArrayList<>());
+                        }
+                        countryList.add(countryWithCode);
+                        phoneFormatMap.put(countryWithCode.code, Collections.singletonList("66 X XXXX"));
                     }
                 });
             }, ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);
@@ -2696,22 +2732,14 @@ public class LoginActivity extends BaseFragment {
                                 }
                                 if (!permissionsItems.isEmpty()) {
                                     SharedPreferences preferences = MessagesController.getGlobalMainSettings();
-                                    if (preferences.getBoolean("firstlogin", true) || getParentActivity().shouldShowRequestPermissionRationale(Manifest.permission.READ_PHONE_STATE) || getParentActivity().shouldShowRequestPermissionRationale(Manifest.permission.READ_CALL_LOG)) {
-                                        preferences.edit().putBoolean("firstlogin", false).commit();
+                                    if (getParentActivity().shouldShowRequestPermissionRationale(Manifest.permission.READ_PHONE_STATE)) {
+                                        preferences.edit().putBoolean("firstlogin", false).apply();
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
                                         builder.setPositiveButton(LocaleController.getString("Continue", R.string.Continue), null);
                                         int resId;
-                                        if (!allowCall && (!allowCancelCall || !allowReadCallLog)) {
-                                            builder.setMessage(LocaleController.getString("AllowReadCallAndLog", R.string.AllowReadCallAndLog));
-                                            resId = R.raw.calls_log;
-                                        } else if (!allowCancelCall || !allowReadCallLog) {
-                                            builder.setMessage(LocaleController.getString("AllowReadCallLog", R.string.AllowReadCallLog));
-                                            resId = R.raw.calls_log;
-                                        } else {
-                                            builder.setMessage(LocaleController.getString("AllowReadCall", R.string.AllowReadCall));
-                                            resId = R.raw.incoming_calls;
-                                        }
+                                        builder.setMessage(LocaleController.getString("AllowReadCall", R.string.AllowReadCall));
+                                        resId = R.raw.incoming_calls;
                                         builder.setTopAnimation(resId, 46, false, Theme.getColor(Theme.key_dialogTopBackground));
                                         permissionsDialog = showDialog(builder.create());
                                         confirmedNumber = true;
@@ -2768,13 +2796,13 @@ public class LoginActivity extends BaseFragment {
                     if (!allowReadCallLog) {
                         permissionsItems.add(Manifest.permission.READ_CALL_LOG);
                     }
-                    if (!allowReadPhoneNumbers && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if (!allowReadPhoneNumbers) {
                         permissionsItems.add(Manifest.permission.READ_PHONE_NUMBERS);
                     }
                     if (!permissionsItems.isEmpty()) {
                         SharedPreferences preferences = MessagesController.getGlobalMainSettings();
                         if (preferences.getBoolean("firstlogin", true) || getParentActivity().shouldShowRequestPermissionRationale(Manifest.permission.READ_PHONE_STATE) || getParentActivity().shouldShowRequestPermissionRationale(Manifest.permission.READ_CALL_LOG)) {
-                            preferences.edit().putBoolean("firstlogin", false).commit();
+                            preferences.edit().putBoolean("firstlogin", false).apply();
                             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
                             builder.setPositiveButton(LocaleController.getString("Continue", R.string.Continue), null);
@@ -2808,13 +2836,24 @@ public class LoginActivity extends BaseFragment {
                 needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ChooseCountry", R.string.ChooseCountry));
                 needHideProgress(false);
                 return;
-            } else if (countryState == COUNTRY_STATE_INVALID && !BuildVars.DEBUG_VERSION) {
+            } else if (countryState == COUNTRY_STATE_INVALID && !testBackend) {
                 needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("WrongCountry", R.string.WrongCountry));
                 needHideProgress(false);
                 return;
             }
             String phone = PhoneFormat.stripExceptNumbers("" + codeField.getText() + phoneField.getText());
             if (activityMode == MODE_LOGIN) {
+                if (!testBackend && "999".equals(codeField.getText().toString())) {
+                    testBackend = true;
+                    if (testBackendCheckBox != null) {
+                        testBackendCheckBox.setChecked(true, true);
+                    }
+                }
+                boolean testBackend = getConnectionsManager().isTestBackend();
+                if (testBackend != LoginActivity.this.testBackend) {
+                    getConnectionsManager().switchBackend(false);
+                    testBackend = LoginActivity.this.testBackend;
+                }
                 if (getParentActivity() instanceof LaunchActivity) {
                     for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) {
                         UserConfig userConfig = UserConfig.getInstance(a);
@@ -3040,7 +3079,7 @@ public class LoginActivity extends BaseFragment {
                                 Runnable r = () -> {
                                     SharedPreferences preferences = MessagesController.getGlobalMainSettings();
                                     if (preferences.getBoolean("firstloginshow", true) || getParentActivity().shouldShowRequestPermissionRationale(Manifest.permission.READ_PHONE_STATE)) {
-                                        preferences.edit().putBoolean("firstloginshow", false).commit();
+                                        preferences.edit().putBoolean("firstloginshow", false).apply();
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
                                         builder.setTopAnimation(R.raw.incoming_calls, 46, false, Theme.getColor(Theme.key_dialogTopBackground));
@@ -3283,7 +3322,7 @@ public class LoginActivity extends BaseFragment {
 
             titleTextView = new TextView(context);
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            titleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             titleTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
             titleTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             titleTextView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
@@ -3334,7 +3373,7 @@ public class LoginActivity extends BaseFragment {
                 prefixTextView = new TextView(context);
                 prefixTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 prefixTextView.setMaxLines(1);
-                prefixTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+                prefixTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
                 prefixTextView.setPadding(0, 0, 0, 0);
                 prefixTextView.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -3802,9 +3841,7 @@ public class LoginActivity extends BaseFragment {
 
             if (codeFieldContainer != null && codeFieldContainer.codeField != null) {
                 for (CodeNumberField f : codeFieldContainer.codeField) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        f.setShowSoftInputOnFocusCompat(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
-                    }
+                    f.setShowSoftInputOnFocusCompat(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
                 }
             }
         }
@@ -3921,9 +3958,7 @@ public class LoginActivity extends BaseFragment {
 
             codeFieldContainer.setNumbersCount(length, currentType);
             for (CodeNumberField f : codeFieldContainer.codeField) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    f.setShowSoftInputOnFocusCompat(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
-                }
+                f.setShowSoftInputOnFocusCompat(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
                 f.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -4769,7 +4804,7 @@ public class LoginActivity extends BaseFragment {
 
             titleView = new TextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            titleView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             titleView.setText(LocaleController.getString(R.string.YourPasswordHeader));
             titleView.setGravity(Gravity.CENTER);
             titleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -4817,7 +4852,7 @@ public class LoginActivity extends BaseFragment {
             cancelButton.setPadding(AndroidUtilities.dp(16), 0, AndroidUtilities.dp(16), 0);
 
             FrameLayout bottomContainer = new FrameLayout(context);
-            bottomContainer.addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, (Build.VERSION.SDK_INT >= 21 ? 56 : 60), Gravity.BOTTOM, 0, 0, 0, 32));
+            bottomContainer.addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.BOTTOM, 0, 0, 0, 32));
             addView(bottomContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.BOTTOM));
             VerticalPositionAutoAnimator.attach(cancelButton);
 
@@ -5116,7 +5151,7 @@ public class LoginActivity extends BaseFragment {
 
             titleView = new TextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            titleView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             titleView.setText(LocaleController.getString(R.string.ResetAccount));
             titleView.setGravity(Gravity.CENTER);
             titleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -5140,14 +5175,14 @@ public class LoginActivity extends BaseFragment {
             resetAccountTime = new TextView(context);
             resetAccountTime.setGravity(Gravity.CENTER_HORIZONTAL);
             resetAccountTime.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-            resetAccountTime.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            resetAccountTime.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             resetAccountTime.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             addView(resetAccountTime, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 8, 0, 0));
 
             resetAccountButton = new TextView(context);
             resetAccountButton.setGravity(Gravity.CENTER);
             resetAccountButton.setText(LocaleController.getString(R.string.ResetAccount));
-            resetAccountButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            resetAccountButton.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             resetAccountButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             resetAccountButton.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             resetAccountButton.setPadding(AndroidUtilities.dp(34), 0, AndroidUtilities.dp(34), 0);
@@ -5373,7 +5408,7 @@ public class LoginActivity extends BaseFragment {
             signInWithGoogleView.setMaxLines(2);
 
             SpannableStringBuilder str = new SpannableStringBuilder("d ");
-            Drawable dr = ContextCompat.getDrawable(context, R.drawable.googleg_standard_color_18);
+            Drawable dr = ContextCompat.getDrawable(context, com.google.firebase.messaging.R.drawable.googleg_standard_color_18);
             dr.setBounds(0, AndroidUtilities.dp(9), AndroidUtilities.dp(18), AndroidUtilities.dp(18 + 9));
             str.setSpan(new ImageSpan(dr, ImageSpan.ALIGN_BOTTOM), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             str.setSpan(new ReplacementSpan() {
@@ -5713,7 +5748,7 @@ public class LoginActivity extends BaseFragment {
             signInWithGoogleView.setMaxLines(2);
 
             SpannableStringBuilder str = new SpannableStringBuilder("d ");
-            Drawable dr = ContextCompat.getDrawable(context, R.drawable.googleg_standard_color_18);
+            Drawable dr = ContextCompat.getDrawable(context, com.google.firebase.messaging.R.drawable.googleg_standard_color_18);
             dr.setBounds(0, AndroidUtilities.dp(9), AndroidUtilities.dp(18), AndroidUtilities.dp(18 + 9));
             str.setSpan(new ImageSpan(dr, ImageSpan.ALIGN_BOTTOM), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             str.setSpan(new ReplacementSpan() {
@@ -6478,7 +6513,7 @@ public class LoginActivity extends BaseFragment {
 
             titleView = new TextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            titleView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             titleView.setText(LocaleController.getString(R.string.EnterCode));
             titleView.setGravity(Gravity.CENTER);
             titleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -6619,7 +6654,9 @@ public class LoginActivity extends BaseFragment {
             }
             try {
                 codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-            } catch (Exception ignore) {}
+            } catch (Exception e) {
+                FileLog.e(e);
+            }
             if (clear) {
                 for (CodeNumberField f : codeFieldContainer.codeField) {
                     f.setText("");
@@ -6767,7 +6804,7 @@ public class LoginActivity extends BaseFragment {
 
             titleTextView = new TextView(context);
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            titleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             titleTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             titleTextView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
             titleTextView.setText(LocaleController.getString(R.string.SetNewPassword));
@@ -6882,7 +6919,7 @@ public class LoginActivity extends BaseFragment {
             cancelButton.setText(LocaleController.getString(R.string.YourEmailSkip));
 
             FrameLayout bottomContainer = new FrameLayout(context);
-            bottomContainer.addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, (Build.VERSION.SDK_INT >= 21 ? 56 : 60), Gravity.BOTTOM, 0, 0, 0, 32));
+            bottomContainer.addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.BOTTOM, 0, 0, 0, 32));
             addView(bottomContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.BOTTOM));
             VerticalPositionAutoAnimator.attach(cancelButton);
 
@@ -7221,7 +7258,7 @@ public class LoginActivity extends BaseFragment {
                     super.invalidate(l, t, r, b);
                 }
             };
-            avatarImage.setRoundRadius(AndroidUtilities.dp(64));
+            avatarImage.setRoundRadius(ExteraConfig.getAvatarCorners(78));
             avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_REGISTER);
             avatarDrawable.setInfo(5, null, null);
             avatarImage.setImageDrawable(avatarDrawable);
@@ -7235,7 +7272,7 @@ public class LoginActivity extends BaseFragment {
                 protected void onDraw(Canvas canvas) {
                     if (avatarImage != null && avatarProgressView.getVisibility() == VISIBLE) {
                         paint.setAlpha((int) (0x55 * avatarImage.getImageReceiver().getCurrentAlpha() * avatarProgressView.getAlpha()));
-                        canvas.drawCircle(getMeasuredWidth() / 2.0f, getMeasuredHeight() / 2.0f, getMeasuredWidth() / 2.0f, paint);
+                        canvas.drawRoundRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), ExteraConfig.getAvatarCorners(getMeasuredWidth(), true), ExteraConfig.getAvatarCorners(getMeasuredWidth(), true), paint);
                     }
                 }
             };
@@ -7339,7 +7376,7 @@ public class LoginActivity extends BaseFragment {
             titleTextView = new TextView(context);
             titleTextView.setText(LocaleController.getString(R.string.RegistrationProfileInfo));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            titleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             titleTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
             addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 8, 12, 8, 0));
@@ -7428,7 +7465,7 @@ public class LoginActivity extends BaseFragment {
             privacyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, AndroidUtilities.isSmallScreen() ? 13 : 14);
             privacyView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             privacyView.setGravity(Gravity.CENTER_VERTICAL);
-            privacyLayout.addView(privacyView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 56 : 60, Gravity.LEFT | Gravity.BOTTOM, 14, 0, 70, 32));
+            privacyLayout.addView(privacyView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 56, Gravity.LEFT | Gravity.BOTTOM, 14, 0, 70, 32));
             VerticalPositionAutoAnimator.attach(privacyView);
 
             String str = LocaleController.getString("TermsOfServiceLogin", R.string.TermsOfServiceLogin);
@@ -7860,14 +7897,7 @@ public class LoginActivity extends BaseFragment {
         fragmentView.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
 
         Context context = getParentActivity();
-        Drawable drawable = Theme.createSimpleSelectorCircleDrawable(AndroidUtilities.dp(56), Theme.getColor(Theme.key_chats_actionBackground), Theme.getColor(Theme.key_chats_actionPressedBackground));
-        if (Build.VERSION.SDK_INT < 21) {
-            Drawable shadowDrawable = context.getResources().getDrawable(R.drawable.floating_shadow).mutate();
-            shadowDrawable.setColorFilter(new PorterDuffColorFilter(0xff000000, PorterDuff.Mode.MULTIPLY));
-            CombinedDrawable combinedDrawable = new CombinedDrawable(shadowDrawable, drawable, 0, 0);
-            combinedDrawable.setIconSize(AndroidUtilities.dp(56), AndroidUtilities.dp(56));
-            drawable = combinedDrawable;
-        }
+        Drawable drawable = ExteraUtils.drawFab();
         floatingButtonContainer.setBackground(drawable);
 
         backButtonView.setColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
@@ -7997,7 +8027,7 @@ public class LoginActivity extends BaseFragment {
             popupFabContainer.addView(floatingProgressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
             popupFabContainer.setContentDescription(LocaleController.getString(R.string.Done));
-            addView(popupFabContainer, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60));
+            addView(popupFabContainer, LayoutHelper.createFrame(56, 56));
 
             popupLayout = new FrameLayout(context);
 
@@ -8062,7 +8092,7 @@ public class LoginActivity extends BaseFragment {
             numberView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
             editTextView.setTextColor(Theme.getColor(Theme.key_changephoneinfo_image2));
             confirmTextView.setTextColor(Theme.getColor(Theme.key_changephoneinfo_image2));
-            popupFabContainer.setBackground(Theme.createSimpleSelectorCircleDrawable(AndroidUtilities.dp(56), Theme.getColor(Theme.key_chats_actionBackground), Theme.getColor(Theme.key_chats_actionPressedBackground)));
+            popupFabContainer.setBackground(ExteraUtils.drawFab());
             floatingProgressView.setProgressColor(Theme.getColor(Theme.key_chats_actionIcon));
         }
 
@@ -8076,9 +8106,7 @@ public class LoginActivity extends BaseFragment {
         }
 
         private void show() {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ObjectAnimator.ofFloat(fabContainer, View.TRANSLATION_Z, fabContainer.getTranslationZ(), 0).setDuration(150).start();
-            }
+            ObjectAnimator.ofFloat(fabContainer, View.TRANSLATION_Z, fabContainer.getTranslationZ(), 0).setDuration(150).start();
 
             ValueAnimator anim = ValueAnimator.ofFloat(0, 1).setDuration(250);
             anim.addListener(new AnimatorListenerAdapter() {
@@ -8164,9 +8192,7 @@ public class LoginActivity extends BaseFragment {
                         ((ViewGroup) getParent()).removeView(PhoneNumberConfirmView.this);
                     }
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ObjectAnimator.ofFloat(fabContainer, View.TRANSLATION_Z, 0, AndroidUtilities.dp(2)).setDuration(150).start();
-                    }
+                    ObjectAnimator.ofFloat(fabContainer, View.TRANSLATION_Z, 0, AndroidUtilities.dp(2)).setDuration(150).start();
                     fabContainer.setVisibility(VISIBLE);
                 }
             });

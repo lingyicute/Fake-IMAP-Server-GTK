@@ -46,6 +46,8 @@ import org.telegram.ui.ActionBar.ThemeDescription;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class ChatAttachAlertContactsLayout extends ChatAttachAlert.AttachAlertLayout implements NotificationCenter.NotificationCenterDelegate {
 
     private FrameLayout frameLayout;
@@ -97,7 +99,7 @@ public class ChatAttachAlertContactsLayout extends ChatAttachAlert.AttachAlertLa
             avatarDrawable = new AvatarDrawable(resourcesProvider);
 
             avatarImageView = new BackupImageView(context);
-            avatarImageView.setRoundRadius(AndroidUtilities.dp(23));
+            avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(46));
             addView(avatarImageView, LayoutHelper.createFrame(46, 46, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 14, 9, LocaleController.isRTL ? 14 : 0, 0));
 
             nameTextView = new SimpleTextView(context) {
@@ -266,7 +268,7 @@ public class ChatAttachAlertContactsLayout extends ChatAttachAlert.AttachAlertLa
 
         @Override
         protected void onDraw(Canvas canvas) {
-            if (needDivider) {
+            if (needDivider && !ExteraConfig.disableDividers) {
                 canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(70), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(70) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
             }
         }
@@ -339,7 +341,7 @@ public class ChatAttachAlertContactsLayout extends ChatAttachAlert.AttachAlertLa
         listView = new RecyclerListView(context, resourcesProvider) {
             @Override
             protected boolean allowSelectChildAtPosition(float x, float y) {
-                return y >= parentAlert.scrollOffsetY[0] + AndroidUtilities.dp(30) + (Build.VERSION.SDK_INT >= 21 && !parentAlert.inBubbleMode ? AndroidUtilities.statusBarHeight : 0);
+                return y >= parentAlert.scrollOffsetY[0] + AndroidUtilities.dp(30) + (!parentAlert.inBubbleMode ? AndroidUtilities.statusBarHeight : 0);
             }
         };
         listView.setClipToPadding(false);

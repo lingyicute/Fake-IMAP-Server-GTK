@@ -340,7 +340,7 @@ public class StickerMasksAlert extends BottomSheet implements NotificationCenter
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 int totalHeight = MeasureSpec.getSize(heightMeasureSpec);
-                if (Build.VERSION.SDK_INT >= 21 && !isFullscreen) {
+                if (!isFullscreen) {
                     ignoreLayout = true;
                     setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
                     ignoreLayout = false;
@@ -415,10 +415,8 @@ public class StickerMasksAlert extends BottomSheet implements NotificationCenter
                     rad = 1.0f - moveProgress;
                 }
 
-                if (Build.VERSION.SDK_INT >= 21) {
-                    top += AndroidUtilities.statusBarHeight;
-                    y += AndroidUtilities.statusBarHeight;
-                }
+                top += AndroidUtilities.statusBarHeight;
+                y += AndroidUtilities.statusBarHeight;
 
                 shadowDrawable.setBounds(0, top, getMeasuredWidth(), height);
                 shadowDrawable.draw(canvas);
@@ -486,7 +484,7 @@ public class StickerMasksAlert extends BottomSheet implements NotificationCenter
 
             @Override
             protected boolean allowSelectChildAtPosition(float x, float y) {
-                return y >= scrollOffsetY + (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+                return y >= scrollOffsetY + AndroidUtilities.statusBarHeight;
             }
 
             @Override
@@ -759,10 +757,8 @@ public class StickerMasksAlert extends BottomSheet implements NotificationCenter
             public void setSelected(boolean selected) {
                 super.setSelected(selected);
                 Drawable background = getBackground();
-                if (Build.VERSION.SDK_INT >= 21 && background != null) {
-                    int color = selected ? 0xff6ebaed : 0x1effffff;
-                    Theme.setSelectorDrawableColor(background, Color.argb(30, Color.red(color), Color.green(color), Color.blue(color)), true);
-                }
+                int color = selected ? 0xff6ebaed : 0x1effffff;
+                Theme.setSelectorDrawableColor(background, Color.argb(30, Color.red(color), Color.green(color), Color.blue(color)), true);
             }
         };
         emojiButton.setScaleType(ImageView.ScaleType.CENTER);
@@ -814,7 +810,7 @@ public class StickerMasksAlert extends BottomSheet implements NotificationCenter
                 public void setSelected(boolean selected) {
                     super.setSelected(selected);
                     Drawable background = getBackground();
-                    if (Build.VERSION.SDK_INT >= 21 && background != null) {
+                    if (background != null) {
                         int color = selected ? 0xff6ebaed : 0x1effffff;
                         Theme.setSelectorDrawableColor(background, Color.argb(30, Color.red(color), Color.green(color), Color.blue(color)), true);
                     }
@@ -822,11 +818,9 @@ public class StickerMasksAlert extends BottomSheet implements NotificationCenter
             };
             masksButton.setScaleType(ImageView.ScaleType.CENTER);
             masksButton.setImageDrawable(Theme.createEmojiIconSelectorDrawable(context, R.drawable.ic_masks_msk1, 0xffffffff, 0xff6ebaed));
-            if (Build.VERSION.SDK_INT >= 21) {
-                RippleDrawable rippleDrawable = (RippleDrawable) Theme.createSelectorDrawable(0x1effffff);
-                Theme.setRippleDrawableForceSoftware(rippleDrawable);
-                masksButton.setBackground(rippleDrawable);
-            }
+            RippleDrawable rippleDrawable = (RippleDrawable) Theme.createSelectorDrawable(0x1effffff);
+            Theme.setRippleDrawableForceSoftware(rippleDrawable);
+            masksButton.setBackground(rippleDrawable);
             itemsLayout.addView(masksButton, LayoutHelper.createLinear(70, 48));
             masksButton.setOnClickListener(v -> {
                 if (currentType == MediaDataController.TYPE_MASK) {

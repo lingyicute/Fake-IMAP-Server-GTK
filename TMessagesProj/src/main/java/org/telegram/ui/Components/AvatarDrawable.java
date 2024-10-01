@@ -33,6 +33,9 @@ import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import com.exteragram.messenger.ExteraConfig;
 
 public class AvatarDrawable extends Drawable {
 
@@ -314,18 +317,14 @@ public class AvatarDrawable extends Drawable {
                 if ((index = lastNameLastWord.lastIndexOf(' ')) >= 0) {
                     lastNameLastWord = lastNameLastWord.substring(index + 1);
                 }
-                if (Build.VERSION.SDK_INT > 17) {
-                    stringBuilder.append("\u200C");
-                }
+                stringBuilder.append("\u200C");
                 stringBuilder.append(takeFirstCharacter(lastNameLastWord));
             } else if (firstName != null && firstName.length() > 0) {
                 for (int a = firstName.length() - 1; a >= 0; a--) {
                     if (firstName.charAt(a) == ' ') {
                         if (a != firstName.length() - 1 && firstName.charAt(a + 1) != ' ') {
                             int index = stringBuilder.length();
-                            if (Build.VERSION.SDK_INT > 17) {
-                                stringBuilder.append("\u200C");
-                            }
+                            stringBuilder.append("\u200C");
                             stringBuilder.append(takeFirstCharacter(firstName.substring(index)));
                             break;
                         }
@@ -356,17 +355,14 @@ public class AvatarDrawable extends Drawable {
         }
         canvas.save();
         canvas.translate(bounds.left, bounds.top);
-        if (roundRadius > 0) {
-            AndroidUtilities.rectTmp.set(0, 0, size, size);
-            canvas.drawRoundRect(AndroidUtilities.rectTmp, roundRadius, roundRadius, Theme.avatar_backgroundPaint);
-        } else {
-            canvas.drawCircle(size / 2.0f, size / 2.0f, size / 2.0f, Theme.avatar_backgroundPaint);
-        }
+        AndroidUtilities.rectTmp.set(0, 0, size, size);
+        canvas.drawRoundRect(AndroidUtilities.rectTmp, ExteraConfig.getAvatarCorners(size, true), ExteraConfig.getAvatarCorners(size, true), Theme.avatar_backgroundPaint);
 
         if (avatarType == AVATAR_TYPE_ARCHIVED) {
             if (archivedAvatarProgress != 0) {
                 Theme.avatar_backgroundPaint.setColor(ColorUtils.setAlphaComponent(getThemedColor(Theme.key_avatar_backgroundArchived), alpha));
-                canvas.drawCircle(size / 2.0f, size / 2.0f, size / 2.0f * archivedAvatarProgress, Theme.avatar_backgroundPaint);
+                canvas.drawRoundRect(0, 0, size * archivedAvatarProgress, size * archivedAvatarProgress, ExteraConfig.getAvatarCorners(size * archivedAvatarProgress, true), ExteraConfig.getAvatarCorners(size * archivedAvatarProgress, true), Theme.avatar_backgroundPaint);
+
                 if (Theme.dialogs_archiveAvatarDrawableRecolored) {
                     Theme.dialogs_archiveAvatarDrawable.beginApplyLayerColors();
                     Theme.dialogs_archiveAvatarDrawable.setLayerColor("Arrow1.**", Theme.getNonAnimatedColor(Theme.key_avatar_backgroundArchived));

@@ -30,6 +30,8 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.LinkSpanDrawable;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class TextDetailCell extends FrameLayout {
 
     private final TextView textView;
@@ -57,6 +59,7 @@ public class TextDetailCell extends FrameLayout {
         textView = new TextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         textView.setLines(1);
         textView.setMaxLines(1);
@@ -82,6 +85,7 @@ public class TextDetailCell extends FrameLayout {
         }
         valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         valueTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         valueTextView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
         valueTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -160,6 +164,10 @@ public class TextDetailCell extends FrameLayout {
         this.contentDescriptionValueFirst = contentDescriptionValueFirst;
     }
 
+    public TextView getTextView() {
+        return textView;
+    }
+
     @Override
     public void invalidate() {
         super.invalidate();
@@ -168,7 +176,7 @@ public class TextDetailCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider) {
+        if (needDivider  && !ExteraConfig.disableDividers) {
             canvas.drawLine(
                 LocaleController.isRTL ? 0 : AndroidUtilities.dp(20),
                 getMeasuredHeight() - 1,

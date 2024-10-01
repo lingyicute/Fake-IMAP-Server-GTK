@@ -165,11 +165,7 @@ public abstract class BaseFragment {
     public void setInPreviewMode(boolean value) {
         inPreviewMode = value;
         if (actionBar != null) {
-            if (inPreviewMode) {
-                actionBar.setOccupyStatusBar(false);
-            } else {
-                actionBar.setOccupyStatusBar(Build.VERSION.SDK_INT >= 21);
-            }
+            actionBar.setOccupyStatusBar(!inPreviewMode);
         }
     }
 
@@ -595,7 +591,6 @@ public abstract class BaseFragment {
         try {
             if (visibleDialog != null) {
                 visibleDialog.dismiss();
-                visibleDialog = null;
             }
         } catch (Exception e) {
             FileLog.e(e);
@@ -800,7 +795,7 @@ public abstract class BaseFragment {
     }
 
     public int getNavigationBarColor() {
-        return Theme.getColor(Theme.key_windowBackgroundGray);
+        return getThemedColor(Theme.key_windowBackgroundGray);
     }
 
     public void setNavigationBarColor(int color) {

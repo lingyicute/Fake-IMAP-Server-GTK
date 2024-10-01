@@ -231,7 +231,7 @@ public class EmojiTabsStrip extends ScrollableHorizontalScrollView {
                 path.addRoundRect(rect, r, r, Path.Direction.CW);
                 canvas.drawPath(path, paint);
 
-                if (forceTabsShow) {
+                if (forceTabsShow && includeAnimated) {
                     path.rewind();
                     getChildBounds(1, rect);
                     path.addRoundRect(rect, AndroidUtilities.dpf2(16), AndroidUtilities.dpf2(16), Path.Direction.CW);
@@ -869,7 +869,7 @@ public class EmojiTabsStrip extends ScrollableHorizontalScrollView {
             this.forceSelector = forceSelector;
             if (round) {
                 setBackground(Theme.createCircleSelectorDrawable(selectorColor(), 0, 0));
-            } else if (forceSelector) {
+            } else if (forceSelector && includeAnimated) {
                 setBackground(Theme.createRadSelectorDrawable(selectorColor(), 8, 8));
             }
 
@@ -893,7 +893,7 @@ public class EmojiTabsStrip extends ScrollableHorizontalScrollView {
             this.forceSelector = forceSelector;
             if (round) {
                 setBackground(Theme.createCircleSelectorDrawable(selectorColor(), 0, 0));
-            } else if (forceSelector) {
+            } else if (forceSelector && includeAnimated) {
                 setBackground(Theme.createRadSelectorDrawable(selectorColor(), 8, 8));
             }
 
@@ -911,7 +911,7 @@ public class EmojiTabsStrip extends ScrollableHorizontalScrollView {
             this.forceSelector = forceSelector;
             if (round) {
                 setBackground(Theme.createCircleSelectorDrawable(selectorColor(), 0, 0));
-            } else if (forceSelector) {
+            } else if (forceSelector && includeAnimated) {
                 setBackground(Theme.createRadSelectorDrawable(selectorColor(), 8, 8));
             }
 
@@ -1222,7 +1222,7 @@ public class EmojiTabsStrip extends ScrollableHorizontalScrollView {
                 selectAnimator.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        if (updateButtonDrawables && !round) {
+                        if (updateButtonDrawables && !round && includeAnimated) {
                             if (selected || forceSelector) {
                                 if (getBackground() == null) {
                                     setBackground(Theme.createRadSelectorDrawable(selectorColor(), 8, 8));
@@ -1274,9 +1274,7 @@ public class EmojiTabsStrip extends ScrollableHorizontalScrollView {
             setSmoothScrollingEnabled(true);
             setHorizontalScrollBarEnabled(false);
             setVerticalScrollBarEnabled(false);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                setNestedScrollingEnabled(true);
-            }
+            setNestedScrollingEnabled(true);
             contentView = new LinearLayout(context) {
                 @Override
                 protected void onLayout(boolean changed, int l, int t, int r, int b) {

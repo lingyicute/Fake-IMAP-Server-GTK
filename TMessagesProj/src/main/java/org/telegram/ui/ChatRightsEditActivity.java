@@ -16,13 +16,13 @@ import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -523,7 +523,7 @@ public class ChatRightsEditActivity extends BaseFragment {
         });
 
         listView.setOnItemClickListener((view, position) -> {
-            if (!canEdit && (!currentChat.creator || currentType != TYPE_ADMIN || position != anonymousRow)) {
+            if (!canEdit && (!currentChat.creator || currentType != TYPE_ADMIN || position != anonymousRow) && position != 0) {
                 return;
             }
             if (position == sendMediaRow) {
@@ -689,17 +689,15 @@ public class ChatRightsEditActivity extends BaseFragment {
                                     dialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), (dialog1, which) -> {
 
                                     });
-                                    if (Build.VERSION.SDK_INT >= 21) {
-                                        dialog.setOnShowListener(dialog12 -> {
-                                            int count = datePicker.getChildCount();
-                                            for (int b = 0; b < count; b++) {
-                                                View child = datePicker.getChildAt(b);
-                                                ViewGroup.LayoutParams layoutParams = child.getLayoutParams();
-                                                layoutParams.width = LayoutHelper.MATCH_PARENT;
-                                                child.setLayoutParams(layoutParams);
-                                            }
-                                        });
-                                    }
+                                    dialog.setOnShowListener(dialog12 -> {
+                                        int count = datePicker.getChildCount();
+                                        for (int b = 0; b < count; b++) {
+                                            View child = datePicker.getChildAt(b);
+                                            ViewGroup.LayoutParams layoutParams = child.getLayoutParams();
+                                            layoutParams.width = LayoutHelper.MATCH_PARENT;
+                                            child.setLayoutParams(layoutParams);
+                                        }
+                                    });
                                     showDialog(dialog);
                                 } catch (Exception e) {
                                     FileLog.e(e);
@@ -1207,11 +1205,8 @@ public class ChatRightsEditActivity extends BaseFragment {
         if (currentType == TYPE_ADMIN || currentType == TYPE_ADD_BOT) {
             if (rankRow != -1 && currentRank.codePointCount(0, currentRank.length()) > MAX_RANK_LENGTH) {
                 listView.smoothScrollToPosition(rankRow);
-                Vibrator v = (Vibrator) getParentActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                if (v != null) {
-                    v.vibrate(200);
-                }
                 RecyclerView.ViewHolder holder = listView.findViewHolderForAdapterPosition(rankHeaderRow);
+                holder.itemView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 if (holder != null) {
                     AndroidUtilities.shakeView(holder.itemView);
                 }
@@ -1462,7 +1457,7 @@ public class ChatRightsEditActivity extends BaseFragment {
         @Override
         public boolean isEnabled(RecyclerView.ViewHolder holder) {
             int type = holder.getItemViewType();
-            if (currentChat.creator && (currentType == TYPE_ADMIN || currentType == TYPE_ADD_BOT && asAdmin) && type == VIEW_TYPE_SWITCH_CELL && holder.getAdapterPosition() == anonymousRow) {
+            if (type == VIEW_TYPE_USER_CELL || currentChat.creator && (currentType == TYPE_ADMIN || currentType == TYPE_ADD_BOT && asAdmin) && type == VIEW_TYPE_SWITCH_CELL && holder.getAdapterPosition() == anonymousRow) {
                 return true;
             }
             if (!canEdit) {
@@ -1547,7 +1542,7 @@ public class ChatRightsEditActivity extends BaseFragment {
                     addBotButtonContainer.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
                     addBotButton = new FrameLayout(mContext);
                     addBotButtonText = new AnimatedTextView(mContext, true, false, false);
-                    addBotButtonText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+                    addBotButtonText.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
                     addBotButtonText.setTextColor(0xffffffff);
                     addBotButtonText.setTextSize(AndroidUtilities.dp(14));
                     addBotButtonText.setGravity(Gravity.CENTER);

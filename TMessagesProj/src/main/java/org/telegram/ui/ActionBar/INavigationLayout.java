@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import org.telegram.messenger.SharedConfig;
 import org.telegram.ui.Components.BackButtonMenu;
+import org.telegram.ui.LNavigation.LNavigation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,7 +78,7 @@ public interface INavigationLayout {
     void setPulledDialogs(List<BackButtonMenu.PulledDialog> pulledDialogs);
 
     static INavigationLayout newLayout(Context context) {
-        return new ActionBarLayout(context);
+        return SharedConfig.useLNavigation ? new LNavigation(context) : new ActionBarLayout(context);
     }
 
     default void removeFragmentFromStack(BaseFragment fragment) {
@@ -128,7 +130,7 @@ public interface INavigationLayout {
     default void rebuildAllFragmentViews(boolean last, boolean showLastAfter) {}
 
     default void drawHeaderShadow(Canvas canvas, int y) {
-        drawHeaderShadow(canvas, 0xFF, y);
+        drawHeaderShadow(canvas, Theme.dividerPaint.getAlpha(), y);
     }
 
     default BaseFragment getBackgroundFragment() {
@@ -255,12 +257,13 @@ public interface INavigationLayout {
     }
 
     interface INavigationLayoutDelegate {
+        @SuppressWarnings("deprecation")
         default boolean needPresentFragment(INavigationLayout layout, NavigationParams params) {
             return needPresentFragment(params.fragment, params.removeLast, params.noAnimation, layout);
         }
 
         /**
-         * @deprecated You should override {@link INavigationLayoutDelegate#needPresentFragment(INavigationLayout, NavigationParams)} for more fields
+         * You should override {@link INavigationLayoutDelegate#needPresentFragment(INavigationLayout, NavigationParams)} for more fields
          */
         default boolean needPresentFragment(BaseFragment fragment, boolean removeLast, boolean forceWithoutAnimation, INavigationLayout layout) {
             return true;

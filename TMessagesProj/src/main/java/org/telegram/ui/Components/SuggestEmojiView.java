@@ -28,6 +28,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.Emoji;
 import org.telegram.messenger.LocaleController;
@@ -582,11 +584,12 @@ public class SuggestEmojiView extends FrameLayout implements NotificationCenter.
                     }
                     Emoji.EmojiSpan[] emojiSpans = editable.getSpans(i, i + replacingLength, Emoji.EmojiSpan.class);
                     if (emojiSpans != null) {
-                        for (int j = 0; j < emojiSpans.length; ++j) {
-                            editable.removeSpan(emojiSpans[j]);
+                        for (Emoji.EmojiSpan emojiSpan : emojiSpans) {
+                            editable.removeSpan(emojiSpan);
                         }
                     }
-                    editable.replace(i, i + replacingLength, emoji);
+                    int pos = i + replacingLength;
+                    editable.replace(i, pos, emoji);
                 } else {
                     break;
                 }

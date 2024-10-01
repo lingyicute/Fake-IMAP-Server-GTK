@@ -39,6 +39,8 @@ import androidx.core.util.Consumer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ChatObject;
@@ -804,19 +806,19 @@ public class ReactionsContainerLayout extends FrameLayout implements Notificatio
         float cy = getHeight() - getPaddingBottom() + expandSize();
         cy = AndroidUtilities.lerp(cy, getPaddingTop() - expandSize(), CubicBezierInterpolator.DEFAULT.getInterpolation(flipVerticalProgress));
         int sPad = AndroidUtilities.dp(3);
-        shadow.setAlpha(alpha);
+        /*shadow.setAlpha(alpha);
         bgPaint.setAlpha(alpha);
         shadow.setBounds((int) (cx - br - sPad * cPr), (int) (cy - br - sPad * cPr), (int) (cx + br + sPad * cPr), (int) (cy + br + sPad * cPr));
         shadow.draw(canvas);
-        canvas.drawCircle(cx, cy, br, bgPaint);
+        canvas.drawCircle(cx, cy, br, bgPaint);*/
 
         cx = LocaleController.isRTL || mirrorX ? bigCircleOffset - bigCircleRadius : getWidth() - bigCircleOffset + bigCircleRadius;
         cy = getHeight() - smallCircleRadius - sPad + expandSize();
         cy = AndroidUtilities.lerp(cy, smallCircleRadius + sPad - expandSize(), CubicBezierInterpolator.DEFAULT.getInterpolation(flipVerticalProgress));
         sPad = -AndroidUtilities.dp(1);
-        shadow.setBounds((int) (cx - br - sPad * cPr), (int) (cy - br - sPad * cPr), (int) (cx + br + sPad * cPr), (int) (cy + br + sPad * cPr));
+        /*shadow.setBounds((int) (cx - br - sPad * cPr), (int) (cy - br - sPad * cPr), (int) (cx + br + sPad * cPr), (int) (cy + br + sPad * cPr));
         shadow.draw(canvas);
-        canvas.drawCircle(cx, cy, sr, bgPaint);
+        canvas.drawCircle(cx, cy, sr, bgPaint);*/
         canvas.restore();
 
         shadow.setAlpha(255);

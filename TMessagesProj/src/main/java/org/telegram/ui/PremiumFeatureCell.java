@@ -2,6 +2,8 @@ package org.telegram.ui;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -13,6 +15,8 @@ import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.R;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
+
+import com.exteragram.messenger.ExteraConfig;
 
 public class PremiumFeatureCell extends FrameLayout {
 
@@ -29,7 +33,7 @@ public class PremiumFeatureCell extends FrameLayout {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
         title = new TextView(context);
-        title.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        title.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         linearLayout.addView(title, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
@@ -43,6 +47,7 @@ public class PremiumFeatureCell extends FrameLayout {
         addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 62, 8, 48, 9));
 
         imageView = new ImageView(context);
+        if (Theme.getActiveTheme().isMonet()) imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_actionIcon), PorterDuff.Mode.SRC_IN));
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         addView(imageView, LayoutHelper.createFrame(28, 28, 0, 18, 12, 0, 0));
 
@@ -65,7 +70,7 @@ public class PremiumFeatureCell extends FrameLayout {
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
-        if (drawDivider) {
+        if (drawDivider && !ExteraConfig.disableDividers) {
             canvas.drawRect(AndroidUtilities.dp(62), getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight(), Theme.dividerPaint);
         }
     }

@@ -106,12 +106,16 @@ import org.telegram.ui.LaunchActivity;
 import org.telegram.ui.MessageStatisticActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
+
+import com.exteragram.messenger.ExteraUtils;
+import com.exteragram.messenger.ExteraConfig;
 
 public class ShareAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate {
 
@@ -653,7 +657,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
 
                 layoutManager.setNeedFixGap(getLayoutParams().height <= 0);
                 searchLayoutManager.setNeedFixGap(getLayoutParams().height <= 0);
-                if (Build.VERSION.SDK_INT >= 21 && !isFullscreen) {
+                if (!isFullscreen) {
                     ignoreLayout = true;
                     setPadding(backgroundPaddingLeft, AndroidUtilities.statusBarHeight, backgroundPaddingLeft, 0);
                     ignoreLayout = false;
@@ -871,7 +875,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
                 int height = getMeasuredHeight() + AndroidUtilities.dp(30 + 30) + backgroundPaddingTop;
                 int statusBarHeight = 0;
                 float radProgress = 1.0f;
-                if (!isFullscreen && Build.VERSION.SDK_INT >= 21) {
+                if (!isFullscreen) {
                     top += AndroidUtilities.statusBarHeight;
                     y += AndroidUtilities.statusBarHeight;
                     height -= AndroidUtilities.statusBarHeight;
@@ -1059,7 +1063,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
 
             @Override
             protected boolean allowSelectChildAtPosition(float x, float y) {
-                return y >= AndroidUtilities.dp(darkTheme && linkToCopy[1] != null ? 111 : 58) + (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+                return y >= AndroidUtilities.dp(darkTheme && linkToCopy[1] != null ? 111 : 58) + AndroidUtilities.statusBarHeight;
             }
 
             @Override
@@ -1131,7 +1135,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
 
             @Override
             protected boolean allowSelectChildAtPosition(float x, float y) {
-                return y >= AndroidUtilities.dp(darkTheme && linkToCopy[1] != null ? 111 : 58) + (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+                return y >= AndroidUtilities.dp(darkTheme && linkToCopy[1] != null ? 111 : 58) + AndroidUtilities.statusBarHeight;
             }
 
             @Override
@@ -1446,33 +1450,26 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
         containerView.addView(writeButtonContainer, LayoutHelper.createFrame(60, 60, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 6, 10));
 
         ImageView writeButton = new ImageView(context);
-        Drawable drawable = Theme.createSimpleSelectorCircleDrawable(AndroidUtilities.dp(56), getThemedColor(Theme.key_dialogFloatingButton), getThemedColor(Build.VERSION.SDK_INT >= 21 ? Theme.key_dialogFloatingButtonPressed : Theme.key_dialogFloatingButton));
-        if (Build.VERSION.SDK_INT < 21) {
-            Drawable shadowDrawable = context.getResources().getDrawable(R.drawable.floating_shadow_profile).mutate();
-            shadowDrawable.setColorFilter(new PorterDuffColorFilter(0xff000000, PorterDuff.Mode.MULTIPLY));
-            CombinedDrawable combinedDrawable = new CombinedDrawable(shadowDrawable, drawable, 0, 0);
-            combinedDrawable.setIconSize(AndroidUtilities.dp(56), AndroidUtilities.dp(56));
-            drawable = combinedDrawable;
-        }
+        Drawable drawable = ExteraUtils.drawFab(true);
         writeButton.setBackgroundDrawable(drawable);
         writeButton.setImageResource(R.drawable.attach_send);
         writeButton.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         writeButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogFloatingIcon), PorterDuff.Mode.MULTIPLY));
         writeButton.setScaleType(ImageView.ScaleType.CENTER);
-        if (Build.VERSION.SDK_INT >= 21) {
-            writeButton.setOutlineProvider(new ViewOutlineProvider() {
-                @SuppressLint("NewApi")
-                @Override
-                public void getOutline(View view, Outline outline) {
+        writeButton.setOutlineProvider(new ViewOutlineProvider() {
+            @SuppressLint("NewApi")
+            @Override
+            public void getOutline(View view, Outline outline) {
+                if (ExteraConfig.squareFab) {
+                    outline.setRoundRect(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56), AndroidUtilities.dp(16));
+                } else {
                     outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
                 }
-            });
-        }
-        writeButtonContainer.addView(writeButton, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60, Gravity.LEFT | Gravity.TOP, Build.VERSION.SDK_INT >= 21 ? 2 : 0, 0, 0, 0));
-        writeButton.setOnClickListener(v -> sendInternal(true));
-        writeButton.setOnLongClickListener(v -> {
-            return onSendLongClick(writeButton);
+            }
         });
+        writeButtonContainer.addView(writeButton, LayoutHelper.createFrame(56, 56, Gravity.LEFT | Gravity.TOP, 2, 0, 0, 0));
+        writeButton.setOnClickListener(v -> sendInternal(true));
+        writeButton.setOnLongClickListener(v -> onSendLongClick(writeButton));
 
         textPaint.setTextSize(AndroidUtilities.dp(12));
         textPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -1888,6 +1885,28 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
         });
         sendPopupLayout2.setShownFromBottom(false);
 
+        if (commentTextView.getText() != null && commentTextView.getText().toString().trim().length() != 0) {
+            ActionBarMenuSubItem translateButton = new ActionBarMenuSubItem(getContext(), true, true, resourcesProvider);
+            translateButton.setTextAndIcon(LocaleController.getString("TranslateTo", R.string.TranslateTo), R.drawable.msg_translate);
+            translateButton.setSubtext(ExteraConfig.getCurrentLangName());
+            translateButton.setMinimumWidth(AndroidUtilities.dp(196));
+            translateButton.setItemHeight(56);
+            translateButton.setOnClickListener(v -> {
+                if (sendPopupWindow != null && sendPopupWindow.isShowing())
+                    sendPopupWindow.dismiss();
+                ExteraUtils.translate(commentTextView.getText(), ExteraConfig.getCurrentLangCode(), translated -> {
+                    commentTextView.setText(translated);
+                    commentTextView.setSelection(translated.length());
+                }, () -> {
+                });
+            });
+            translateButton.setRightIcon(R.drawable.msg_arrowright);
+            translateButton.getRightIcon().setOnClickListener(v -> ExteraUtils.showDialog(ExteraConfig.supportedLanguages, LocaleController.getString("Language", R.string.Language), Arrays.asList(ExteraConfig.supportedLanguages).indexOf(ExteraConfig.targetLanguage), getContext(), i -> {
+                ExteraConfig.editor.putString("targetLanguage", ExteraConfig.targetLanguage = (String) ExteraConfig.supportedLanguages[i]).apply();
+                translateButton.setSubtext(ExteraConfig.getCurrentLangName());
+            }));
+            sendPopupLayout2.addView(translateButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
+        }
         ActionBarMenuSubItem sendWithoutSound = new ActionBarMenuSubItem(getContext(), true, true, resourcesProvider);
         if (darkTheme) {
             sendWithoutSound.setTextColor(getThemedColor(Theme.key_voipgroup_nameText));

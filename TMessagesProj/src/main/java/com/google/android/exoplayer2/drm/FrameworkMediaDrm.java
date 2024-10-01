@@ -40,7 +40,6 @@ import com.google.android.exoplayer2.util.Log;
 import com.google.android.exoplayer2.util.MimeTypes;
 import com.google.android.exoplayer2.util.ParsableByteArray;
 import com.google.android.exoplayer2.util.Util;
-import com.google.common.base.Charsets;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -49,8 +48,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.google.common.base.Charsets;
+
+
 /** An {@link ExoMediaDrm} implementation that wraps the framework {@link MediaDrm}. */
-@RequiresApi(18)
 public final class FrameworkMediaDrm implements ExoMediaDrm {
 
   private static final String TAG = "FrameworkMediaDrm";
@@ -341,10 +342,7 @@ public final class FrameworkMediaDrm implements ExoMediaDrm {
   public FrameworkCryptoConfig createCryptoConfig(byte[] sessionId) throws MediaCryptoException {
     // Work around a bug prior to Lollipop where L1 Widevine forced into L3 mode would still
     // indicate that it required secure video decoders [Internal ref: b/11428937].
-    boolean forceAllowInsecureDecoderComponents =
-        Util.SDK_INT < 21
-            && C.WIDEVINE_UUID.equals(uuid)
-            && "L3".equals(getPropertyString("securityLevel"));
+    boolean forceAllowInsecureDecoderComponents = false;
     return new FrameworkCryptoConfig(
         adjustUuid(uuid), sessionId, forceAllowInsecureDecoderComponents);
   }

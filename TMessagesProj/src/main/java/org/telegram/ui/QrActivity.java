@@ -54,6 +54,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.components.VerticalImageSpan;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
@@ -838,7 +839,7 @@ public class QrActivity extends BaseFragment {
             };
             timerTextDrawable.setAnimationProperties(.35f, 0, 300, CubicBezierInterpolator.EASE_OUT_QUINT);
             timerTextDrawable.setCallback(this);
-            timerTextDrawable.setTypeface(AndroidUtilities.getTypeface("fonts/rcondensedbold.ttf"));
+            timerTextDrawable.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_CONDENSED_BOLD));
             timerTextDrawable.getPaint().setShader(gradientTextShader);
             timerTextDrawable.setGravity(Gravity.CENTER);
             timerTextDrawable.setTextSize(AndroidUtilities.dp(35));
@@ -858,7 +859,7 @@ public class QrActivity extends BaseFragment {
                     shareUsernameLayoutPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
                 }
                 shareUsernameLayoutPaint.setShader(gradientTextShader);
-                shareUsernameLayoutPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rcondensedbold.ttf"));
+                shareUsernameLayoutPaint.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_CONDENSED_BOLD));
                 shareUsernameLayoutPaint.setTextSize(AndroidUtilities.dp(25));
                 CharSequence text = this.username == null ? "" : this.username;
                 text = Emoji.replaceEmoji(text, shareUsernameLayoutPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
@@ -1123,7 +1124,7 @@ public class QrActivity extends BaseFragment {
             int backgroundColor = 0x00ffffff;
             TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG | Paint.LINEAR_TEXT_FLAG);
             textPaint.setColor(qrColor);
-            textPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rcondensedbold.ttf"));
+            textPaint.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_CONDENSED_BOLD));
             StaticLayout staticLayout = null;
             Drawable drawable;
             int attemptsCount = 2;
@@ -1147,7 +1148,7 @@ public class QrActivity extends BaseFragment {
 
                     SpannableStringBuilder string = new SpannableStringBuilder(" " + userText);
                     if (!isPhone) {
-                        string.setSpan(new SettingsSearchCell.VerticalImageSpan(drawable), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        string.setSpan(new VerticalImageSpan(drawable), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                     float textWidth = textPaint.measureText(string, 1, string.length()) + drawable.getBounds().width();
                     if (i <= 1 && textWidth > textMaxWidth) {

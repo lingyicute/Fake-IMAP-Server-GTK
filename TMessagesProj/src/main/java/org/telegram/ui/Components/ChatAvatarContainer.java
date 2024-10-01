@@ -17,7 +17,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -54,6 +53,9 @@ import org.telegram.ui.ProfileActivity;
 import org.telegram.ui.TopicsFragment;
 
 import java.util.concurrent.atomic.AtomicReference;
+
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
 
 public class ChatAvatarContainer extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -146,9 +148,7 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
                 super.onInitializeAccessibilityNodeInfo(info);
                 if (avatarClickable && getImageReceiver().hasNotThumb()) {
                     info.setText(LocaleController.getString("AccDescrProfilePicture", R.string.AccDescrProfilePicture));
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("Open", R.string.Open)));
-                    }
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("Open", R.string.Open)));
                 } else {
                     info.setVisibleToUser(false);
                 }
@@ -161,7 +161,7 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
             }
         }
         avatarImageView.setContentDescription(LocaleController.getString("AccDescrProfilePicture", R.string.AccDescrProfilePicture));
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(21));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(42));
         addView(avatarImageView);
         if (avatarClickable) {
             avatarImageView.setOnClickListener(v -> {
@@ -188,6 +188,7 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
         subtitleTextView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubtitle));
         subtitleTextView.setTag(Theme.key_actionBarDefaultSubtitle);
         subtitleTextView.setTextSize(14);
+        subtitleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         subtitleTextView.setGravity(Gravity.LEFT);
         subtitleTextView.setPadding(0, 0, AndroidUtilities.dp(10), 0);
         addView(subtitleTextView);
@@ -469,7 +470,7 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         int actionBarHeight = ActionBar.getCurrentActionBarHeight();
-        int viewTop = (actionBarHeight - AndroidUtilities.dp(42)) / 2 + (Build.VERSION.SDK_INT >= 21 && occupyStatusBar ? AndroidUtilities.statusBarHeight : 0);
+        int viewTop = (actionBarHeight - AndroidUtilities.dp(42)) / 2 + (occupyStatusBar ? AndroidUtilities.statusBarHeight : 0);
         avatarImageView.layout(leftPadding, viewTop + 1, leftPadding + AndroidUtilities.dp(42), viewTop + 1 + AndroidUtilities.dp(42));
         int l = leftPadding + (avatarImageView.getVisibility() == VISIBLE ? AndroidUtilities.dp( 54) : 0);
         SimpleTextView titleTextLargerCopyView = this.titleTextLargerCopyView.get();
@@ -569,10 +570,10 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
     }
 
     public void setTitle(CharSequence value) {
-        setTitle(value, false, false, false, false, null, false);
+        setTitle(value, false, false, false, false, false, null, false);
     }
 
-    public void setTitle(CharSequence value, boolean scam, boolean fake, boolean verified, boolean premium, TLRPC.EmojiStatus emojiStatus, boolean animated) {
+    public void setTitle(CharSequence value, boolean scam, boolean fake, boolean verified, boolean premium, boolean arrow, TLRPC.EmojiStatus emojiStatus, boolean animated) {
         if (value != null) {
             value = Emoji.replaceEmoji(value, titleTextView.getPaint().getFontMetricsInt(), AndroidUtilities.dp(24), false);
         }
@@ -609,6 +610,10 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
                 emojiStatusDrawable.set(((TLRPC.TL_emojiStatus) emojiStatus).document_id, animated);
             } else if (emojiStatus instanceof TLRPC.TL_emojiStatusUntil && ((TLRPC.TL_emojiStatusUntil) emojiStatus).until > (int) (System.currentTimeMillis() / 1000)) {
                 emojiStatusDrawable.set(((TLRPC.TL_emojiStatusUntil) emojiStatus).document_id, animated);
+            } else if (arrow) {
+                Drawable drawable = ContextCompat.getDrawable(ApplicationLoader.applicationContext, R.drawable.ic_status_arrow).mutate();
+                drawable.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_profile_verifiedBackground), PorterDuff.Mode.MULTIPLY));
+                emojiStatusDrawable.set(drawable, animated);
             } else {
                 Drawable drawable = ContextCompat.getDrawable(ApplicationLoader.applicationContext, R.drawable.msg_premium_liststar).mutate();
                 drawable.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_profile_verifiedBackground), PorterDuff.Mode.MULTIPLY));
@@ -619,6 +624,12 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
 //            titleTextView.setRightPadding(titleTextView.getPaddingRight());
             rightDrawableIsScamOrVerified = true;
             rightDrawableContentDescription = LocaleController.getString("AccDescrPremium", R.string.AccDescrPremium);
+        } else if (arrow) {
+            Drawable drawable = ContextCompat.getDrawable(ApplicationLoader.applicationContext, R.drawable.ic_status_arrow).mutate();
+            drawable.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_profile_verifiedBackground), PorterDuff.Mode.MULTIPLY));
+            titleTextView.setRightDrawable(drawable);
+            titleTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(0.5f));
+            rightDrawableIsScamOrVerified = true;
         } else if (titleTextView.getRightDrawable() instanceof ScamDrawable) {
             titleTextView.setRightDrawable(null);
 //            titleTextView.setRightPadding(0);
@@ -899,7 +910,7 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
         avatarDrawable.setInfo(chat);
         if (avatarImageView != null) {
             avatarImageView.setForUserOrChat(chat, avatarDrawable);
-            avatarImageView.setRoundRadius(chat != null && chat.forum ? AndroidUtilities.dp(16) : AndroidUtilities.dp(21));
+            avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(chat != null && chat.forum ? 42 * 0.65f : 42));
         }
     }
 
@@ -959,8 +970,8 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
             avatarDrawable.setInfo(chat);
             if (avatarImageView != null) {
                 avatarImageView.setForUserOrChat(chat, avatarDrawable);
+                avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(chat.forum ? 42 * 0.65f : 42));
             }
-            avatarImageView.setRoundRadius(chat.forum ? AndroidUtilities.dp(16) : AndroidUtilities.dp(21));
         }
     }
 
@@ -1080,8 +1091,11 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
         sb.append("\n");
         sb.append(subtitleTextView.getText());
         info.setContentDescription(sb);
-        if (info.isClickable() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (info.isClickable()) {
             info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, LocaleController.getString("OpenProfile", R.string.OpenProfile)));
+        }
+        if (info.isLongClickable()) {
+            info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_LONG_CLICK, LocaleController.getString("Search", R.string.Search)));
         }
     }
 

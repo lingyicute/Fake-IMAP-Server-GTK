@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
@@ -359,7 +360,7 @@ public class DataUsage2Activity extends BaseFragment {
                     continue;
                 }
                 SpannableString percent = new SpannableString(formatPercent(tempPercents[index]));
-                percent.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface("fonts/rmedium.ttf")), 0, percent.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                percent.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM)), 0, percent.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 percent.setSpan(new RelativeSizeSpan(.8f), 0, percent.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 percent.setSpan(new CustomCharacterSpan(.1), 0, percent.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 sections.add(ItemInner.asCell(
@@ -512,7 +513,7 @@ public class DataUsage2Activity extends BaseFragment {
 
         private CharSequence bold(CharSequence text) {
             SpannableString string = new SpannableString(text);
-            string.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface("fonts/rmedium.ttf")), 0, string.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            string.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM)), 0, string.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             return string;
         }
 
@@ -1021,7 +1022,8 @@ public class DataUsage2Activity extends BaseFragment {
                 imageView.setVisibility(View.GONE);
             } else {
                 imageView.setVisibility(View.VISIBLE);
-                imageView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(9), imageColor));
+                imageView.setColorFilter(new PorterDuffColorFilter(Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chats_actionIcon) : Color.WHITE, PorterDuff.Mode.SRC_IN));
+                imageView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(9), Theme.getActiveTheme().isMonet() ? Theme.getColor(Theme.key_chats_actionBackground) : imageColor));
                 imageView.setImageResource(imageResId);
             }
 

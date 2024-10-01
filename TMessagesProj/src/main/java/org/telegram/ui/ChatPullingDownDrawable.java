@@ -21,6 +21,8 @@ import android.view.View;
 
 import androidx.core.graphics.ColorUtils;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.DialogObject;
@@ -151,8 +153,8 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
             chatNameWidth = Math.min(chatNameWidth, lastWidth - AndroidUtilities.dp(60));
             chatNameLayout = new StaticLayout(nameStr, textPaint, chatNameWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
 
-            String str1 = null;
-            String str2 = null;
+            String str1;
+            String str2;
 
             if (drawFolderBackground && dialogFolderId != folderId && dialogFolderId != 0) {
                 str1 = LocaleController.getString("SwipeToGoNextArchive", R.string.SwipeToGoNextArchive);
@@ -177,7 +179,7 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
             float cx = lastWidth / 2f;
             float cy = AndroidUtilities.dp(12) + circleRadius;
             imageReceiver.setImageCoords(cx - AndroidUtilities.dp(40) / 2f, cy - AndroidUtilities.dp(40) / 2f, AndroidUtilities.dp(40), AndroidUtilities.dp(40));
-            imageReceiver.setRoundRadius((int) (AndroidUtilities.dp(40) / 2f));
+            imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(40));
 
             counterDrawable.setSize(AndroidUtilities.dp(28), AndroidUtilities.dp(100));
         }
@@ -278,9 +280,9 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
             float y = AndroidUtilities.dp(20) * (1f - swipeToReleaseProgress) - AndroidUtilities.dp(36) * swipeToReleaseProgress + bounceOffset;
             AndroidUtilities.rectTmp.set((lastWidth - chatNameWidth) / 2f, y, lastWidth - (lastWidth - chatNameWidth) / 2f, y + chatNameLayout.getHeight());
             AndroidUtilities.rectTmp.inset(-AndroidUtilities.dp(8), -AndroidUtilities.dp(4));
-            canvas.drawRoundRect(AndroidUtilities.rectTmp, AndroidUtilities.dp(15), AndroidUtilities.dp(15), getThemedPaint(Theme.key_paint_chatActionBackground));
+            canvas.drawRoundRect(AndroidUtilities.rectTmp, ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), getThemedPaint(Theme.key_paint_chatActionBackground));
             if (hasGradientService()) {
-                canvas.drawRoundRect(AndroidUtilities.rectTmp, AndroidUtilities.dp(15), AndroidUtilities.dp(15), Theme.chat_actionBackgroundGradientDarkenPaint);
+                canvas.drawRoundRect(AndroidUtilities.rectTmp, ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), Theme.chat_actionBackgroundGradientDarkenPaint);
             }
 
             canvas.save();
@@ -291,7 +293,7 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
 
         if (!emptyStub && size > 0) {
             float top = (-AndroidUtilities.dp(8) - AndroidUtilities.dp2(8) * progress - size) * (1f - swipeToReleaseProgress) + (-offset + AndroidUtilities.dp(4)) * swipeToReleaseProgress + bounceOffset;
-            imageReceiver.setRoundRadius((int) (size / 2f));
+            imageReceiver.setRoundRadius(ExteraConfig.getAvatarCorners(size, true));
             imageReceiver.setImageCoords(cx - size / 2f, top, size, size);
 
             if (swipeToReleaseProgress > 0) {
@@ -379,9 +381,9 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
                 canvas.drawPath(path, Theme.chat_actionBackgroundGradientDarkenPaint);
             }
         } else {
-            canvas.drawRoundRect(AndroidUtilities.rectTmp, circleRadius, circleRadius, getThemedPaint(Theme.key_paint_chatActionBackground));
+            canvas.drawRoundRect(AndroidUtilities.rectTmp, ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), getThemedPaint(Theme.key_paint_chatActionBackground));
             if (hasGradientService()) {
-                canvas.drawRoundRect(AndroidUtilities.rectTmp, circleRadius, circleRadius, Theme.chat_actionBackgroundGradientDarkenPaint);
+                canvas.drawRoundRect(AndroidUtilities.rectTmp, ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), ExteraConfig.getAvatarCorners(AndroidUtilities.rectTmp.width(), true), Theme.chat_actionBackgroundGradientDarkenPaint);
             }
         }
     }

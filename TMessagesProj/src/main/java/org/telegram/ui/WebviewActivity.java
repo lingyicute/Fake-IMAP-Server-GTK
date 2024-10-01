@@ -213,17 +213,13 @@ public class WebviewActivity extends BaseFragment {
 
         fragmentView = new FrameLayout(context);
         FrameLayout frameLayout = (FrameLayout) fragmentView;
-        if (Build.VERSION.SDK_INT >= 19) {
-            webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        }
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-            CookieManager cookieManager = CookieManager.getInstance();
-            cookieManager.setAcceptThirdPartyCookies(webView, true);
-            if (type == TYPE_GAME) {
-                webView.addJavascriptInterface(new TelegramWebviewProxy(), "TelegramWebviewProxy");
-            }
+        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptThirdPartyCookies(webView, true);
+        if (type == TYPE_GAME) {
+            webView.addJavascriptInterface(new TelegramWebviewProxy(), "TelegramWebviewProxy");
         }
 
         webView.setWebViewClient(new WebViewClient() {
@@ -396,7 +392,7 @@ public class WebviewActivity extends BaseFragment {
             messageObject.messageOwner.serializeToStream(serializedData);
             editor.putString(hash + "_m", Utilities.bytesToHex(serializedData.toByteArray()));
             editor.putString(hash + "_link", "https://" + MessagesController.getInstance(messageObject.currentAccount).linkPrefix + "/" + username + (TextUtils.isEmpty(short_name) ? "" : "?game=" + short_name));
-            editor.commit();
+            editor.apply();
             Browser.openUrl(parentActivity, url, false);
             serializedData.cleanup();
         } catch (Exception e) {

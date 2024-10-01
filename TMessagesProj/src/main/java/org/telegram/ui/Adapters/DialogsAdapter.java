@@ -139,7 +139,7 @@ public class DialogsAdapter extends RecyclerListView.SelectionAdapter implements
         if (folderId == 1) {
             SharedPreferences preferences = MessagesController.getGlobalMainSettings();
             showArchiveHint = preferences.getBoolean("archivehint", true);
-            preferences.edit().putBoolean("archivehint", false).commit();
+            preferences.edit().putBoolean("archivehint", false).apply();
         }
         if (folder == 0) {
             this.preloader = new DialogsPreloader();
@@ -515,7 +515,7 @@ public class DialogsAdapter extends RecyclerListView.SelectionAdapter implements
                 textView.setOnClickListener(view1 -> {
                     MessagesController.getInstance(currentAccount).hintDialogs.clear();
                     SharedPreferences preferences = MessagesController.getGlobalMainSettings();
-                    preferences.edit().remove("installReferer").commit();
+                    preferences.edit().remove("installReferer").apply();
                     notifyDataSetChanged();
                 });
 
@@ -1114,7 +1114,7 @@ public class DialogsAdapter extends RecyclerListView.SelectionAdapter implements
                     height = parent.getMeasuredHeight();
                 }
                 if (height == 0) {
-                    height = AndroidUtilities.displaySize.y - ActionBar.getCurrentActionBarHeight() - (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+                    height = AndroidUtilities.displaySize.y - ActionBar.getCurrentActionBarHeight() - AndroidUtilities.statusBarHeight;
                 }
                 height -= blurOffset;
                 int cellHeight = AndroidUtilities.dp(SharedConfig.useThreeLinesLayout ? 78 : 72);

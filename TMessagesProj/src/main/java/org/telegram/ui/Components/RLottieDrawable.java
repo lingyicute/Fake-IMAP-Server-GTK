@@ -46,6 +46,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class RLottieDrawable extends BitmapDrawable implements Animatable, BitmapsCache.Cacheable {
 
     public boolean skipFrameUpdate;
@@ -570,7 +572,7 @@ public class RLottieDrawable extends BitmapDrawable implements Animatable, Bitma
             metaData[1] = (int) lottieMetadata.fr;
         } catch (Exception e) {
             // ignore app center, try handle by old method
-            FileLog.e(e, false);
+            FileLog.e(e);
             long nativePtr = create(file.getAbsolutePath(), json, width, height, metaData, false, args.colorReplacement, shouldLimitFps, args.fitzModifier);
             if (nativePtr != 0) {
                 destroy(nativePtr);
@@ -800,11 +802,7 @@ public class RLottieDrawable extends BitmapDrawable implements Animatable, Bitma
             return;
         }
         boolean mustCancel = parentViews.isEmpty() && getCallback() == null;
-        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-            mustCancel = mustCancel && (masterParent == null || !masterParent.isAttachedToWindow());
-        } else {
-            mustCancel = mustCancel && masterParent == null;
-        }
+        mustCancel = mustCancel && (masterParent == null || !masterParent.isAttachedToWindow());
         if (mustCancel) {
             if (cacheGenerateTask != null) {
                 lottieCacheGenerateQueue.cancelRunnable(cacheGenerateTask);

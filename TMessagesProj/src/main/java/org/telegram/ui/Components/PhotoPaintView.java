@@ -787,7 +787,7 @@ public class PhotoPaintView extends FrameLayout implements IPhotoPaintView, Enti
         int width = right - left;
         int height = bottom - top;
 
-        int status = (Build.VERSION.SDK_INT >= 21 && !inBubbleMode ? AndroidUtilities.statusBarHeight : 0);
+        int status = !inBubbleMode ? AndroidUtilities.statusBarHeight : 0;
         int actionBarHeight = ActionBar.getCurrentActionBarHeight();
         int actionBarHeight2 = actionBarHeight + status;
 
@@ -853,7 +853,7 @@ public class PhotoPaintView extends FrameLayout implements IPhotoPaintView, Enti
         if ((child == renderView || child == entitiesView || child == selectionContainerView) && currentCropState != null) {
             canvas.save();
 
-            int status = (Build.VERSION.SDK_INT >= 21 && !inBubbleMode ? AndroidUtilities.statusBarHeight : 0);
+            int status = !inBubbleMode ? AndroidUtilities.statusBarHeight : 0;
             int actionBarHeight = ActionBar.getCurrentActionBarHeight();
             int actionBarHeight2 = actionBarHeight + status;
 

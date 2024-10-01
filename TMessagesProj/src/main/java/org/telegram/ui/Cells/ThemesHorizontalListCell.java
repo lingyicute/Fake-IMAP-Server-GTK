@@ -62,6 +62,8 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class ThemesHorizontalListCell extends RecyclerListView implements NotificationCenter.NotificationCenterDelegate {
 
     public static byte[] bytes = new byte[1024];
@@ -677,10 +679,8 @@ public class ThemesHorizontalListCell extends RecyclerListView implements Notifi
             info.setChecked(button.isChecked());
             info.setCheckable(true);
             info.setEnabled(true);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK);
-                info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_LONG_CLICK, LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions)));
-            }
+            info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK);
+            info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_LONG_CLICK, LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions)));
         }
     }
 
@@ -745,7 +745,7 @@ public class ThemesHorizontalListCell extends RecyclerListView implements Notifi
 
         SharedPreferences.Editor editor = ApplicationLoader.applicationContext.getSharedPreferences("themeconfig", Activity.MODE_PRIVATE).edit();
         editor.putString(currentType == ThemeActivity.THEME_TYPE_NIGHT || themeInfo.isDark() ? "lastDarkTheme" : "lastDayTheme", themeInfo.getKey());
-        editor.commit();
+        editor.apply();
 
         if (currentType == ThemeActivity.THEME_TYPE_NIGHT) {
             if (themeInfo == Theme.getCurrentNightTheme()) {

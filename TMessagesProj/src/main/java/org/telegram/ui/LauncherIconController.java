@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.R;
 
 public class LauncherIconController {
@@ -16,6 +17,13 @@ public class LauncherIconController {
         }
 
         setIcon(LauncherIcon.DEFAULT);
+    }
+
+    public static void updateMonetIcon() {
+        if (isEnabled(LauncherIcon.MONET)) {
+            setIcon(LauncherIcon.DEFAULT);
+            setIcon(LauncherIcon.MONET);
+        }
     }
 
     public static boolean isEnabled(LauncherIcon icon) {
@@ -34,13 +42,16 @@ public class LauncherIconController {
     }
 
     public enum LauncherIcon {
-        DEFAULT("DefaultIcon", R.drawable.icon_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconDefault),
-        VINTAGE("VintageIcon", R.drawable.icon_6_background_sa, R.mipmap.icon_6_foreground_sa, R.string.AppIconVintage),
-        AQUA("AquaIcon", R.drawable.icon_4_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconAqua),
-        PREMIUM("PremiumIcon", R.drawable.icon_3_background_sa, R.mipmap.icon_3_foreground_sa, R.string.AppIconPremium, true),
-        TURBO("TurboIcon", R.drawable.icon_5_background_sa, R.mipmap.icon_5_foreground_sa, R.string.AppIconTurbo, true),
-        NOX("NoxIcon", R.drawable.icon_2_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconNox, true);
-
+        DEFAULT("DefaultIcon", BuildVars.isBetaApp() ? R.color.ic_background_beta : R.color.ic_background, R.drawable.ic_foreground, R.string.AppIconDefault),
+        MONET("MonetIcon", R.color.ic_background_monet, R.drawable.ic_foreground_monet, R.string.AppIconMonet),
+        GRADIENT("GradientIcon", R.mipmap.ic_background_gradient, R.drawable.ic_foreground, R.string.AppIconGradient),
+        GOOGLE("GoogleIcon", R.color.white, R.mipmap.ic_foreground_google, R.string.AppIconGoogle),
+        VK("VKIcon", R.color.ic_background_vk, R.drawable.ic_foreground_vk, R.string.AppIconVK),
+        DSGN480("Dsgn480Icon", R.mipmap.ic_background_480dsgn, R.mipmap.ic_foreground_480dsgn, R.string.AppIcon480DSGN),
+        GLOW("GlowIcon", R.mipmap.ic_background_glow, R.mipmap.ic_foreground_glow, R.string.AppIconGlow),
+        SPACE("SpaceIcon", R.mipmap.ic_background_space, R.mipmap.ic_foreground_space, R.string.AppIconSpace),
+        WINTER("WinterIcon", R.mipmap.ic_background_winter, R.drawable.ic_foreground, R.string.AppIconWinter),
+        RED("RedIcon", R.mipmap.ic_background_red, R.mipmap.ic_foreground_red, R.string.AppIconRed);
         public final String key;
         public final int background;
         public final int foreground;
@@ -51,7 +62,7 @@ public class LauncherIconController {
 
         public ComponentName getComponentName(Context ctx) {
             if (componentName == null) {
-                componentName = new ComponentName(ctx.getPackageName(), "org.telegram.messenger." + key);
+                componentName = new ComponentName(ctx.getPackageName(), "com.exteragram.messenger." + key);
             }
             return componentName;
         }

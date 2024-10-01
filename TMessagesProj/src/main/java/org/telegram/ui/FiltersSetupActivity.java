@@ -59,6 +59,9 @@ import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.extras.FolderIcons;
+
 public class FiltersSetupActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private RecyclerListView listView;
@@ -92,6 +95,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
 
             textView = new SimpleTextView(context);
             textView.setTextSize(16);
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText2));
             textView.setTag(Theme.key_windowBackgroundWhiteBlueText2);
@@ -150,6 +154,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             textView = new TextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             textView.setLines(1);
             textView.setMaxLines(1);
             textView.setSingleLine(true);
@@ -160,6 +165,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             valueTextView = new TextView(context);
             valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             valueTextView.setLines(1);
             valueTextView.setMaxLines(1);
             valueTextView.setSingleLine(true);
@@ -202,7 +208,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
 
         @Override
         protected void onDraw(Canvas canvas) {
-            if (needDivider) {
+            if (needDivider && !ExteraConfig.disableDividers) {
                 canvas.drawLine(0, getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, Theme.dividerPaint);
             }
         }
@@ -241,6 +247,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             messageTextView = new TextView(context);
             messageTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+            messageTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             messageTextView.setGravity(Gravity.CENTER);
             messageTextView.setText(AndroidUtilities.replaceTags(LocaleController.formatString("CreateNewFilterInfo", R.string.CreateNewFilterInfo)));
             addView(messageTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 40, 121, 40, 24));
@@ -281,6 +288,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             textView = new SimpleTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(16);
+            textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             textView.setMaxLines(1);
             textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
             Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.other_lockedfolders2);
@@ -291,6 +299,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             valueTextView = new TextView(context);
             valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            valueTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             valueTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
             valueTextView.setLines(1);
             valueTextView.setMaxLines(1);
@@ -396,7 +405,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
 
         @Override
         protected void onDraw(Canvas canvas) {
-            if (needDivider) {
+            if (needDivider && !ExteraConfig.disableDividers) {
                 canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(62), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(62) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
             }
             if (currentFilter != null) {
@@ -441,7 +450,12 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
         rowCount = 0;
         filterHelpRow = rowCount++;
         int count = getMessagesController().dialogFilters.size();
-        showAllChats = true;
+        if (!getUserConfig().isPremium()) {
+            count--;
+            showAllChats = false;
+        } else {
+            showAllChats = true;
+        }
         if (!suggestedFilters.isEmpty() && count < 10) {
             recommendedHeaderRow = rowCount++;
             recommendedStartRow = rowCount;
@@ -587,7 +601,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             if (rowCount != this.rowCount) {
                 adapter.notifyDataSetChanged();
             } else {
-               adapter.notifyItemRangeChanged(0, rowCount);
+                adapter.notifyItemRangeChanged(0, rowCount);
             }
         } else if (id == NotificationCenter.suggestedFiltersLoaded) {
             updateRows(true);
@@ -784,8 +798,9 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
                         if (suggested.filter.exclude_muted) {
                             filter.flags |= MessagesController.DIALOG_FILTER_FLAG_EXCLUDE_MUTED;
                         }
+                        filter.emoticon = TextUtils.isEmpty(suggested.filter.emoticon) ? FolderIcons.getEmoticonFromFlags(filter.flags).second : suggested.filter.emoticon;
                         ignoreUpdates = true;
-                        FilterCreateActivity.saveFilterToServer(filter, filter.flags, filter.name, filter.alwaysShow, filter.neverShow, filter.pinnedDialogs, true, false, true, true, false, FiltersSetupActivity.this, () -> {
+                        FilterCreateActivity.saveFilterToServer(filter, filter.flags, filter.emoticon, filter.name, filter.alwaysShow, filter.neverShow, filter.pinnedDialogs, true, false, true, true, false, FiltersSetupActivity.this, () -> {
                             getNotificationCenter().postNotificationName(NotificationCenter.dialogFiltersUpdated);
                             ignoreUpdates = false;
                             ArrayList<TLRPC.TL_dialogFilterSuggested> suggestedFilters = getMessagesController().suggestedFilters;
@@ -956,7 +971,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
 
         @Override
         public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-            boolean canMove = getUserConfig().isPremium() || !((viewHolder.itemView instanceof FilterCell) && ((FilterCell) viewHolder.itemView).currentFilter.isDefault()) || true;
+            boolean canMove = getUserConfig().isPremium() || !((viewHolder.itemView instanceof FilterCell) && ((FilterCell) viewHolder.itemView).currentFilter.isDefault());
             if (viewHolder.getItemViewType() != 2 || !canMove) {
                 return makeMovementFlags(0, 0);
             }
@@ -965,7 +980,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
 
         @Override
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder source, RecyclerView.ViewHolder target) {
-            boolean canMove = getUserConfig().isPremium() || !((target.itemView instanceof FilterCell) && ((FilterCell) target.itemView).currentFilter.isDefault()) || true;
+            boolean canMove = getUserConfig().isPremium() || !((target.itemView instanceof FilterCell) && ((FilterCell) target.itemView).currentFilter.isDefault());
             if (source.getItemViewType() != target.getItemViewType() || !canMove) {
                 return false;
             }

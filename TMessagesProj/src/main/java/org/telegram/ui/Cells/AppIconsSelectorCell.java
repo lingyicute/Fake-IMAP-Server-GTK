@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -48,8 +49,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.exteragram.messenger.ExteraUtils;
+
 public class AppIconsSelectorCell extends RecyclerListView implements NotificationCenter.NotificationCenterDelegate {
-    public final static float ICONS_ROUND_RADIUS = 18;
+    public final static float ICONS_ROUND_RADIUS = 100;
 
     private List<LauncherIconController.LauncherIcon> availableIcons = new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
@@ -78,6 +81,11 @@ public class AppIconsSelectorCell extends RecyclerListView implements Notificati
             public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
                 IconHolderView holderView = (IconHolderView) holder.itemView;
                 LauncherIconController.LauncherIcon icon = availableIcons.get(position);
+                if (icon == LauncherIconController.LauncherIcon.MONET && (Build.VERSION.SDK_INT < 31 || Build.VERSION.SDK_INT > 32)) {
+                    return;
+                } else if (icon == LauncherIconController.LauncherIcon.RED && ExteraUtils.notSubbedTo(1178248235)) {
+                    return;
+                }
                 holderView.bind(icon);
                 holderView.iconView.setBackground(Theme.createSimpleSelectorRoundRectDrawable(AndroidUtilities.dp(ICONS_ROUND_RADIUS), Color.TRANSPARENT, Theme.getColor(Theme.key_listSelector), Color.BLACK));
                 holderView.iconView.setForeground(icon.foreground);
@@ -152,6 +160,12 @@ public class AppIconsSelectorCell extends RecyclerListView implements Notificati
     private void updateIconsVisibility() {
         availableIcons.clear();
         availableIcons.addAll(Arrays.asList(LauncherIconController.LauncherIcon.values()));
+        if (Build.VERSION.SDK_INT < 31 || Build.VERSION.SDK_INT > 32) {
+            availableIcons.removeIf(p -> p.equals(LauncherIconController.LauncherIcon.MONET));
+        }
+        if (ExteraUtils.notSubbedTo(1178248235)) {
+            availableIcons.removeIf(p -> p.equals(LauncherIconController.LauncherIcon.RED));
+        }
         if (MessagesController.getInstance(currentAccount).premiumLocked) {
             for (int i = 0; i < availableIcons.size(); i++) {
                 if (availableIcons.get(i).premium) {
@@ -227,6 +241,7 @@ public class AppIconsSelectorCell extends RecyclerListView implements Notificati
             titleView = new TextView(context);
             titleView.setSingleLine();
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            titleView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 4, 0, 0));
 
@@ -240,7 +255,7 @@ public class AppIconsSelectorCell extends RecyclerListView implements Notificati
         public void draw(Canvas canvas) {
             float stroke = outlinePaint.getStrokeWidth();
             AndroidUtilities.rectTmp.set(iconView.getLeft() + stroke, iconView.getTop() + stroke, iconView.getRight() - stroke, iconView.getBottom() - stroke);
-            canvas.drawRoundRect(AndroidUtilities.rectTmp, AndroidUtilities.dp(ICONS_ROUND_RADIUS), AndroidUtilities.dp(ICONS_ROUND_RADIUS), fillPaint);
+            //canvas.drawRoundRect(AndroidUtilities.rectTmp, AndroidUtilities.dp(ICONS_ROUND_RADIUS), AndroidUtilities.dp(ICONS_ROUND_RADIUS), fillPaint);
 
             super.draw(canvas);
 

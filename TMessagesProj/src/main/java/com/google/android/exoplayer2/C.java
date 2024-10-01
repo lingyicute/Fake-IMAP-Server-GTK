@@ -1381,7 +1381,6 @@ public final class C {
       replacement = "Util.generateAudioSessionIdV21(context)",
       imports = {"com.google.android.exoplayer2.util.Util"})
   @Deprecated
-  @RequiresApi(21)
   public static int generateAudioSessionIdV21(Context context) {
     return Util.generateAudioSessionIdV21(context);
   }

@@ -36,6 +36,8 @@ import org.telegram.ui.Components.CheckBox;
 import org.telegram.ui.Components.CheckBoxSquare;
 import org.telegram.ui.Components.LayoutHelper;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class UserCell2 extends FrameLayout {
 
     private Theme.ResourcesProvider resourcesProvider;
@@ -77,7 +79,7 @@ public class UserCell2 extends FrameLayout {
         avatarDrawable = new AvatarDrawable();
 
         avatarImageView = new BackupImageView(context);
-        avatarImageView.setRoundRadius(AndroidUtilities.dp(24));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(48));
         addView(avatarImageView, LayoutHelper.createFrame(48, 48, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 7 + padding, 11, LocaleController.isRTL ? 7 + padding : 0, 0));
 
         nameTextView = new SimpleTextView(context) {
@@ -90,11 +92,13 @@ public class UserCell2 extends FrameLayout {
         NotificationCenter.listenEmojiLoading(nameTextView);
         nameTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         nameTextView.setTextSize(17);
+        nameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         nameTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
         addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 28 + (checkbox == 2 ? 18 : 0) : (68 + padding), 14.5f, LocaleController.isRTL ? (68 + padding) : 28 + (checkbox == 2 ? 18 : 0), 0));
 
         statusTextView = new SimpleTextView(context);
         statusTextView.setTextSize(14);
+        statusTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_REGULAR));
         statusTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
         addView(statusTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 28 : (68 + padding), 37.5f, LocaleController.isRTL ? (68 + padding) : 28, 0));
 
@@ -304,12 +308,13 @@ public class UserCell2 extends FrameLayout {
             avatarImageView.setImageDrawable(avatarDrawable);
         }
 
-        avatarImageView.setRoundRadius(currentChat != null && currentChat.forum ? AndroidUtilities.dp(14) : AndroidUtilities.dp(24));
+        avatarImageView.setRoundRadius(ExteraConfig.getAvatarCorners(currentChat != null && currentChat.forum ? 48 * 0.65f : 48));
 
         if (imageView.getVisibility() == VISIBLE && currentDrawable == 0 || imageView.getVisibility() == GONE && currentDrawable != 0) {
             imageView.setVisibility(currentDrawable == 0 ? GONE : VISIBLE);
             imageView.setImageResource(currentDrawable);
         }
+
     }
 
     @Override

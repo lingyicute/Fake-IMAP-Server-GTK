@@ -19,10 +19,10 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.inputmethod.EditorInfo;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,15 +45,16 @@ import org.telegram.ui.Components.AlertsCreator;
 import org.telegram.ui.Components.CodepointsLengthInputFilter;
 import org.telegram.ui.Components.EditTextBoldCursor;
 import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.NumberTextView;
+import org.telegram.ui.Components.OutlineTextContainerView;
 
 import java.util.ArrayList;
 
 public class ChangeBioActivity extends BaseFragment {
 
     private EditTextBoldCursor firstNameField;
+    private OutlineTextContainerView firstNameFieldContainer;
+
     private View doneButton;
-    private NumberTextView checkTextView;
     private TextView helpTextView;
 
     private final static int done_button = 1;
@@ -83,8 +84,9 @@ public class ChangeBioActivity extends BaseFragment {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         fragmentView.setOnTouchListener((v, event) -> true);
 
-        FrameLayout fieldContainer = new FrameLayout(context);
-        linearLayout.addView(fieldContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 24, 24, 20, 0));
+        firstNameFieldContainer = new OutlineTextContainerView(context);
+        firstNameFieldContainer.setText(LocaleController.getString("UserBio", R.string.UserBio));
+        linearLayout.addView(firstNameFieldContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 24, 24, 24, 0));
 
         firstNameField = new EditTextBoldCursor(context) {
             @Override
@@ -96,16 +98,29 @@ public class ChangeBioActivity extends BaseFragment {
             }
         };
         firstNameField.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        firstNameField.setHintTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteHintText));
         firstNameField.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
-        firstNameField.setBackgroundDrawable(null);
-        firstNameField.setLineColors(getThemedColor(Theme.key_windowBackgroundWhiteInputField), getThemedColor(Theme.key_windowBackgroundWhiteInputFieldActivated), getThemedColor(Theme.key_windowBackgroundWhiteRedText3));
+        firstNameField.setBackground(null);
         firstNameField.setMaxLines(4);
-        firstNameField.setPadding(AndroidUtilities.dp(LocaleController.isRTL ? 24 : 0), 0, AndroidUtilities.dp(LocaleController.isRTL ? 0 : 24), AndroidUtilities.dp(6));
-        firstNameField.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-        firstNameField.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         firstNameField.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        firstNameField.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         firstNameField.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        firstNameField.setCursorColor(Theme.getColor(Theme.key_windowBackgroundWhiteInputFieldActivated));
+        firstNameField.setCursorWidth(1.5f);
+        firstNameField.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        firstNameField.setOnFocusChangeListener((v, hasFocus) -> firstNameFieldContainer.animateSelection(hasFocus ? 1 : 0));
+        int padding = AndroidUtilities.dp(16);
+        firstNameField.setPadding(padding, padding, padding, padding);
+        firstNameField.setCursorSize(AndroidUtilities.dp(20));
+        firstNameFieldContainer.addView(firstNameField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        firstNameFieldContainer.attachEditText(firstNameField);
+        firstNameField.setOnEditorActionListener((textView, i, keyEvent) -> {
+            if (i == EditorInfo.IME_ACTION_NEXT || i == EditorInfo.IME_ACTION_DONE) {
+                doneButton.performClick();
+                return true;
+            }
+            return false;
+        });
+
         InputFilter[] inputFilters = new InputFilter[1];
         inputFilters[0] = new CodepointsLengthInputFilter(getMessagesController().getAboutLimit()) {
             @Override
@@ -116,21 +131,14 @@ public class ChangeBioActivity extends BaseFragment {
                 }
                 CharSequence result = super.filter(source, start, end, dest, dstart, dend);
                 if (result != null && source != null && result.length() != source.length()) {
-                    Vibrator v = (Vibrator) getParentActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                    if (v != null) {
-                        v.vibrate(200);
-                    }
-                    AndroidUtilities.shakeView(checkTextView);
+                    firstNameFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    AndroidUtilities.shakeView(firstNameFieldContainer);
                 }
                 return result;
             }
         };
         firstNameField.setFilters(inputFilters);
         firstNameField.setMinHeight(AndroidUtilities.dp(36));
-        firstNameField.setHint(LocaleController.getString("UserBio", R.string.UserBio));
-        firstNameField.setCursorColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
-        firstNameField.setCursorSize(AndroidUtilities.dp(20));
-        firstNameField.setCursorWidth(1.5f);
         firstNameField.setOnEditorActionListener((textView, i, keyEvent) -> {
             if (i == EditorInfo.IME_ACTION_DONE && doneButton != null) {
                 doneButton.performClick();
@@ -151,19 +159,11 @@ public class ChangeBioActivity extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                checkTextView.setNumber(getMessagesController().getAboutLimit() - Character.codePointCount(s, 0, s.length()), true);
+                firstNameFieldContainer.setText(String.format("%s (%d)", LocaleController.getString("UserBio", R.string.UserBio), getMessagesController().getAboutLimit() - Character.codePointCount(s, 0, s.length())));
             }
         });
 
-        fieldContainer.addView(firstNameField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 0, 4, 0));
-
-        checkTextView = new NumberTextView(context);
-        checkTextView.setCenterAlign(true);
-        checkTextView.setTextSize(15);
-        checkTextView.setNumber(getMessagesController().getAboutLimit(), false);
-        checkTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
-        checkTextView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
-        fieldContainer.addView(checkTextView, LayoutHelper.createFrame(26, 20, LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT, 0, 4, 4, 0));
+        firstNameFieldContainer.setText(String.format("%s (%d)", LocaleController.getString("UserBio", R.string.UserBio), getMessagesController().getAboutLimit()));
 
         helpTextView = new TextView(context);
         helpTextView.setFocusable(true);
@@ -269,8 +269,6 @@ public class ChangeBioActivity extends BaseFragment {
         themeDescriptions.add(new ThemeDescription(firstNameField, ThemeDescription.FLAG_BACKGROUNDFILTER | ThemeDescription.FLAG_DRAWABLESELECTEDSTATE, null, null, null, null, Theme.key_windowBackgroundWhiteInputFieldActivated));
 
         themeDescriptions.add(new ThemeDescription(helpTextView, ThemeDescription.FLAG_TEXTCOLOR, null, null, null, null, Theme.key_windowBackgroundWhiteGrayText8));
-
-        themeDescriptions.add(new ThemeDescription(checkTextView, ThemeDescription.FLAG_TEXTCOLOR, null, null, null, null, Theme.key_windowBackgroundWhiteGrayText4));
 
         return themeDescriptions;
     }

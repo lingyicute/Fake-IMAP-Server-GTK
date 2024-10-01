@@ -371,7 +371,10 @@ public class ChatReactionsEditActivity extends BaseFragment implements Notificat
                 Theme.key_switchTrackBlue,
                 Theme.key_switchTrackBlueChecked,
                 Theme.key_switchTrackBlueThumb,
-                Theme.key_switchTrackBlueThumbChecked
+                Theme.key_switchTrackBlueThumbChecked,
+                Theme.key_switchTrack,
+                Theme.key_switchTrackChecked,
+                Theme.key_windowBackgroundWhite
         );
     }
 

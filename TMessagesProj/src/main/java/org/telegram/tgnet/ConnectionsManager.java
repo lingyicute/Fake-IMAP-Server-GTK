@@ -232,14 +232,11 @@ public class ConnectionsManager extends BaseController {
 
     private String getRegId() {
         String pushString = SharedConfig.pushString;
-        if (!TextUtils.isEmpty(pushString) && SharedConfig.pushType == PushListenerController.PUSH_TYPE_HUAWEI) {
-            pushString = "huawei://" + pushString;
-        }
         if (TextUtils.isEmpty(pushString) && !TextUtils.isEmpty(SharedConfig.pushStringStatus)) {
             pushString = SharedConfig.pushStringStatus;
         }
         if (TextUtils.isEmpty(pushString)) {
-            String tag = SharedConfig.pushType == PushListenerController.PUSH_TYPE_FIREBASE ? "FIREBASE" : "HUAWEI";
+            String tag = "FIREBASE";
             pushString = SharedConfig.pushStringStatus = "__" + tag + "_GENERATING_SINCE_" + getCurrentTime() + "__";
         }
         return pushString;
@@ -474,14 +471,11 @@ public class ConnectionsManager extends BaseController {
 
     public static void setRegId(String regId, @PushListenerController.PushType int type, String status) {
         String pushString = regId;
-        if (!TextUtils.isEmpty(pushString) && type == PushListenerController.PUSH_TYPE_HUAWEI) {
-            pushString = "huawei://" + pushString;
-        }
         if (TextUtils.isEmpty(pushString) && !TextUtils.isEmpty(status)) {
             pushString = status;
         }
         if (TextUtils.isEmpty(pushString)) {
-            String tag = type == PushListenerController.PUSH_TYPE_FIREBASE ? "FIREBASE" : "HUAWEI";
+            String tag = "FIREBASE";
             pushString = SharedConfig.pushStringStatus = "__" + tag + "_GENERATING_SINCE_" + getInstance(0).getCurrentTime() + "__";
         }
         for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) {
@@ -498,7 +492,7 @@ public class ConnectionsManager extends BaseController {
 
     public void switchBackend(boolean restart) {
         SharedPreferences preferences = MessagesController.getGlobalMainSettings();
-        preferences.edit().remove("language_showed2").commit();
+        preferences.edit().remove("language_showed2").apply();
         native_switchBackend(currentAccount, restart);
     }
 
@@ -815,9 +809,6 @@ public class ConnectionsManager extends BaseController {
 
     @SuppressLint("NewApi")
     protected byte getIpStrategy() {
-        if (Build.VERSION.SDK_INT < 19) {
-            return USE_IPV4_ONLY;
-        }
         if (BuildVars.LOGS_ENABLED) {
             try {
                 NetworkInterface networkInterface;
@@ -956,14 +947,14 @@ public class ConnectionsManager extends BaseController {
                 }
                 done = true;
             } catch (Throwable e) {
-                FileLog.e(e, false);
+                FileLog.e(e);
             } finally {
                 try {
                     if (httpConnectionStream != null) {
                         httpConnectionStream.close();
                     }
                 } catch (Throwable e) {
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                 }
                 try {
                     if (outbuf != null) {
@@ -980,7 +971,7 @@ public class ConnectionsManager extends BaseController {
                     addresses.add(address.getHostAddress());
                     return new ResolvedDomain(addresses, SystemClock.elapsedRealtime());
                 } catch (Exception e) {
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                 }
             }
             return null;
@@ -1091,14 +1082,14 @@ public class ConnectionsManager extends BaseController {
                     buffer.writeBytes(bytes);
                     return buffer;
                 } catch (Throwable e) {
-                    FileLog.e(e, false);
+                    FileLog.e(e);
                 } finally {
                     try {
                         if (httpConnectionStream != null) {
                             httpConnectionStream.close();
                         }
                     } catch (Throwable e) {
-                        FileLog.e(e, false);
+                        FileLog.e(e);
                     }
                     try {
                         if (outbuf != null) {
@@ -1210,7 +1201,7 @@ public class ConnectionsManager extends BaseController {
                 buffer.writeBytes(bytes);
                 return buffer;
             } catch (Throwable e) {
-                FileLog.e(e, !(e instanceof SocketTimeoutException || e instanceof SSLException));
+                FileLog.e(e);
             } finally {
                 try {
                     if (httpConnectionStream != null) {
@@ -1329,7 +1320,7 @@ public class ConnectionsManager extends BaseController {
                 buffer.writeBytes(bytes);
                 return buffer;
             } catch (Throwable e) {
-                FileLog.e(e, false);
+                FileLog.e(e);
             } finally {
                 try {
                     if (httpConnectionStream != null) {
@@ -1425,7 +1416,7 @@ public class ConnectionsManager extends BaseController {
                     task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null, null, null);
                     currentTask = task;
                 });
-                FileLog.e(e, false);
+                FileLog.e(e);
             }
             return null;
         }

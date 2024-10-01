@@ -27,6 +27,7 @@ import android.text.TextWatcher;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.TypedValue;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -1124,10 +1125,7 @@ public class ChatEditTypeActivity extends BaseFragment implements NotificationCe
         String wasUsername = ChatObject.getPublicUsername(currentChat, true);
         if (!isPrivate && ((wasUsername == null && usernameTextView.length() != 0) || (wasUsername != null && !wasUsername.equalsIgnoreCase(usernameTextView.getText().toString())))) {
             if (usernameTextView.length() != 0 && !lastNameAvailable) {
-                Vibrator v = (Vibrator) getParentActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                if (v != null) {
-                    v.vibrate(200);
-                }
+                checkTextView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 AndroidUtilities.shakeView(checkTextView);
                 updateDoneProgress(false);
                 return false;

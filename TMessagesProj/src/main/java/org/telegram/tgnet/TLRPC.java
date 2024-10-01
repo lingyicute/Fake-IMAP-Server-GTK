@@ -727,7 +727,7 @@ public class TLRPC {
             photo_big.volume_id = -photo_id;
             photo_big.local_id = 'c';
 
-            if (allowStripedThumbs && stripped_thumb != null && Build.VERSION.SDK_INT >= 21) {
+            if (allowStripedThumbs && stripped_thumb != null) {
                 try {
                     strippedBitmap = new BitmapDrawable(ImageLoader.getStrippedPhotoBitmap(stripped_thumb, "b"));
                 } catch (Throwable e) {
@@ -824,12 +824,10 @@ public class TLRPC {
             photo_big = FileLocation.TLdeserialize(stream, stream.readInt32(exception), exception);
             if ((flags & 2) != 0) {
                 stripped_thumb = stream.readByteArray(exception);
-                if (Build.VERSION.SDK_INT >= 21) {
-                    try {
-                        strippedBitmap = new BitmapDrawable(ImageLoader.getStrippedPhotoBitmap(stripped_thumb, "b"));
-                    } catch (Throwable e) {
-                        FileLog.e(e);
-                    }
+                try {
+                    strippedBitmap = new BitmapDrawable(ImageLoader.getStrippedPhotoBitmap(stripped_thumb, "b"));
+                } catch (Throwable e) {
+                    FileLog.e(e);
                 }
             }
             dc_id = stream.readInt32(exception);
@@ -34803,12 +34801,10 @@ public class TLRPC {
             photo_big = FileLocation.TLdeserialize(stream, stream.readInt32(exception), exception);
             if ((flags & 2) != 0) {
                 stripped_thumb = stream.readByteArray(exception);
-                if (Build.VERSION.SDK_INT >= 21) {
-                    try {
-                        strippedBitmap = new BitmapDrawable(ImageLoader.getStrippedPhotoBitmap(stripped_thumb, "b"));
-                    } catch (Throwable e) {
-                        FileLog.e(e);
-                    }
+                try {
+                    strippedBitmap = new BitmapDrawable(ImageLoader.getStrippedPhotoBitmap(stripped_thumb, "b"));
+                } catch (Throwable e) {
+                    FileLog.e(e);
                 }
             }
             dc_id = stream.readInt32(exception);
@@ -34911,7 +34907,7 @@ public class TLRPC {
             photo_big.volume_id = -photo_id;
             photo_big.local_id = 'c';
 
-            if (stripped_thumb != null && Build.VERSION.SDK_INT >= 21) {
+            if (stripped_thumb != null) {
                 try {
                     strippedBitmap = new BitmapDrawable(ImageLoader.getStrippedPhotoBitmap(stripped_thumb, "b"));
                 } catch (Throwable e) {

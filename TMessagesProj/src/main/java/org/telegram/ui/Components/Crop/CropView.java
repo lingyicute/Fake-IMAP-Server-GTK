@@ -41,7 +41,7 @@ import java.util.ArrayList;
 
 public class CropView extends FrameLayout implements CropAreaView.AreaViewListener, CropGestureDetector.CropGestureListener {
     private static final float EPSILON = 0.00001f;
-    private static final int RESULT_SIDE = 1280;
+    private static final int RESULT_SIDE = 2560;
     private static final float MAX_SCALE = 30.0f;
 
     public CropAreaView areaView;
@@ -477,7 +477,7 @@ public class CropView extends FrameLayout implements CropAreaView.AreaViewListen
             scale = MAX_SCALE / state.getScale();
             ensureFit = true;
         }
-        float statusBarHeight = (Build.VERSION.SDK_INT >= 21 && !inBubbleMode ? AndroidUtilities.statusBarHeight : 0);
+        float statusBarHeight = !inBubbleMode ? AndroidUtilities.statusBarHeight : 0;
 
         final float x = (targetRect.centerX() - imageView.getWidth() / 2) / areaView.getCropWidth() * state.getOrientedWidth();
         final float y = (targetRect.centerY() - (imageView.getHeight() - bottomPadding + statusBarHeight) / 2) / areaView.getCropHeight() * state.getOrientedHeight();
@@ -934,7 +934,7 @@ public class CropView extends FrameLayout implements CropAreaView.AreaViewListen
             scale = MAX_SCALE / state.getScale();
         }
 
-        float statusBarHeight = (Build.VERSION.SDK_INT >= 21 && !inBubbleMode ? AndroidUtilities.statusBarHeight : 0);
+        float statusBarHeight = !inBubbleMode ? AndroidUtilities.statusBarHeight : 0;
 
         float pivotX = (x - imageView.getWidth() / 2) / areaView.getCropWidth() * state.getOrientedWidth();
         float pivotY = (y - (imageView.getHeight() - bottomPadding - statusBarHeight) / 2) / areaView.getCropHeight() * state.getOrientedHeight();

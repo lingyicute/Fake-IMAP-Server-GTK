@@ -51,6 +51,7 @@ import com.google.android.exoplayer2.util.ConditionVariable;
 import com.google.android.exoplayer2.util.Log;
 import com.google.android.exoplayer2.util.MimeTypes;
 import com.google.android.exoplayer2.util.Util;
+
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.InlineMe;
 import com.google.errorprone.annotations.InlineMeValidationDisabled;
@@ -1136,32 +1137,10 @@ public final class DefaultAudioSink implements AudioSink {
       Assertions.checkArgument(outputBuffer == buffer);
     } else {
       outputBuffer = buffer;
-      if (Util.SDK_INT < 21) {
-        int bytesRemaining = buffer.remaining();
-        if (preV21OutputBuffer == null || preV21OutputBuffer.length < bytesRemaining) {
-          preV21OutputBuffer = new byte[bytesRemaining];
-        }
-        int originalPosition = buffer.position();
-        buffer.get(preV21OutputBuffer, 0, bytesRemaining);
-        buffer.position(originalPosition);
-        preV21OutputBufferOffset = 0;
-      }
     }
     int bytesRemaining = buffer.remaining();
     int bytesWrittenOrError = 0; // Error if negative
-    if (Util.SDK_INT < 21) { // outputMode == OUTPUT_MODE_PCM.
-      // Work out how many bytes we can write without the risk of blocking.
-      int bytesToWrite = audioTrackPositionTracker.getAvailableBufferSize(writtenPcmBytes);
-      if (bytesToWrite > 0) {
-        bytesToWrite = min(bytesRemaining, bytesToWrite);
-        bytesWrittenOrError =
-            audioTrack.write(preV21OutputBuffer, preV21OutputBufferOffset, bytesToWrite);
-        if (bytesWrittenOrError > 0) { // No error
-          preV21OutputBufferOffset += bytesWrittenOrError;
-          buffer.position(buffer.position() + bytesWrittenOrError);
-        }
-      }
-    } else if (tunneling) {
+    if (tunneling) {
       Assertions.checkState(avSyncPresentationTimeUs != C.TIME_UNSET);
       bytesWrittenOrError =
           writeNonBlockingWithAvSyncV21(
@@ -1381,7 +1360,7 @@ public final class DefaultAudioSink implements AudioSink {
 
   @Override
   public void enableTunnelingV21() {
-    Assertions.checkState(Util.SDK_INT >= 21);
+    Assertions.checkState(true);
     Assertions.checkState(externalAudioSessionIdProvided);
     if (!tunneling) {
       tunneling = true;
@@ -1408,10 +1387,8 @@ public final class DefaultAudioSink implements AudioSink {
   private void setVolumeInternal() {
     if (!isAudioTrackInitialized()) {
       // Do nothing.
-    } else if (Util.SDK_INT >= 21) {
-      setVolumeInternalV21(audioTrack, volume);
     } else {
-      setVolumeInternalV3(audioTrack, volume);
+      setVolumeInternalV21(audioTrack, volume);
     }
   }
 
@@ -1798,12 +1775,10 @@ public final class DefaultAudioSink implements AudioSink {
     }
   }
 
-  @RequiresApi(21)
   private static int writeNonBlockingV21(AudioTrack audioTrack, ByteBuffer buffer, int size) {
     return audioTrack.write(buffer, size, AudioTrack.WRITE_NON_BLOCKING);
   }
 
-  @RequiresApi(21)
   private int writeNonBlockingWithAvSyncV21(
       AudioTrack audioTrack, ByteBuffer buffer, int size, long presentationTimeUs) {
     if (Util.SDK_INT >= 26) {
@@ -1843,7 +1818,6 @@ public final class DefaultAudioSink implements AudioSink {
     return result;
   }
 
-  @RequiresApi(21)
   private static void setVolumeInternalV21(AudioTrack audioTrack, float volume) {
     audioTrack.setVolume(volume);
   }

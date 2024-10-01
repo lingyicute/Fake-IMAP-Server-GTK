@@ -60,6 +60,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScrollerCustom;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.exteragram.messenger.ExteraConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.DocumentObject;
@@ -132,6 +134,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
     public final static int TYPE_SET_DEFAULT_REACTION = 2;
     public static final int TYPE_TOPIC_ICON = 3;
     public static final int TYPE_AVATAR_CONSTRUCTOR = 4;
+    public static final int TYPE_FOLDER_ICON = 100;
 
     private final int SPAN_COUNT_FOR_EMOJI = 8;
     private final int SPAN_COUNT_FOR_STICKER = 5;
@@ -1042,6 +1045,9 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
         if (searchBox == null) {
             return;
         }
+        if (type == TYPE_FOLDER_ICON) {
+            searchBox.setVisibility(View.INVISIBLE);
+        }
         if (searched) {
             searchBox.clearAnimation();
             searchBox.setVisibility(View.VISIBLE);
@@ -1094,9 +1100,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
             Rect bounds = scrimDrawable.getBounds();
             float scale = scrimDrawableParent == null ? 1f : scrimDrawableParent.getScaleY();
             int wasAlpha = 255;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                wasAlpha = scrimDrawable.getAlpha();
-            }
+            wasAlpha = scrimDrawable.getAlpha();
             int h = (scrimDrawableParent == null ? bounds.height() : scrimDrawableParent.getHeight());
             canvas.save();
             canvas.translate(0, -getTranslationY());
@@ -2834,7 +2838,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
             frozenEmojiPacks = new ArrayList<>(mediaDataController.getStickerSets(showStickers ? MediaDataController.TYPE_IMAGE : MediaDataController.TYPE_EMOJIPACKS));
         }
         ArrayList<TLRPC.TL_messages_stickerSet> installedEmojipacks = frozenEmojiPacks;
-        ArrayList<TLRPC.StickerSetCovered> featuredEmojiPacks = new ArrayList<>(mediaDataController.getFeaturedEmojiSets());
+        ArrayList<TLRPC.StickerSetCovered> featuredEmojiPacks = ExteraConfig.hideFeaturedEmoji ? null : new ArrayList<>(mediaDataController.getFeaturedEmojiSets());
 
         ArrayList<Long> prevRowHashCodes = new ArrayList<>(rowHashCodes);
         totalCount = 0;
@@ -3050,7 +3054,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
             }
         }
         if (installedEmojipacks != null) {
-            for (int i = 0, j = 0; i < installedEmojipacks.size(); ++i) {
+            for (int i = 0; i < installedEmojipacks.size(); ++i) {
                 TLRPC.TL_messages_stickerSet set = installedEmojipacks.get(i);
                 if (set != null && set.set != null && (set.set.emojis || showStickers) && !installedEmojiSets.contains(set.set.id)) {
                     positionToSection.put(totalCount, packs.size());
@@ -3071,7 +3075,6 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
                     for (int k = 0; k < pack.documents.size(); ++k) {
                         rowHashCodes.add(3212 + 13L * pack.documents.get(k).id);
                     }
-                    j++;
                 }
             }
         }
@@ -3985,16 +3988,14 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
 
             box = new FrameLayout(context);
             box.setBackground(Theme.createRoundRectDrawable(dp(18), Theme.getColor(Theme.key_chat_emojiPanelBackground, resourcesProvider)));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                box.setClipToOutline(true);
-                box.setOutlineProvider(new ViewOutlineProvider() {
-                    @Override
-                    public void getOutline(View view, Outline outline) {
-                        outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), (int) dp(18));
-                    }
-                });
-            }
-            addView(box, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 36, Gravity.TOP | Gravity.FILL_HORIZONTAL, 8, 8 + 4, 8, 8));
+            box.setClipToOutline(true);
+            box.setOutlineProvider(new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View view, Outline outline) {
+                    outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), (int) dp(18));
+                }
+            });
+            addView(box, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 36, Gravity.TOP | Gravity.FILL_HORIZONTAL, 8, 12, 8, 8));
 
             search = new ImageView(context);
             search.setScaleType(ImageView.ScaleType.CENTER);
@@ -4118,7 +4119,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
         }
 
         private void createCategoriesListView() {
-            if (categoriesListView != null || getContext() == null) {
+            if (categoriesListView != null || getContext() == null || ExteraConfig.hideCategories && type != TYPE_AVATAR_CONSTRUCTOR) {
                 return;
             }
             if (type != TYPE_REACTIONS && type != TYPE_SET_DEFAULT_REACTION && type != TYPE_EMOJI_STATUS && type != TYPE_AVATAR_CONSTRUCTOR) {
@@ -4695,16 +4696,14 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
                 params.dimAmount = 0;
                 params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
                 params.flags |= WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
-                if (Build.VERSION.SDK_INT >= 21) {
-                    params.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
-                            WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
-                            WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
-                    contentView.setOnApplyWindowInsetsListener((v, insets) -> {
-                        lastInsets = insets;
-                        v.requestLayout();
-                        return Build.VERSION.SDK_INT >= 30 ? WindowInsets.CONSUMED : insets.consumeSystemWindowInsets();
-                    });
-                }
+                params.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
+                        WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
+                        WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
+                contentView.setOnApplyWindowInsetsListener((v, insets) -> {
+                    lastInsets = insets;
+                    v.requestLayout();
+                    return Build.VERSION.SDK_INT >= 30 ? WindowInsets.CONSUMED : insets.consumeSystemWindowInsets();
+                });
                 params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
                 contentView.setFitsSystemWindows(true);
                 contentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_FULLSCREEN);

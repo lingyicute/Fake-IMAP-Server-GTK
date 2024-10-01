@@ -16,12 +16,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Outline;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -64,7 +62,6 @@ import org.telegram.ui.Cells.EditTextSettingsCell;
 import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.CombinedDrawable;
 import org.telegram.ui.Components.CubicBezierInterpolator;
 import org.telegram.ui.Components.EditTextBoldCursor;
 import org.telegram.ui.Components.EmptyTextProgressView;
@@ -78,6 +75,9 @@ import org.telegram.ui.Components.VerticalPositionAutoAnimator;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import com.exteragram.messenger.ExteraUtils;
+import com.exteragram.messenger.ExteraConfig;
 
 public class TwoStepVerificationActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -315,7 +315,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
         bottomButton.setTextSize(15);
         bottomButton.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         bottomButton.setPadding(AndroidUtilities.dp(32), 0, AndroidUtilities.dp(32), 0);
-        frameLayout.addView(bottomButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 56 : 60, Gravity.BOTTOM, 0, 0, 0, 16));
+        frameLayout.addView(bottomButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.BOTTOM, 0, 0, 0, 16));
         bottomButton.setOnClickListener(v -> onPasswordForgot());
         VerticalPositionAutoAnimator.attach(bottomButton);
 
@@ -326,24 +326,26 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
         cancelResetButton.setText(LocaleController.getString("CancelReset", R.string.CancelReset));
         cancelResetButton.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
         cancelResetButton.setVisibility(View.GONE);
-        frameLayout.addView(cancelResetButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 56 : 60, Gravity.BOTTOM, 0, 0, 0, 16));
+        frameLayout.addView(cancelResetButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.BOTTOM, 0, 0, 0, 16));
         cancelResetButton.setOnClickListener(v -> cancelPasswordReset());
         VerticalPositionAutoAnimator.attach(cancelResetButton);
 
         floatingButtonContainer = new FrameLayout(context);
-        if (Build.VERSION.SDK_INT >= 21) {
-            StateListAnimator animator = new StateListAnimator();
-            animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
-            animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
-            floatingButtonContainer.setStateListAnimator(animator);
-            floatingButtonContainer.setOutlineProvider(new ViewOutlineProvider() {
-                @SuppressLint("NewApi")
-                @Override
-                public void getOutline(View view, Outline outline) {
+        StateListAnimator animator = new StateListAnimator();
+        animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
+        animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButtonIcon, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
+        floatingButtonContainer.setStateListAnimator(animator);
+        floatingButtonContainer.setOutlineProvider(new ViewOutlineProvider() {
+            @SuppressLint("NewApi")
+            @Override
+            public void getOutline(View view, Outline outline) {
+                if (ExteraConfig.squareFab) {
+                    outline.setRoundRect(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56), AndroidUtilities.dp(16));
+                } else {
                     outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
                 }
-            });
-        }
+            }
+        });
         VerticalPositionAutoAnimator.attach(floatingButtonContainer);
         floatingButtonContainer.setOnClickListener(view -> processDone());
 
@@ -353,18 +355,11 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
         floatingButtonIcon.setColor(Theme.getColor(Theme.key_chats_actionIcon));
         floatingButtonIcon.setDrawBackground(false);
         floatingButtonContainer.setContentDescription(LocaleController.getString(R.string.Next));
-        floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60));
+        floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(56, 56));
 
-        Drawable drawable = Theme.createSimpleSelectorCircleDrawable(AndroidUtilities.dp(56), Theme.getColor(Theme.key_chats_actionBackground), Theme.getColor(Theme.key_chats_actionPressedBackground));
-        if (Build.VERSION.SDK_INT < 21) {
-            Drawable shadowDrawable = context.getResources().getDrawable(R.drawable.floating_shadow).mutate();
-            shadowDrawable.setColorFilter(new PorterDuffColorFilter(0xff000000, PorterDuff.Mode.MULTIPLY));
-            CombinedDrawable combinedDrawable = new CombinedDrawable(shadowDrawable, drawable, 0, 0);
-            combinedDrawable.setIconSize(AndroidUtilities.dp(56), AndroidUtilities.dp(56));
-            drawable = combinedDrawable;
-        }
+        Drawable drawable = ExteraUtils.drawFab();
         floatingButtonContainer.setBackground(drawable);
-        frameLayout.addView(floatingButtonContainer, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 24, 16));
+        frameLayout.addView(floatingButtonContainer, LayoutHelper.createFrame(56, 56, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 24, 16));
 
         emptyView = new EmptyTextProgressView(context);
         emptyView.showProgress();
@@ -1133,9 +1128,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
         if (getParentActivity() == null) {
             return;
         }
-        try {
-            field.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-        } catch (Exception ignored) {}
+        outlineView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         if (clear) {
             field.setText("");
         }

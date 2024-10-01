@@ -488,7 +488,7 @@ public class BitmapsCache {
         } catch (FileNotFoundException e) {
 
         } catch (Throwable e) {
-            FileLog.e(e, false);
+            FileLog.e(e);
             tryCount++;
             if (tryCount > 10) {
                 error = true;

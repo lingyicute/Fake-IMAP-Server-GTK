@@ -23,7 +23,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
-import android.os.Build;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -34,6 +34,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.ExteraUtils;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AndroidUtilities;
@@ -112,7 +115,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
         addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 70, Gravity.LEFT | Gravity.BOTTOM));
 
         avatarImageView = new BackupImageView(context);
-        avatarImageView.getImageReceiver().setRoundRadius(AndroidUtilities.dp(32));
+        avatarImageView.getImageReceiver().setRoundRadius(ExteraConfig.getAvatarCorners(64));
         addView(avatarImageView, LayoutHelper.createFrame(64, 64, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 0, 67));
 
         nameTextView = new SimpleTextView(context) {
@@ -149,13 +152,14 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
 
         arrowView = new ImageView(context);
         arrowView.setScaleType(ImageView.ScaleType.CENTER);
+        arrowView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_menuName), PorterDuff.Mode.MULTIPLY));
         arrowView.setImageResource(R.drawable.msg_expand);
         addView(arrowView, LayoutHelper.createFrame(59, 59, Gravity.RIGHT | Gravity.BOTTOM));
         setArrowState(false);
 
         boolean playDrawable;
         if (playDrawable = sunDrawable == null) {
-            sunDrawable = new RLottieDrawable(R.raw.sun, "" + R.raw.sun, AndroidUtilities.dp(28), AndroidUtilities.dp(28), true, null);
+            sunDrawable = new RLottieDrawable(R.raw.sun_outline, "" + R.raw.sun_outline, AndroidUtilities.dp(28), AndroidUtilities.dp(28), true, null);
             sunDrawable.setPlayInDirectionOfCustomEndFrame(true);
             if (Theme.isCurrentThemeDay()) {
                 sunDrawable.setCustomEndFrame(0);
@@ -181,16 +185,15 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
         sunDrawable.beginApplyLayerColors();
         int color = Theme.getColor(Theme.key_chats_menuName);
         sunDrawable.setLayerColor("Sunny.**", color);
-        sunDrawable.setLayerColor("Path 6.**", color);
         sunDrawable.setLayerColor("Path.**", color);
-        sunDrawable.setLayerColor("Path 5.**", color);
+        sunDrawable.setLayerColor("Path 10.**", color);
+        sunDrawable.setLayerColor("Path 11.**", color);
         sunDrawable.commitApplyLayerColors();
+        sunDrawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_menuName), PorterDuff.Mode.MULTIPLY));
         darkThemeView.setScaleType(ImageView.ScaleType.CENTER);
         darkThemeView.setAnimation(sunDrawable);
-        if (Build.VERSION.SDK_INT >= 21) {
-            darkThemeView.setBackgroundDrawable(Theme.createSelectorDrawable(darkThemeBackgroundColor = Theme.getColor(Theme.key_listSelector), 1, AndroidUtilities.dp(17)));
-            Theme.setRippleDrawableForceSoftware((RippleDrawable) darkThemeView.getBackground());
-        }
+        darkThemeView.setBackgroundDrawable(Theme.createSelectorDrawable(darkThemeBackgroundColor = Theme.getColor(Theme.key_listSelector), 1, AndroidUtilities.dp(17)));
+        Theme.setRippleDrawableForceSoftware((RippleDrawable) darkThemeView.getBackground());
         if (!playDrawable && sunDrawable.getCustomEndFrame() != sunDrawable.getCurrentFrame()) {
             darkThemeView.playAnimation();
         }
@@ -245,7 +248,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
         });
         addView(darkThemeView, LayoutHelper.createFrame(48, 48, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 6, 90));
 
-        if (Theme.getEventType() == 0) {
+        if (Theme.getEventType() == 0 && ExteraConfig.eventType != 2 || ExteraConfig.forceSnow) {
             snowflakesEffect = new SnowflakesEffect(0);
             snowflakesEffect.setColorKey(Theme.key_chats_menuName);
         }
@@ -471,16 +474,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            super.onMeasure(MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(148) + AndroidUtilities.statusBarHeight, MeasureSpec.EXACTLY));
-        } else {
-            try {
-                super.onMeasure(MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(148), MeasureSpec.EXACTLY));
-            } catch (Exception e) {
-                setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), AndroidUtilities.dp(148));
-                FileLog.e(e);
-            }
-        }
+        super.onMeasure(MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(148) + AndroidUtilities.statusBarHeight, MeasureSpec.EXACTLY));
     }
 
     @Override
@@ -526,9 +520,9 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
             currentMoonColor = color;
             sunDrawable.beginApplyLayerColors();
             sunDrawable.setLayerColor("Sunny.**", currentMoonColor);
-            sunDrawable.setLayerColor("Path 6.**", currentMoonColor);
             sunDrawable.setLayerColor("Path.**", currentMoonColor);
-            sunDrawable.setLayerColor("Path 5.**", currentMoonColor);
+            sunDrawable.setLayerColor("Path 10.**", currentMoonColor);
+            sunDrawable.setLayerColor("Path 11.**", currentMoonColor);
             sunDrawable.commitApplyLayerColors();
         }
         nameTextView.setTextColor(Theme.getColor(Theme.key_chats_menuName));
@@ -633,6 +627,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
     private int lastAccount = -1;
     private TLRPC.User lastUser = null;
     private Drawable premiumStar = null;
+    private Drawable exteraArrow = null;
     public void setUser(TLRPC.User user, boolean accounts) {
         int account = UserConfig.selectedAccount;
         if (account != lastAccount) {
@@ -661,6 +656,14 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
             animatedStatus.animate().alpha(1).setDuration(200).start();
             nameTextView.setDrawablePadding(AndroidUtilities.dp(4));
             status.set(emojiStatusId, true);
+        } else if (ExteraConfig.isExteraDev(user)) {
+            animatedStatus.animate().alpha(1).setDuration(200).start();
+            nameTextView.setDrawablePadding(AndroidUtilities.dp(2));
+            if (exteraArrow == null) {
+                exteraArrow = Theme.dialogs_exteraArrowDrawable;
+            }
+            exteraArrow.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_menuPhoneCats), PorterDuff.Mode.MULTIPLY));
+            status.set(exteraArrow, true);
         } else if (user.premium) {
             animatedStatus.animate().alpha(1).setDuration(200).start();
             nameTextView.setDrawablePadding(AndroidUtilities.dp(4));
@@ -676,7 +679,13 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
         }
         animatedStatus.setColor(Theme.getColor(Theme.isCurrentThemeDark() ? Theme.key_chats_verifiedBackground : Theme.key_chats_menuPhoneCats));
         status.setColor(Theme.getColor(Theme.isCurrentThemeDark() ? Theme.key_chats_verifiedBackground : Theme.key_chats_menuPhoneCats));
-        phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
+        if (!ExteraConfig.hidePhoneNumber) {
+            phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
+        } else if (!TextUtils.isEmpty(UserObject.getPublicUsername(user))) {
+            phoneTextView.setText("@" + UserObject.getPublicUsername(user));
+        } else {
+            phoneTextView.setText(LocaleController.getString("MobileHidden",R.string.MobileHidden));
+        }
         AvatarDrawable avatarDrawable = new AvatarDrawable(user);
         avatarDrawable.setColor(Theme.getColor(Theme.key_avatar_backgroundInProfileBlue));
         avatarImageView.setForUserOrChat(user, avatarDrawable);
