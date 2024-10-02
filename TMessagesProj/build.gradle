@@ -86,11 +86,6 @@ android {
         targetSdkVersion 33
         versionName APP_VERSION_NAME
 
-        // Obtain your own keys at: https://core.telegram.org/api/obtaining_api_id
-        buildConfigField 'int', 'APP_ID', localProperties.getProperty("APP_ID")
-        buildConfigField 'String', 'APP_HASH', localProperties.getProperty("APP_HASH")
-        buildConfigField 'String', 'YANDEX_METRICA_KEY', localProperties.getProperty("YANDEX_METRICA_KEY")
-
         // Google Console: https://console.cloud.google.com/google/maps-apis/credentials
         resValue 'string', 'MAPS_V2_API', localProperties.getProperty("MAPS_V2_API")
 
