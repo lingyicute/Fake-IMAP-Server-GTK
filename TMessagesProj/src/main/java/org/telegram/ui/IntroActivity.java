@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -785,7 +785,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             }, 22);
             loadTexture(telegramMaskProvider, 23);
 
-            updateTelegramTextures();
+            updatePapercraftTextures();
             updatePowerfulTextures();
             Intro.setPrivateTextures(textures[19], textures[20]);
             Intro.setFreeTextures(textures[14], textures[13]);
@@ -797,8 +797,8 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             return true;
         }
 
-        public void updateTelegramTextures() {
-            Intro.setTelegramTextures(textures[22], textures[21], textures[23]);
+        public void updatePapercraftTextures() {
+            Intro.setPapercraftTextures(textures[22], textures[21], textures[23]);
         }
 
         public void updatePowerfulTextures() {
@@ -958,7 +958,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                     eglThread.updatePowerfulTextures();
 
                     eglThread.loadTexture(eglThread.telegramMaskProvider, 23, true);
-                    eglThread.updateTelegramTextures();
+                    eglThread.updatePapercraftTextures();
 
                     Intro.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                 });

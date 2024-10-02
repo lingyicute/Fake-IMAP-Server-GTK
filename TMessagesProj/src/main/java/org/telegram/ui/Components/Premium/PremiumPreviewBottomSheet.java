@@ -264,7 +264,7 @@ public class PremiumPreviewBottomSheet extends BottomSheetWithRecyclerListView i
         }
         if (statusStickerSet != null) {
             final String stickerSetPlaceholder = "<STICKERSET>";
-            String string = LocaleController.formatString(R.string.TelegramPremiumUserStatusDialogTitle, ContactsController.formatName(user.first_name, user.last_name), stickerSetPlaceholder);
+            String string = LocaleController.formatString(R.string.PapercraftPremiumUserStatusDialogTitle, ContactsController.formatName(user.first_name, user.last_name), stickerSetPlaceholder);
             CharSequence charSequence = AndroidUtilities.replaceSingleTag(string, Theme.key_windowBackgroundWhiteBlueButton, AndroidUtilities.REPLACING_TAG_TYPE_LINK, null);
             SpannableStringBuilder title = charSequence instanceof SpannableStringBuilder ? ((SpannableStringBuilder) charSequence) : new SpannableStringBuilder(charSequence);
             int index = charSequence.toString().indexOf(stickerSetPlaceholder);
@@ -350,30 +350,30 @@ public class PremiumPreviewBottomSheet extends BottomSheetWithRecyclerListView i
                     titleView[0].setText(title, null);
                 }
             }
-            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserStatusDialogSubtitle)));
+            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PapercraftPremiumUserStatusDialogSubtitle)));
         } else if (isEmojiStatus) {
-            titleView[0].setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.TelegramPremiumUserStatusDefaultDialogTitle, ContactsController.formatName(user.first_name, user.last_name))));
-            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.TelegramPremiumUserStatusDialogSubtitle, ContactsController.formatName(user.first_name, user.last_name))));
+            titleView[0].setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.PapercraftPremiumUserStatusDefaultDialogTitle, ContactsController.formatName(user.first_name, user.last_name))));
+            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.PapercraftPremiumUserStatusDialogSubtitle, ContactsController.formatName(user.first_name, user.last_name))));
         } else if (giftTier != null) {
             if (isOutboundGift) {
-                titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.TelegramPremiumUserGiftedPremiumOutboundDialogTitleWithPlural, user != null ? user.first_name : "", LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
-                subtitleView.setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.TelegramPremiumUserGiftedPremiumOutboundDialogSubtitle, user != null ? user.first_name : ""), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
+                titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.PapercraftPremiumUserGiftedPremiumOutboundDialogTitleWithPlural, user != null ? user.first_name : "", LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
+                subtitleView.setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.PapercraftPremiumUserGiftedPremiumOutboundDialogSubtitle, user != null ? user.first_name : ""), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
             } else if (user == null || TextUtils.isEmpty(user.first_name) || user.id == 777000) {
-                titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.TelegramPremiumUserGiftedPremiumDialogTitleWithPluralSomeone, LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
-                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserGiftedPremiumDialogSubtitle)));
+                titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.PapercraftPremiumUserGiftedPremiumDialogTitleWithPluralSomeone, LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
+                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PapercraftPremiumUserGiftedPremiumDialogSubtitle)));
             } else {
-                titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.TelegramPremiumUserGiftedPremiumDialogTitleWithPlural, user.first_name, LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
-                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserGiftedPremiumDialogSubtitle)));
+                titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.PapercraftPremiumUserGiftedPremiumDialogTitleWithPlural, user.first_name, LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), Theme.key_windowBackgroundWhiteBlueButton,  AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
+                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PapercraftPremiumUserGiftedPremiumDialogSubtitle)));
             }
         } else {
-            titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.TelegramPremiumUserDialogTitle, ContactsController.formatName(user.first_name, user.last_name)), Theme.key_windowBackgroundWhiteBlueButton, AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
-            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserDialogSubtitle)));
+            titleView[0].setText(AndroidUtilities.replaceSingleTag(LocaleController.formatString(R.string.PapercraftPremiumUserDialogTitle, ContactsController.formatName(user.first_name, user.last_name)), Theme.key_windowBackgroundWhiteBlueButton, AndroidUtilities.REPLACING_TAG_TYPE_LINK, null));
+            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PapercraftPremiumUserDialogSubtitle)));
         }
     }
 
     @Override
     protected CharSequence getTitle() {
-        return LocaleController.getString("TelegramPremium", R.string.TelegramPremium);
+        return LocaleController.getString("PapercraftPremium", R.string.PapercraftPremium);
     }
 
     @Override

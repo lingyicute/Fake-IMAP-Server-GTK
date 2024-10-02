@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -347,7 +347,7 @@ public class PaymentFormActivity extends BaseFragment implements NotificationCen
         }
     }
 
-    private class TelegramWebviewProxy {
+    private class PapercraftWebviewProxy {
         @JavascriptInterface
         public void postEvent(final String eventName, final String eventData) {
             AndroidUtilities.runOnUIThread(() -> {
@@ -1146,7 +1146,7 @@ public class PaymentFormActivity extends BaseFragment implements NotificationCen
                 webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
                 CookieManager cookieManager = CookieManager.getInstance();
                 cookieManager.setAcceptThirdPartyCookies(webView, true);
-                webView.addJavascriptInterface(new TelegramWebviewProxy(), "TelegramWebviewProxy");
+                webView.addJavascriptInterface(new PapercraftWebviewProxy(), "PapercraftWebviewProxy");
                 webView.setWebViewClient(new WebViewClient() {
                     @Override
                     public void onLoadResource(WebView view, String url) {

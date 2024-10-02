@@ -17,7 +17,7 @@
 
     <!-- Main Menu -->
     <string name="Links">Links</string>
-    <string name="AboutExteraDescription">Experimental Telegram client based on Official Sources!</string>
+    <string name="AboutExteraDescription">Experimental Papercraft client based on Official Sources!</string>
     <string name="Channel">Channel</string>
     <string name="Crowdin">Translate</string>
     <string name="SourceCode">Source Code</string>
@@ -73,7 +73,7 @@
     <!-- General -->
     <string name="CameraType">Camera Type</string>
     <string name="CameraTypeSystem">System</string>
-    <string name="DefaultCameraInfo">Use the Telegram\'s built-in Camera.</string>
+    <string name="DefaultCameraInfo">Use the Papercraft\'s built-in Camera.</string>
     <string name="CameraXInfo">CameraX is only supported on <![CDATA[<a href="https://developer.android.com/training/camerax/devices">selected devices</a>]]>, effects and lenses support depends on your manufacturer.</string>
     <string name="SystemCameraInfo">Access directly the system camera (not applicable for video messages).</string>
     <string name="PerformanceMode">Performance Mode</string>
@@ -93,7 +93,7 @@
     <string name="Profile">Profile</string>
     <string name="HidePhoneNumber">Hide Phone Number</string>
     <string name="ShowIdAndDc">Show ID and DC</string>
-    <string name="ShowIdAndDcInfo">Telegram APl shows IDs as they are, while the Bot API adds a minus sign for groups and -100 for supergroups, broadcast groups and channels.</string>
+    <string name="ShowIdAndDcInfo">Papercraft APl shows IDs as they are, while the Bot API adds a minus sign for groups and -100 for supergroups, broadcast groups and channels.</string>
 
     <string name="DisableAnimatedAvatars">Disable Animated Avatars</string>
     <string name="PremiumAutoPlayback">Premium Auto-Playback</string>
@@ -146,7 +146,7 @@
     <string name="DisableEdgeAction">Disable Edge Action</string>
     <string name="DisableEdgeActionInfo">Disables photo flipping by tapping on the edges.</string>
     <string name="HideCameraTile">Hide Instant Camera Tile</string>
-    <string name="HideCameraTileInfo">The camera tile will be replaced by a floating button. Pressing the button will launch the Telegram camera, holding it down will launch the system camera.</string>
+    <string name="HideCameraTileInfo">The camera tile will be replaced by a floating button. Pressing the button will launch the Papercraft camera, holding it down will launch the system camera.</string>
 
     <string name="StaticZoom">Static Zoom</string>
     <string name="StaticZoomInfo">When recording video messages, the zoom will not reset if you release your fingers.</string>

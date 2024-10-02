@@ -635,7 +635,7 @@
             </intent-filter>
         </service>
         <service
-            android:name=".voip.TelegramConnectionService"
+            android:name=".voip.PapercraftConnectionService"
             android:exported="true"
             android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE">
             <intent-filter>

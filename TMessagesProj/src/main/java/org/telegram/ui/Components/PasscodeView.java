@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x
+ * This is the source code of Papercraft for Android v. 5.x.x
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -1345,7 +1345,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             ((MotionBackgroundDrawable) backgroundDrawable).setParentView(backgroundFrameLayout);
         }
 
-        passcodeTextView.setText(LocaleController.getString("EnterYourTelegramPasscode", R.string.EnterYourTelegramPasscode));
+        passcodeTextView.setText(LocaleController.getString("EnterYourPapercraftPasscode", R.string.EnterYourPapercraftPasscode));
 
         if (SharedConfig.passcodeType == SharedConfig.PASSCODE_TYPE_PIN) {
             if (retryTextView.getVisibility() != VISIBLE) {

@@ -449,7 +449,7 @@ public class BotWebViewContainer extends FrameLayout implements NotificationCent
         addView(webView);
 
         // We can't use javascript interface because of minSDK 16, it can be exploited because of reflection access
-        webView.addJavascriptInterface(new WebViewProxy(), "TelegramWebviewProxy");
+        webView.addJavascriptInterface(new WebViewProxy(), "PapercraftWebviewProxy");
     }
 
     private void onOpenUri(Uri uri) {
@@ -901,7 +901,7 @@ public class BotWebViewContainer extends FrameLayout implements NotificationCent
     }
 
     private void notifyEvent(String event, JSONObject eventData) {
-        evaluateJs("window.Telegram.WebView.receiveEvent('" + event + "', " + eventData + ");", false);
+        evaluateJs("window.Papercraft.WebView.receiveEvent('" + event + "', " + eventData + ");", false);
     }
 
     public void setWebViewScrollListener(WebViewScrollListener webViewScrollListener) {

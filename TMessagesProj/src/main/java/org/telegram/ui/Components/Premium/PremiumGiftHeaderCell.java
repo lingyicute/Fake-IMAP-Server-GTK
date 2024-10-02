@@ -93,7 +93,7 @@ public class PremiumGiftHeaderCell extends LinearLayout {
         avatarDrawable.setInfo(user);
         avatarImageView.setForUserOrChat(user, avatarDrawable);
 
-        titleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.GiftTelegramPremiumTitle)));
-        subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.GiftTelegramPremiumDescription, user.first_name)));
+        titleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.GiftPapercraftPremiumTitle)));
+        subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.GiftPapercraftPremiumDescription, user.first_name)));
     }
 }

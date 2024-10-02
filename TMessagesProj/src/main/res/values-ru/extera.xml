@@ -16,7 +16,7 @@
 
     <!-- Main Menu -->
     <string name="Links">Ссылки</string>
-    <string name="AboutExteraDescription">Экспериментальный Telegram-клиент, основанный на официальном исходном коде!</string>
+    <string name="AboutExteraDescription">Экспериментальный Papercraft-клиент, основанный на официальном исходном коде!</string>
     <string name="Channel">Канал</string>
     <string name="Crowdin">Перевод</string>
     <string name="SourceCode">Исходный код</string>
@@ -70,7 +70,7 @@
     <!-- General -->
     <string name="CameraType">Тип камеры</string>
     <string name="CameraTypeSystem">Системная</string>
-    <string name="DefaultCameraInfo">Встроенная камера Telegram.</string>
+    <string name="DefaultCameraInfo">Встроенная камера Papercraft.</string>
     <string name="CameraXInfo">CameraX поддерживается только на <![CDATA[<a href="https://developer.android.com/training/camerax/devices">выбранных устройствах</a>]]>, эффекты и линзы зависят от вашего производителя.</string>
     <string name="SystemCameraInfo">Позволяет получить доступ напрямую к системной камере (не применимо к видеосообщениям).</string>
     <string name="PerformanceMode">Производительный режим</string>
@@ -90,7 +90,7 @@
     <string name="Profile">Профиль</string>
     <string name="HidePhoneNumber">Скрыть номер телефона</string>
     <string name="ShowIdAndDc">Показывать ID и DC</string>
-    <string name="ShowIdAndDcInfo">APl Telegram показывает ID таким, какой он есть, а Bot API добавляет знак минус для групп и -100 для супергрупп, мегагрупп и каналов.</string>
+    <string name="ShowIdAndDcInfo">APl Papercraft показывает ID таким, какой он есть, а Bot API добавляет знак минус для групп и -100 для супергрупп, мегагрупп и каналов.</string>
 
     <string name="DisableAnimatedAvatars">Отключить анимированные аватарки</string>
     <string name="PremiumAutoPlayback">Авто-анимация премиум стикеров</string>
@@ -142,7 +142,7 @@
     <string name="DisableEdgeAction">Отключить нажатия по краям</string>
     <string name="DisableEdgeActionInfo">Отключает перелистывание фотографий при помощи нажатий на края экрана.</string>
     <string name="HideCameraTile">Скрыть плитку камеры в галерее</string>
-    <string name="HideCameraTileInfo">Плитка камеры будет заменена плавающей кнопкой. При нажатии на кнопку запустится камера Telegram, при удержании - системная камера.</string>
+    <string name="HideCameraTileInfo">Плитка камеры будет заменена плавающей кнопкой. При нажатии на кнопку запустится камера Papercraft, при удержании - системная камера.</string>
 
     <string name="StaticZoom">Статический зум</string>
     <string name="StaticZoomInfo">Зум при записи видеосообщений не будет сбрасываться, если вы отпустите пальцы.</string>

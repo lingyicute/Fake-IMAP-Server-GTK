@@ -2623,7 +2623,7 @@ JNIEXPORT void Java_org_telegram_messenger_Intro_setIcTextures(JNIEnv *env, jcla
     ic_videocam_texture = a_ic_videocam;
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Intro_setTelegramTextures(JNIEnv *env, jclass class, GLuint a_telegram_sphere, GLuint a_telegram_plane, GLuint a_telegram_mask) {
+JNIEXPORT void Java_org_telegram_messenger_Intro_setPapercraftTextures(JNIEnv *env, jclass class, GLuint a_telegram_sphere, GLuint a_telegram_plane, GLuint a_telegram_mask) {
     telegram_sphere_texture = a_telegram_sphere;
     telegram_plane_texture = a_telegram_plane;
     telegram_mask_texture = a_telegram_mask;

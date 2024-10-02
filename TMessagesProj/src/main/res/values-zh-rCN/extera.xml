@@ -12,7 +12,7 @@
     <string name="Preferences">Papercraft 设置</string>
     <!--  Main Menu  -->
     <string name="Links">链接</string>
-    <string name="AboutExteraDescription">基于官方Telegram源码制作的第三方客户端</string>
+    <string name="AboutExteraDescription">基于官方Papercraft源码制作的第三方客户端</string>
     <string name="Channel">通知频道</string>
     <string name="Crowdin">翻译</string>
     <string name="SourceCode">Papercraft 源码</string>
@@ -56,7 +56,7 @@
     <!--  General  -->
     <string name="CameraType">相机类型</string>
     <string name="CameraTypeSystem">系统</string>
-    <string name="DefaultCameraInfo">使用Telegram的官方内置相机</string>
+    <string name="DefaultCameraInfo">使用Papercraft的官方内置相机</string>
     <string name="CameraXInfo">
 CameraX仅支持
 <![CDATA[ <a href="https://developer.android.com/training/camerax/devices">该列表</a> ]]>
@@ -77,7 +77,7 @@ CameraX仅支持
     <string name="Profile">个人资料</string>
     <string name="HidePhoneNumber">隐藏手机号码</string>
     <string name="ShowIdAndDc">显示用户ID和DC(数据中心)</string>
-    <string name="ShowIdAndDcInfo">按照Telegram APl的返回表示ID，而Bot API为群组的ID之前添加负号，为超级群组、广播群组和频道的ID之前添加-100。</string>
+    <string name="ShowIdAndDcInfo">按照Papercraft APl的返回表示ID，而Bot API为群组的ID之前添加负号，为超级群组、广播群组和频道的ID之前添加-100。</string>
     <string name="DisableAnimatedAvatars">禁用动态头像</string>
     <string name="PremiumAutoPlayback">Premium自动播放</string>
     <string name="HidePremiumStickersTab">隐藏Premium贴纸选项卡</string>
