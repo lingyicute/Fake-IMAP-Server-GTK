@@ -1,0 +1,40 @@
+name: Generate JKS Key
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-jks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Generate JKS Key
+        run: |
+          # 设置变量
+          KEYSTORE_PASSWORD="lingyicute"
+          KEY_ALIAS="lingyicute"
+          KEY_PASSWORD="lingyicute"
+          VALIDITY_DAYS=18250
+
+          # 生成 JKS 密钥库
+          keytool -genkeypair \
+            -alias $KEY_ALIAS \
+            -keyalg RSA \
+            -keysize 2048 \
+            -keystore lyi.jks \
+            -storepass $KEYSTORE_PASSWORD \
+            -keypass $KEY_PASSWORD \
+            -validity $VALIDITY_DAYS \
+            -dname "CN=lingyicute"
+
+      - name: Upload JKS Key
+        uses: actions/upload-artifact@v2
+        with:
+          name: keystore
+          path: lyi.jks
