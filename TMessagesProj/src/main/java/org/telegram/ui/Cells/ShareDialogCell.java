@@ -44,7 +44,7 @@ import org.telegram.ui.Components.CheckBox2;
 import org.telegram.ui.Components.Forum.ForumUtilities;
 import org.telegram.ui.Components.LayoutHelper;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class ShareDialogCell extends FrameLayout {
 

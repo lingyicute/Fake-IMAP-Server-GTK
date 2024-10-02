@@ -28,7 +28,7 @@ import org.telegram.ui.Components.Switch;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class TextCheckbox2Cell extends FrameLayout {
 

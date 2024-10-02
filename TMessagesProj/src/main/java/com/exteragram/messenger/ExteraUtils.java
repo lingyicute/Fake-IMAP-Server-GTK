@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger;
+package org.lingyicute.messenger;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -37,7 +37,7 @@ import android.widget.LinearLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-import com.exteragram.messenger.updater.UserAgentGenerator;
+import org.lingyicute.messenger.updater.UserAgentGenerator;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 

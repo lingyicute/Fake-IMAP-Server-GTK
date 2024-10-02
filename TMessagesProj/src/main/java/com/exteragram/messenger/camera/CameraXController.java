@@ -1,4 +1,4 @@
-package com.exteragram.messenger.camera;
+package org.lingyicute.messenger.camera;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -47,7 +47,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import org.telegram.messenger.AndroidUtilities;

@@ -1,4 +1,4 @@
-package com.exteragram.messenger.updater;
+package org.lingyicute.messenger.updater;
 
 import org.telegram.messenger.Utilities;
 

@@ -62,8 +62,8 @@ import org.telegram.ui.LaunchActivity;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class InviteMembersBottomSheet extends UsersAlertBase implements NotificationCenter.NotificationCenterDelegate {
 

@@ -63,7 +63,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.exteragram.messenger.extras.PermissionUtils;
+import org.lingyicute.messenger.extras.PermissionUtils;
 
 public class ImageUpdater implements NotificationCenter.NotificationCenterDelegate, PhotoCropActivity.PhotoEditActivityDelegate {
     private final static int ID_TAKE_PHOTO = 0,

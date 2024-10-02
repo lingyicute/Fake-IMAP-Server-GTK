@@ -31,10 +31,10 @@ import android.telephony.TelephonyManager;
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.camera.CameraXUtils;
-import com.exteragram.messenger.extras.ExceptionHandler;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.camera.CameraXUtils;
+import org.lingyicute.messenger.extras.ExceptionHandler;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
@@ -137,7 +137,7 @@ public class ApplicationLoader extends Application {
         } catch (Exception e) {
             FileLog.e(e);
         }
-        return new File("/data/data/com.exteragram.messenger/files");
+        return new File("/data/data/org.lingyicute.messenger/files");
     }
 
     public static void postInitApplication() {

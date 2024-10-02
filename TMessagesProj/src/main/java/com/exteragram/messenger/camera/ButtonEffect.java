@@ -1,4 +1,4 @@
-package com.exteragram.messenger.camera;
+package org.lingyicute.messenger.camera;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

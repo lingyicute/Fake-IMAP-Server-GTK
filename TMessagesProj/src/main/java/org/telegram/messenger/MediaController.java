@@ -104,8 +104,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.extras.PermissionUtils;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.extras.PermissionUtils;
 
 public class MediaController implements AudioManager.OnAudioFocusChangeListener, NotificationCenter.NotificationCenterDelegate, SensorEventListener {
 

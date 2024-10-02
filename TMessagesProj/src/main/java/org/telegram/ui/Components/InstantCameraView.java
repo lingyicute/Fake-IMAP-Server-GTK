@@ -66,9 +66,9 @@ import androidx.camera.core.SurfaceOrientedMeteringPointFactory;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.camera.CameraXController;
-import com.exteragram.messenger.camera.CameraXUtils;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.camera.CameraXController;
+import org.lingyicute.messenger.camera.CameraXUtils;
 import com.google.android.exoplayer2.ExoPlayer;
 
 import org.telegram.messenger.AndroidUtilities;

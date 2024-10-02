@@ -1,4 +1,4 @@
-package com.exteragram.messenger.components;
+package org.lingyicute.messenger.components;
 
 import static org.telegram.messenger.AndroidUtilities.dp;
 

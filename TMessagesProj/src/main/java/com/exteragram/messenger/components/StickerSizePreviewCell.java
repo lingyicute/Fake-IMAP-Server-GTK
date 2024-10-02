@@ -1,6 +1,6 @@
 // all credits to @Nekogram
 
-package com.exteragram.messenger.components;
+package org.lingyicute.messenger.components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

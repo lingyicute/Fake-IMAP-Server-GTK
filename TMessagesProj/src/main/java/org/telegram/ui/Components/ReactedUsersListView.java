@@ -47,7 +47,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class ReactedUsersListView extends FrameLayout {
 

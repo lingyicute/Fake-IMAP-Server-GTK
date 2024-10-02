@@ -108,11 +108,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.extras.PermissionUtils;
-import com.exteragram.messenger.premium.BoostController;
-import com.exteragram.messenger.premium.encryption.EncryptionHelper;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.extras.PermissionUtils;
+import org.lingyicute.messenger.premium.BoostController;
+import org.lingyicute.messenger.premium.encryption.EncryptionHelper;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.zxing.common.detector.MathUtils;
 

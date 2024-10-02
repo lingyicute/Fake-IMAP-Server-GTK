@@ -42,7 +42,7 @@ import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.ProgressButton;
 import org.telegram.ui.Components.ViewHelper;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 @SuppressLint("ViewConstructor")
 public class ArchivedStickerSetCell extends FrameLayout implements Checkable {

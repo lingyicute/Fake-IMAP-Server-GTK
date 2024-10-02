@@ -78,8 +78,8 @@ import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.Premium.LimitReachedBottomSheet;
 import org.telegram.ui.Components.RecyclerListView;
 
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.ExteraConfig;
 
 import java.util.ArrayList;
 

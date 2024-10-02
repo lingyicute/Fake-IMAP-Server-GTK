@@ -1,8 +1,8 @@
-package com.exteragram.messenger.extras;
+package org.lingyicute.messenger.extras;
 
 import androidx.core.util.Pair;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;

@@ -30,8 +30,8 @@ import android.util.Base64;
 
 import androidx.collection.LongSparseArray;
 
-import com.exteragram.messenger.premium.encryption.BaseEncryptor;
-import com.exteragram.messenger.premium.filter.ZalgoFilter;
+import org.lingyicute.messenger.premium.encryption.BaseEncryptor;
+import org.lingyicute.messenger.premium.filter.ZalgoFilter;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.browser.Browser;

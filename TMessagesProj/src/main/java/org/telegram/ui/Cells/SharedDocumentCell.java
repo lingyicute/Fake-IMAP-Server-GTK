@@ -58,8 +58,8 @@ import java.io.File;
 import java.util.Date;
 import java.util.Locale;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
 
 public class SharedDocumentCell extends FrameLayout implements DownloadController.FileDownloadProgressListener {
 

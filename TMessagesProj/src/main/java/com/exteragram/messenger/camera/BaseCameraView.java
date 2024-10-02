@@ -1,4 +1,4 @@
-package com.exteragram.messenger.camera;
+package org.lingyicute.messenger.camera;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

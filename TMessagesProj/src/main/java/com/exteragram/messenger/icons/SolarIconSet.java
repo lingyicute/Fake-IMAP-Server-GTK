@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.icons;
+package org.lingyicute.messenger.icons;
 
 public class SolarIconSet extends BaseIconSet {
     public SolarIconSet() {

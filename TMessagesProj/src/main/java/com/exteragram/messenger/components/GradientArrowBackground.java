@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.components;
+package org.lingyicute.messenger.components;
 
 import android.content.Context;
 import android.graphics.Canvas;
