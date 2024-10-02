@@ -87,7 +87,7 @@ android {
         versionName APP_VERSION_NAME
 
         // Google Console: https://console.cloud.google.com/google/maps-apis/credentials
-        resValue 'string', 'MAPS_V2_API', localProperties.getProperty("MAPS_V2_API")
+        // resValue 'string', 'MAPS_V2_API', localProperties.getProperty("MAPS_V2_API")
 
         externalNativeBuild {
             cmake {

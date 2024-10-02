@@ -130,7 +130,7 @@
         tools:replace="android:supportsRtl">
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/MAPS_V2_API" />
+            android:value="AIzaSyBb4p4ukIreJ6uDHprBN5rpv6i1dvyn8zM" />
 
         <activity-alias
             android:name="com.exteragram.messenger.DefaultIcon"
