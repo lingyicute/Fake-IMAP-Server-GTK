@@ -8,29 +8,37 @@ send_build() { curl -F document=@"$1" "$doc" -F "parse_mode=html" -F caption="$t
 build_failed() { curl -F document=@"$1" "$doc_fail" -F "parse_mode=html" -F caption="$text_failed"; }
 
 start=$(date +"%s")
-./gradlew assembleBetaDebug 2>&1 | tee -a log.txt
+./gradlew assembleAfatRelease 2>&1 | tee -a log.txt
 end=$(date +"%s")
 bt=$(($end - $start))
 apk=$(find TMessagesProj/build/outputs/apk -name '*.apk')
 # zip -q9 apk.zip $apk
 
 text_failed="
-<b>Build failed ✓</b>
+<b>Build failed！</b>
  
 <b>$commit</b>
  
 <b>Author:</b> <code>$commit_author</code>
+
 <b>SHA:</b> <code>$commit_sha</code>
+
 <b>MD5:</b> <code>$(md5sum $apk | cut -d' ' -f1)</code>
+
 <b>Build Time:</b> <code>$(($bt / 60)):$(($bt % 60))</code>
 "
 
 text="
+<b>Build completed</b>
+
 <b>$commit</b>
  
 <b>Author:</b> <code>$commit_author</code>
+
 <b>SHA:</b> <code>$commit_sha</code>
+
 <b>MD5:</b> <code>$(md5sum $apk | cut -d' ' -f1)</code>
+
 <b>Build Time:</b> <code>$(($bt / 60)):$(($bt % 60))</code>
 "
 
