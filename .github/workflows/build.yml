@@ -19,7 +19,8 @@ jobs:
         run: |
           echo "y" | sdkmanager --install "ndk;21.4.7075529" --sdk_root=${ANDROID_SDK_ROOT} &> /dev/null
           echo "sdk.dir=${ANDROID_HOME}" > local.properties
-          echo "ndk.dir=${ANDROID_HOME}/ndk/21.4.7075529" >> local.properties      - name: Setup Gradle
+          echo "ndk.dir=${ANDROID_HOME}/ndk/21.4.7075529" >> local.properties
+      - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
       - name: Chmod Gradle
         run: chmod +x gradlew
