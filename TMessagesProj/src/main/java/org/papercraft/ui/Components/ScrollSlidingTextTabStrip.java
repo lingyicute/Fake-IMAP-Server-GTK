@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -30,10 +30,10 @@ import android.widget.TextView;
 import androidx.annotation.Keep;
 import androidx.core.graphics.ColorUtils;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.ActionBar.Theme;
 
 public class ScrollSlidingTextTabStrip extends HorizontalScrollView {
 

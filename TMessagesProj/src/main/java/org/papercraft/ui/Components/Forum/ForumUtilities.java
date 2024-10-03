@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Forum;
+package org.papercraft.ui.Components.Forum;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -19,28 +19,28 @@ import android.text.style.ImageSpan;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.DialogObject;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.INavigationLayout;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.ColoredImageSpan;
-import org.telegram.ui.Components.CombinedDrawable;
-import org.telegram.ui.Components.LetterDrawable;
-import org.telegram.ui.TopicsFragment;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.ContactsController;
+import org.papercraft.messenger.DialogObject;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.MessagesStorage;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.INavigationLayout;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.ColoredImageSpan;
+import org.papercraft.ui.Components.CombinedDrawable;
+import org.papercraft.ui.Components.LetterDrawable;
+import org.papercraft.ui.TopicsFragment;
 
 import java.util.ArrayList;
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Adapters;
+package org.papercraft.ui.Adapters;
 
 import android.content.Context;
 import android.os.SystemClock;
@@ -24,39 +24,39 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.exoplayer2.util.Log;
 
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.DialogObject;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.UserObject;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.DialogCell;
-import org.telegram.ui.Cells.GraySectionCell;
-import org.telegram.ui.Cells.HashtagSearchCell;
-import org.telegram.ui.Cells.HintDialogCell;
-import org.telegram.ui.Cells.ProfileSearchCell;
-import org.telegram.ui.Cells.TextCell;
-import org.telegram.ui.Cells.TopicSearchCell;
-import org.telegram.ui.Components.FlickerLoadingView;
-import org.telegram.ui.Components.ForegroundColorSpanThemable;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.DialogsActivity;
-import org.telegram.ui.FilteredSearchView;
+import org.papercraft.PhoneFormat.PhoneFormat;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.ContactsController;
+import org.papercraft.messenger.DialogObject;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.MessagesStorage;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.DialogCell;
+import org.papercraft.ui.Cells.GraySectionCell;
+import org.papercraft.ui.Cells.HashtagSearchCell;
+import org.papercraft.ui.Cells.HintDialogCell;
+import org.papercraft.ui.Cells.ProfileSearchCell;
+import org.papercraft.ui.Cells.TextCell;
+import org.papercraft.ui.Cells.TopicSearchCell;
+import org.papercraft.ui.Components.FlickerLoadingView;
+import org.papercraft.ui.Components.ForegroundColorSpanThemable;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.DialogsActivity;
+import org.papercraft.ui.FilteredSearchView;
 
 import java.util.ArrayList;
 import java.util.Collections;

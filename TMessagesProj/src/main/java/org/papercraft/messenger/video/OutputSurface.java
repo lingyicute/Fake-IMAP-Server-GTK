@@ -6,13 +6,13 @@
  * Copyright Nikolai Kudashov, 2013-2020.
  */
 
-package org.telegram.messenger.video;
+package org.papercraft.messenger.video;
 
 import android.graphics.SurfaceTexture;
 import android.view.Surface;
 
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.VideoEditedInfo;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.VideoEditedInfo;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -25,21 +25,21 @@ import android.widget.TextView;
 
 import androidx.core.content.FileProvider;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.browser.Browser;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.voip.CellFlickerDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.browser.Browser;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.voip.CellFlickerDrawable;
 
 import java.io.File;
 import java.util.Locale;

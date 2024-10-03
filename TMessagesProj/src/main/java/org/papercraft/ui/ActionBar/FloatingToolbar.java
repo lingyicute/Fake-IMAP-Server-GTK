@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -57,11 +57,11 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
 
 import java.util.ArrayList;
 import java.util.Collections;

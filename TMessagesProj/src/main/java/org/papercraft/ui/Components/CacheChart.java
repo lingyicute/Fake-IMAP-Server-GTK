@@ -1,8 +1,8 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import static org.telegram.messenger.AndroidUtilities.dp;
-import static org.telegram.messenger.AndroidUtilities.dpf2;
-import static org.telegram.messenger.AndroidUtilities.lerp;
+import static org.papercraft.messenger.AndroidUtilities.dp;
+import static org.papercraft.messenger.AndroidUtilities.dpf2;
+import static org.papercraft.messenger.AndroidUtilities.lerp;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -27,12 +27,12 @@ import android.view.View;
 
 import com.google.zxing.common.detector.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.Premium.StarParticlesView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.Premium.StarParticlesView;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint.Views;
+package org.papercraft.ui.Components.Paint.Views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -17,15 +17,15 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.ChatActivityEnterViewAnimatedIconView;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Paint.PaintTypeface;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.RLottieImageView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.ChatActivityEnterViewAnimatedIconView;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Paint.PaintTypeface;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.RLottieImageView;
 
 import java.util.Arrays;
 import java.util.List;

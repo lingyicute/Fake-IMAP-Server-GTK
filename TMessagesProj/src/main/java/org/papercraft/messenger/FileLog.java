@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -17,10 +17,10 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.telegram.messenger.time.FastDateFormat;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.time.FastDateFormat;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.LaunchActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;

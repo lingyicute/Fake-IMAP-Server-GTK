@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.animation.ValueAnimator;
 import android.content.ClipData;
@@ -27,10 +27,10 @@ import androidx.dynamicanimation.animation.FloatPropertyCompat;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.EditTextBoldCursor;
-import org.telegram.ui.Components.SimpleFloatPropertyCompat;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.EditTextBoldCursor;
+import org.papercraft.ui.Components.SimpleFloatPropertyCompat;
 
 public class CodeNumberField extends EditTextBoldCursor {
     private final static float SPRING_MULTIPLIER = 100f;

@@ -1,6 +1,6 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import static org.telegram.messenger.AndroidUtilities.dp;
+import static org.papercraft.messenger.AndroidUtilities.dp;
 
 import android.graphics.Path;
 import android.graphics.RectF;

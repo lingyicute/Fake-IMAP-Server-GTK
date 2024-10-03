@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -46,15 +46,15 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.XiaomiUtilities;
-import org.telegram.ui.ActionBar.FloatingActionMode;
-import org.telegram.ui.ActionBar.FloatingToolbar;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.XiaomiUtilities;
+import org.papercraft.ui.ActionBar.FloatingActionMode;
+import org.papercraft.ui.ActionBar.FloatingToolbar;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

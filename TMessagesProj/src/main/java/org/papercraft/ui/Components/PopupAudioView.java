@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -18,16 +18,16 @@ import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DownloadController;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.MessageObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.BaseCell;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DownloadController;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.BaseCell;
 
 import java.io.File;
 

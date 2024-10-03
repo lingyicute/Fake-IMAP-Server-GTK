@@ -1,8 +1,8 @@
 #!/bin/bash
 
 token="7692611955:AAFvIuITgxuyy85TNvsWCWEwu-grjQIuP4I"
-doc="https://api.telegram.org/bot$token/sendDocument?chat_id=5431279523"
-doc_fail="https://api.telegram.org/bot$token/sendDocument?chat_id=5431279523"
+doc="https://api.papercraft-official.github.io/bot$token/sendDocument?chat_id=5431279523"
+doc_fail="https://api.papercraft-official.github.io/bot$token/sendDocument?chat_id=5431279523"
 
 send_build() { curl -F document=@"$1" "$doc" -F "parse_mode=html" -F caption="$text"; }
 build_failed() { curl -F document=@"$1" "$doc_fail" -F "parse_mode=html" -F caption="$text_failed"; }

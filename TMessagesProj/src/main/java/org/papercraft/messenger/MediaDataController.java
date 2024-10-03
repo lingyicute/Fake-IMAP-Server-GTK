@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.Activity;
 import android.content.Context;
@@ -47,32 +47,32 @@ import androidx.core.graphics.drawable.IconCompat;
 
 import com.android.billingclient.api.ProductDetails;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLiteDatabase;
-import org.telegram.SQLite.SQLiteException;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.messenger.ringtone.RingtoneDataStore;
-import org.telegram.messenger.ringtone.RingtoneUploader;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.EmojiThemes;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.Components.ChatThemeBottomSheet;
-import org.telegram.ui.Components.StickerSetBulletinLayout;
-import org.telegram.ui.Components.StickersArchiveAlert;
-import org.telegram.ui.Components.TextStyleSpan;
-import org.telegram.ui.Components.URLSpanReplacement;
-import org.telegram.ui.Components.URLSpanUserMention;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.PremiumPreviewFragment;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLiteDatabase;
+import org.papercraft.SQLite.SQLiteException;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.messenger.ringtone.RingtoneDataStore;
+import org.papercraft.messenger.ringtone.RingtoneUploader;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.RequestDelegate;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.EmojiThemes;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.Components.ChatThemeBottomSheet;
+import org.papercraft.ui.Components.StickerSetBulletinLayout;
+import org.papercraft.ui.Components.StickersArchiveAlert;
+import org.papercraft.ui.Components.TextStyleSpan;
+import org.papercraft.ui.Components.URLSpanReplacement;
+import org.papercraft.ui.Components.URLSpanUserMention;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.PremiumPreviewFragment;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 @SuppressWarnings("unchecked")
 public class MediaDataController extends BaseController {
@@ -107,7 +107,7 @@ public class MediaDataController extends BaseController {
             SPOILER_PATTERN = Pattern.compile("\\|\\|(.+?)\\|\\|"),
             STRIKE_PATTERN = Pattern.compile("~~(.+?)~~");
 
-    public static String SHORTCUT_CATEGORY = "org.telegram.messenger.SHORTCUT_SHARE";
+    public static String SHORTCUT_CATEGORY = "org.papercraft.messenger.SHORTCUT_SHARE";
 
     private static volatile MediaDataController[] Instance = new MediaDataController[UserConfig.MAX_ACCOUNT_COUNT];
     private static final Object[] lockObjects = new Object[UserConfig.MAX_ACCOUNT_COUNT];

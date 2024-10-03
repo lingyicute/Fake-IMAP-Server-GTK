@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,8 +14,8 @@ import android.os.SystemClock;
 import android.util.Base64;
 import android.util.LongSparseArray;
 
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLRPC;
 
 import java.util.ArrayList;
 import java.util.Arrays;

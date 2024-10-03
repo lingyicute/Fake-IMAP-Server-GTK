@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -16,23 +16,23 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.UserObject;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.LayoutHelper;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class ManageChatUserCell extends FrameLayout {
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -16,7 +16,7 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.view.animation.DecelerateInterpolator;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 public class BackDrawable extends Drawable {
 

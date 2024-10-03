@@ -20,7 +20,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -43,8 +43,8 @@ import android.util.SparseArray;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.DrawingInBackgroundThreadDrawable;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.DrawingInBackgroundThreadDrawable;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;

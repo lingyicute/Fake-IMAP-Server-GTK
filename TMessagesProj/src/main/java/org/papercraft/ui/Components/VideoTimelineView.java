@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -28,10 +28,10 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
 

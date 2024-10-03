@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -22,22 +22,22 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.CombinedDrawable;
-import org.telegram.ui.Components.VideoPlayer;
-import org.telegram.ui.Components.voip.CellFlickerDrawable;
-import org.telegram.ui.PremiumPreviewFragment;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.CombinedDrawable;
+import org.papercraft.ui.Components.VideoPlayer;
+import org.papercraft.ui.Components.voip.CellFlickerDrawable;
+import org.papercraft.ui.PremiumPreviewFragment;
 
 import java.io.File;
 import java.net.URLEncoder;

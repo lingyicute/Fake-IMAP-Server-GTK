@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -12,13 +12,13 @@ import android.view.View;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
 

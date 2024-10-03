@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -9,20 +9,20 @@ import android.widget.TextView;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.widget.NestedScrollView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.BottomSheet;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.ManageLinksActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.BottomSheet;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.ManageLinksActivity;
 
 import java.util.ArrayList;
 

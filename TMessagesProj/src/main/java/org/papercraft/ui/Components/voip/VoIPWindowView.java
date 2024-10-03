@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.voip;
+package org.papercraft.ui.Components.voip;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,11 +14,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.UserConfig;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.VoIPFragment;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.VoIPFragment;
 
 public class VoIPWindowView extends FrameLayout {
 

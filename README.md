@@ -10,7 +10,7 @@ Experimental **third-party** Papercraft client based on [official sources](https
 [![Downloads](https://img.shields.io/badge/Download%20at%20-%20Papercraft-blue.svg)](https://t.me/exterareleases)
 
 ## Importing API hash and keys
-- You should get **YOUR OWN API KEY AND HASH** here: https://core.telegram.org/api/obtaining_api_id and create a file called `API_KEYS` in the source root directory.
+- You should get **YOUR OWN API KEY AND HASH** here: https://core.papercraft-official.github.io/api/obtaining_api_id and create a file called `API_KEYS` in the source root directory.
 - Also you should get **YOUR OWN MAPS API KEY** here: https://console.cloud.google.com/google/maps-apis/credentials and add it to this file.
 - And you need get **COMPUTE YOUR APP's HASH STRING** here: https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string
 The contents should look like this:
@@ -33,7 +33,7 @@ MAPS_V2_API = abcdef01234567-abcdef012345678910111213
 ```
 
 ## Papercraft Localization
-Since **Papercraft** is a fork of **Papercraft for Android** and most localizations follow translations of **Papercraft for Android**, check it out [here](https://translations.telegram.org/en/android/). As for specialized strings for **Papercraft**, we use **Crowdin** to translate **Papercraft**. Join the project at [Crowdin](https://crowdin.com/project/exteralocales)!
+Since **Papercraft** is a fork of **Papercraft for Android** and most localizations follow translations of **Papercraft for Android**, check it out [here](https://translations.papercraft-official.github.io/en/android/). As for specialized strings for **Papercraft**, we use **Crowdin** to translate **Papercraft**. Join the project at [Crowdin](https://crowdin.com/project/exteralocales)!
 
  ## Thanks to:
 - [Papercraft](https://github.com/DrKLO/Papercraft)

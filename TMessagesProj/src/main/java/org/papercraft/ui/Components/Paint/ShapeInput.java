@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
@@ -8,9 +8,9 @@ import android.view.MotionEvent;
 
 import com.google.zxing.common.detector.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.UserConfig;
-import org.telegram.ui.Components.Size;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.ui.Components.Size;
 
 import java.util.ArrayList;
 

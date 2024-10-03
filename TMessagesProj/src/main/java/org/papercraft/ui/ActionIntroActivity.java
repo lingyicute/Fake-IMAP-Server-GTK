@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -35,27 +35,27 @@ import android.widget.TextView;
 import androidx.annotation.IntDef;
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.LocationController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.Components.ShareLocationDrawable;
-import org.telegram.ui.Components.URLSpanNoUnderline;
-import org.telegram.ui.Components.voip.CellFlickerDrawable;
+import org.papercraft.PhoneFormat.PhoneFormat;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.LocationController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.Components.ShareLocationDrawable;
+import org.papercraft.ui.Components.URLSpanNoUnderline;
+import org.papercraft.ui.Components.voip.CellFlickerDrawable;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

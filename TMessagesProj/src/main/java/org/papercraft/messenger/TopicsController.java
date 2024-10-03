@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -8,16 +8,16 @@ import android.util.SparseArray;
 
 import androidx.collection.LongSparseArray;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.messenger.support.LongSparseIntArray;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Components.Forum.ForumUtilities;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.messenger.support.LongSparseIntArray;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.RequestDelegate;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.Components.Forum.ForumUtilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;

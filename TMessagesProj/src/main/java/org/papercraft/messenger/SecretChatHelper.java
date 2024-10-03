@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,15 +15,15 @@ import android.text.TextUtils;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.messenger.support.LongSparseIntArray;
-import org.telegram.tgnet.AbstractSerializedData;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLClassStore;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.messenger.support.LongSparseIntArray;
+import org.papercraft.tgnet.AbstractSerializedData;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLClassStore;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
 
 import java.io.File;
 import java.math.BigInteger;

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -62,48 +62,48 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.DialogObject;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SendMessagesHelper;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.UserObject;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenuSubItem;
-import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.ActionBar.AdjustPanLayoutHelper;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BottomSheet;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Adapters.DialogsSearchAdapter;
-import org.telegram.ui.Adapters.SearchAdapterHelper;
-import org.telegram.ui.Cells.GraySectionCell;
-import org.telegram.ui.Cells.HintDialogCell;
-import org.telegram.ui.Cells.ShareDialogCell;
-import org.telegram.ui.Cells.ShareTopicCell;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.DialogsActivity;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.MessageStatisticActivity;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.ContactsController;
+import org.papercraft.messenger.DialogObject;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.MessagesStorage;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SendMessagesHelper;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.ActionBarMenuSubItem;
+import org.papercraft.ui.ActionBar.ActionBarPopupWindow;
+import org.papercraft.ui.ActionBar.AdjustPanLayoutHelper;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BottomSheet;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Adapters.DialogsSearchAdapter;
+import org.papercraft.ui.Adapters.SearchAdapterHelper;
+import org.papercraft.ui.Cells.GraySectionCell;
+import org.papercraft.ui.Cells.HintDialogCell;
+import org.papercraft.ui.Cells.ShareDialogCell;
+import org.papercraft.ui.Cells.ShareTopicCell;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.DialogsActivity;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.MessageStatisticActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,8 +114,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraConfig;
 
 public class ShareAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate {
 

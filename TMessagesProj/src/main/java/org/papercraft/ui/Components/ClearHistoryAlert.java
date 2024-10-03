@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2021.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -23,20 +23,20 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.UserObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.BottomSheet;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.CheckBoxCell;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.ShadowSectionCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.BottomSheet;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.CheckBoxCell;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.ShadowSectionCell;
+import org.papercraft.ui.Cells.TextInfoPrivacyCell;
 
 import androidx.core.widget.NestedScrollView;
 

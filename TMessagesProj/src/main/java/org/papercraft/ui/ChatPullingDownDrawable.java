@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -21,23 +21,23 @@ import android.view.View;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DialogObject;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.CounterView;
-import org.telegram.ui.Components.CubicBezierInterpolator;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DialogObject;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.CounterView;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
 
 import java.util.ArrayList;
 

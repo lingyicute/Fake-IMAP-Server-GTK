@@ -6,15 +6,15 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.messenger.utils.ImmutableByteArrayOutputStream;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.Storage.CacheModel;
+import org.papercraft.messenger.utils.ImmutableByteArrayOutputStream;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.Storage.CacheModel;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,7 +29,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipException;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class FileLoadOperation {
 

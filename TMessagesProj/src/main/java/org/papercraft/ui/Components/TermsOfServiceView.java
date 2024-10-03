@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.os.Build;
@@ -14,16 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.Theme;
 
 public class TermsOfServiceView extends FrameLayout {
 

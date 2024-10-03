@@ -1,4 +1,4 @@
-package org.telegram.messenger.utils;
+package org.papercraft.messenger.utils;
 
 import android.graphics.Typeface;
 import android.os.Build;
@@ -12,11 +12,11 @@ import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.URLSpanReplacement;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.URLSpanReplacement;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;

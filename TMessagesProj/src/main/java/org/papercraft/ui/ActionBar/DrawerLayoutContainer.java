@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -42,11 +42,11 @@ import androidx.annotation.Nullable;
 
 import com.google.android.gms.vision.Frame;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.Utilities;
 
 public class DrawerLayoutContainer extends FrameLayout {
 

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,13 +15,13 @@ import android.text.TextPaint;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Bitmaps;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Bitmaps;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.TLRPC;
 
 import java.io.File;
 

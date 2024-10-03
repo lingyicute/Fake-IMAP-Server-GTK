@@ -1,23 +1,23 @@
-package org.telegram.ui.Components.Reactions;
+package org.papercraft.ui.Components.Reactions;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.RLottieDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.RLottieDrawable;
 
 import java.util.ArrayList;
 

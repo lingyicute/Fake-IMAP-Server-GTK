@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -22,12 +22,12 @@ import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ArticleViewer;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ArticleViewer;
 
 import java.util.ArrayList;
 

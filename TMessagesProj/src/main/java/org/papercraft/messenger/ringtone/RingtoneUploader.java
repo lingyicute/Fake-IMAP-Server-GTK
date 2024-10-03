@@ -1,15 +1,15 @@
-package org.telegram.messenger.ringtone;
+package org.papercraft.messenger.ringtone;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.Bulletin;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.Bulletin;
 
 import java.io.File;
 

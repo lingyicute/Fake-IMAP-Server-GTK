@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -27,35 +27,35 @@ import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.UserObject;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.ProfileActivity;
-import org.telegram.ui.TopicsFragment;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.ActionBarPopupWindow;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.ProfileActivity;
+import org.papercraft.ui.TopicsFragment;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
 
 public class ChatAvatarContainer extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 

@@ -1,9 +1,9 @@
-package org.telegram.ui.Charts.view_data;
+package org.papercraft.ui.Charts.view_data;
 
 import android.graphics.Paint;
 
-import org.telegram.ui.Charts.BaseChartView;
-import org.telegram.ui.Charts.data.ChartData;
+import org.papercraft.ui.Charts.BaseChartView;
+import org.papercraft.ui.Charts.data.ChartData;
 
 public class StackLinearViewData extends LineViewData {
 

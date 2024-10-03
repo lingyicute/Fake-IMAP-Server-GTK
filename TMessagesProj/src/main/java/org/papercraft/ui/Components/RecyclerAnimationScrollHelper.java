@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -9,9 +9,9 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.MessagesController;
-import org.telegram.ui.Cells.ChatMessageCell;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.ui.Cells.ChatMessageCell;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -10,15 +10,15 @@ import androidx.core.graphics.ColorUtils;
 
 import com.google.android.exoplayer2.util.Log;
 
-import org.telegram.messenger.DocumentObject;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.DocumentObject;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.util.HashSet;
 

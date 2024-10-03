@@ -44,7 +44,7 @@ void JNI_OnUnload(JavaVM *vm, void *reserved) {
 
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jboolean encrypt, jint offset, jint length) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_aesIgeEncryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jboolean encrypt, jint offset, jint length) {
     jbyte *what = (*env)->GetDirectBufferAddress(env, buffer) + offset;
     unsigned char *keyBuff = (unsigned char *)(*env)->GetByteArrayElements(env, key, NULL);
     unsigned char *ivBuff = (unsigned char *)(*env)->GetByteArrayElements(env, iv, NULL);
@@ -61,7 +61,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryption(JNIEnv *en
     (*env)->ReleaseByteArrayElements(env, iv, ivBuff, 0);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryptionByteArray(JNIEnv *env, jclass class, jbyteArray buffer, jbyteArray key, jbyteArray iv, jboolean encrypt, jint offset, jint length) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_aesIgeEncryptionByteArray(JNIEnv *env, jclass class, jbyteArray buffer, jbyteArray key, jbyteArray iv, jboolean encrypt, jint offset, jint length) {
     unsigned char *bufferBuff = (unsigned char *) (*env)->GetByteArrayElements(env, buffer, NULL);
     unsigned char *keyBuff = (unsigned char *) (*env)->GetByteArrayElements(env, key, NULL);
     unsigned char *ivBuff = (unsigned char *) (*env)->GetByteArrayElements(env, iv, NULL);
@@ -79,7 +79,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryptionByteArray(J
     (*env)->ReleaseByteArrayElements(env, buffer, bufferBuff, 0);
 }
 
-JNIEXPORT jint Java_org_telegram_messenger_Utilities_pbkdf2(JNIEnv *env, jclass class, jbyteArray password, jbyteArray salt, jbyteArray dst, jint iterations) {
+JNIEXPORT jint Java_org_papercraft_messenger_Utilities_pbkdf2(JNIEnv *env, jclass class, jbyteArray password, jbyteArray salt, jbyteArray dst, jint iterations) {
     jbyte *passwordBuff = (*env)->GetByteArrayElements(env, password, NULL);
     size_t passwordLength = (size_t) (*env)->GetArrayLength(env, password);
     jbyte *saltBuff = (*env)->GetByteArrayElements(env, salt, NULL);
@@ -96,7 +96,7 @@ JNIEXPORT jint Java_org_telegram_messenger_Utilities_pbkdf2(JNIEnv *env, jclass 
     return result;
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_aesCtrDecryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jint offset, jint length) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_aesCtrDecryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jint offset, jint length) {
     jbyte *what = (*env)->GetDirectBufferAddress(env, buffer) + offset;
     unsigned char *keyBuff = (unsigned char *)(*env)->GetByteArrayElements(env, key, NULL);
     unsigned char *ivBuff = (unsigned char *)(*env)->GetByteArrayElements(env, iv, NULL);
@@ -111,7 +111,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_aesCtrDecryption(JNIEnv *en
     (*env)->ReleaseByteArrayElements(env, iv, ivBuff, JNI_ABORT);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_aesCtrDecryptionByteArray(JNIEnv *env, jclass class, jbyteArray buffer, jbyteArray key, jbyteArray iv, jint offset, jlong length, jint fileOffset) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_aesCtrDecryptionByteArray(JNIEnv *env, jclass class, jbyteArray buffer, jbyteArray key, jbyteArray iv, jint offset, jlong length, jint fileOffset) {
     unsigned char *bufferBuff = (unsigned char *) (*env)->GetByteArrayElements(env, buffer, NULL);
     unsigned char *keyBuff = (unsigned char *) (*env)->GetByteArrayElements(env, key, NULL);
     unsigned char *ivBuff = (unsigned char *) (*env)->GetByteArrayElements(env, iv, NULL);
@@ -141,7 +141,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_aesCtrDecryptionByteArray(J
     (*env)->ReleaseByteArrayElements(env, buffer, bufferBuff, 0);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_aesCbcEncryptionByteArray(JNIEnv *env, jclass class, jbyteArray buffer, jbyteArray key, jbyteArray iv, jint offset, jint length, jint fileOffset, jint encrypt) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_aesCbcEncryptionByteArray(JNIEnv *env, jclass class, jbyteArray buffer, jbyteArray key, jbyteArray iv, jint offset, jint length, jint fileOffset, jint encrypt) {
     unsigned char *bufferBuff = (unsigned char *) (*env)->GetByteArrayElements(env, buffer, NULL);
     unsigned char *keyBuff = (unsigned char *) (*env)->GetByteArrayElements(env, key, NULL);
     unsigned char *ivBuff = (unsigned char *) (*env)->GetByteArrayElements(env, iv, NULL);
@@ -168,7 +168,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_aesCbcEncryptionByteArray(J
     (*env)->ReleaseByteArrayElements(env, iv, ivBuff, JNI_ABORT);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_aesCbcEncryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jint offset, jint length, jint encrypt) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_aesCbcEncryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jint offset, jint length, jint encrypt) {
     unsigned char *bufferBuff = (*env)->GetDirectBufferAddress(env, buffer) + offset;
     unsigned char *keyBuff = (unsigned char *) (*env)->GetByteArrayElements(env, key, NULL);
     unsigned char *ivBuff = (unsigned char *) (*env)->GetByteArrayElements(env, iv, NULL);
@@ -262,14 +262,14 @@ int64_t listdir(const char *fileName, int32_t mode, int32_t docType, int64_t tim
     return value;
 }
 
-JNIEXPORT jlong Java_org_telegram_messenger_Utilities_getDirSize(JNIEnv *env, jclass class, jstring path, jint docType, jboolean subdirs) {
+JNIEXPORT jlong Java_org_papercraft_messenger_Utilities_getDirSize(JNIEnv *env, jclass class, jstring path, jint docType, jboolean subdirs) {
     const char *fileName = (*env)->GetStringUTFChars(env, path, NULL);
     jlong value = listdir(fileName, 0, docType, 0, subdirs);
     (*env)->ReleaseStringUTFChars(env, path, fileName);
     return value;
 }
 
-JNIEXPORT jlong Java_org_telegram_messenger_Utilities_getLastUsageFileTime(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT jlong Java_org_papercraft_messenger_Utilities_getLastUsageFileTime(JNIEnv *env, jclass class, jstring path) {
     const char *fileName = (*env)->GetStringUTFChars(env, path, NULL);
     struct stat attrib;
     stat(fileName, &attrib);
@@ -283,7 +283,7 @@ JNIEXPORT jlong Java_org_telegram_messenger_Utilities_getLastUsageFileTime(JNIEn
     return value;
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_clearDir(JNIEnv *env, jclass class, jstring path, jint docType, jlong time, jboolean subdirs) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_clearDir(JNIEnv *env, jclass class, jstring path, jint docType, jlong time, jboolean subdirs) {
     const char *fileName = (*env)->GetStringUTFChars(env, path, NULL);
     listdir(fileName, 1, docType, time, subdirs);
     (*env)->ReleaseStringUTFChars(env, path, fileName);

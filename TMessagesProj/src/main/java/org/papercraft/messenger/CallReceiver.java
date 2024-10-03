@@ -6,14 +6,14 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.TelephonyManager;
 
-import org.telegram.PhoneFormat.PhoneFormat;
+import org.papercraft.PhoneFormat.PhoneFormat;
 
 public class CallReceiver extends BroadcastReceiver {
 

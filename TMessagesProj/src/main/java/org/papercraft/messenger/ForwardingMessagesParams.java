@@ -1,10 +1,10 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.text.TextUtils;
 import android.util.LongSparseArray;
 import android.util.SparseBooleanArray;
 
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.TLRPC;
 
 import java.util.ArrayList;
 

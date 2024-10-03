@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.Manifest;
 import android.animation.Animator;
@@ -68,46 +68,46 @@ import androidx.dynamicanimation.animation.SpringForce;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.DialogObject;
-import org.telegram.messenger.DocumentObject;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SendMessagesHelper;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.UserObject;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
-import org.telegram.ui.ActionBar.ActionBarMenuSubItem;
-import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.ActionBar.AdjustPanLayoutHelper;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.BottomSheet;
-import org.telegram.ui.ActionBar.INavigationLayout;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.BasePermissionsActivity;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.DialogsActivity;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.PassportActivity;
-import org.telegram.ui.PaymentFormActivity;
-import org.telegram.ui.PhotoPickerActivity;
-import org.telegram.ui.PhotoPickerSearchActivity;
-import org.telegram.ui.PremiumPreviewFragment;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.ContactsController;
+import org.papercraft.messenger.DialogObject;
+import org.papercraft.messenger.DocumentObject;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SendMessagesHelper;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.ActionBarMenuItem;
+import org.papercraft.ui.ActionBar.ActionBarMenuSubItem;
+import org.papercraft.ui.ActionBar.ActionBarPopupWindow;
+import org.papercraft.ui.ActionBar.AdjustPanLayoutHelper;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.BottomSheet;
+import org.papercraft.ui.ActionBar.INavigationLayout;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.BasePermissionsActivity;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.DialogsActivity;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.PassportActivity;
+import org.papercraft.ui.PaymentFormActivity;
+import org.papercraft.ui.PhotoPickerActivity;
+import org.papercraft.ui.PhotoPickerSearchActivity;
+import org.papercraft.ui.PremiumPreviewFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,9 +115,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.extras.PermissionUtils;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.extras.PermissionUtils;
 
 public class ChatAttachAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate, BottomSheet.BottomSheetDelegateInterface {
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2020.
  */
 
-package org.telegram.messenger.video;
+package org.papercraft.messenger.video;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -37,26 +37,26 @@ import android.view.inputmethod.EditorInfo;
 import androidx.annotation.RequiresApi;
 import androidx.exifinterface.media.ExifInterface;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.Bitmaps;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.VideoEditedInfo;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.AnimatedFileDrawable;
-import org.telegram.ui.Components.EditTextEffects;
-import org.telegram.ui.Components.FilterShaders;
-import org.telegram.ui.Components.Paint.Views.EditTextOutline;
-import org.telegram.ui.Components.Paint.Views.PaintTextOptionsView;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.Rect;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.Bitmaps;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.VideoEditedInfo;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.AnimatedFileDrawable;
+import org.papercraft.ui.Components.EditTextEffects;
+import org.papercraft.ui.Components.FilterShaders;
+import org.papercraft.ui.Components.Paint.Views.EditTextOutline;
+import org.papercraft.ui.Components.Paint.Views.PaintTextOptionsView;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.Rect;
 
 import java.io.File;
 import java.io.RandomAccessFile;

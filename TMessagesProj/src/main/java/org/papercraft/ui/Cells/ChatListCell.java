@@ -1,4 +1,4 @@
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,13 +12,13 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RadioButton;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RadioButton;
 
 public class ChatListCell extends LinearLayout {
 

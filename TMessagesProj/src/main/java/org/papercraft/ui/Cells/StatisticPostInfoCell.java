@@ -1,4 +1,4 @@
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,19 +12,19 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.StatisticActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.StatisticActivity;
 
 public class StatisticPostInfoCell extends FrameLayout {
 

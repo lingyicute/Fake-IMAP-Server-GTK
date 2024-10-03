@@ -9,11 +9,11 @@
 
 */
 
-package org.lingyicute.messenger.icons;
+package org.papercraft.messenger.icons;
 
 import android.util.SparseIntArray;
 
-import org.telegram.messenger.R;
+import org.papercraft.messenger.R;
 
 public class IconSetsController {
     public static final SparseIntArray solar = new SparseIntArray();

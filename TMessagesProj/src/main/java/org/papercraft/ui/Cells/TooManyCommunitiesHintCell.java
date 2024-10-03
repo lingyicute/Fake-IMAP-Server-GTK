@@ -1,4 +1,4 @@
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,11 +14,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.LayoutHelper;
 
 public class TooManyCommunitiesHintCell extends FrameLayout {
 

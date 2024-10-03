@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,13 +11,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.Bitmaps;
-import org.telegram.messenger.DocumentObject;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.Bitmaps;
+import org.papercraft.messenger.DocumentObject;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.io.File;
 import java.util.HashMap;

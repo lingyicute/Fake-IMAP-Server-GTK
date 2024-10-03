@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -40,27 +40,27 @@ import androidx.annotation.Keep;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Cells.GroupCreateSectionCell;
-import org.telegram.ui.Cells.InviteTextCell;
-import org.telegram.ui.Cells.InviteUserCell;
-import org.telegram.ui.Components.EditTextBoldCursor;
-import org.telegram.ui.Components.EmptyTextProgressView;
-import org.telegram.ui.Components.GroupCreateDividerItemDecoration;
-import org.telegram.ui.Components.GroupCreateSpan;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ContactsController;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Cells.GroupCreateSectionCell;
+import org.papercraft.ui.Cells.InviteTextCell;
+import org.papercraft.ui.Cells.InviteUserCell;
+import org.papercraft.ui.Components.EditTextBoldCursor;
+import org.papercraft.ui.Components.EmptyTextProgressView;
+import org.papercraft.ui.Components.GroupCreateDividerItemDecoration;
+import org.papercraft.ui.Components.GroupCreateSpan;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 import java.util.Collections;

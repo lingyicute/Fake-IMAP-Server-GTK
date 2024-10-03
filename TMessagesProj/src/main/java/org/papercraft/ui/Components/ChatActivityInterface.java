@@ -1,9 +1,9 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import org.telegram.messenger.ChatObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.Theme;
 
 public interface ChatActivityInterface {
 

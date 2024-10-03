@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.preferences;
+package org.papercraft.messenger.preferences;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -21,29 +21,29 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.components.AltSeekbar;
-import org.lingyicute.messenger.components.DoubleTapCell;
-import org.lingyicute.messenger.components.StickerShapeCell;
-import org.lingyicute.messenger.components.StickerSizePreviewCell;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.components.AltSeekbar;
+import org.papercraft.messenger.components.DoubleTapCell;
+import org.papercraft.messenger.components.StickerShapeCell;
+import org.papercraft.messenger.components.StickerSizePreviewCell;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.CheckBoxCell;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.TextCheckCell;
-import org.telegram.ui.Cells.TextCheckCell2;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
-import org.telegram.ui.Cells.TextSettingsCell;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.SlideChooseView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.ActionBarMenu;
+import org.papercraft.ui.ActionBar.ActionBarMenuItem;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.CheckBoxCell;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.TextCheckCell;
+import org.papercraft.ui.Cells.TextCheckCell2;
+import org.papercraft.ui.Cells.TextInfoPrivacyCell;
+import org.papercraft.ui.Cells.TextSettingsCell;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.SlideChooseView;
 
 import java.util.Locale;
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -27,17 +27,17 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.AdjustPanLayoutHelper;
-import org.telegram.ui.ActionBar.INavigationLayout;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.BlurSettingsBottomSheet;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.AdjustPanLayoutHelper;
+import org.papercraft.ui.ActionBar.INavigationLayout;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.BlurSettingsBottomSheet;
 
 import java.util.ArrayList;
 

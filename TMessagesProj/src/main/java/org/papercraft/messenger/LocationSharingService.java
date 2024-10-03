@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -16,10 +16,10 @@ import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import org.lingyicute.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraUtils;
 
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.LaunchActivity;
 
 import java.util.ArrayList;
 

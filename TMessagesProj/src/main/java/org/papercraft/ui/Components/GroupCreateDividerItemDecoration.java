@@ -6,19 +6,19 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.*;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.GroupCreateSectionCell;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.GroupCreateSectionCell;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class GroupCreateDividerItemDecoration extends RecyclerView.ItemDecoration {
 

@@ -1,13 +1,13 @@
-package org.lingyicute.messenger.extras;
+package org.papercraft.messenger.extras;
 
 import androidx.core.util.Pair;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
 
 import java.util.LinkedHashMap;
 

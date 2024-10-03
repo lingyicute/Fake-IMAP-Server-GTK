@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.camera;
+package org.papercraft.messenger.camera;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

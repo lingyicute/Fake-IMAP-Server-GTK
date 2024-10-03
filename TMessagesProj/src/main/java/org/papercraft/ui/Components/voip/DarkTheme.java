@@ -1,12 +1,12 @@
-package org.telegram.ui.Components.voip;
+package org.papercraft.ui.Components.voip;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 
-import org.telegram.messenger.FileLog;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.ui.ActionBar.Theme;
 
 /**
  * Created by grishka on 29.09.2017.

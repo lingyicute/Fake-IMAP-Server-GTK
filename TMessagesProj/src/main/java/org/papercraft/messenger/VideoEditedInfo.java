@@ -6,20 +6,20 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.text.TextUtils;
 import android.view.View;
 
-import org.telegram.tgnet.AbstractSerializedData;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.AnimatedFileDrawable;
-import org.telegram.ui.Components.Paint.PaintTypeface;
-import org.telegram.ui.Components.PhotoFilterView;
-import org.telegram.ui.Components.Point;
+import org.papercraft.tgnet.AbstractSerializedData;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.AnimatedFileDrawable;
+import org.papercraft.ui.Components.Paint.PaintTypeface;
+import org.papercraft.ui.Components.PhotoFilterView;
+import org.papercraft.ui.Components.Point;
 
 import java.util.ArrayList;
 import java.util.Locale;

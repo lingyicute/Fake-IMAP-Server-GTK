@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

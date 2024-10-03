@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -16,9 +16,9 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Adapters.FiltersView;
-import org.telegram.ui.Components.RLottieDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Adapters.FiltersView;
+import org.papercraft.ui.Components.RLottieDrawable;
 
 import java.util.ArrayList;
 

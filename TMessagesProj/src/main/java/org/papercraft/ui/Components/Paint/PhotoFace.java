@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
 import android.graphics.Bitmap;
 import android.graphics.PointF;
@@ -6,8 +6,8 @@ import android.graphics.PointF;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.Landmark;
 
-import org.telegram.ui.Components.Size;
-import org.telegram.ui.Components.Point;
+import org.papercraft.ui.Components.Size;
+import org.papercraft.ui.Components.Point;
 
 import java.util.List;
 

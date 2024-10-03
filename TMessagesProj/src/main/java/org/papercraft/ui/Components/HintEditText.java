@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,7 +15,7 @@ import android.graphics.Rect;
 import android.text.TextPaint;
 import android.util.TypedValue;
 
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.Theme;
 
 public class HintEditText extends EditTextBoldCursor {
     protected TextPaint hintPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);

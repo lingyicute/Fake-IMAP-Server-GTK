@@ -52,7 +52,7 @@ import com.google.android.exoplayer2.video.VideoSize;
 import com.google.android.exoplayer2.video.spherical.CameraMotionListener;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.Utilities;
 
 import java.util.List;
 

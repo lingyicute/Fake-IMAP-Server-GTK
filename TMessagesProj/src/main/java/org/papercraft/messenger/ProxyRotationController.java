@@ -1,9 +1,9 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 
-import org.telegram.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.ConnectionsManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;

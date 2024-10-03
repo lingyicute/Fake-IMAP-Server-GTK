@@ -1,6 +1,6 @@
-package org.lingyicute.messenger.components;
+package org.papercraft.messenger.components;
 
-import static org.telegram.messenger.AndroidUtilities.dp;
+import static org.papercraft.messenger.AndroidUtilities.dp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,13 +15,13 @@ import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AnimatedTextView;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.SeekBarView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AnimatedTextView;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.SeekBarView;
 
 @SuppressLint("ViewConstructor")
 public class AltSeekbar extends FrameLayout {

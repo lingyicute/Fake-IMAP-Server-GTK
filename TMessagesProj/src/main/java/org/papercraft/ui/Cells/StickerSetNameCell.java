@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -23,13 +23,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Components.ColorSpanUnderline;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Components.ColorSpanUnderline;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RecyclerListView;
 
 import java.util.List;
 

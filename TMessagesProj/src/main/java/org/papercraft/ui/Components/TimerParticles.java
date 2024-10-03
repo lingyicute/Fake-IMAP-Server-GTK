@@ -1,12 +1,12 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.SystemClock;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Utilities;
 
 import java.util.ArrayList;
 

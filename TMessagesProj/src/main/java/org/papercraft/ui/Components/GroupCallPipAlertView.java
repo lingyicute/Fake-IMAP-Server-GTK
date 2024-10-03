@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,21 +21,21 @@ import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.voip.VoIPButtonsLayout;
-import org.telegram.ui.Components.voip.VoIPToggleButton;
-import org.telegram.ui.GroupCallActivity;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.voip.VoIPButtonsLayout;
+import org.papercraft.ui.Components.voip.VoIPToggleButton;
+import org.papercraft.ui.GroupCallActivity;
+import org.papercraft.ui.LaunchActivity;
 
 public class GroupCallPipAlertView extends LinearLayout implements VoIPService.StateListener, NotificationCenter.NotificationCenterDelegate {
 

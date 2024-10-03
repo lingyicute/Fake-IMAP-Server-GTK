@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -30,38 +30,38 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BackDrawable;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Cells.CheckBoxCell;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.LoadingCell;
-import org.telegram.ui.Cells.LocationCell;
-import org.telegram.ui.Cells.ProfileSearchCell;
-import org.telegram.ui.Cells.ShadowSectionCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
-import org.telegram.ui.Components.CheckBox2;
-import org.telegram.ui.Components.CombinedDrawable;
-import org.telegram.ui.Components.FlickerLoadingView;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.NumberTextView;
-import org.telegram.ui.Components.ProgressButton;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.voip.VoIPHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.ActionBarMenu;
+import org.papercraft.ui.ActionBar.ActionBarMenuItem;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BackDrawable;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Cells.CheckBoxCell;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.LoadingCell;
+import org.papercraft.ui.Cells.LocationCell;
+import org.papercraft.ui.Cells.ProfileSearchCell;
+import org.papercraft.ui.Cells.ShadowSectionCell;
+import org.papercraft.ui.Cells.TextInfoPrivacyCell;
+import org.papercraft.ui.Components.CheckBox2;
+import org.papercraft.ui.Components.CombinedDrawable;
+import org.papercraft.ui.Components.FlickerLoadingView;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.NumberTextView;
+import org.papercraft.ui.Components.ProgressButton;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.voip.VoIPHelper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -71,8 +71,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraConfig;
 
 public class CallLogActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

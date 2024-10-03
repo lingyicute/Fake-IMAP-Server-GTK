@@ -1,6 +1,6 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import static org.telegram.messenger.AndroidUtilities.dp;
+import static org.papercraft.messenger.AndroidUtilities.dp;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -19,15 +19,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Adapters.MentionsAdapter;
-import org.telegram.ui.Adapters.PaddedListAdapter;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.ContentPreviewViewer;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Adapters.MentionsAdapter;
+import org.papercraft.ui.Adapters.PaddedListAdapter;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.ContentPreviewViewer;
 
 public class MentionsContainerView extends BlurredFrameLayout {
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -46,27 +46,27 @@ import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AnimationProperties;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Scroller;
-import org.telegram.ui.Components.TimerParticles;
-import org.telegram.ui.Components.VideoPlayer;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AnimationProperties;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Scroller;
+import org.papercraft.ui.Components.TimerParticles;
+import org.papercraft.ui.Components.VideoPlayer;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -48,17 +48,17 @@ import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.Bitmaps;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.Bitmaps;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.TLRPC;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.voip;
+package org.papercraft.ui.Components.voip;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -27,21 +27,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.voip.VideoCapturerDevice;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.BackDrawable;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.MotionBackgroundDrawable;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.voip.VideoCapturerDevice;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.BackDrawable;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.MotionBackgroundDrawable;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.LaunchActivity;
 import org.webrtc.RendererCommon;
 
 import java.io.File;

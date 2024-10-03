@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint.Views;
+package org.papercraft.ui.Components.Paint.Views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -18,15 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.LocaleController;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Paint.PaintTypeface;
-import org.telegram.ui.Components.Paint.Swatch;
-import org.telegram.ui.Components.Point;
-import org.telegram.ui.Components.Rect;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Paint.PaintTypeface;
+import org.papercraft.ui.Components.Paint.Swatch;
+import org.papercraft.ui.Components.Point;
+import org.papercraft.ui.Components.Rect;
 
 public class TextPaintView extends EntityView {
 

@@ -1,11 +1,11 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.Theme;
 
 @SuppressLint("ViewConstructor")
 public class ReorderingBulletinLayout extends Bulletin.SimpleLayout {

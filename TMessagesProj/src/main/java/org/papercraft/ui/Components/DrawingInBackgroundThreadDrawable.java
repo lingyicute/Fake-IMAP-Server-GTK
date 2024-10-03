@@ -1,17 +1,17 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
 

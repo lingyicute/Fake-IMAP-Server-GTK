@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,20 +9,20 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.CacheByChatsController;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
-import org.telegram.ui.ActionBar.ActionBarMenuSubItem;
-import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AvatarsDrawable;
-import org.telegram.ui.Components.AvatarsImageView;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.LinkSpanDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.CacheByChatsController;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.ActionBarMenuItem;
+import org.papercraft.ui.ActionBar.ActionBarMenuSubItem;
+import org.papercraft.ui.ActionBar.ActionBarPopupWindow;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AvatarsDrawable;
+import org.papercraft.ui.Components.AvatarsImageView;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.LinkSpanDrawable;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import static org.telegram.messenger.AndroidUtilities.dp;
+import static org.papercraft.messenger.AndroidUtilities.dp;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -24,23 +24,23 @@ import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLiteDatabase;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Fetcher;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLiteDatabase;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Fetcher;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.MessagesStorage;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

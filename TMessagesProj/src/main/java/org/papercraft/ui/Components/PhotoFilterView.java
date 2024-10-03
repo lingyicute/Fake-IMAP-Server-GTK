@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -31,14 +31,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.BubbleActivity;
-import org.telegram.ui.Cells.PhotoEditRadioCell;
-import org.telegram.ui.Cells.PhotoEditToolCell;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.BubbleActivity;
+import org.papercraft.ui.Cells.PhotoEditRadioCell;
+import org.papercraft.ui.Cells.PhotoEditToolCell;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

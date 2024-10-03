@@ -1,7 +1,7 @@
-package org.telegram.ui.Components.Paint.Views;
+package org.papercraft.ui.Components.Paint.Views;
 
-import static org.telegram.messenger.AndroidUtilities.dp;
-import static org.telegram.messenger.AndroidUtilities.lerp;
+import static org.papercraft.messenger.AndroidUtilities.dp;
+import static org.papercraft.messenger.AndroidUtilities.lerp;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,7 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 public class PaintCancelView extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);

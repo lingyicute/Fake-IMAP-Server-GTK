@@ -1,4 +1,4 @@
-package org.telegram.ui.Charts;
+package org.papercraft.ui.Charts;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,8 +6,8 @@ import android.graphics.Paint;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.ui.Charts.data.ChartData;
-import org.telegram.ui.Charts.view_data.BarViewData;
+import org.papercraft.ui.Charts.data.ChartData;
+import org.papercraft.ui.Charts.view_data.BarViewData;
 
 public class BarChartView extends BaseChartView<ChartData, BarViewData> {
 

@@ -1,4 +1,4 @@
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,19 +17,19 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DownloadController;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.BackgroundGradientDrawable;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.MediaActionDrawable;
-import org.telegram.ui.Components.MotionBackgroundDrawable;
-import org.telegram.ui.Components.RadialProgress2;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DownloadController;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.BackgroundGradientDrawable;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.MediaActionDrawable;
+import org.papercraft.ui.Components.MotionBackgroundDrawable;
+import org.papercraft.ui.Components.RadialProgress2;
 
 import java.io.File;
 

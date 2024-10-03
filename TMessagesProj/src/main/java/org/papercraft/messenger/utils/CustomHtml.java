@@ -1,11 +1,11 @@
-package org.telegram.messenger.utils;
+package org.papercraft.messenger.utils;
 
 import android.text.Spanned;
 
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.TextStyleSpan;
-import org.telegram.ui.Components.URLSpanMono;
-import org.telegram.ui.Components.URLSpanReplacement;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.TextStyleSpan;
+import org.papercraft.ui.Components.URLSpanMono;
+import org.papercraft.ui.Components.URLSpanReplacement;
 
 public class CustomHtml {
 

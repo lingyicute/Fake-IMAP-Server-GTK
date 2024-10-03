@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -26,16 +26,16 @@ import android.view.View;
 
 import com.google.gson.Gson;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.DispatchQueuePool;
-import org.telegram.messenger.DispatchQueuePoolBackground;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.utils.BitmapsCache;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.DispatchQueuePool;
+import org.papercraft.messenger.DispatchQueuePoolBackground;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.utils.BitmapsCache;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,7 +46,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class RLottieDrawable extends BitmapDrawable implements Animatable, BitmapsCache.Cacheable {
 

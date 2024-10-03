@@ -6,10 +6,10 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger.secretmedia;
+package org.papercraft.messenger.secretmedia;
 
-import org.telegram.messenger.SecureDocumentKey;
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.SecureDocumentKey;
+import org.papercraft.messenger.Utilities;
 
 import java.io.File;
 import java.io.FileInputStream;

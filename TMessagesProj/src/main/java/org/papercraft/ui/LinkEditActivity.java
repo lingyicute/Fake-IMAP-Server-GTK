@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
@@ -21,26 +21,26 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.AdjustPanLayoutHelper;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.TextCheckCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
-import org.telegram.ui.Cells.TextSettingsCell;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.SizeNotifierFrameLayout;
-import org.telegram.ui.Components.SlideChooseView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.AdjustPanLayoutHelper;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.TextCheckCell;
+import org.papercraft.ui.Cells.TextInfoPrivacyCell;
+import org.papercraft.ui.Cells.TextSettingsCell;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.SizeNotifierFrameLayout;
+import org.papercraft.ui.Components.SlideChooseView;
 
 import java.util.ArrayList;
 

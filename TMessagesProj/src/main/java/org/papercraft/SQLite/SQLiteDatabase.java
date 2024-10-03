@@ -6,11 +6,11 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.SQLite;
+package org.papercraft.SQLite;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ApplicationLoader;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ApplicationLoader;
 
 public class SQLiteDatabase {
 

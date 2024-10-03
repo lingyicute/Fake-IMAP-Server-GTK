@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -7,7 +7,7 @@ import android.text.style.ReplacementSpan;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 public class DotDividerSpan extends ReplacementSpan {
 

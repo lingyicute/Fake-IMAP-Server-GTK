@@ -1,4 +1,4 @@
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,23 +13,23 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DocumentObject;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.CheckBox2;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Reactions.ReactionsUtils;
-import org.telegram.ui.Components.Switch;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DocumentObject;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.CheckBox2;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Reactions.ReactionsUtils;
+import org.papercraft.ui.Components.Switch;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class AvailableReactionCell extends FrameLayout {
     private SimpleTextView textView;

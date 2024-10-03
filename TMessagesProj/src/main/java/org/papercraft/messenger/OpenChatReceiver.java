@@ -6,13 +6,13 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.ui.LaunchActivity;
 
 public class OpenChatReceiver extends Activity {
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.tgnet;
+package org.papercraft.tgnet;
 
 public interface WriteToSocketDelegate {
     void run();

@@ -1,10 +1,10 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import org.telegram.ui.Components.voip.VoIPHelper;
+import org.papercraft.ui.Components.voip.VoIPHelper;
 
 public class VoIPFeedbackActivity extends Activity {
 	@Override

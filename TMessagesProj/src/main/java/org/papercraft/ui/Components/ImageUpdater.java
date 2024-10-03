@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.Manifest;
 import android.app.Activity;
@@ -27,43 +27,43 @@ import android.view.View;
 import androidx.core.content.FileProvider;
 import androidx.exifinterface.media.ExifInterface;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SendMessagesHelper;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.VideoEditedInfo;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.BottomSheet;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.BasePermissionsActivity;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.PhotoAlbumPickerActivity;
-import org.telegram.ui.PhotoCropActivity;
-import org.telegram.ui.PhotoPickerActivity;
-import org.telegram.ui.PhotoViewer;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SendMessagesHelper;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.VideoEditedInfo;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.BottomSheet;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.BasePermissionsActivity;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.PhotoAlbumPickerActivity;
+import org.papercraft.ui.PhotoCropActivity;
+import org.papercraft.ui.PhotoPickerActivity;
+import org.papercraft.ui.PhotoViewer;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.lingyicute.messenger.extras.PermissionUtils;
+import org.papercraft.messenger.extras.PermissionUtils;
 
 public class ImageUpdater implements NotificationCenter.NotificationCenterDelegate, PhotoCropActivity.PhotoEditActivityDelegate {
     private final static int ID_TAKE_PHOTO = 0,

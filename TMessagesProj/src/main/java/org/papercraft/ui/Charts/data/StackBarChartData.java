@@ -1,9 +1,9 @@
-package org.telegram.ui.Charts.data;
+package org.papercraft.ui.Charts.data;
 
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.telegram.messenger.SegmentTree;
+import org.papercraft.messenger.SegmentTree;
 
 public class StackBarChartData extends ChartData {
 

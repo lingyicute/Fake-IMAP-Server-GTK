@@ -1,17 +1,17 @@
-package org.telegram.messenger.utils;
+package org.papercraft.messenger.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.DispatchQueuePoolBackground;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.Components.RLottieDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.DispatchQueuePoolBackground;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.Components.RLottieDrawable;
 
 import java.io.File;
 import java.io.FileNotFoundException;

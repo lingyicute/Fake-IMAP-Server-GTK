@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -25,9 +25,9 @@ import com.android.billingclient.api.QueryPurchasesParams;
 import com.google.android.exoplayer2.util.Util;
 
 import org.json.JSONObject;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.PremiumPreviewFragment;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.PremiumPreviewFragment;
 
 import java.io.InputStream;
 import java.text.NumberFormat;

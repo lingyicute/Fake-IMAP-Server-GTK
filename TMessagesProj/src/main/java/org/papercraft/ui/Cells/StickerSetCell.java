@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -31,31 +31,31 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DocumentObject;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.CheckBox2;
-import org.telegram.ui.Components.Easings;
-import org.telegram.ui.Components.ForegroundColorSpanThemable;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Premium.PremiumButtonView;
-import org.telegram.ui.Components.RadialProgressView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DocumentObject;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.CheckBox2;
+import org.papercraft.ui.Components.Easings;
+import org.papercraft.ui.Components.ForegroundColorSpanThemable;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Premium.PremiumButtonView;
+import org.papercraft.ui.Components.RadialProgressView;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class StickerSetCell extends FrameLayout {
     private final static String LINK_PREFIX = "papercraft-official.github.io/addstickers/";

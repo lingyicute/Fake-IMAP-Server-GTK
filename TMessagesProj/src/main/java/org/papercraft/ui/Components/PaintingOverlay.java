@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,16 +19,16 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.VideoEditedInfo;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.Paint.Views.EditTextOutline;
-import org.telegram.ui.Components.Paint.Views.PaintTextOptionsView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.VideoEditedInfo;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.Paint.Views.EditTextOutline;
+import org.papercraft.ui.Components.Paint.Views.PaintTextOptionsView;
 
 import java.util.ArrayList;
 import java.util.HashMap;

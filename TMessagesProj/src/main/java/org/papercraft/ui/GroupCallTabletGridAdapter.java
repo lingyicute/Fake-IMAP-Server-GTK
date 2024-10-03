@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.graphics.Color;
 import android.view.View;
@@ -8,16 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.MessageObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.voip.GroupCallGridCell;
-import org.telegram.ui.Components.voip.GroupCallMiniTextureView;
-import org.telegram.ui.Components.voip.GroupCallRenderersContainer;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.voip.GroupCallGridCell;
+import org.papercraft.ui.Components.voip.GroupCallMiniTextureView;
+import org.papercraft.ui.Components.voip.GroupCallRenderersContainer;
 
 import java.util.ArrayList;
 

@@ -1,10 +1,10 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
 import android.graphics.Color;
 import android.opengl.GLES20;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
 
 import java.util.HashMap;
 import java.util.Map;

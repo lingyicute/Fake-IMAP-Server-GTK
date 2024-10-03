@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.preferences;
+package org.papercraft.messenger.preferences;
 
 import android.content.Context;
 import android.os.CountDownTimer;
@@ -19,23 +19,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.TextCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
-import org.telegram.ui.Components.BulletinFactory;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.TextCell;
+import org.papercraft.ui.Cells.TextInfoPrivacyCell;
+import org.papercraft.ui.Components.BulletinFactory;
+import org.papercraft.ui.LaunchActivity;
 
 import java.util.Locale;
 

@@ -1,4 +1,4 @@
-package org.telegram.tgnet;
+package org.papercraft.tgnet;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,22 +14,22 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BaseController;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.EmuDetector;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.KeepAliveJob;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.PushListenerController;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.StatsController;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.BaseController;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.EmuDetector;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.KeepAliveJob;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.PushListenerController;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.StatsController;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.Utilities;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

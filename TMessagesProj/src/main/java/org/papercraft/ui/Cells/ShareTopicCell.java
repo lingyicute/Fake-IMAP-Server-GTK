@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -15,17 +15,17 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.CombinedDrawable;
-import org.telegram.ui.Components.Forum.ForumBubbleDrawable;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.LetterDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.CombinedDrawable;
+import org.papercraft.ui.Components.Forum.ForumBubbleDrawable;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.LetterDrawable;
 
 public class ShareTopicCell extends FrameLayout {
 

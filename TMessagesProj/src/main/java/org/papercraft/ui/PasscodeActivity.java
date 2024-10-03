@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -48,48 +48,48 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
-import org.telegram.ui.ActionBar.ActionBarMenuSubItem;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.TextCheckCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
-import org.telegram.ui.Cells.TextSettingsCell;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.CustomPhoneKeyboardView;
-import org.telegram.ui.Components.Easings;
-import org.telegram.ui.Components.EditTextBoldCursor;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.NumberPicker;
-import org.telegram.ui.Components.OutlineTextContainerView;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.SizeNotifierFrameLayout;
-import org.telegram.ui.Components.TextViewSwitcher;
-import org.telegram.ui.Components.TransformableLoginButtonView;
-import org.telegram.ui.Components.VerticalPositionAutoAnimator;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.ActionBarMenu;
+import org.papercraft.ui.ActionBar.ActionBarMenuItem;
+import org.papercraft.ui.ActionBar.ActionBarMenuSubItem;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.TextCheckCell;
+import org.papercraft.ui.Cells.TextInfoPrivacyCell;
+import org.papercraft.ui.Cells.TextSettingsCell;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.CustomPhoneKeyboardView;
+import org.papercraft.ui.Components.Easings;
+import org.papercraft.ui.Components.EditTextBoldCursor;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.NumberPicker;
+import org.papercraft.ui.Components.OutlineTextContainerView;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.SizeNotifierFrameLayout;
+import org.papercraft.ui.Components.TextViewSwitcher;
+import org.papercraft.ui.Components.TransformableLoginButtonView;
+import org.papercraft.ui.Components.VerticalPositionAutoAnimator;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraConfig;
 
 public class PasscodeActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
     public final static int TYPE_MANAGE_CODE_SETTINGS = 0,

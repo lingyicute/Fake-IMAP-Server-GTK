@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 
 import android.content.Context;
@@ -9,9 +9,9 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 import androidx.core.math.MathUtils;
 
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,11 +1,11 @@
-package org.telegram.messenger.video;
+package org.papercraft.messenger.video;
 
 import android.media.MediaCodec;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.MediaController;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.MediaController;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

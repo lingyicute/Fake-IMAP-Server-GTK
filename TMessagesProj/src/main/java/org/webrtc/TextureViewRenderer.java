@@ -11,10 +11,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.voip.VoIPService;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.voip.VoIPService;
 
 import java.util.concurrent.CountDownLatch;
 

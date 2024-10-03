@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -6,9 +6,9 @@ import android.graphics.RectF;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
 

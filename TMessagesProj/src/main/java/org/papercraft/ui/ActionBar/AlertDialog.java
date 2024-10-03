@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -53,21 +53,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.Components.AnimatedFloat;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.LineProgressView;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.Components.RadialProgressView;
-import org.telegram.ui.Components.spoilers.SpoilersTextView;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.ui.Components.AnimatedFloat;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.LineProgressView;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.Components.RadialProgressView;
+import org.papercraft.ui.Components.spoilers.SpoilersTextView;
+import org.papercraft.ui.LaunchActivity;
 
 import java.util.ArrayList;
 import java.util.Map;

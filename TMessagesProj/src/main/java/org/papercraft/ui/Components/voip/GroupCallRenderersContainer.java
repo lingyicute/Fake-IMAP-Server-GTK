@@ -1,7 +1,7 @@
-package org.telegram.ui.Components.voip;
+package org.papercraft.ui.Components.voip;
 
-import static org.telegram.ui.GroupCallActivity.TRANSITION_DURATION;
-import static org.telegram.ui.GroupCallActivity.isLandscapeMode;
+import static org.papercraft.ui.GroupCallActivity.TRANSITION_DURATION;
+import static org.papercraft.ui.GroupCallActivity.isLandscapeMode;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -31,31 +31,31 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserObject;
-import org.telegram.messenger.support.LongSparseIntArray;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.BackDrawable;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.AvatarsDrawable;
-import org.telegram.ui.Components.AvatarsImageView;
-import org.telegram.ui.Components.CrossOutDrawable;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.GroupCallFullscreenAdapter;
-import org.telegram.ui.Components.GroupCallPip;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.TypefaceSpan;
-import org.telegram.ui.Components.UndoView;
-import org.telegram.ui.GroupCallActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.messenger.support.LongSparseIntArray;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.BackDrawable;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.AvatarsDrawable;
+import org.papercraft.ui.Components.AvatarsImageView;
+import org.papercraft.ui.Components.CrossOutDrawable;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.GroupCallFullscreenAdapter;
+import org.papercraft.ui.Components.GroupCallPip;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.TypefaceSpan;
+import org.papercraft.ui.Components.UndoView;
+import org.papercraft.ui.GroupCallActivity;
 
 import java.util.ArrayList;
 

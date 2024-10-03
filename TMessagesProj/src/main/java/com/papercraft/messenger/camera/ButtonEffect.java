@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.camera;
+package org.papercraft.messenger.camera;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -17,9 +17,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.R;
-import org.telegram.ui.Components.CubicBezierInterpolator;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
 
 @SuppressLint("ViewConstructor")
 public class ButtonEffect extends RelativeLayout {

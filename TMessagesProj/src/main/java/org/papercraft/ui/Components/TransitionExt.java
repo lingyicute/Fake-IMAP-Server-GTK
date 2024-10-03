@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.transition.ChangeBounds;
 import android.transition.Fade;

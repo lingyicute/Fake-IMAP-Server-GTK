@@ -1932,7 +1932,7 @@ add_library(voipandroid STATIC
         voip/webrtc/sdk/android/src/jni/h264_codec.cc
         voip/webrtc/sdk/android/src/jni/wrapped_native_i420_buffer.cc
         voip/webrtc/sdk/android/src/jni/yuv_helper.cc
-        voip/org_telegram_messenger_voip_Instance.cpp)
+        voip/org_papercraft_messenger_voip_Instance.cpp)
 target_compile_options(voipandroid PUBLIC
         -Wall -finline-functions -ffast-math -fexceptions)
 set_target_properties(voipandroid PROPERTIES

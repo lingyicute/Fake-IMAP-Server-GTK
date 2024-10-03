@@ -1,8 +1,8 @@
-package org.telegram.ui.Components.ListView;
+package org.papercraft.ui.Components.ListView;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 

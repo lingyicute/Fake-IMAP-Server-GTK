@@ -1,9 +1,9 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.view.MotionEvent;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 import androidx.recyclerview.widget.RecyclerView;
 

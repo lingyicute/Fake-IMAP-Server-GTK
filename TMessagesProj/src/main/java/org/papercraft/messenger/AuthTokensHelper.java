@@ -1,12 +1,12 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.android.exoplayer2.util.Log;
 
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLRPC;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

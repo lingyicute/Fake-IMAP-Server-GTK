@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.icons;
+package org.papercraft.messenger.icons;
 
 public class EmptyIconSet extends BaseIconSet {
     public EmptyIconSet() {

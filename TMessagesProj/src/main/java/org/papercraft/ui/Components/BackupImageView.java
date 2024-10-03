@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -19,11 +19,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.SecureDocument;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.TLObject;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.SecureDocument;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.TLObject;
 
 public class BackupImageView extends View {
 

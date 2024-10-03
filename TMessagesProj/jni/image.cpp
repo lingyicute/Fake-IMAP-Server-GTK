@@ -445,7 +445,7 @@ static void fastBlur565(int32_t w, int32_t h, int32_t stride, uint8_t *pix, int3
     delete[] rgb;
 }
 
-JNIEXPORT int Java_org_telegram_messenger_Utilities_needInvert(JNIEnv *env, jclass clazz, jobject bitmap, jint unpin, jint width, jint height, jint stride) {
+JNIEXPORT int Java_org_papercraft_messenger_Utilities_needInvert(JNIEnv *env, jclass clazz, jobject bitmap, jint unpin, jint width, jint height, jint stride) {
     if (!bitmap) {
         return 0;
     }
@@ -511,7 +511,7 @@ JNIEXPORT int Java_org_telegram_messenger_Utilities_needInvert(JNIEnv *env, jcla
     return hasAlpha && matching / total > 0.85;
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_blurBitmap(JNIEnv *env, jclass clazz, jobject bitmap, jint radius, jint unpin, jint width, jint height, jint stride) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_blurBitmap(JNIEnv *env, jclass clazz, jobject bitmap, jint radius, jint unpin, jint width, jint height, jint stride) {
     if (!bitmap) {
         return;
     }
@@ -545,7 +545,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_blurBitmap(JNIEnv *env, jcl
 const uint32_t PGPhotoEnhanceHistogramBins = 256;
 const uint32_t PGPhotoEnhanceSegments = 4;
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_calcCDT(JNIEnv *env, jclass clazz, jobject hsvBuffer, jint width, jint height, jobject buffer, jobject calcBuffer) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_calcCDT(JNIEnv *env, jclass clazz, jobject hsvBuffer, jint width, jint height, jobject buffer, jobject calcBuffer) {
     float imageWidth = width;
     float imageHeight = height;
     float _clipLimit = 1.25f;
@@ -637,7 +637,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_calcCDT(JNIEnv *env, jclass
     }
 }
 
-JNIEXPORT jint Java_org_telegram_messenger_Utilities_pinBitmap(JNIEnv *env, jclass clazz, jobject bitmap) {
+JNIEXPORT jint Java_org_papercraft_messenger_Utilities_pinBitmap(JNIEnv *env, jclass clazz, jobject bitmap) {
     if (bitmap == nullptr) {
         return 0;
     }
@@ -645,14 +645,14 @@ JNIEXPORT jint Java_org_telegram_messenger_Utilities_pinBitmap(JNIEnv *env, jcla
     return AndroidBitmap_lockPixels(env, bitmap, &pixels) >= 0 ? 1 : 0;
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_unpinBitmap(JNIEnv *env, jclass clazz, jobject bitmap) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_unpinBitmap(JNIEnv *env, jclass clazz, jobject bitmap) {
     if (bitmap == nullptr) {
         return;
     }
     AndroidBitmap_unlockPixels(env, bitmap);
 }
 
-JNIEXPORT jboolean Java_org_telegram_messenger_Utilities_loadWebpImage(JNIEnv *env, jclass clazz, jobject outputBitmap, jobject buffer, jint len, jobject options, jboolean unpin) {
+JNIEXPORT jboolean Java_org_papercraft_messenger_Utilities_loadWebpImage(JNIEnv *env, jclass clazz, jobject outputBitmap, jobject buffer, jint len, jobject options, jboolean unpin) {
     if (!buffer) {
         env->ThrowNew(jclass_NullPointerException, "Input buffer can not be null");
         return 0;
@@ -710,7 +710,7 @@ inline static void zeroClearInt(int *p, size_t count) {
     memset(p, 0, sizeof(int) * count);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_stackBlurBitmap(JNIEnv *env, jclass clazz, jobject bitmap, jint radius) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_stackBlurBitmap(JNIEnv *env, jclass clazz, jobject bitmap, jint radius) {
     if (radius < 1) {
         return;
     }
@@ -963,7 +963,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_stackBlurBitmap(JNIEnv *env
     AndroidBitmap_unlockPixels(env, bitmap);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_drawDitheredGradient(JNIEnv *env, jclass clazz, jobject bitmap, jintArray colors, jint startX, jint startY, jint endX, jint endY) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_drawDitheredGradient(JNIEnv *env, jclass clazz, jobject bitmap, jintArray colors, jint startX, jint startY, jint endX, jint endY) {
     AndroidBitmapInfo info;
     void *pixelsBuffer;
     int reason;
@@ -1081,7 +1081,7 @@ std::vector<std::pair<float, float>> gatherPositions(std::vector<std::pair<float
 
 thread_local static float *pixelCache = nullptr;
 
-JNIEXPORT void Java_org_telegram_messenger_Utilities_generateGradient(JNIEnv *env, jclass clazz, jobject bitmap, jboolean unpin, jint phase, jfloat progress, jint width, jint height, jint stride, jintArray colors) {
+JNIEXPORT void Java_org_papercraft_messenger_Utilities_generateGradient(JNIEnv *env, jclass clazz, jobject bitmap, jboolean unpin, jint phase, jfloat progress, jint width, jint height, jint stride, jintArray colors) {
     if (!bitmap) {
         return;
     }

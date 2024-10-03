@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.preferences;
+package org.papercraft.messenger.preferences;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -19,26 +19,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.components.FabShapeCell;
-import org.lingyicute.messenger.components.MainScreenSetupCell;
-import org.lingyicute.messenger.components.SolarIconsPreview;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.components.FabShapeCell;
+import org.papercraft.messenger.components.MainScreenSetupCell;
+import org.papercraft.messenger.components.SolarIconsPreview;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.TextCell;
-import org.telegram.ui.Cells.TextCheckCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
-import org.telegram.ui.Cells.TextSettingsCell;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.TextCell;
+import org.papercraft.ui.Cells.TextCheckCell;
+import org.papercraft.ui.Cells.TextInfoPrivacyCell;
+import org.papercraft.ui.Cells.TextSettingsCell;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.LaunchActivity;
 
 public class AppearancePreferencesActivity extends BasePreferencesActivity {
 

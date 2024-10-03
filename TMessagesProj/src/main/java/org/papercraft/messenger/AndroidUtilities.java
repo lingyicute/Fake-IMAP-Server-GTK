@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -114,43 +114,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.internal.telephony.ITelephony;
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.Task;
 
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.messenger.browser.Browser;
-import org.telegram.messenger.utils.CustomHtml;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.BottomSheet;
-import org.telegram.ui.ActionBar.INavigationLayout;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.TextDetailSettingsCell;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.BackgroundGradientDrawable;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.EllipsizeSpanAnimator;
-import org.telegram.ui.Components.ForegroundColorSpanThemable;
-import org.telegram.ui.Components.ForegroundDetector;
-import org.telegram.ui.Components.HideViewAfterAnimation;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.MotionBackgroundDrawable;
-import org.telegram.ui.Components.PickerBottomLayout;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.ShareAlert;
-import org.telegram.ui.Components.TypefaceSpan;
-import org.telegram.ui.Components.URLSpanReplacement;
-import org.telegram.ui.Components.UndoView;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.ThemePreviewActivity;
-import org.telegram.ui.WallpapersListActivity;
+import org.papercraft.PhoneFormat.PhoneFormat;
+import org.papercraft.messenger.browser.Browser;
+import org.papercraft.messenger.utils.CustomHtml;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.BottomSheet;
+import org.papercraft.ui.ActionBar.INavigationLayout;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.TextDetailSettingsCell;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.BackgroundGradientDrawable;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.EllipsizeSpanAnimator;
+import org.papercraft.ui.Components.ForegroundColorSpanThemable;
+import org.papercraft.ui.Components.ForegroundDetector;
+import org.papercraft.ui.Components.HideViewAfterAnimation;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.MotionBackgroundDrawable;
+import org.papercraft.ui.Components.PickerBottomLayout;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.ShareAlert;
+import org.papercraft.ui.Components.TypefaceSpan;
+import org.papercraft.ui.Components.URLSpanReplacement;
+import org.papercraft.ui.Components.UndoView;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.ThemePreviewActivity;
+import org.papercraft.ui.WallpapersListActivity;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -3666,7 +3666,7 @@ public class AndroidUtilities {
                     } else if (scheme.equals("tg")) {
                         String url = data.toString();
                         if (url.startsWith("tg:proxy") || url.startsWith("tg://proxy") || url.startsWith("tg:socks") || url.startsWith("tg://socks")) {
-                            url = url.replace("tg:proxy", "tg://telegram.org").replace("tg://proxy", "tg://telegram.org").replace("tg://socks", "tg://telegram.org").replace("tg:socks", "tg://telegram.org");
+                            url = url.replace("tg:proxy", "tg://papercraft-official.github.io").replace("tg://proxy", "tg://papercraft-official.github.io").replace("tg://socks", "tg://papercraft-official.github.io").replace("tg:socks", "tg://papercraft-official.github.io");
                             data = Uri.parse(url);
                             address = data.getQueryParameter("server");
                             if (AndroidUtilities.checkHostForPunycode(address)) {

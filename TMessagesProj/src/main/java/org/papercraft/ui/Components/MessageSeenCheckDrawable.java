@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -10,10 +10,10 @@ import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
 import android.util.Log;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.DialogCell;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.DialogCell;
 
 public class MessageSeenCheckDrawable {
 

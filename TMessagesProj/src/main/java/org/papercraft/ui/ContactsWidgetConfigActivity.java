@@ -1,11 +1,11 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 public class ContactsWidgetConfigActivity extends ExternalActionActivity {
 

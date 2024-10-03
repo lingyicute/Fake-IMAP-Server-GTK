@@ -1,7 +1,7 @@
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
-import static org.telegram.messenger.AndroidUtilities.dp;
-import static org.telegram.messenger.AndroidUtilities.dpf2;
+import static org.papercraft.messenger.AndroidUtilities.dp;
+import static org.papercraft.messenger.AndroidUtilities.dpf2;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -37,21 +37,21 @@ import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.math.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.Components.AnimatedFloat;
-import org.telegram.ui.Components.AnimatedTextView;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.FloatSeekBarAccessibilityDelegate;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.MotionBackgroundDrawable;
-import org.telegram.ui.Components.SeekBarAccessibilityDelegate;
-import org.telegram.ui.Components.SeekBarView;
-import org.telegram.ui.Components.SpeedIconDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.Components.AnimatedFloat;
+import org.papercraft.ui.Components.AnimatedTextView;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.FloatSeekBarAccessibilityDelegate;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.MotionBackgroundDrawable;
+import org.papercraft.ui.Components.SeekBarAccessibilityDelegate;
+import org.papercraft.ui.Components.SeekBarView;
+import org.papercraft.ui.Components.SpeedIconDrawable;
 
 public class ActionBarMenuSlider extends FrameLayout {
 

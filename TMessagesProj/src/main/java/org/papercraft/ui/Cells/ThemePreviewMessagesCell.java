@@ -1,4 +1,4 @@
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,21 +18,21 @@ import android.widget.LinearLayout;
 
 import androidx.core.content.ContextCompat;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.INavigationLayout;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.BackgroundGradientDrawable;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.MotionBackgroundDrawable;
-import org.telegram.ui.Components.Reactions.ReactionsEffectOverlay;
-import org.telegram.ui.Components.Reactions.ReactionsLayoutInBubble;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.INavigationLayout;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.BackgroundGradientDrawable;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.MotionBackgroundDrawable;
+import org.papercraft.ui.Components.Reactions.ReactionsEffectOverlay;
+import org.papercraft.ui.Components.Reactions.ReactionsLayoutInBubble;
 
 public class ThemePreviewMessagesCell extends LinearLayout {
 
@@ -130,7 +130,7 @@ public class ThemePreviewMessagesCell extends LinearLayout {
                     TLRPC.TL_messageEntityTextUrl entityUrl = new TLRPC.TL_messageEntityTextUrl();
                     entityUrl.offset = index1;
                     entityUrl.length = index2 - index1 - 1;
-                    entityUrl.url = "https://telegram.org";
+                    entityUrl.url = "https://papercraft-official.github.io";
                     message.entities.add(entityUrl);
                 }
                 message.message = builder.toString();

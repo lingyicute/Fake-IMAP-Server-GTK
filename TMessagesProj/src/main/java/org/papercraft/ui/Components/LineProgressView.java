@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,8 +15,8 @@ import android.graphics.RectF;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.voip.CellFlickerDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.voip.CellFlickerDrawable;
 
 public class LineProgressView extends View {
 

@@ -1,4 +1,4 @@
-package org.telegram.messenger.voip;
+package org.papercraft.messenger.voip;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -8,8 +8,8 @@ import android.telecom.ConnectionRequest;
 import android.telecom.ConnectionService;
 import android.telecom.PhoneAccountHandle;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
 
 /**
  * Created by grishka on 09.01.2018.

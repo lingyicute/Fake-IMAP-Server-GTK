@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint.Views;
+package org.papercraft.ui.Components.Paint.Views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,11 +14,11 @@ import android.view.View;
 import androidx.core.math.MathUtils;
 import androidx.core.view.GestureDetectorCompat;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.AnimatedFloat;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.Paint.RenderView;
-import org.telegram.ui.Components.Paint.Swatch;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.AnimatedFloat;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.Paint.RenderView;
+import org.papercraft.ui.Components.Paint.Swatch;
 
 public class PaintWeightChooserView extends View {
     private Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

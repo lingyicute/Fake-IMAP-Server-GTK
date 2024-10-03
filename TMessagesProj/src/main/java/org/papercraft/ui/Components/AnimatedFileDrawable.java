@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -25,16 +25,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.AnimatedFileDrawableStream;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.DispatchQueuePoolBackground;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.utils.BitmapsCache;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.AnimatedFileDrawableStream;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.DispatchQueuePoolBackground;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.utils.BitmapsCache;
+import org.papercraft.tgnet.TLRPC;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -6,7 +6,7 @@
  * Copyright Grishka, 2013-2016.
  */
 
-package org.telegram.ui.Components.voip;
+package org.papercraft.ui.Components.voip;
 
 import android.content.Context;
 import android.util.AttributeSet;

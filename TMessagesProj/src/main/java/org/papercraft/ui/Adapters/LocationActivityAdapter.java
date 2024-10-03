@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Adapters;
+package org.papercraft.ui.Adapters;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -19,27 +19,27 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.LocationController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.EmptyCell;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.LocationCell;
-import org.telegram.ui.Cells.LocationDirectionCell;
-import org.telegram.ui.Cells.LocationLoadingCell;
-import org.telegram.ui.Cells.LocationPoweredCell;
-import org.telegram.ui.Cells.SendLocationCell;
-import org.telegram.ui.Cells.ShadowSectionCell;
-import org.telegram.ui.Cells.SharingLiveLocationCell;
-import org.telegram.ui.Components.CombinedDrawable;
-import org.telegram.ui.Components.FlickerLoadingView;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.LocationActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.LocationController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.EmptyCell;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.LocationCell;
+import org.papercraft.ui.Cells.LocationDirectionCell;
+import org.papercraft.ui.Cells.LocationLoadingCell;
+import org.papercraft.ui.Cells.LocationPoweredCell;
+import org.papercraft.ui.Cells.SendLocationCell;
+import org.papercraft.ui.Cells.ShadowSectionCell;
+import org.papercraft.ui.Cells.SharingLiveLocationCell;
+import org.papercraft.ui.Components.CombinedDrawable;
+import org.papercraft.ui.Components.FlickerLoadingView;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.LocationActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;

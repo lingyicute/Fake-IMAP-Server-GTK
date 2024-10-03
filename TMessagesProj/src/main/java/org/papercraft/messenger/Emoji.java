@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -28,10 +28,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.premium.filter.ZalgoFilter;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.premium.filter.ZalgoFilter;
 
-import org.telegram.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
 
 import java.io.InputStream;
 import java.util.ArrayList;

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import static android.app.NotificationManager.EXTRA_BLOCKED_STATE;
 import static android.app.NotificationManager.EXTRA_NOTIFICATION_CHANNEL_ID;
@@ -88,7 +88,7 @@ public class NotificationsDisabledReceiver extends BroadcastReceiver {
             }
             int topicId = 0;
             String key = NotificationsController.getSharedPrefKey(dialogId, topicId);
-            String currentChannel = preferences.getString("org.telegram.key" + dialogId, null);
+            String currentChannel = preferences.getString("org.papercraft.key" + dialogId, null);
             if (!channelId.equals(currentChannel)) {
                 return;
             }

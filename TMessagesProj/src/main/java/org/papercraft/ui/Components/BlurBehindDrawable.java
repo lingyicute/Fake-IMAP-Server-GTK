@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -8,12 +8,12 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ChatActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ChatActivity;
 
 import static android.graphics.Canvas.ALL_SAVE_FLAG;
 

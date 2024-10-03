@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -30,35 +30,35 @@ import android.util.Base64;
 
 import androidx.collection.LongSparseArray;
 
-import org.lingyicute.messenger.premium.encryption.BaseEncryptor;
-import org.lingyicute.messenger.premium.filter.ZalgoFilter;
+import org.papercraft.messenger.premium.encryption.BaseEncryptor;
+import org.papercraft.messenger.premium.filter.ZalgoFilter;
 
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.messenger.browser.Browser;
-import org.telegram.messenger.ringtone.RingtoneDataStore;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.ChatMessageCell;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.Forum.ForumBubbleDrawable;
-import org.telegram.ui.Components.Forum.ForumUtilities;
-import org.telegram.ui.Components.Reactions.ReactionsLayoutInBubble;
-import org.telegram.ui.Components.Reactions.ReactionsUtils;
-import org.telegram.ui.Components.TextStyleSpan;
-import org.telegram.ui.Components.TranscribeButton;
-import org.telegram.ui.Components.TypefaceSpan;
-import org.telegram.ui.Components.URLSpanBotCommand;
-import org.telegram.ui.Components.URLSpanBrowser;
-import org.telegram.ui.Components.URLSpanMono;
-import org.telegram.ui.Components.URLSpanNoUnderline;
-import org.telegram.ui.Components.URLSpanNoUnderlineBold;
-import org.telegram.ui.Components.URLSpanReplacement;
-import org.telegram.ui.Components.URLSpanUserMention;
-import org.telegram.ui.Components.spoilers.SpoilerEffect;
+import org.papercraft.PhoneFormat.PhoneFormat;
+import org.papercraft.messenger.browser.Browser;
+import org.papercraft.messenger.ringtone.RingtoneDataStore;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.ChatMessageCell;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.Forum.ForumBubbleDrawable;
+import org.papercraft.ui.Components.Forum.ForumUtilities;
+import org.papercraft.ui.Components.Reactions.ReactionsLayoutInBubble;
+import org.papercraft.ui.Components.Reactions.ReactionsUtils;
+import org.papercraft.ui.Components.TextStyleSpan;
+import org.papercraft.ui.Components.TranscribeButton;
+import org.papercraft.ui.Components.TypefaceSpan;
+import org.papercraft.ui.Components.URLSpanBotCommand;
+import org.papercraft.ui.Components.URLSpanBrowser;
+import org.papercraft.ui.Components.URLSpanMono;
+import org.papercraft.ui.Components.URLSpanNoUnderline;
+import org.papercraft.ui.Components.URLSpanNoUnderlineBold;
+import org.papercraft.ui.Components.URLSpanReplacement;
+import org.papercraft.ui.Components.URLSpanUserMention;
+import org.papercraft.ui.Components.spoilers.SpoilerEffect;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -3797,7 +3797,7 @@ public class MessageObject {
                 } else if (getMedia(messageOwner) instanceof TLRPC.TL_messageMediaInvoice) {
                     messageText = getMedia(messageOwner).description;
                 } else if (getMedia(messageOwner) instanceof TLRPC.TL_messageMediaUnsupported) {
-                    messageText = LocaleController.getString("UnsupportedMedia", R.string.UnsupportedMedia).replace("https://telegram.org/update", "https://github.com/lingyicute/Papercraft/releases/latest").replace("Papercraft", "Papercraft");
+                    messageText = LocaleController.getString("UnsupportedMedia", R.string.UnsupportedMedia).replace("https://papercraft-official.github.io/update", "https://github.com/lingyicute/Papercraft/releases/latest").replace("Papercraft", "Papercraft");
                 } else if (getMedia(messageOwner) instanceof TLRPC.TL_messageMediaDocument) {
                     if (isSticker() || isAnimatedStickerDocument(getDocument(), true)) {
                         String sch = getStickerChar();

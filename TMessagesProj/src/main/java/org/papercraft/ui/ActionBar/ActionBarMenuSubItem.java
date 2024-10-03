@@ -1,4 +1,4 @@
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -13,11 +13,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.ui.Components.CheckBox2;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RLottieImageView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.ui.Components.CheckBox2;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RLottieImageView;
 
 public class ActionBarMenuSubItem extends FrameLayout {
 

@@ -16,7 +16,7 @@ import android.os.SystemClock;
 
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.BuildVars;
+import org.papercraft.messenger.BuildVars;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;

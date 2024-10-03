@@ -1,7 +1,7 @@
-package org.telegram.ui.LNavigation;
+package org.papercraft.ui.LNavigation;
 
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.INavigationLayout;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.INavigationLayout;
 
 import java.util.ArrayList;
 import java.util.List;

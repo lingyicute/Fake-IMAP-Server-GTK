@@ -1,9 +1,9 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
 
 public final class ViewHelper {
 

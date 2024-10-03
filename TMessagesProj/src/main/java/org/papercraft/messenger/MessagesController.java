@@ -6,10 +6,10 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import static org.telegram.messenger.NotificationsController.TYPE_CHANNEL;
-import static org.telegram.messenger.NotificationsController.TYPE_PRIVATE;
+import static org.papercraft.messenger.NotificationsController.TYPE_CHANNEL;
+import static org.papercraft.messenger.NotificationsController.TYPE_PRIVATE;
 
 import android.Manifest;
 import android.app.Activity;
@@ -36,41 +36,41 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.util.Consumer;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLiteDatabase;
-import org.telegram.SQLite.SQLiteException;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.messenger.browser.Browser;
-import org.telegram.messenger.support.LongSparseIntArray;
-import org.telegram.messenger.support.LongSparseLongArray;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.ChatReactionsEditActivity;
-import org.telegram.ui.ChatRightsEditActivity;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.BulletinFactory;
-import org.telegram.ui.Components.ImageUpdater;
-import org.telegram.ui.Components.JoinCallAlert;
-import org.telegram.ui.Components.MotionBackgroundDrawable;
-import org.telegram.ui.Components.Premium.LimitReachedBottomSheet;
-import org.telegram.ui.Components.SwipeGestureSettingsView;
-import org.telegram.ui.Components.TranscribeButton;
-import org.telegram.ui.DialogsActivity;
-import org.telegram.ui.EditWidgetActivity;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.PremiumPreviewFragment;
-import org.telegram.ui.ProfileActivity;
-import org.telegram.ui.TopicsFragment;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLiteDatabase;
+import org.papercraft.SQLite.SQLiteException;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.messenger.browser.Browser;
+import org.papercraft.messenger.support.LongSparseIntArray;
+import org.papercraft.messenger.support.LongSparseLongArray;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.RequestDelegate;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.ChatReactionsEditActivity;
+import org.papercraft.ui.ChatRightsEditActivity;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.BulletinFactory;
+import org.papercraft.ui.Components.ImageUpdater;
+import org.papercraft.ui.Components.JoinCallAlert;
+import org.papercraft.ui.Components.MotionBackgroundDrawable;
+import org.papercraft.ui.Components.Premium.LimitReachedBottomSheet;
+import org.papercraft.ui.Components.SwipeGestureSettingsView;
+import org.papercraft.ui.Components.TranscribeButton;
+import org.papercraft.ui.DialogsActivity;
+import org.papercraft.ui.EditWidgetActivity;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.PremiumPreviewFragment;
+import org.papercraft.ui.ProfileActivity;
+import org.papercraft.ui.TopicsFragment;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class MessagesController extends BaseController implements NotificationCenter.NotificationCenterDelegate {
 

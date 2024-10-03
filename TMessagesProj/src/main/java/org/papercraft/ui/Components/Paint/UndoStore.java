@@ -1,6 +1,6 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 import java.util.ArrayList;
 import java.util.HashMap;

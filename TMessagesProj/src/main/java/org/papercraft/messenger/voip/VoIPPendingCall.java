@@ -1,17 +1,17 @@
-package org.telegram.messenger.voip;
+package org.papercraft.messenger.voip;
 
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.voip.VoIPHelper;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.voip.VoIPHelper;
 
 public final class VoIPPendingCall {
 

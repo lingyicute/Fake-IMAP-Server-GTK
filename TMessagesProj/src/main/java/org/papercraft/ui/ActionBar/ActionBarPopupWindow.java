@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -36,14 +36,14 @@ import android.widget.ScrollView;
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Paint.Views.LPhotoPaintView;
-import org.telegram.ui.Components.PopupSwipeBackLayout;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Paint.Views.LPhotoPaintView;
+import org.papercraft.ui.Components.PopupSwipeBackLayout;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

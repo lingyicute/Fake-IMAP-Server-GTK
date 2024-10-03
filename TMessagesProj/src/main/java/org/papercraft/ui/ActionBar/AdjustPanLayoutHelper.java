@@ -1,4 +1,4 @@
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -23,10 +23,10 @@ import androidx.annotation.RequiresApi;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.ChatListItemAnimator;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
 
 import java.util.ArrayList;
 import java.util.List;

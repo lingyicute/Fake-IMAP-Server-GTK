@@ -6,13 +6,13 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.TLRPC;
 
 public class AutoMessageHeardReceiver extends BroadcastReceiver {
 

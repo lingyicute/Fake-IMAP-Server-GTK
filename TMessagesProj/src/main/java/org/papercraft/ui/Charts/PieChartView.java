@@ -1,4 +1,4 @@
-package org.telegram.ui.Charts;
+package org.papercraft.ui.Charts;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -11,16 +11,16 @@ import android.os.Build;
 import android.text.TextPaint;
 import android.view.HapticFeedbackConstants;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Charts.data.ChartData;
-import org.telegram.ui.Charts.data.StackLinearChartData;
-import org.telegram.ui.Charts.view_data.ChartHorizontalLinesData;
-import org.telegram.ui.Charts.view_data.LegendSignatureView;
-import org.telegram.ui.Charts.view_data.LineViewData;
-import org.telegram.ui.Charts.view_data.PieLegendView;
-import org.telegram.ui.Charts.view_data.TransitionParams;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Charts.data.ChartData;
+import org.papercraft.ui.Charts.data.StackLinearChartData;
+import org.papercraft.ui.Charts.view_data.ChartHorizontalLinesData;
+import org.papercraft.ui.Charts.view_data.LegendSignatureView;
+import org.papercraft.ui.Charts.view_data.LineViewData;
+import org.papercraft.ui.Charts.view_data.PieLegendView;
+import org.papercraft.ui.Charts.view_data.TransitionParams;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class PieChartView extends StackLinearChartView<PieChartViewData> {
 

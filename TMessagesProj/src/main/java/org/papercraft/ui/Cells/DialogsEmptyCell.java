@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -24,19 +24,19 @@ import androidx.annotation.IntDef;
 import androidx.annotation.RawRes;
 import androidx.core.util.Consumer;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.BlurredRecyclerView;
-import org.telegram.ui.Components.Easings;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.Components.TextViewSwitcher;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.BlurredRecyclerView;
+import org.papercraft.ui.Components.Easings;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.Components.TextViewSwitcher;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

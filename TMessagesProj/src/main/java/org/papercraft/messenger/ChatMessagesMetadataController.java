@@ -1,7 +1,7 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ChatActivity;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ChatActivity;
 
 import java.util.ArrayList;
 

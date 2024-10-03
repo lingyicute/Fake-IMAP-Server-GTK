@@ -1,9 +1,9 @@
-package org.telegram.ui.Charts;
+package org.papercraft.ui.Charts;
 
 import android.animation.Animator;
 
-import org.telegram.ui.Charts.data.ChartData;
-import org.telegram.ui.Charts.view_data.StackLinearViewData;
+import org.papercraft.ui.Charts.data.ChartData;
+import org.papercraft.ui.Charts.view_data.StackLinearViewData;
 
 public class PieChartViewData extends StackLinearViewData {
 

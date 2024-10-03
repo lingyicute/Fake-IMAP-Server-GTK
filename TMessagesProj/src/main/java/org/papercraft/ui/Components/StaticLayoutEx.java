@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.os.Build;
 import android.text.Layout;
@@ -18,8 +18,8 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
 
 import java.lang.reflect.Constructor;
 

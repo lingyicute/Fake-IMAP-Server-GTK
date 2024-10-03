@@ -1,4 +1,4 @@
-package org.telegram.ui.Adapters;
+package org.papercraft.ui.Adapters;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -19,22 +19,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Cells.EmptyCell;
-import org.telegram.ui.Cells.FeaturedStickerSetInfoCell;
-import org.telegram.ui.Cells.StickerEmojiCell;
-import org.telegram.ui.Cells.StickerSetNameCell;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Cells.EmptyCell;
+import org.papercraft.ui.Cells.FeaturedStickerSetInfoCell;
+import org.papercraft.ui.Cells.StickerEmojiCell;
+import org.papercraft.ui.Cells.StickerSetNameCell;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;

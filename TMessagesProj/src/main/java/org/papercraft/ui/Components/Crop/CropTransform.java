@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2020.
  */
 
-package org.telegram.ui.Components.Crop;
+package org.papercraft.ui.Components.Crop;
 
 import androidx.annotation.NonNull;
 

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -23,20 +23,20 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.UserObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.voip.GroupCallMiniTextureView;
-import org.telegram.ui.Components.voip.GroupCallRenderersContainer;
-import org.telegram.ui.Components.voip.GroupCallStatusIcon;
-import org.telegram.ui.GroupCallActivity;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.voip.GroupCallMiniTextureView;
+import org.papercraft.ui.Components.voip.GroupCallRenderersContainer;
+import org.papercraft.ui.Components.voip.GroupCallStatusIcon;
+import org.papercraft.ui.GroupCallActivity;
 
 import java.util.ArrayList;
 
@@ -180,7 +180,7 @@ public class GroupCallFullscreenAdapter extends RecyclerListView.SelectionAdapte
 
         GroupCallStatusIcon statusIcon;
 
-        org.telegram.ui.Cells.GroupCallUserCell.AvatarWavesDrawable avatarWavesDrawable = new org.telegram.ui.Cells.GroupCallUserCell.AvatarWavesDrawable(AndroidUtilities.dp(26), AndroidUtilities.dp(29));
+        org.papercraft.ui.Cells.GroupCallUserCell.AvatarWavesDrawable avatarWavesDrawable = new org.papercraft.ui.Cells.GroupCallUserCell.AvatarWavesDrawable(AndroidUtilities.dp(26), AndroidUtilities.dp(29));
 
         public GroupCallUserCell(@NonNull Context context) {
             super(context);

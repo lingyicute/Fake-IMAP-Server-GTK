@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-import org.telegram.tgnet.TLObject;
+import org.papercraft.tgnet.TLObject;
 
 public class AvatarsImageView extends View {
 

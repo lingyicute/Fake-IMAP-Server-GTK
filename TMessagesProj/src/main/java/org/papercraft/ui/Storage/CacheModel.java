@@ -1,9 +1,9 @@
-package org.telegram.ui.Storage;
+package org.papercraft.ui.Storage;
 
 import android.util.LongSparseArray;
 
-import org.telegram.messenger.MessageObject;
-import org.telegram.ui.CacheControlActivity;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.ui.CacheControlActivity;
 
 import java.io.File;
 import java.util.ArrayList;

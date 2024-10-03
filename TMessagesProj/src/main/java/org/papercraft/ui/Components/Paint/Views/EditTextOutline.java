@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint.Views;
+package org.papercraft.ui.Components.Paint.Views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,8 +14,8 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.EditTextBoldCursor;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.EditTextBoldCursor;
 
 import java.util.Arrays;
 

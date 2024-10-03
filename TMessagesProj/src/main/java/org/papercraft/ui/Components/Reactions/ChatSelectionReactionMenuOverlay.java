@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Reactions;
+package org.papercraft.ui.Components.Reactions;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,17 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.core.math.MathUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Cells.ChatMessageCell;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.FragmentContextView;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.ReactionsContainerLayout;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Cells.ChatMessageCell;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.FragmentContextView;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.ReactionsContainerLayout;
+import org.papercraft.ui.Components.RecyclerListView;
 
 import java.util.Collections;
 import java.util.List;

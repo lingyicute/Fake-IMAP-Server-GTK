@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger.browser;
+package org.papercraft.messenger.browser;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -19,32 +19,32 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.CustomTabsCopyReceiver;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
-import org.telegram.messenger.ShareBroadcastReceiver;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.support.customtabs.CustomTabsCallback;
-import org.telegram.messenger.support.customtabs.CustomTabsClient;
-import org.telegram.messenger.support.customtabs.CustomTabsIntent;
-import org.telegram.messenger.support.customtabs.CustomTabsServiceConnection;
-import org.telegram.messenger.support.customtabs.CustomTabsSession;
-import org.telegram.messenger.support.customtabsclient.shared.CustomTabsHelper;
-import org.telegram.messenger.support.customtabsclient.shared.ServiceConnection;
-import org.telegram.messenger.support.customtabsclient.shared.ServiceConnectionCallback;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.CustomTabsCopyReceiver;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.ShareBroadcastReceiver;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.support.customtabs.CustomTabsCallback;
+import org.papercraft.messenger.support.customtabs.CustomTabsClient;
+import org.papercraft.messenger.support.customtabs.CustomTabsIntent;
+import org.papercraft.messenger.support.customtabs.CustomTabsServiceConnection;
+import org.papercraft.messenger.support.customtabs.CustomTabsSession;
+import org.papercraft.messenger.support.customtabsclient.shared.CustomTabsHelper;
+import org.papercraft.messenger.support.customtabsclient.shared.ServiceConnection;
+import org.papercraft.messenger.support.customtabsclient.shared.ServiceConnectionCallback;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.LaunchActivity;
 
 import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
@@ -478,7 +478,7 @@ public class Browser {
             return true;
         } else if ("tg2".equals(uri.getScheme())) {
             return true;
-        } else if ("telegram.dog".equals(host)) {
+        } else if ("papercraft-official.github.io".equals(host)) {
             String path = uri.getPath();
             if (path != null && path.length() > 1) {
                 if (all) {

@@ -1,9 +1,9 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.tgnet.AbstractSerializedData;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.AbstractSerializedData;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
 
 public class MessageCustomParamsHelper {
 

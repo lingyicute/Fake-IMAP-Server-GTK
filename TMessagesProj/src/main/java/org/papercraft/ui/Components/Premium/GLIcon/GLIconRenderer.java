@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium.GLIcon;
+package org.papercraft.ui.Components.Premium.GLIcon;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import android.opengl.Matrix;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.Theme;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

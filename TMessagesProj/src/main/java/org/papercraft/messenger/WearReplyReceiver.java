@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,7 +16,7 @@ import android.text.TextUtils;
 
 import androidx.core.app.RemoteInput;
 
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.TLRPC;
 
 public class WearReplyReceiver extends BroadcastReceiver {
 

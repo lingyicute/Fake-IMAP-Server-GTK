@@ -1,4 +1,4 @@
-package org.telegram.ui.Charts.view_data;
+package org.papercraft.ui.Charts.view_data;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -17,13 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Charts.data.ChartData;
-import org.telegram.ui.Components.CombinedDrawable;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RadialProgressView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Charts.data.ChartData;
+import org.papercraft.ui.Components.CombinedDrawable;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RadialProgressView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

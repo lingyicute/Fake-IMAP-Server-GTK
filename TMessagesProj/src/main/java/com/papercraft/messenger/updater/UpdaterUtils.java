@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.updater;
+package org.papercraft.messenger.updater;
 
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
@@ -25,19 +25,19 @@ import android.text.Spanned;
 
 import androidx.core.content.FileProvider;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 import org.json.JSONObject;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.TypefaceSpan;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.TypefaceSpan;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Crop;
+package org.papercraft.ui.Components.Crop;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,22 +18,22 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.VideoEditedInfo;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.BubbleActivity;
-import org.telegram.ui.Components.Paint.Swatch;
-import org.telegram.ui.Components.Paint.Views.TextPaintView;
-import org.telegram.ui.Components.PaintingOverlay;
-import org.telegram.ui.Components.Point;
-import org.telegram.ui.Components.VideoEditTextureView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.VideoEditedInfo;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.BubbleActivity;
+import org.papercraft.ui.Components.Paint.Swatch;
+import org.papercraft.ui.Components.Paint.Views.TextPaintView;
+import org.papercraft.ui.Components.PaintingOverlay;
+import org.papercraft.ui.Components.Point;
+import org.papercraft.ui.Components.VideoEditTextureView;
 
 import java.io.File;
 import java.io.FileOutputStream;

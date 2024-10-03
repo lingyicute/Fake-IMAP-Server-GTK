@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -25,13 +25,13 @@ import androidx.annotation.IntDef;
 import androidx.core.content.pm.ShortcutManagerCompat;
 
 import org.json.JSONObject;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Components.SwipeGestureSettingsView;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.Components.SwipeGestureSettingsView;
+import org.papercraft.ui.LaunchActivity;
 
 import java.io.File;
 import java.io.RandomAccessFile;

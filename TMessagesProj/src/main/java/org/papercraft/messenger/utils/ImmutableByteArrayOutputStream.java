@@ -1,4 +1,4 @@
-package org.telegram.messenger.utils;
+package org.papercraft.messenger.utils;
 
 import java.io.IOException;
 import java.io.OutputStream;

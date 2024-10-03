@@ -6,12 +6,12 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.text.TextUtils;
 
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.PhoneFormat.PhoneFormat;
+import org.papercraft.tgnet.TLRPC;
 
 public class UserObject {
 

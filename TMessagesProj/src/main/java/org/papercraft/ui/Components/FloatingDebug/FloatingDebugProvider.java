@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.FloatingDebug;
+package org.papercraft.ui.Components.FloatingDebug;
 
 import java.util.List;
 

@@ -1,17 +1,17 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DocumentObject;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.Reactions.ReactionsEffectOverlay;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DocumentObject;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.Reactions.ReactionsEffectOverlay;
 
 public class ReactionDrawingObject extends CarouselView.DrawingObject {
 

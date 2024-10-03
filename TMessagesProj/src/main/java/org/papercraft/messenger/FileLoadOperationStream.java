@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 public interface FileLoadOperationStream {
     void newDataAvailable();

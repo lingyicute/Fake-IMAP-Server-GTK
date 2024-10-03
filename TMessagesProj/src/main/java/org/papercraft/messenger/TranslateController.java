@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -10,12 +10,12 @@ import android.view.inputmethod.InputMethodSubtype;
 
 import androidx.annotation.Nullable;
 
-import org.lingyicute.messenger.premium.encryption.EncryptionHelper;
+import org.papercraft.messenger.premium.encryption.EncryptionHelper;
 
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.Components.TranslateAlert2;
-import org.telegram.ui.RestrictedLanguagesSelectActivity;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.Components.TranslateAlert2;
+import org.papercraft.ui.RestrictedLanguagesSelectActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

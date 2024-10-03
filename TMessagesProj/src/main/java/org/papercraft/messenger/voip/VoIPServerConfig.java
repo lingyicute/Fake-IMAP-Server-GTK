@@ -1,9 +1,9 @@
-package org.telegram.messenger.voip;
+package org.papercraft.messenger.voip;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
 
 /**
  * Created by grishka on 01.03.17.

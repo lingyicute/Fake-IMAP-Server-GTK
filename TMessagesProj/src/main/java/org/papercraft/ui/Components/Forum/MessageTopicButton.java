@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Forum;
+package org.papercraft.ui.Components.Forum;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -19,15 +19,15 @@ import android.view.MotionEvent;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.R;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.ChatMessageCell;
-import org.telegram.ui.Components.AnimatedColor;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.StaticLayoutEx;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.R;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.ChatMessageCell;
+import org.papercraft.ui.Components.AnimatedColor;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.StaticLayoutEx;
 
 public class MessageTopicButton {
 

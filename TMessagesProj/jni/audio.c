@@ -498,7 +498,7 @@ int writeFrame(uint8_t *framePcmBytes, uint32_t frameByteCount) {
     return 1;
 }
 
-JNIEXPORT jint Java_org_telegram_messenger_MediaController_startRecord(JNIEnv *env, jclass class, jstring path, jint sampleRate) {
+JNIEXPORT jint Java_org_papercraft_messenger_MediaController_startRecord(JNIEnv *env, jclass class, jstring path, jint sampleRate) {
     const char *pathStr = (*env)->GetStringUTFChars(env, path, 0);
 
     int32_t result = initRecorder(pathStr, sampleRate);
@@ -510,16 +510,16 @@ JNIEXPORT jint Java_org_telegram_messenger_MediaController_startRecord(JNIEnv *e
     return result;
 }
 
-JNIEXPORT jint Java_org_telegram_messenger_MediaController_writeFrame(JNIEnv *env, jclass class, jobject frame, jint len) {
+JNIEXPORT jint Java_org_papercraft_messenger_MediaController_writeFrame(JNIEnv *env, jclass class, jobject frame, jint len) {
     jbyte *frameBytes = (*env)->GetDirectBufferAddress(env, frame);
     return writeFrame((uint8_t *) frameBytes, (uint32_t) len);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_MediaController_stopRecord(JNIEnv *env, jclass class) {
+JNIEXPORT void Java_org_papercraft_messenger_MediaController_stopRecord(JNIEnv *env, jclass class) {
     cleanupRecorder();
 }
 
-JNIEXPORT jint Java_org_telegram_messenger_MediaController_isOpusFile(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT jint Java_org_papercraft_messenger_MediaController_isOpusFile(JNIEnv *env, jclass class, jstring path) {
     const char *pathStr = (*env)->GetStringUTFChars(env, path, 0);
     
     int32_t result = 0;
@@ -545,7 +545,7 @@ static inline void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t value) {
     *((int32_t *) bytes) |= (value << bitOffset);
 }
 
-JNIEXPORT jbyteArray Java_org_telegram_messenger_MediaController_getWaveform2(JNIEnv *env, jclass class, jshortArray array, jint length) {
+JNIEXPORT jbyteArray Java_org_papercraft_messenger_MediaController_getWaveform2(JNIEnv *env, jclass class, jshortArray array, jint length) {
 
     jshort *sampleBuffer = (*env)->GetShortArrayElements(env, array, 0);
 
@@ -605,7 +605,7 @@ JNIEXPORT jbyteArray Java_org_telegram_messenger_MediaController_getWaveform2(JN
 
 int16_t *sampleBuffer = NULL;
 
-JNIEXPORT jbyteArray Java_org_telegram_messenger_MediaController_getWaveform(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT jbyteArray Java_org_papercraft_messenger_MediaController_getWaveform(JNIEnv *env, jclass class, jstring path) {
     const char *pathStr = (*env)->GetStringUTFChars(env, path, 0);
     jbyteArray result = 0;
     

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger.camera;
+package org.papercraft.messenger.camera;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -50,19 +50,19 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
-import org.lingyicute.messenger.camera.BaseCameraView;
+import org.papercraft.messenger.camera.BaseCameraView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.video.MP4Builder;
-import org.telegram.messenger.video.Mp4Movie;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.InstantCameraView;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.video.MP4Builder;
+import org.papercraft.messenger.video.Mp4Movie;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.InstantCameraView;
+import org.papercraft.ui.Components.LayoutHelper;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -461,7 +461,7 @@ public class CameraView extends BaseCameraView implements TextureView.SurfaceTex
         float size4to3 = 4.0f / 3.0f;
         float size16to9 = 16.0f / 9.0f;
         float screenSize = (float) Math.max(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) / Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y);
-        org.telegram.messenger.camera.Size aspectRatio;
+        org.papercraft.messenger.camera.Size aspectRatio;
         int wantedWidth;
         int wantedHeight;
 

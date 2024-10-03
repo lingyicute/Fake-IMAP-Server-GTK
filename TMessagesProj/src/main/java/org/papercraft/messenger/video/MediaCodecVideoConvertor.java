@@ -1,4 +1,4 @@
-package org.telegram.messenger.video;
+package org.papercraft.messenger.video;
 
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
@@ -10,13 +10,13 @@ import android.os.Build;
 
 import com.google.android.exoplayer2.util.Log;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.VideoEditedInfo;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.VideoEditedInfo;
 
 import java.io.File;
 import java.nio.ByteBuffer;

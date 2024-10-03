@@ -22,10 +22,10 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-package org.telegram.PhoneFormat;
+package org.papercraft.PhoneFormat;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.FileLog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

@@ -6,14 +6,14 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.net.Uri;
 import android.text.TextPaint;
 import android.text.style.URLSpan;
 import android.view.View;
 
-import org.telegram.messenger.browser.Browser;
+import org.papercraft.messenger.browser.Browser;
 
 public class URLSpanBrowser extends URLSpan {
 

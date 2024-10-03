@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.preferences;
+package org.papercraft.messenger.preferences;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -25,21 +25,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.components.InfoSettingsCell;
-import org.lingyicute.messenger.updater.UpdaterBottomSheet;
+import org.papercraft.messenger.components.InfoSettingsCell;
+import org.papercraft.messenger.updater.UpdaterBottomSheet;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.browser.Browser;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.HeaderCell;
-import org.telegram.ui.Cells.TextCell;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.browser.Browser;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.HeaderCell;
+import org.papercraft.ui.Cells.TextCell;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RecyclerListView;
 
 public class MainPreferencesActivity extends BasePreferencesActivity {
 

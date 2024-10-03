@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -57,11 +57,11 @@ import com.google.android.exoplayer2.video.SurfaceNotValidException;
 import com.google.android.exoplayer2.video.VideoListener;
 import com.google.android.exoplayer2.video.VideoSize;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FourierTransform;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.secretmedia.ExtendedDefaultDataSourceFactory;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.FourierTransform;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.secretmedia.ExtendedDefaultDataSourceFactory;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;

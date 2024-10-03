@@ -1,16 +1,16 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.text.TextUtils;
 import android.util.LruCache;
 
 import com.google.android.exoplayer2.util.Consumer;
 
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Components.BulletinFactory;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.Components.BulletinFactory;
+import org.papercraft.ui.LaunchActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;

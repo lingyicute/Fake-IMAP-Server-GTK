@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.os.Build;

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.SQLite;
+package org.papercraft.SQLite;
 
 public class SQLiteException extends Exception {
 

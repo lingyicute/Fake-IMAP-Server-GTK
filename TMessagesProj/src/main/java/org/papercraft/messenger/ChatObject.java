@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.graphics.Bitmap;
 import android.os.SystemClock;
@@ -18,10 +18,10 @@ import androidx.collection.LongSparseArray;
 
 import com.google.android.exoplayer2.util.Log;
 
-import org.telegram.messenger.voip.Instance;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.GroupCallActivity;
+import org.papercraft.messenger.voip.Instance;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.GroupCallActivity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -159,7 +159,7 @@ void bindRequestToGuid(JNIEnv *env, jclass c, jint instanceNum, jint requestToke
 }
 
 void applyDatacenterAddress(JNIEnv *env, jclass c, jint instanceNum, jint datacenterId, jstring ipAddress, jint port) {
-    // FIXME(@teamgram)
+    // FIXME(@lingyicute)
 #if 0
     const char *valueStr = env->GetStringUTFChars(ipAddress, 0);
 
@@ -230,7 +230,7 @@ void setPushConnectionEnabled(JNIEnv *env, jclass c, jint instanceNum, jboolean 
 }
 
 void applyDnsConfig(JNIEnv *env, jclass c, jint instanceNum, jlong address, jstring phone, jint date) {
-    // FIXME(@teamgram)
+    // FIXME(@lingyicute)
 #if 0
     const char *phoneStr = env->GetStringUTFChars(phone, 0);
 
@@ -596,7 +596,7 @@ extern "C" int registerNativeTgNetFunctions(JavaVM *vm, JNIEnv *env) {
 }
 
 //
-// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2018
+// Copyright Aliaksei Levin (levlam@papercraft-official.github.io), Arseny Smirnov (arseny30@gmail.com) 2014-2018
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)

@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ArticleViewer;
-import org.telegram.ui.Cells.TextSelectionHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ArticleViewer;
+import org.papercraft.ui.Cells.TextSelectionHelper;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

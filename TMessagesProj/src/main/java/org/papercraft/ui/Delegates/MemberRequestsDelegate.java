@@ -1,4 +1,4 @@
-package org.telegram.ui.Delegates;
+package org.papercraft.ui.Delegates;
 
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
@@ -41,45 +41,45 @@ import androidx.core.math.MathUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MemberRequestsController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserObject;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuSubItem;
-import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.AvatarPreviewPagerIndicator;
-import org.telegram.ui.Cells.MemberRequestCell;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.FlickerLoadingView;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.ProfileGalleryView;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.StickerEmptyView;
-import org.telegram.ui.Components.TypefaceSpan;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.MemberRequestsActivity;
-import org.telegram.ui.ProfileActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MemberRequestsController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBarMenu;
+import org.papercraft.ui.ActionBar.ActionBarMenuSubItem;
+import org.papercraft.ui.ActionBar.ActionBarPopupWindow;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.AvatarPreviewPagerIndicator;
+import org.papercraft.ui.Cells.MemberRequestCell;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.FlickerLoadingView;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.ProfileGalleryView;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.StickerEmptyView;
+import org.papercraft.ui.Components.TypefaceSpan;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.MemberRequestsActivity;
+import org.papercraft.ui.ProfileActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class MemberRequestsDelegate implements MemberRequestCell.OnClickListener {
 

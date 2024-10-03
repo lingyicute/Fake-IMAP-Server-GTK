@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger.support.customtabs;
+package org.papercraft.messenger.support.customtabs;
 
 import android.content.ComponentName;
 import android.content.Context;

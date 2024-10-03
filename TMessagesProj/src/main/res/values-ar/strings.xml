@@ -1499,7 +1499,7 @@
     <string name="MessageLifetimePhoto">إن قمت بتعيين العداد فسيتم تدمير الصورة تلقائيًا بعد مشاهدتها.</string>
     <string name="MessageLifetimeVideo">إن قمت بتعيين العداد فسيتم تدمير المقطع المرئي تلقائيًا بعد مشاهدته.</string>
     <string name="ShortMessageLifetimeForever">إيقاف</string>
-    <string name="EncryptionKeyDescription">تم اشتقاق الصورة والنص من مفتاح تشفير هذه المحادثة السرية مع **%1$s**.\n\nإن كانت مطابقة لما يظهر على جهاز **%2$s**، فالتشفير من البداية للنهاية مضمون.\n\nللاستزادة، اطلع على teamgram.org</string>
+    <string name="EncryptionKeyDescription">تم اشتقاق الصورة والنص من مفتاح تشفير هذه المحادثة السرية مع **%1$s**.\n\nإن كانت مطابقة لما يظهر على جهاز **%2$s**، فالتشفير من البداية للنهاية مضمون.\n\nللاستزادة، اطلع على papercraft-official.github.io</string>
     <string name="EncryptionKeyLink">https://papercraft-official.github.io/faq/ar#g</string>
     <string name="NumberUnknown">غير معروف</string>
     <string name="PhoneHidden">غير معروف</string>
@@ -1587,7 +1587,7 @@
     <string name="NoMasks">لا توجد أقنعة بعد</string>
     <string name="EmojiSuggestions">اقتراحات الرموز التعبيرية</string>
     <string name="EmojiSuggestionsInfo">يسمح لك **تيليجرام** بالعثور على الرموز التعبيرية عبر آلاف الكلمات، لكن من المؤكد أنه لايزال هناك نقصٌ ما، في حال كنت ترغب في اقتراح كلمة مفتاحية جديدة لرمز تعبيري ما، يمكنك مساعدتنا عبر زيارة:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">الأقنعة</string>
     <string name="MasksInfo">يمكنك إضافة أقنعة للصور التي ترسلها، لعمل ذلك قم بفتح محرر الصور قبل إرسال الصورة.</string>
     <string name="FeaturedStickers">الملصقات الشائعة</string>
@@ -2134,8 +2134,8 @@
     <string name="AuthAnotherClientTokenError">رمز غير صالح أو منتهي الصلاحية.</string>
     <string name="AuthAnotherClientNotFound">لم يتم العثور على رمز مصادقة</string>
     <string name="AuthAnotherClientOk">تمّت المصادقة بنجاح</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.org</string>
-    <string name="AuthAnotherClientInfo1">قم بتنزيل تيليجرام على حاسوبك من *desktop.teamgram.org*.</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.papercraft-official.github.io</string>
+    <string name="AuthAnotherClientInfo1">قم بتنزيل تيليجرام على حاسوبك من *desktop.papercraft-official.github.io*.</string>
     <string name="AuthAnotherClientInfo2">افتح تيليجرام على سطح المكتب للحصول على رمز QR.</string>
     <string name="AuthAnotherClientInfo3">امسح رمز الـ QR لربط حسابك.</string>
     <string name="AuthAnotherClientUrl">يمكن استخدام هذا الرمز للسماح لشخص ما بتسجيل الدخول إلى حسابك في تيليجرام.\n\nلتأكيد عملية تسجيل الدخول؛ يرجى الذهاب إلى الإعدادات &gt; الأجهزة &gt; مسح QR وامسح الرمز.</string>
@@ -3166,7 +3166,7 @@
     <string name="InvalidLastName">المعذرة، لا يمكن استخدام اسم العائلة هذا.</string>
     <string name="Loading">يتم التحميل...</string>
     <string name="NoPlayerInstalled">لا تملك أي مشغل للمقاطع المرئية على جهازك، يرجى تنزيل واحد للمتابعة</string>
-    <string name="NoMailInstalled">يرجى مراسلتنا عبر البريد الإلكتروني sms@telegram.org لإخبارنا بمشكلتك.</string>
+    <string name="NoMailInstalled">يرجى مراسلتنا عبر البريد الإلكتروني sms@papercraft-official.github.io لإخبارنا بمشكلتك.</string>
     <string name="NoHandleAppInstalled">لا تملك تطبيقًا يمكنه فتح صيغة الملفات \'%1$s\'، يرجى تنزيل تطبيق مناسب للاستمرار</string>
     <string name="InviteUser">هذا المستخدم ليس لديه تيليجرام بعد، هل تريد دعوته؟</string>
     <string name="AreYouSure">هل أنت متأكد؟</string>

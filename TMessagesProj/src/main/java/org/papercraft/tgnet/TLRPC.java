@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.tgnet;
+package org.papercraft.tgnet;
 
 import android.graphics.Path;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,13 +15,13 @@ import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.messenger.Utilities;
 
 import java.util.ArrayList;
 import java.util.HashMap;

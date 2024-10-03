@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Adapters;
+package org.papercraft.ui.Adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.ui.ActionBar.DrawerLayoutContainer;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.DividerCell;
-import org.telegram.ui.Cells.DrawerActionCell;
-import org.telegram.ui.Cells.DrawerAddCell;
-import org.telegram.ui.Cells.DrawerProfileCell;
-import org.telegram.ui.Cells.DrawerUserCell;
-import org.telegram.ui.Cells.EmptyCell;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.SideMenultItemAnimator;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.ui.ActionBar.DrawerLayoutContainer;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.DividerCell;
+import org.papercraft.ui.Cells.DrawerActionCell;
+import org.papercraft.ui.Cells.DrawerAddCell;
+import org.papercraft.ui.Cells.DrawerProfileCell;
+import org.papercraft.ui.Cells.DrawerUserCell;
+import org.papercraft.ui.Cells.EmptyCell;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.SideMenultItemAnimator;
 
 import java.util.ArrayList;
 import java.util.Collections;

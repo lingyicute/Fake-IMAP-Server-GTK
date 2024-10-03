@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 public interface PagerHeaderView {
     void setOffset(float v);

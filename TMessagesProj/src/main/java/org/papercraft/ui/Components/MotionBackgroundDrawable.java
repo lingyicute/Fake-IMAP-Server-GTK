@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -25,13 +25,13 @@ import android.view.View;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.GenericProvider;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.GenericProvider;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
 
 import java.lang.ref.WeakReference;
 

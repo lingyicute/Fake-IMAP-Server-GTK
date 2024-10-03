@@ -1,10 +1,10 @@
-package org.telegram.ui.Charts;
+package org.papercraft.ui.Charts;
 
 import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 public class ChartPickerDelegate {
 

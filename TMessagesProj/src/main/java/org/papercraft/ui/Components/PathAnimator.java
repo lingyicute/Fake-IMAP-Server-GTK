@@ -6,14 +6,14 @@
  * Copyright Nikolai Kudashov, 2013-2020.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
 
 import java.util.ArrayList;
 

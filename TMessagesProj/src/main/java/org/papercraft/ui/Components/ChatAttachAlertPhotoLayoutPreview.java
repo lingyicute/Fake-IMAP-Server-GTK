@@ -1,10 +1,10 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import static org.telegram.messenger.MessageObject.POSITION_FLAG_BOTTOM;
-import static org.telegram.messenger.MessageObject.POSITION_FLAG_LEFT;
-import static org.telegram.messenger.MessageObject.POSITION_FLAG_RIGHT;
-import static org.telegram.messenger.MessageObject.POSITION_FLAG_TOP;
-import static org.telegram.ui.Components.UndoView.ACTION_PREVIEW_MEDIA_DESELECTED;
+import static org.papercraft.messenger.MessageObject.POSITION_FLAG_BOTTOM;
+import static org.papercraft.messenger.MessageObject.POSITION_FLAG_LEFT;
+import static org.papercraft.messenger.MessageObject.POSITION_FLAG_RIGHT;
+import static org.papercraft.messenger.MessageObject.POSITION_FLAG_TOP;
+import static org.papercraft.ui.Components.UndoView.ACTION_PREVIEW_MEDIA_DESELECTED;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -42,27 +42,27 @@ import androidx.exifinterface.media.ExifInterface;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.VideoEditedInfo;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.ChatActionCell;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.spoilers.SpoilerEffect;
-import org.telegram.ui.PhotoViewer;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.VideoEditedInfo;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.ActionBar;
+import org.papercraft.ui.ActionBar.ActionBarMenu;
+import org.papercraft.ui.ActionBar.ActionBarMenuItem;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.ChatActionCell;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Components.spoilers.SpoilerEffect;
+import org.papercraft.ui.PhotoViewer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

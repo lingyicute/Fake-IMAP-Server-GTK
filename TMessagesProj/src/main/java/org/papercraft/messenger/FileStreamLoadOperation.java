@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.net.Uri;
 import androidx.annotation.Nullable;
@@ -16,7 +16,7 @@ import com.google.android.exoplayer2.upstream.BaseDataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
 import com.google.android.exoplayer2.upstream.TransferListener;
 
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.TLRPC;
 
 import java.io.EOFException;
 import java.io.IOException;

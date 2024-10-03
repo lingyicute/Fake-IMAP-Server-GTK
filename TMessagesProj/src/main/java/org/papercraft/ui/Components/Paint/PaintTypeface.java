@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -9,10 +9,10 @@ import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.Utilities;
 
 import java.io.File;
 import java.io.IOException;

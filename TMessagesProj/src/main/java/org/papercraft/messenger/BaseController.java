@@ -1,7 +1,7 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.ui.Components.Paint.PersistColorPalette;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.ui.Components.Paint.PersistColorPalette;
 
 public class BaseController {
 

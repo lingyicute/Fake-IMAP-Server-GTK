@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -30,21 +30,21 @@ import android.view.View;
 
 import androidx.annotation.Keep;
 
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.AnimatedFileDrawable;
-import org.telegram.ui.Components.AttachableDrawable;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.ClipRoundedDrawable;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.LoadingStickerDrawable;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.RecyclableDrawable;
-import org.telegram.ui.Components.VectorAvatarThumbDrawable;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.AnimatedFileDrawable;
+import org.papercraft.ui.Components.AttachableDrawable;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.ClipRoundedDrawable;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.LoadingStickerDrawable;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.RecyclableDrawable;
+import org.papercraft.ui.Components.VectorAvatarThumbDrawable;
 
 import java.util.ArrayList;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class ImageReceiver implements NotificationCenter.NotificationCenterDelegate {
 

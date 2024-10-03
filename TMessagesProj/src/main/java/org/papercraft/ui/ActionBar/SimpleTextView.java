@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -34,15 +34,15 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 import androidx.annotation.NonNull;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.LocaleController;
-import org.telegram.ui.Cells.DialogCell;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.EmptyStubSpan;
-import org.telegram.ui.Components.StaticLayoutEx;
-import org.telegram.ui.Components.spoilers.SpoilerEffect;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.ui.Cells.DialogCell;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.EmptyStubSpan;
+import org.papercraft.ui.Components.StaticLayoutEx;
+import org.papercraft.ui.Components.spoilers.SpoilerEffect;
 
 import java.util.ArrayList;
 import java.util.List;

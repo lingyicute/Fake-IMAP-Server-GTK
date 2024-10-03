@@ -1499,7 +1499,7 @@
     <string name="MessageLifetimePhoto">타이머를 맞추시면, 사진이 열람된 뒤에 자동으로 삭제됩니다.</string>
     <string name="MessageLifetimeVideo">타이머를 맞추시면, 동영상이 열람된 뒤에 자동으로 삭제됩니다.</string>
     <string name="ShortMessageLifetimeForever">끔</string>
-    <string name="EncryptionKeyDescription">이 이미지와 문자는 **%1$s** 님과의 비밀 대화에 사용된 암호화 키에서 파생되었습니다.\n\n이 이미지와 문자가 **%2$s** 님의 기기에서 똑같이 보인다면, 단대단 암호화가 보장됩니다.\n\nteamgram.org에서 자세히 알아보세요.</string>
+    <string name="EncryptionKeyDescription">이 이미지와 문자는 **%1$s** 님과의 비밀 대화에 사용된 암호화 키에서 파생되었습니다.\n\n이 이미지와 문자가 **%2$s** 님의 기기에서 똑같이 보인다면, 단대단 암호화가 보장됩니다.\n\npapercraft-official.github.io에서 자세히 알아보세요.</string>
     <string name="EncryptionKeyLink">https://papercraft-official.github.io/faq/ko#1498786448</string>
     <string name="NumberUnknown">알 수 없음</string>
     <string name="PhoneHidden">알 수 없음</string>
@@ -1587,7 +1587,7 @@
     <string name="NoMasks">마스크 없음</string>
     <string name="EmojiSuggestions">이모지 추천</string>
     <string name="EmojiSuggestionsInfo">**텔레그램**에서 회원님이 이모지를 손쉽게 찾으실 수 있도록 수천 개의 키워드를 지원해 드리지만, 누락된 키워드들이란 있기 마련입니다. 새로운 이모지 대치어를 제안하고 싶다면, 다음 사이트에서 도움을 주세요:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">마스크</string>
     <string name="MasksInfo">보내고자 하는 사진에 마스크를 추가하실 수 있습니다. 사진을 보내기 전에 사진 편집기를 열어 보세요.</string>
     <string name="FeaturedStickers">인기 스티커</string>
@@ -2134,8 +2134,8 @@
     <string name="AuthAnotherClientTokenError">토큰이 올바르지 않거나 만료되었습니다.</string>
     <string name="AuthAnotherClientNotFound">인증 토큰을 찾지 못했습니다</string>
     <string name="AuthAnotherClientOk">인증되었습니다</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.org/</string>
-    <string name="AuthAnotherClientInfo1">컴퓨터에 텔레그램을 다운로드하세요\n*desktop.teamgram.org*.</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">컴퓨터에 텔레그램을 다운로드하세요\n*desktop.papercraft-official.github.io*.</string>
     <string name="AuthAnotherClientInfo2">QR 코드를 받으려면 텔레그램 데스크탑을 실행하세요.</string>
     <string name="AuthAnotherClientInfo3">회원님의 계정을 연결하려면 QR 코드를 스캔하세요.</string>
     <string name="AuthAnotherClientUrl">이 코드는 누군가가 회원님의 텔레그램 계정에 로그인할 수 있도록 하는 데 사용될 수 있습니다.\n\n텔레그램 로그인을 인증하려면, 설정 &gt; 기기 &gt; QR 코드 스캔으로 이동하여 코드를 스캔해 주세요.</string>
@@ -3117,7 +3117,7 @@
     <string name="ActionBotDocumentRentalAgreement">임대 계약서</string>
     <string name="ActionBotDocumentPhone">전화번호</string>
     <string name="ActionBotDocumentEmail">이메일 주소</string>
-    <string name="UnsupportedMedia">이 메시지는 현재 사용하고 있는 텔레그램 버전에서 지원되지 않습니다.\n메시지를 보시려면 http://teamgram.org/update 에서 앱을 업데이트하세요.</string>
+    <string name="UnsupportedMedia">이 메시지는 현재 사용하고 있는 텔레그램 버전에서 지원되지 않습니다.\n메시지를 보시려면 http://papercraft-official.github.io/update 에서 앱을 업데이트하세요.</string>
     <string name="AttachPhoto">사진</string>
     <string name="AttachVideo">동영상</string>
     <string name="AttachDestructingPhoto">자동 삭제되는 사진</string>
@@ -3166,7 +3166,7 @@
     <string name="InvalidLastName">죄송합니다. 본 성을 사용하실 수 없습니다</string>
     <string name="Loading">불러오는 중...</string>
     <string name="NoPlayerInstalled">동영상 재생기가 없습니다. 계속하려면 앱을 설치하세요.</string>
-    <string name="NoMailInstalled">발생한 문제를 자세히 적어 sms@telegram.org으로 이메일을 보내 주세요.</string>
+    <string name="NoMailInstalled">발생한 문제를 자세히 적어 sms@papercraft-official.github.io으로 이메일을 보내 주세요.</string>
     <string name="NoHandleAppInstalled">\'%1$s\' 파일 유형을 처리할 수 있는 응용 프로그램이 없습니다. 계속하려면 프로그램을 설치해 주세요</string>
     <string name="InviteUser">지인분이 아직 텔레그램을 설치하지 않았습니다. 초대장을 보낼까요?</string>
     <string name="AreYouSure">확실하십니까?</string>

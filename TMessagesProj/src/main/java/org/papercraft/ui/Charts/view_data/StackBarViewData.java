@@ -1,12 +1,12 @@
-package org.telegram.ui.Charts.view_data;
+package org.papercraft.ui.Charts.view_data;
 
 import android.graphics.Paint;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Charts.data.ChartData;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Charts.data.ChartData;
 
 public class StackBarViewData extends LineViewData {
 

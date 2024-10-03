@@ -6,17 +6,17 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.SimpleTextView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.SimpleTextView;
 
 @SuppressLint("ViewConstructor")
 public class ChatUnreadCell extends FrameLayout {

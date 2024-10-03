@@ -1,4 +1,4 @@
-package org.telegram.messenger.voip;
+package org.papercraft.messenger.voip;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -8,7 +8,7 @@ import android.os.ParcelFileDescriptor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.ApplicationLoader;
+import org.papercraft.messenger.ApplicationLoader;
 
 import java.io.FileNotFoundException;
 

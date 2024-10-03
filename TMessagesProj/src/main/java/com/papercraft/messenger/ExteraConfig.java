@@ -9,24 +9,24 @@
 
 */
 
-package org.lingyicute.messenger;
+package org.papercraft.messenger;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-import org.lingyicute.messenger.camera.CameraXUtils;
-import org.lingyicute.messenger.icons.BaseIconSet;
-import org.lingyicute.messenger.icons.EmptyIconSet;
-import org.lingyicute.messenger.icons.SolarIconSet;
+import org.papercraft.messenger.camera.CameraXUtils;
+import org.papercraft.messenger.icons.BaseIconSet;
+import org.papercraft.messenger.icons.EmptyIconSet;
+import org.papercraft.messenger.icons.SolarIconSet;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.tgnet.TLRPC;
 
 import java.util.Arrays;
 

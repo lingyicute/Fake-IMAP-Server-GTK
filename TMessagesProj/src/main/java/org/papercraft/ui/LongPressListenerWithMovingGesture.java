@@ -1,13 +1,13 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.graphics.Rect;
 import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.Components.GestureDetector2;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.ActionBar.ActionBarPopupWindow;
+import org.papercraft.ui.Components.GestureDetector2;
 
 
 public class LongPressListenerWithMovingGesture implements View.OnTouchListener {

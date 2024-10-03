@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.spoilers;
+package org.papercraft.ui.Components.spoilers;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -37,15 +37,15 @@ import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.math.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.Emoji;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.Easings;
-import org.telegram.ui.Components.TextStyleSpan;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.Emoji;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.Easings;
+import org.papercraft.ui.Components.TextStyleSpan;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.components;
+package org.papercraft.messenger.components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,8 +10,8 @@ import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ImageSpan;
 
-import org.telegram.messenger.LocaleController;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
 import java.util.List;

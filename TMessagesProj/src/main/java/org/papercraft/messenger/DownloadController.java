@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -20,12 +20,12 @@ import android.util.SparseArray;
 import androidx.annotation.NonNull;
 import androidx.collection.LongSparseArray;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.LaunchActivity;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

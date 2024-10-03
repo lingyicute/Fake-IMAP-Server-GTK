@@ -1,11 +1,11 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import static org.telegram.messenger.NotificationsController.TYPE_PRIVATE;
+import static org.papercraft.messenger.NotificationsController.TYPE_PRIVATE;
 
 import android.content.SharedPreferences;
 
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
 
 public class NotificationsSettingsFacade {
 

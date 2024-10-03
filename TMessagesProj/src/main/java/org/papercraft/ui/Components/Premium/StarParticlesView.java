@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -18,15 +18,15 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.math.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.SvgHelper;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.GLIconSettingsView;
-import org.telegram.ui.PremiumPreviewFragment;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.SvgHelper;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.GLIconSettingsView;
+import org.papercraft.ui.PremiumPreviewFragment;
 
 import java.util.ArrayList;
 

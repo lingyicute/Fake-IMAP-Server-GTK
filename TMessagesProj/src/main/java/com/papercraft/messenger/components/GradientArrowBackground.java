@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.components;
+package org.papercraft.messenger.components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -20,7 +20,7 @@ import android.graphics.drawable.Drawable;
 
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 public class GradientArrowBackground extends Drawable {
 

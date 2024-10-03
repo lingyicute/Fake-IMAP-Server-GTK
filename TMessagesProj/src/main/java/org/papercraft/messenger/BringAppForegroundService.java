@@ -6,12 +6,12 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.IntentService;
 import android.content.Intent;
 
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.ui.LaunchActivity;
 
 public class BringAppForegroundService extends IntentService {
 

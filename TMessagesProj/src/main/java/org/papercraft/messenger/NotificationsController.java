@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -57,15 +57,15 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.graphics.drawable.IconCompat;
 
-import org.lingyicute.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraUtils;
 
-import org.telegram.messenger.support.LongSparseIntArray;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.BubbleActivity;
-import org.telegram.ui.Components.spoilers.SpoilerEffect;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.PopupNotificationActivity;
+import org.papercraft.messenger.support.LongSparseIntArray;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.BubbleActivity;
+import org.papercraft.ui.Components.spoilers.SpoilerEffect;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.PopupNotificationActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -2830,7 +2830,7 @@ public class NotificationsController extends BaseController {
             SharedPreferences preferences = getAccountInstance().getNotificationsSettings();
             SharedPreferences.Editor editor = preferences.edit();
             if (what == 0 || what == -1) {
-                String key = "org.telegram.key" + dialogId;
+                String key = "org.papercraft.key" + dialogId;
                 if (topicId != 0) {
                     key += ".topic" + topicId;
                 }
@@ -2848,7 +2848,7 @@ public class NotificationsController extends BaseController {
                 }
             }
             if (what == 1 || what == -1) {
-                String key = "org.telegram.keyia" + dialogId;
+                String key = "org.papercraft.keyia" + dialogId;
                 String channelId = preferences.getString(key, null);
                 if (channelId != null) {
                     editor.remove(key).remove(key + "_s");
@@ -2964,7 +2964,7 @@ public class NotificationsController extends BaseController {
                 SharedPreferences.Editor editor = preferences.edit();
                 for (Map.Entry<String, ?> entry : values.entrySet()) {
                     String key = entry.getKey();
-                    if (key.startsWith("org.telegram.key")) {
+                    if (key.startsWith("org.papercraft.key")) {
                         if (!key.endsWith("_s")) {
                             String id = (String) entry.getValue();
                             systemNotificationManager.deleteNotificationChannel(id);
@@ -3215,7 +3215,7 @@ public class NotificationsController extends BaseController {
                 name = LocaleController.formatString("NotificationsChatInApp", R.string.NotificationsChatInApp, name);
             }
             //TODO notifications
-            key = (isInApp ? "org.telegram.keyia" : "org.telegram.key") + dialogId + "_" + topicId;
+            key = (isInApp ? "org.papercraft.keyia" : "org.papercraft.key") + dialogId + "_" + topicId;
         }
         key += "_" + soundHash;
         String channelId = preferences.getString(key, null);
@@ -4545,7 +4545,7 @@ public class NotificationsController extends BaseController {
             }
             Intent msgHeardIntent = new Intent(ApplicationLoader.applicationContext, AutoMessageHeardReceiver.class);
             msgHeardIntent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-            msgHeardIntent.setAction("org.telegram.messenger.ACTION_MESSAGE_HEARD");
+            msgHeardIntent.setAction("org.papercraft.messenger.ACTION_MESSAGE_HEARD");
             msgHeardIntent.putExtra("dialog_id", dialogId);
             msgHeardIntent.putExtra("max_id", maxId);
             msgHeardIntent.putExtra("currentAccount", currentAccount);

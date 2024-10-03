@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.camera;
+package org.papercraft.messenger.camera;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,8 +10,8 @@ import android.view.Gravity;
 import android.view.WindowInsets;
 import android.widget.LinearLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;

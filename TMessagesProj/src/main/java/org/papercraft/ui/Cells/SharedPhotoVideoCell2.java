@@ -1,4 +1,4 @@
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -25,23 +25,23 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.math.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DownloadController;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.CanvasButton;
-import org.telegram.ui.Components.CheckBoxBase;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.FlickerLoadingView;
-import org.telegram.ui.Components.spoilers.SpoilerEffect;
-import org.telegram.ui.PhotoViewer;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DownloadController;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.CanvasButton;
+import org.papercraft.ui.Components.CheckBoxBase;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.FlickerLoadingView;
+import org.papercraft.ui.Components.spoilers.SpoilerEffect;
+import org.papercraft.ui.PhotoViewer;
 
 public class SharedPhotoVideoCell2 extends View {
 

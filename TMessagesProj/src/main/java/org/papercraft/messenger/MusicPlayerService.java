@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -33,22 +33,22 @@ import android.os.IBinder;
 import android.text.TextUtils;
 import android.widget.RemoteViews;
 
-import org.lingyicute.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraUtils;
 import com.google.android.exoplayer2.C;
 
-import org.telegram.messenger.audioinfo.AudioInfo;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.audioinfo.AudioInfo;
+import org.papercraft.ui.LaunchActivity;
 
 import java.io.File;
 
 public class MusicPlayerService extends Service implements NotificationCenter.NotificationCenterDelegate {
 
-    public static final String NOTIFY_PREVIOUS = "org.telegram.android.musicplayer.previous";
-    public static final String NOTIFY_CLOSE = "org.telegram.android.musicplayer.close";
-    public static final String NOTIFY_PAUSE = "org.telegram.android.musicplayer.pause";
-    public static final String NOTIFY_PLAY = "org.telegram.android.musicplayer.play";
-    public static final String NOTIFY_NEXT = "org.telegram.android.musicplayer.next";
-    public static final String NOTIFY_SEEK = "org.telegram.android.musicplayer.seek";
+    public static final String NOTIFY_PREVIOUS = "org.papercraft.android.musicplayer.previous";
+    public static final String NOTIFY_CLOSE = "org.papercraft.android.musicplayer.close";
+    public static final String NOTIFY_PAUSE = "org.papercraft.android.musicplayer.pause";
+    public static final String NOTIFY_PLAY = "org.papercraft.android.musicplayer.play";
+    public static final String NOTIFY_NEXT = "org.papercraft.android.musicplayer.next";
+    public static final String NOTIFY_SEEK = "org.papercraft.android.musicplayer.seek";
 
     private static final int ID_NOTIFICATION = 5;
 

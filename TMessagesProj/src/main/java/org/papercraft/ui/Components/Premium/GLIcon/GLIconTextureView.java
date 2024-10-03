@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium.GLIcon;
+package org.papercraft.ui.Components.Premium.GLIcon;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,12 +14,12 @@ import android.view.TextureView;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.EmuDetector;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.Premium.StarParticlesView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.EmuDetector;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.Premium.StarParticlesView;
 
 import java.util.ArrayList;
 import java.util.Collections;

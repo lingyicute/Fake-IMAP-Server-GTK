@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.spoilers;
+package org.papercraft.ui.Components.spoilers;
 
 import android.view.GestureDetector;
 import android.view.MotionEvent;

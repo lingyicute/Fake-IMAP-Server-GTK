@@ -121,7 +121,7 @@
         android:hardwareAccelerated="@bool/useHardwareAcceleration"
         android:hasFragileUserData="true"
         android:largeHeap="true"
-        android:manageSpaceActivity="org.telegram.ui.ExternalActionActivity"
+        android:manageSpaceActivity="org.papercraft.ui.ExternalActionActivity"
         android:preserveLegacyExternalStorage="true"
         android:requestLegacyExternalStorage="true"
         android:restoreAnyVersion="true"
@@ -133,10 +133,10 @@
             android:value="AIzaSyBb4p4ukIreJ6uDHprBN5rpv6i1dvyn8zM" />
 
         <activity-alias
-            android:name="org.lingyicute.messenger.DefaultIcon"
+            android:name="org.papercraft.messenger.DefaultIcon"
             android:enabled="true"
             android:exported="true"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -150,12 +150,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.MonetIcon"
+            android:name="org.papercraft.messenger.MonetIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_monet"
             android:roundIcon="@mipmap/ic_launcher_monet"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -169,12 +169,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.GradientIcon"
+            android:name="org.papercraft.messenger.GradientIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_gradient"
             android:roundIcon="@mipmap/ic_launcher_gradient"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -185,12 +185,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.GoogleIcon"
+            android:name="org.papercraft.messenger.GoogleIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_google"
             android:roundIcon="@mipmap/ic_launcher_google"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -204,12 +204,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.VKIcon"
+            android:name="org.papercraft.messenger.VKIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_vk"
             android:roundIcon="@mipmap/ic_launcher_vk"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -223,12 +223,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.Dsgn480Icon"
+            android:name="org.papercraft.messenger.Dsgn480Icon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_480dsgn"
             android:roundIcon="@mipmap/ic_launcher_480dsgn"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -242,12 +242,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.GlowIcon"
+            android:name="org.papercraft.messenger.GlowIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_glow"
             android:roundIcon="@mipmap/ic_launcher_glow"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -258,12 +258,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.SpaceIcon"
+            android:name="org.papercraft.messenger.SpaceIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_space"
             android:roundIcon="@mipmap/ic_launcher_space"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -274,12 +274,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.WinterIcon"
+            android:name="org.papercraft.messenger.WinterIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_winter"
             android:roundIcon="@mipmap/ic_launcher_winter"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -290,12 +290,12 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.lingyicute.messenger.RedIcon"
+            android:name="org.papercraft.messenger.RedIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_red"
             android:roundIcon="@mipmap/ic_launcher_red"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -309,7 +309,7 @@
         </activity-alias>
 
         <activity
-            android:name="org.telegram.ui.LaunchActivity"
+            android:name="org.papercraft.ui.LaunchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true"
             android:hardwareAccelerated="@bool/useHardwareAcceleration"
@@ -354,7 +354,7 @@
                 tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.org.lingyicute.messenger.android.profile" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.org.papercraft.messenger.android.profile" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -376,7 +376,7 @@
                 <data android:scheme="tg" />
             </intent-filter>
             <intent-filter>
-                <action android:name="org.telegram.messenger.CREATE_STICKER_PACK" />
+                <action android:name="org.papercraft.messenger.CREATE_STICKER_PACK" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="*/*" />
             </intent-filter>
@@ -389,21 +389,21 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity-alias
-            android:name="org.telegram.ui.CallsActivity"
+            android:name="org.papercraft.ui.CallsActivity"
             android:exported="true"
             android:permission="android.permission.CALL_PHONE"
-            android:targetActivity="org.telegram.ui.LaunchActivity">
+            android:targetActivity="org.papercraft.ui.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.item/vnd.org.lingyicute.messenger.android.call" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.org.lingyicute.messenger.android.call.video" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.org.papercraft.messenger.android.call" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.org.papercraft.messenger.android.call.video" />
             </intent-filter>
         </activity-alias>
 
         <activity
-            android:name="org.telegram.ui.BubbleActivity"
+            android:name="org.papercraft.ui.BubbleActivity"
             android:allowEmbedded="true"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:documentLaunchMode="always"
@@ -411,7 +411,7 @@
             android:resizeableActivity="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="org.telegram.ui.ShareActivity"
+            android:name="org.papercraft.ui.ShareActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:excludeFromRecents="true"
             android:exported="true"
@@ -432,7 +432,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.telegram.ui.ExternalActionActivity"
+            android:name="org.papercraft.ui.ExternalActionActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true"
             android:hardwareAccelerated="@bool/useHardwareAcceleration"
@@ -440,12 +440,12 @@
             <intent-filter
                 android:icon="@mipmap/ic_launcher"
                 android:roundIcon="@mipmap/ic_launcher_round">
-                <action android:name="org.telegram.passport.AUTHORIZE" />
+                <action android:name="org.papercraft.passport.AUTHORIZE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.telegram.ui.ChatsWidgetConfigActivity"
+            android:name="org.papercraft.ui.ChatsWidgetConfigActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true"
             android:hardwareAccelerated="@bool/useHardwareAcceleration"
@@ -457,7 +457,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.telegram.ui.ContactsWidgetConfigActivity"
+            android:name="org.papercraft.ui.ContactsWidgetConfigActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true"
             android:hardwareAccelerated="@bool/useHardwareAcceleration"
@@ -469,7 +469,7 @@
             </intent-filter>
         </activity>
         <!--        <activity-->
-        <!--            android:name="org.telegram.ui.FeedWidgetConfigActivity"-->
+        <!--            android:name="org.papercraft.ui.FeedWidgetConfigActivity"-->
         <!--            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"-->
         <!--            android:hardwareAccelerated="@bool/useHardwareAcceleration"-->
         <!--            android:windowSoftInputMode="adjustPan"-->
@@ -479,11 +479,11 @@
         <!--            </intent-filter>-->
         <!--        </activity>-->
         <activity
-            android:name="org.telegram.messenger.OpenChatReceiver"
+            android:name="org.papercraft.messenger.OpenChatReceiver"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true" />
         <activity
-            android:name="org.telegram.ui.PopupNotificationActivity"
+            android:name="org.papercraft.ui.PopupNotificationActivity"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
@@ -492,14 +492,14 @@
             android:theme="@style/Theme.TMessages.PopupNotification"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
-            android:name="org.telegram.ui.VoIPPermissionActivity"
+            android:name="org.papercraft.ui.VoIPPermissionActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:excludeFromRecents="true"
             android:exported="true"
             android:taskAffinity="${applicationId}.voip"
             android:theme="@style/Theme.TMessages.Transparent" />
         <activity
-            android:name="org.telegram.ui.VoIPFeedbackActivity"
+            android:name="org.papercraft.ui.VoIPFeedbackActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:excludeFromRecents="true"
             android:exported="true"
@@ -528,7 +528,7 @@
             android:name=".AutoMessageHeardReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="org.telegram.messenger.ACTION_MESSAGE_HEARD" />
+                <action android:name="org.papercraft.messenger.ACTION_MESSAGE_HEARD" />
             </intent-filter>
         </receiver>
 
@@ -544,7 +544,7 @@
             android:name=".AutoMessageReplyReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="org.telegram.messenger.ACTION_MESSAGE_REPLY" />
+                <action android:name="org.papercraft.messenger.ACTION_MESSAGE_REPLY" />
             </intent-filter>
         </receiver>
 
@@ -647,11 +647,11 @@
             android:name=".MusicPlayerReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.telegram.android.musicplayer.close" />
-                <action android:name="org.telegram.android.musicplayer.pause" />
-                <action android:name="org.telegram.android.musicplayer.next" />
-                <action android:name="org.telegram.android.musicplayer.play" />
-                <action android:name="org.telegram.android.musicplayer.previous" />
+                <action android:name="org.papercraft.android.musicplayer.close" />
+                <action android:name="org.papercraft.android.musicplayer.pause" />
+                <action android:name="org.papercraft.android.musicplayer.next" />
+                <action android:name="org.papercraft.android.musicplayer.play" />
+                <action android:name="org.papercraft.android.musicplayer.previous" />
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />
             </intent-filter>
@@ -669,7 +669,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.telegram.start" />
+                <action android:name="org.papercraft.start" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>

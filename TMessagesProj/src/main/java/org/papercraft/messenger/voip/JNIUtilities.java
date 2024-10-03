@@ -1,4 +1,4 @@
-package org.telegram.messenger.voip;
+package org.papercraft.messenger.voip;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.FileLog;
 
 import java.net.Inet4Address;
 import java.net.Inet6Address;

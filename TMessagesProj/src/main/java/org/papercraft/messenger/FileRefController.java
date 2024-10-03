@@ -1,11 +1,11 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.os.SystemClock;
 
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.tgnet.RequestDelegate;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
 import java.util.Arrays;

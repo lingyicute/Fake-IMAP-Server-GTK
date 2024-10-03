@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.annotation.SuppressLint;
 import android.content.ClipDescription;
@@ -46,34 +46,34 @@ import androidx.annotation.UiThread;
 import androidx.collection.LongSparseArray;
 import androidx.core.view.inputmethod.InputContentInfoCompat;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 import org.json.JSONObject;
-import org.telegram.messenger.audioinfo.AudioInfo;
-import org.telegram.messenger.support.SparseLongArray;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.ChatMessageCell;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
-import org.telegram.ui.Components.AnimatedFileDrawable;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Point;
-import org.telegram.ui.Components.Premium.LimitReachedBottomSheet;
-import org.telegram.ui.Components.Reactions.ReactionsLayoutInBubble;
-import org.telegram.ui.Components.Reactions.ReactionsUtils;
-import org.telegram.ui.PaymentFormActivity;
-import org.telegram.ui.TwoStepVerificationActivity;
-import org.telegram.ui.TwoStepVerificationSetupActivity;
+import org.papercraft.messenger.audioinfo.AudioInfo;
+import org.papercraft.messenger.support.SparseLongArray;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.RequestDelegate;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.ChatMessageCell;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.ui.Components.AnimatedFileDrawable;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Point;
+import org.papercraft.ui.Components.Premium.LimitReachedBottomSheet;
+import org.papercraft.ui.Components.Reactions.ReactionsLayoutInBubble;
+import org.papercraft.ui.Components.Reactions.ReactionsUtils;
+import org.papercraft.ui.PaymentFormActivity;
+import org.papercraft.ui.TwoStepVerificationActivity;
+import org.papercraft.ui.TwoStepVerificationSetupActivity;
 
 import java.io.File;
 import java.io.FileInputStream;

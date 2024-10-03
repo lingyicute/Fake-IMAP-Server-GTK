@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.spoilers;
+package org.papercraft.ui.Components.spoilers;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -8,9 +8,9 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.SharedConfig;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.SharedConfig;
 
 import java.util.ArrayList;
 

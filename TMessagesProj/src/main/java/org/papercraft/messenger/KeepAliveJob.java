@@ -6,11 +6,11 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.Intent;
 
-import org.telegram.messenger.support.JobIntentService;
+import org.papercraft.messenger.support.JobIntentService;
 
 import java.util.concurrent.CountDownLatch;
 

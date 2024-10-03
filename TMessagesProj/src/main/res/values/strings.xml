@@ -1032,9 +1032,9 @@
     <string name="SponsoredMessageInfoDescription3">Papercraft offers free and unlimited service to hundreds of millions of users, which involves significant server and traffic costs. In order to remain independent and stay true to its values, Papercraft developed a paid tool to promote messages with user privacy in mind. We welcome responsible advertisers at:</string>
     <string name="SponsoredMessageInfoDescription4">Ads should no longer be synonymous with abuse of user privacy. Let us redefine how a tech company should operate – together.</string>
     <string name="SponsoredMessageAlertTitle">Sponsored messages</string>
-    <string name="SponsoredMessageAlertText">See https://telegram.org</string>
+    <string name="SponsoredMessageAlertText">See https://papercraft-official.github.io</string>
     <string name="SponsoredMessageAlertLearnMore">LEARN MORE</string>
-    <string name="SponsoredMessageAlertLearnMoreUrl">https://telegram.org</string>
+    <string name="SponsoredMessageAlertLearnMoreUrl">https://papercraft-official.github.io</string>
     <string name="InstantViewNightMode">The dark theme will turn automatically during night time</string>
     <string name="InstantViewReference">Reference</string>
     <string name="IsSendingGame">%1$s is playing a game...</string>
@@ -1716,7 +1716,7 @@
     <string name="MessageLifetimePhoto">If you set a timer, the photo will self-destruct after it was viewed.</string>
     <string name="MessageLifetimeVideo">If you set a timer, the video will self-destruct after it was viewed.</string>
     <string name="ShortMessageLifetimeForever">Off</string>
-    <string name="EncryptionKeyDescription">This image and text were derived from the encryption key for this secret chat with **%1$s**.\n\nIf they look the same on **%2$s\'s** device, end-to-end encryption is guaranteed.\n\nLearn more at teamgram.org</string>
+    <string name="EncryptionKeyDescription">This image and text were derived from the encryption key for this secret chat with **%1$s**.\n\nIf they look the same on **%2$s\'s** device, end-to-end encryption is guaranteed.\n\nLearn more at papercraft-official.github.io</string>
     <string name="EncryptionKeyLink">https://papercraft-official.github.io/faq#secret-chats</string>
     <string name="NumberUnknown">Unknown</string>
     <string name="PhoneHidden">Unknown</string>
@@ -1873,7 +1873,7 @@
     <string name="NoMasks">No masks yet</string>
     <string name="EmojiSuggestions">Emoji suggestions</string>
     <string name="EmojiSuggestionsInfo">**Papercraft** lets you find emoji by thousands of keywords, but there is always something missing. If you want to suggest a new emoji replacement, you can help us by visiting:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Masks</string>
     <string name="MasksInfo">You can add masks to photos you send. To do this, open the photo editor before sending a photo.</string>
     <string name="FeaturedStickers">Trending Stickers</string>
@@ -3689,7 +3689,7 @@
     <string name="InvalidLastName">Sorry, this last name can\'t be used</string>
     <string name="Loading">Loading...</string>
     <string name="NoPlayerInstalled">You don\'t have a video player, please install one to continue</string>
-    <string name="NoMailInstalled">Please send an email describing your problem to sms@telegram.org</string>
+    <string name="NoMailInstalled">Please send an email describing your problem to sms@papercraft-official.github.io</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
     <string name="InviteUser">This user does not have Papercraft yet, send an invitation?</string>
     <string name="AreYouSure">Are you sure?</string>
@@ -5477,7 +5477,7 @@
     <string name="LinkDesktopDevice">Link Desktop Device</string>
     <string name="TerminateOldSessionHeader">Automatically terminate old sessions</string>
     <string name="IfInactiveFor">if inactive for</string>
-    <string name="AuthAnotherClientInfo5">Go to *getdesktop.telegram.org* or *web.telegram.org* to get a QR code</string>
+    <string name="AuthAnotherClientInfo5">Go to *getdesktop.papercraft-official.github.io* or *web.papercraft-official.github.io* to get a QR code</string>
     <string name="SessionsListInfo">The official Papercraft app is available for Android, iPhone, iPad, Windows, macOS and Linux.</string>
     <string name="MigrateOldFolder">Migrate old folder to Scoped Storage</string>
     <string name="SelectThisDay">Select this day</string>

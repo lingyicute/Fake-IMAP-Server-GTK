@@ -9,15 +9,15 @@
 
 */
 
-package org.lingyicute.messenger.extras;
+package org.papercraft.messenger.extras;
 
 import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.FileLog;
 
 public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
     private final Thread.UncaughtExceptionHandler defHandler;

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -17,8 +17,8 @@ import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.view.animation.DecelerateInterpolator;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.MediaActionDrawable;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.MediaActionDrawable;
 
 public class MenuDrawable extends Drawable {
 

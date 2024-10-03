@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,13 +8,13 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.tgnet.TLObject;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.PhotoCropView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.PhotoCropView;
 
 public class SuggestUserPhotoView extends View {
 

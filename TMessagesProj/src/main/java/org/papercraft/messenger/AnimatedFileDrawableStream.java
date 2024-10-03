@@ -1,6 +1,6 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.TLRPC;
 
 import java.util.concurrent.CountDownLatch;
 

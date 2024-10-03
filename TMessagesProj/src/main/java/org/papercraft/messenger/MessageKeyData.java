@@ -6,9 +6,9 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.tgnet.SerializedData;
+import org.papercraft.tgnet.SerializedData;
 
 public class MessageKeyData {
 

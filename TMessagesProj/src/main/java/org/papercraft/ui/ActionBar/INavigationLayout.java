@@ -1,4 +1,4 @@
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.Components.BackButtonMenu;
-import org.telegram.ui.LNavigation.LNavigation;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.ui.Components.BackButtonMenu;
+import org.papercraft.ui.LNavigation.LNavigation;
 
 import java.util.ArrayList;
 import java.util.HashMap;

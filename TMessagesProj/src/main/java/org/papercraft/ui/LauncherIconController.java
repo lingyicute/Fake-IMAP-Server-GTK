@@ -1,12 +1,12 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.R;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.R;
 
 public class LauncherIconController {
     public static void tryFixLauncherIconIfNeeded() {
@@ -62,7 +62,7 @@ public class LauncherIconController {
 
         public ComponentName getComponentName(Context ctx) {
             if (componentName == null) {
-                componentName = new ComponentName(ctx.getPackageName(), "org.lingyicute.messenger." + key);
+                componentName = new ComponentName(ctx.getPackageName(), "org.papercraft.messenger." + key);
             }
             return componentName;
         }

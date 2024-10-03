@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.app.Service;
 import android.content.Intent;
@@ -35,7 +35,7 @@ public class NotificationsService extends Service {
         super.onDestroy();
         SharedPreferences preferences = MessagesController.getGlobalNotificationsSettings();
         if (preferences.getBoolean("pushService", true)) {
-            Intent intent = new Intent("org.telegram.start");
+            Intent intent = new Intent("org.papercraft.start");
             sendBroadcast(intent);
         }
     }

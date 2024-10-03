@@ -54,7 +54,7 @@ webrtc::ScopedJavaLocalRef<jobject> VideoCameraCapturer::GetJavaVideoCapturerObs
 
 extern "C" {
 
-JNIEXPORT jobject Java_org_telegram_messenger_voip_VideoCapturerDevice_nativeGetJavaVideoCapturerObserver(JNIEnv *env, jclass clazz, jlong ptr) {
+JNIEXPORT jobject Java_org_papercraft_messenger_voip_VideoCapturerDevice_nativeGetJavaVideoCapturerObserver(JNIEnv *env, jclass clazz, jlong ptr) {
     tgcalls::VideoCameraCapturer *capturer = (tgcalls::VideoCameraCapturer *) (intptr_t) ptr;
     return capturer->GetJavaVideoCapturerObserver(env).Release();
 }

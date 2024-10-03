@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Delegates.MemberRequestsDelegate;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Delegates.MemberRequestsDelegate;
+import org.papercraft.ui.LaunchActivity;
 
 public class MemberRequestsBottomSheet extends UsersAlertBase {
 

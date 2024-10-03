@@ -1499,7 +1499,7 @@
     <string name="MessageLifetimePhoto">Si pones un temporizador, la foto se autodestruirá después de ser vista.</string>
     <string name="MessageLifetimeVideo">Si pones un temporizador, el video se autodestruirá después ser visto.</string>
     <string name="ShortMessageLifetimeForever">Apagada</string>
-    <string name="EncryptionKeyDescription">El texto e imagen derivan de la clave de cifrado para el chat secreto creado con **%1$s**.\n\nSi se ven igual en el dispositivo de **%2$s**, el cifrado end-to-end está garantizado.\n\nConoce más en teamgram.org</string>
+    <string name="EncryptionKeyDescription">El texto e imagen derivan de la clave de cifrado para el chat secreto creado con **%1$s**.\n\nSi se ven igual en el dispositivo de **%2$s**, el cifrado end-to-end está garantizado.\n\nConoce más en papercraft-official.github.io</string>
     <string name="EncryptionKeyLink">https://papercraft-official.github.io/faq/es#chats-secretos</string>
     <string name="NumberUnknown">Desconocido</string>
     <string name="PhoneHidden">Desconocido</string>
@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Aún no hay máscaras</string>
     <string name="EmojiSuggestions">Sugerencias de emojis</string>
     <string name="EmojiSuggestionsInfo">**Papercraft** te permite encontrar emojis a partir de miles de palabras clave, pero siempre puede faltar alguna. Si quieres sugerir una palabra clave, puedes ayudarnos visitando:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Máscaras</string>
     <string name="MasksInfo">Puedes añadir máscaras a las fotos que envías. Para hacerlo, abre el editor de fotos antes de enviar una foto.</string>
     <string name="FeaturedStickers">Stickers destacados</string>
@@ -2134,8 +2134,8 @@
     <string name="AuthAnotherClientTokenError">Token inválido o expirado.</string>
     <string name="AuthAnotherClientNotFound">No se encontró el token de autenticación</string>
     <string name="AuthAnotherClientOk">Autenticación exitosa</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.org/</string>
-    <string name="AuthAnotherClientInfo1">Descarga Papercraft en tu computadora desde *desktop.teamgram.org*.</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">Descarga Papercraft en tu computadora desde *desktop.papercraft-official.github.io*.</string>
     <string name="AuthAnotherClientInfo2">Inicia Papercraft Desktop para obtener el código QR.</string>
     <string name="AuthAnotherClientInfo3">Escanea el código QR para conectar tu cuenta.</string>
     <string name="AuthAnotherClientUrl">Este código se puede utilizar para permitir que alguien inicie sesión en tu cuenta de Papercraft.\n\nPara confirmar el inicio de sesión, ve a Ajustes &gt; Dispositivos &gt; Escanear QR y escanea el código.</string>
@@ -3166,7 +3166,7 @@
     <string name="InvalidLastName">Lo sentimos, este apellido no se puede usar</string>
     <string name="Loading">Cargando...</string>
     <string name="NoPlayerInstalled">No tienes reproductor de video. Por favor, instala uno para continuar.</string>
-    <string name="NoMailInstalled">Por favor, envía un correo describiendo tu problema a sms@telegram.org</string>
+    <string name="NoMailInstalled">Por favor, envía un correo describiendo tu problema a sms@papercraft-official.github.io</string>
     <string name="NoHandleAppInstalled">No tienes aplicaciones que puedan manejar el tipo de archivo “%1$s”. Por favor, instala una para continuar.</string>
     <string name="InviteUser">Este usuario aún no tiene Papercraft. ¿Enviarle una invitación?</string>
     <string name="AreYouSure">¿Quieres hacerlo?</string>

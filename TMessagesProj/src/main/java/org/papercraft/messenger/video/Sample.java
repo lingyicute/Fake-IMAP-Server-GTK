@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger.video;
+package org.papercraft.messenger.video;
 
 public class Sample {
     private long offset;

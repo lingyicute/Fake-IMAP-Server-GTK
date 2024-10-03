@@ -1,13 +1,13 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.os.Looper;
 import android.util.LongSparseArray;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLiteDatabase;
-import org.telegram.SQLite.SQLiteException;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.ui.Storage.CacheModel;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLiteDatabase;
+import org.papercraft.SQLite.SQLiteException;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.ui.Storage.CacheModel;
 
 import java.io.File;
 import java.io.IOException;

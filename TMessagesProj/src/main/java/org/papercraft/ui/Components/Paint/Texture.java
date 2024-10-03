@@ -1,10 +1,10 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.os.Build;
 
-import org.telegram.ui.Components.Size;
+import org.papercraft.ui.Components.Size;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;

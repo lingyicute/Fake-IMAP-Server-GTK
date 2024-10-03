@@ -1,12 +1,12 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.text.TextUtils;
 import android.util.LongSparseArray;
 
 import androidx.annotation.Nullable;
 
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.RequestDelegate;
+import org.papercraft.tgnet.TLRPC;
 
 public class MemberRequestsController extends BaseController {
 

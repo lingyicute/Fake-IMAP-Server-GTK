@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.telegram.messenger.audioinfo.mp3;
+package org.papercraft.messenger.audioinfo.mp3;
 
-import org.telegram.messenger.audioinfo.util.PositionInputStream;
+import org.papercraft.messenger.audioinfo.util.PositionInputStream;
 
 import java.io.EOFException;
 import java.io.IOException;

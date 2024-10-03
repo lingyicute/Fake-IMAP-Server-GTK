@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.voip;
+package org.papercraft.ui.Components.voip;
 
 import android.content.Context;
 import android.view.View;
@@ -6,11 +6,11 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
-import org.telegram.ui.GroupCallActivity;
-import org.telegram.ui.GroupCallTabletGridAdapter;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.ui.GroupCallActivity;
+import org.papercraft.ui.GroupCallTabletGridAdapter;
 
 public class GroupCallGridCell extends FrameLayout {
 

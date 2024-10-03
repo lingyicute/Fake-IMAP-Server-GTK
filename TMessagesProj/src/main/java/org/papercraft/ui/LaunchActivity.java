@@ -6,10 +6,10 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui;
+package org.papercraft.ui;
 
-import static org.telegram.ui.ActionIntroActivity.CAMERA_PERMISSION_REQUEST_CODE;
-import static org.telegram.ui.Components.Premium.LimitReachedBottomSheet.TYPE_ACCOUNTS;
+import static org.papercraft.ui.ActionIntroActivity.CAMERA_PERMISSION_REQUEST_CODE;
+import static org.papercraft.ui.Components.Premium.LimitReachedBottomSheet.TYPE_ACCOUNTS;
 
 import android.Manifest;
 import android.animation.Animator;
@@ -84,13 +84,13 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.extras.ExceptionHandler;
-import org.lingyicute.messenger.ExteraResources;
-import org.lingyicute.messenger.extras.MonetHelper;
-import org.lingyicute.messenger.preferences.MainPreferencesActivity;
-import org.lingyicute.messenger.updater.UpdaterUtils;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.extras.ExceptionHandler;
+import org.papercraft.messenger.ExteraResources;
+import org.papercraft.messenger.extras.MonetHelper;
+import org.papercraft.messenger.preferences.MainPreferencesActivity;
+import org.papercraft.messenger.updater.UpdaterUtils;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -99,100 +99,100 @@ import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.AssistActionBuilder;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.messenger.AccountInstance;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.AutoDeleteMediaTask;
-import org.telegram.messenger.BackupAgent;
-import org.telegram.messenger.BotWebViewVibrationEffect;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.ContactsLoadingObserver;
-import org.telegram.messenger.DialogObject;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.FingerprintController;
-import org.telegram.messenger.GenericProvider;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.LocationController;
-import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.NotificationsController;
-import org.telegram.messenger.PushListenerController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SendMessagesHelper;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.messenger.TopicsController;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.UserObject;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.browser.Browser;
-import org.telegram.messenger.voip.VideoCapturerDevice;
-import org.telegram.messenger.voip.VoIPPendingCall;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.DrawerLayoutContainer;
-import org.telegram.ui.ActionBar.INavigationLayout;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Adapters.DrawerLayoutAdapter;
-import org.telegram.ui.Cells.CheckBoxCell;
-import org.telegram.ui.Cells.DrawerActionCell;
-import org.telegram.ui.Cells.DrawerAddCell;
-import org.telegram.ui.Cells.DrawerProfileCell;
-import org.telegram.ui.Cells.DrawerUserCell;
-import org.telegram.ui.Cells.LanguageCell;
-import org.telegram.ui.Components.AlertsCreator;
-import org.telegram.ui.Components.AnimatedEmojiDrawable;
-import org.telegram.ui.Components.AppIconBulletinLayout;
-import org.telegram.ui.Components.AttachBotIntroTopView;
-import org.telegram.ui.Components.AudioPlayerAlert;
-import org.telegram.ui.Components.BatteryDrawable;
-import org.telegram.ui.Components.BlockingUpdateView;
-import org.telegram.ui.Components.BotWebViewSheet;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.Components.BulletinFactory;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.Easings;
-import org.telegram.ui.Components.EmbedBottomSheet;
-import org.telegram.ui.Components.EmojiPacksAlert;
-import org.telegram.ui.Components.FireworksOverlay;
-import org.telegram.ui.Components.FloatingDebug.FloatingDebugController;
-import org.telegram.ui.Components.Forum.ForumUtilities;
-import org.telegram.ui.Components.GroupCallPip;
-import org.telegram.ui.Components.JoinGroupAlert;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.MediaActionDrawable;
-import org.telegram.ui.Components.PasscodeView;
-import org.telegram.ui.Components.PhonebookShareAlert;
-import org.telegram.ui.Components.PipRoundVideoView;
-import org.telegram.ui.Components.Premium.LimitReachedBottomSheet;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.Components.RadialProgress2;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.SharingLocationsAlert;
-import org.telegram.ui.Components.SideMenultItemAnimator;
-import org.telegram.ui.Components.SizeNotifierFrameLayout;
-import org.telegram.ui.Components.StickerSetBulletinLayout;
-import org.telegram.ui.Components.StickersAlert;
-import org.telegram.ui.Components.TermsOfServiceView;
-import org.telegram.ui.Components.ThemeEditorView;
-import org.telegram.ui.Components.UndoView;
-import org.telegram.ui.Components.UpdateAppAlertDialog;
-import org.telegram.ui.Components.voip.VoIPHelper;
+import org.papercraft.PhoneFormat.PhoneFormat;
+import org.papercraft.messenger.AccountInstance;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.AutoDeleteMediaTask;
+import org.papercraft.messenger.BackupAgent;
+import org.papercraft.messenger.BotWebViewVibrationEffect;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.ChatObject;
+import org.papercraft.messenger.ContactsController;
+import org.papercraft.messenger.ContactsLoadingObserver;
+import org.papercraft.messenger.DialogObject;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.FingerprintController;
+import org.papercraft.messenger.GenericProvider;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.LocationController;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.MessagesStorage;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.NotificationsController;
+import org.papercraft.messenger.PushListenerController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.SendMessagesHelper;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.messenger.TopicsController;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.messenger.UserObject;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.browser.Browser;
+import org.papercraft.messenger.voip.VideoCapturerDevice;
+import org.papercraft.messenger.voip.VoIPPendingCall;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.DrawerLayoutContainer;
+import org.papercraft.ui.ActionBar.INavigationLayout;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Adapters.DrawerLayoutAdapter;
+import org.papercraft.ui.Cells.CheckBoxCell;
+import org.papercraft.ui.Cells.DrawerActionCell;
+import org.papercraft.ui.Cells.DrawerAddCell;
+import org.papercraft.ui.Cells.DrawerProfileCell;
+import org.papercraft.ui.Cells.DrawerUserCell;
+import org.papercraft.ui.Cells.LanguageCell;
+import org.papercraft.ui.Components.AlertsCreator;
+import org.papercraft.ui.Components.AnimatedEmojiDrawable;
+import org.papercraft.ui.Components.AppIconBulletinLayout;
+import org.papercraft.ui.Components.AttachBotIntroTopView;
+import org.papercraft.ui.Components.AudioPlayerAlert;
+import org.papercraft.ui.Components.BatteryDrawable;
+import org.papercraft.ui.Components.BlockingUpdateView;
+import org.papercraft.ui.Components.BotWebViewSheet;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.Components.BulletinFactory;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.Easings;
+import org.papercraft.ui.Components.EmbedBottomSheet;
+import org.papercraft.ui.Components.EmojiPacksAlert;
+import org.papercraft.ui.Components.FireworksOverlay;
+import org.papercraft.ui.Components.FloatingDebug.FloatingDebugController;
+import org.papercraft.ui.Components.Forum.ForumUtilities;
+import org.papercraft.ui.Components.GroupCallPip;
+import org.papercraft.ui.Components.JoinGroupAlert;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.MediaActionDrawable;
+import org.papercraft.ui.Components.PasscodeView;
+import org.papercraft.ui.Components.PhonebookShareAlert;
+import org.papercraft.ui.Components.PipRoundVideoView;
+import org.papercraft.ui.Components.Premium.LimitReachedBottomSheet;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.Components.RadialProgress2;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.SharingLocationsAlert;
+import org.papercraft.ui.Components.SideMenultItemAnimator;
+import org.papercraft.ui.Components.SizeNotifierFrameLayout;
+import org.papercraft.ui.Components.StickerSetBulletinLayout;
+import org.papercraft.ui.Components.StickersAlert;
+import org.papercraft.ui.Components.TermsOfServiceView;
+import org.papercraft.ui.Components.ThemeEditorView;
+import org.papercraft.ui.Components.UndoView;
+import org.papercraft.ui.Components.UpdateAppAlertDialog;
+import org.papercraft.ui.Components.voip.VoIPHelper;
 import org.webrtc.voiceengine.WebRtcAudioTrack;
 
 import java.io.BufferedReader;
@@ -1883,7 +1883,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     if (error) {
                         Toast.makeText(this, "Unsupported content", Toast.LENGTH_SHORT).show();
                     }
-                } else if ("org.telegram.messenger.CREATE_STICKER_PACK".equals(intent.getAction())) {
+                } else if ("org.papercraft.messenger.CREATE_STICKER_PACK".equals(intent.getAction())) {
                     try {
                         importingStickers = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
                         importingStickersEmoji = intent.getStringArrayListExtra("STICKER_EMOJIS");
@@ -2278,7 +2278,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             fragment.presentFragment(new PremiumPreviewFragment(uri.getQueryParameter("ref")));
                                         }});
                                     } else if (url.startsWith("tg:resolve") || url.startsWith("tg://resolve")) {
-                                        url = url.replace("tg:resolve", "tg://telegram.org").replace("tg://resolve", "tg://telegram.org");
+                                        url = url.replace("tg:resolve", "tg://papercraft-official.github.io").replace("tg://resolve", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         username = data.getQueryParameter("domain");
                                         if (username == null) {
@@ -2341,7 +2341,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         data = Uri.parse(url);
                                         contactToken = data.getQueryParameter("token");
                                     } else if (url.startsWith("tg:privatepost") || url.startsWith("tg://privatepost")) {
-                                        url = url.replace("tg:privatepost", "tg://telegram.org").replace("tg://privatepost", "tg://telegram.org");
+                                        url = url.replace("tg:privatepost", "tg://papercraft-official.github.io").replace("tg://privatepost", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         messageId = Utilities.parseInt(data.getQueryParameter("post"));
                                         channelId = Utilities.parseLong(data.getQueryParameter("channel"));
@@ -2364,7 +2364,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             commentId = null;
                                         }
                                     } else if (url.startsWith("tg:bg") || url.startsWith("tg://bg")) {
-                                        url = url.replace("tg:bg", "tg://telegram.org").replace("tg://bg", "tg://telegram.org");
+                                        url = url.replace("tg:bg", "tg://papercraft-official.github.io").replace("tg://bg", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         wallPaper = new TLRPC.TL_wallPaper();
                                         wallPaper.settings = new TLRPC.TL_wallPaperSettings();
@@ -2448,19 +2448,19 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             }
                                         }
                                     } else if (url.startsWith("tg:join") || url.startsWith("tg://join")) {
-                                        url = url.replace("tg:join", "tg://telegram.org").replace("tg://join", "tg://telegram.org");
+                                        url = url.replace("tg:join", "tg://papercraft-official.github.io").replace("tg://join", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         group = data.getQueryParameter("invite");
                                     } else if (url.startsWith("tg:addstickers") || url.startsWith("tg://addstickers")) {
-                                        url = url.replace("tg:addstickers", "tg://telegram.org").replace("tg://addstickers", "tg://telegram.org");
+                                        url = url.replace("tg:addstickers", "tg://papercraft-official.github.io").replace("tg://addstickers", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         sticker = data.getQueryParameter("set");
                                     } else if (url.startsWith("tg:addemoji") || url.startsWith("tg://addemoji")) {
-                                        url = url.replace("tg:addemoji", "tg://telegram.org").replace("tg://addemoji", "tg://telegram.org");
+                                        url = url.replace("tg:addemoji", "tg://papercraft-official.github.io").replace("tg://addemoji", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         emoji = data.getQueryParameter("set");
                                     } else if (url.startsWith("tg:msg") || url.startsWith("tg://msg") || url.startsWith("tg://share") || url.startsWith("tg:share")) {
-                                        url = url.replace("tg:msg", "tg://telegram.org").replace("tg://msg", "tg://telegram.org").replace("tg://share", "tg://telegram.org").replace("tg:share", "tg://telegram.org");
+                                        url = url.replace("tg:msg", "tg://papercraft-official.github.io").replace("tg://msg", "tg://papercraft-official.github.io").replace("tg://share", "tg://papercraft-official.github.io").replace("tg:share", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         message = data.getQueryParameter("url");
                                         if (message == null) {
@@ -2480,13 +2480,13 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             message = message.substring(0, message.length() - 1);
                                         }
                                     } else if (url.startsWith("tg:confirmphone") || url.startsWith("tg://confirmphone")) {
-                                        url = url.replace("tg:confirmphone", "tg://telegram.org").replace("tg://confirmphone", "tg://telegram.org");
+                                        url = url.replace("tg:confirmphone", "tg://papercraft-official.github.io").replace("tg://confirmphone", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
 
                                         phone = data.getQueryParameter("phone");
                                         phoneHash = data.getQueryParameter("hash");
                                     } else if (url.startsWith("tg:login") || url.startsWith("tg://login")) {
-                                        url = url.replace("tg:login", "tg://telegram.org").replace("tg://login", "tg://telegram.org");
+                                        url = url.replace("tg:login", "tg://papercraft-official.github.io").replace("tg://login", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         login = data.getQueryParameter("token");
                                         int intCode = Utilities.parseInt(data.getQueryParameter("code"));
@@ -2494,7 +2494,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             code = "" + intCode;
                                         }
                                     } else if (url.startsWith("tg:user") || url.startsWith("tg://user")) {
-                                        url = url.replace("tg:user", "tg://telegram.org").replace("tg://user", "tg://telegram.org");
+                                        url = url.replace("tg:user", "tg://papercraft-official.github.io").replace("tg://user", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         String userID = data.getQueryParameter("id");
                                         if (userID != null) {
@@ -2504,7 +2504,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             }
                                         }
                                     } else if (url.startsWith("tg:openmessage") || url.startsWith("tg://openmessage")) {
-                                        url = url.replace("tg:openmessage", "tg://telegram.org").replace("tg://openmessage", "tg://telegram.org");
+                                        url = url.replace("tg:openmessage", "tg://papercraft-official.github.io").replace("tg://openmessage", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
 
                                         String userID = data.getQueryParameter("user_id");
@@ -2528,7 +2528,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             }
                                         }
                                     } else if (url.startsWith("tg:passport") || url.startsWith("tg://passport") || url.startsWith("tg:secureid")) {
-                                        url = url.replace("tg:passport", "tg://telegram.org").replace("tg://passport", "tg://telegram.org").replace("tg:secureid", "tg://telegram.org");
+                                        url = url.replace("tg:passport", "tg://papercraft-official.github.io").replace("tg://passport", "tg://papercraft-official.github.io").replace("tg:secureid", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         auth = new HashMap<>();
                                         String scope = data.getQueryParameter("scope");
@@ -2542,11 +2542,11 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         auth.put("public_key", data.getQueryParameter("public_key"));
                                         auth.put("callback_url", data.getQueryParameter("callback_url"));
                                     } else if (url.startsWith("tg:setlanguage") || url.startsWith("tg://setlanguage")) {
-                                        url = url.replace("tg:setlanguage", "tg://telegram.org").replace("tg://setlanguage", "tg://telegram.org");
+                                        url = url.replace("tg:setlanguage", "tg://papercraft-official.github.io").replace("tg://setlanguage", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         lang = data.getQueryParameter("lang");
                                     } else if (url.startsWith("tg:addtheme") || url.startsWith("tg://addtheme")) {
-                                        url = url.replace("tg:addtheme", "tg://telegram.org").replace("tg://addtheme", "tg://telegram.org");
+                                        url = url.replace("tg:addtheme", "tg://papercraft-official.github.io").replace("tg://addtheme", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         theme = data.getQueryParameter("slug");
                                     } else if (url.startsWith("tg:settings") || url.startsWith("tg://settings")) {
@@ -2568,7 +2568,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             open_settings = 1;
                                         }
                                     } else if ((url.startsWith("tg:search") || url.startsWith("tg://search"))) {
-                                        url = url.replace("tg:search", "tg://telegram.org").replace("tg://search", "tg://telegram.org");
+                                        url = url.replace("tg:search", "tg://papercraft-official.github.io").replace("tg://search", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         searchQuery = data.getQueryParameter("query");
                                         if (searchQuery != null) {
@@ -2618,7 +2618,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                     } else if ((url.startsWith("tg:scanqr") || url.startsWith("tg://scanqr"))) {
                                         scanQr = true;
                                     } else if ((url.startsWith("tg:addcontact") || url.startsWith("tg://addcontact"))) {
-                                        url = url.replace("tg:addcontact", "tg://telegram.org").replace("tg://addcontact", "tg://telegram.org");
+                                        url = url.replace("tg:addcontact", "tg://papercraft-official.github.io").replace("tg://addcontact", "tg://papercraft-official.github.io");
                                         data = Uri.parse(url);
                                         newContactName = data.getQueryParameter("name");
                                         newContactPhone = data.getQueryParameter("phone");
@@ -2698,9 +2698,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             NotificationCenter.getInstance(intentAccount[0]).postNotificationName(NotificationCenter.closeChats);
                                             push_user_id = userId;
                                             String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-                                            if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.lingyicute.messenger.android.call")) {
+                                            if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.papercraft.messenger.android.call")) {
                                                 audioCallUser = true;
-                                            } else if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.lingyicute.messenger.android.call.video")) {
+                                            } else if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.papercraft.messenger.android.call.video")) {
                                                 videoCallUser = true;
                                             }
                                         }
@@ -2711,7 +2711,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             }
                         }
                     }
-                } else if (intent.getAction().equals("org.telegram.messenger.OPEN_ACCOUNT")) {
+                } else if (intent.getAction().equals("org.papercraft.messenger.OPEN_ACCOUNT")) {
                     open_settings = 1;
                 } else if (intent.getAction().equals("new_dialog")) {
                     open_new_dialog = 1;

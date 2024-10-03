@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.telegram.messenger.audioinfo;
+package org.papercraft.messenger.audioinfo;
 
 import android.graphics.Bitmap;
 
-import org.telegram.messenger.audioinfo.m4a.M4AInfo;
-import org.telegram.messenger.audioinfo.mp3.MP3Info;
+import org.papercraft.messenger.audioinfo.m4a.M4AInfo;
+import org.papercraft.messenger.audioinfo.mp3.MP3Info;
 
 import java.io.BufferedInputStream;
 import java.io.File;

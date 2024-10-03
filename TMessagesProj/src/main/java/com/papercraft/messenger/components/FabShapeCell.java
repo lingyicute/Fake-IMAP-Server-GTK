@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.components;
+package org.papercraft.messenger.components;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
@@ -27,14 +27,14 @@ import android.widget.LinearLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.Easings;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.Easings;
+import org.papercraft.ui.Components.LayoutHelper;
 
 public class FabShapeCell extends LinearLayout {
 

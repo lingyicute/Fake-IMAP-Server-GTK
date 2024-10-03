@@ -1,3 +1,3 @@
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
     android:contentAuthority="com.android.contacts"
-    android:accountType="org.lingyicute.messenger"/>
+    android:accountType="org.papercraft.messenger"/>

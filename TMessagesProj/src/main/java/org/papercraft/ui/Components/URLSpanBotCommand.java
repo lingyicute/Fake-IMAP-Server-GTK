@@ -6,11 +6,11 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.text.TextPaint;
 
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.Theme;
 
 public class URLSpanBotCommand extends URLSpanNoUnderline {
 

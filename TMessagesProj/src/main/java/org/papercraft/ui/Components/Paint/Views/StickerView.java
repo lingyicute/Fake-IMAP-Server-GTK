@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint.Views;
+package org.papercraft.ui.Components.Paint.Views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,17 +6,17 @@ import android.graphics.RectF;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.ImageLocation;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.AnimatedFileDrawable;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.Point;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.Rect;
-import org.telegram.ui.Components.Size;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLoader;
+import org.papercraft.messenger.ImageLocation;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.AnimatedFileDrawable;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.Point;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.Rect;
+import org.papercraft.ui.Components.Size;
 
 public class StickerView extends EntityView {
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -29,35 +29,35 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.ui.Components.AnimatedArrowDrawable;
-import org.telegram.ui.Components.AudioPlayerAlert;
-import org.telegram.ui.Components.AvatarDrawable;
-import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.Components.ChatBigEmptyView;
-import org.telegram.ui.Components.CheckBox;
-import org.telegram.ui.Components.CombinedDrawable;
-import org.telegram.ui.Components.ContextProgressView;
-import org.telegram.ui.Components.EditTextBoldCursor;
-import org.telegram.ui.Components.EditTextCaption;
-import org.telegram.ui.Components.EditTextEmoji;
-import org.telegram.ui.Components.EmptyTextProgressView;
-import org.telegram.ui.Components.GroupCreateCheckBox;
-import org.telegram.ui.Components.GroupCreateSpan;
-import org.telegram.ui.Components.LetterDrawable;
-import org.telegram.ui.Components.LineProgressView;
-import org.telegram.ui.Components.MessageBackgroundDrawable;
-import org.telegram.ui.Components.NumberTextView;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.RLottieImageView;
-import org.telegram.ui.Components.RadialProgressView;
-import org.telegram.ui.Components.RadioButton;
-import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.ScamDrawable;
-import org.telegram.ui.Components.SeekBarView;
-import org.telegram.ui.Components.TypefaceSpan;
-import org.telegram.ui.Components.VideoTimelineView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.ui.Components.AnimatedArrowDrawable;
+import org.papercraft.ui.Components.AudioPlayerAlert;
+import org.papercraft.ui.Components.AvatarDrawable;
+import org.papercraft.ui.Components.BackupImageView;
+import org.papercraft.ui.Components.ChatBigEmptyView;
+import org.papercraft.ui.Components.CheckBox;
+import org.papercraft.ui.Components.CombinedDrawable;
+import org.papercraft.ui.Components.ContextProgressView;
+import org.papercraft.ui.Components.EditTextBoldCursor;
+import org.papercraft.ui.Components.EditTextCaption;
+import org.papercraft.ui.Components.EditTextEmoji;
+import org.papercraft.ui.Components.EmptyTextProgressView;
+import org.papercraft.ui.Components.GroupCreateCheckBox;
+import org.papercraft.ui.Components.GroupCreateSpan;
+import org.papercraft.ui.Components.LetterDrawable;
+import org.papercraft.ui.Components.LineProgressView;
+import org.papercraft.ui.Components.MessageBackgroundDrawable;
+import org.papercraft.ui.Components.NumberTextView;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.RLottieImageView;
+import org.papercraft.ui.Components.RadialProgressView;
+import org.papercraft.ui.Components.RadioButton;
+import org.papercraft.ui.Components.RecyclerListView;
+import org.papercraft.ui.Components.ScamDrawable;
+import org.papercraft.ui.Components.SeekBarView;
+import org.papercraft.ui.Components.TypefaceSpan;
+import org.papercraft.ui.Components.VideoTimelineView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

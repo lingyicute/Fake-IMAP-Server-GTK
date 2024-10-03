@@ -13,7 +13,7 @@ package org.webrtc;
 import android.graphics.Matrix;
 import android.os.Handler;
 
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.FileLog;
 
 import java.nio.ByteBuffer;
 

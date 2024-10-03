@@ -12,7 +12,7 @@ package org.webrtc;
 
 import android.opengl.GLES20;
 
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.FileLog;
 
 import java.nio.FloatBuffer;
 

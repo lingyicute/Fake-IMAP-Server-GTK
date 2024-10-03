@@ -21,7 +21,7 @@ import android.os.Process;
 
 import androidx.annotation.Nullable;
 
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.FileLog;
 import org.webrtc.ContextUtils;
 import org.webrtc.Logging;
 import org.webrtc.ThreadUtils;

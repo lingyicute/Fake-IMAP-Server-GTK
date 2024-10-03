@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.extras;
+package org.papercraft.messenger.extras;
 
 import android.Manifest;
 import android.app.Activity;
@@ -18,8 +18,8 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.ui.BasePermissionsActivity;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.ui.BasePermissionsActivity;
 
 public class PermissionUtils {
 

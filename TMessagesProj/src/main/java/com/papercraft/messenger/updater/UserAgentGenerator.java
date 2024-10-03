@@ -1,6 +1,6 @@
-package org.lingyicute.messenger.updater;
+package org.papercraft.messenger.updater;
 
-import org.telegram.messenger.Utilities;
+import org.papercraft.messenger.Utilities;
 
 public class UserAgentGenerator {
 

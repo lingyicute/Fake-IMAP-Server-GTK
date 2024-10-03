@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,19 +8,19 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.AppIconsSelectorCell;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.LauncherIconController;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.AppIconsSelectorCell;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.LauncherIconController;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lingyicute.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraUtils;
 
 public class PremiumAppIconsPreviewView extends FrameLayout implements PagerHeaderView {
     private List<LauncherIconController.LauncherIcon> icons = new ArrayList<>();

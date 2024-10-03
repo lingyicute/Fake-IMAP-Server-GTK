@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.appwidget.AppWidgetManager;
 import android.content.SharedPreferences;
@@ -22,20 +22,20 @@ import android.util.SparseIntArray;
 import androidx.annotation.UiThread;
 import androidx.collection.LongSparseArray;
 
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLiteDatabase;
-import org.telegram.SQLite.SQLiteException;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.messenger.support.LongSparseIntArray;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Adapters.DialogsSearchAdapter;
-import org.telegram.ui.DialogsActivity;
-import org.telegram.ui.EditWidgetActivity;
+import org.papercraft.PhoneFormat.PhoneFormat;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLiteDatabase;
+import org.papercraft.SQLite.SQLiteException;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.messenger.support.LongSparseIntArray;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.RequestDelegate;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Adapters.DialogsSearchAdapter;
+import org.papercraft.ui.DialogsActivity;
+import org.papercraft.ui.EditWidgetActivity;
 
 import java.io.File;
 import java.util.ArrayList;

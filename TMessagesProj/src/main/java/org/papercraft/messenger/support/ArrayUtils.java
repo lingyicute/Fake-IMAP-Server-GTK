@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.telegram.messenger.support;
+package org.papercraft.messenger.support;
 
 import java.lang.reflect.Array;
 

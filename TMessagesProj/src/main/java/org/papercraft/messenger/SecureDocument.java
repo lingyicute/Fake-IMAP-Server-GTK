@@ -1,7 +1,7 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
 
 public class SecureDocument extends TLObject {
 

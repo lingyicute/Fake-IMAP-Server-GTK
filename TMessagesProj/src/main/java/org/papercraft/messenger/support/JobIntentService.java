@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.telegram.messenger.support;
+package org.papercraft.messenger.support;
 
 import android.app.Service;
 import android.app.job.JobInfo;
@@ -34,7 +34,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import android.util.Log;
 
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.FileLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;

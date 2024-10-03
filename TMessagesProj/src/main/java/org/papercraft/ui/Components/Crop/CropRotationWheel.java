@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Crop;
+package org.papercraft.ui.Components.Crop;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,11 +15,11 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.LayoutHelper;
 
 public class CropRotationWheel extends FrameLayout {
 

@@ -1499,7 +1499,7 @@
     <string name="MessageLifetimePhoto">Se imposti un timer, la foto si autodistruggerà dopo essere stata vista.</string>
     <string name="MessageLifetimeVideo">Se imposti un timer, il video si autodistruggerà dopo essere stato visto.</string>
     <string name="ShortMessageLifetimeForever">No</string>
-    <string name="EncryptionKeyDescription">L\'immagine e il testo sono derivati dalla chiave di crittografia di questa chat segreta con **%1$s**.\n\nSe sono uguali sul dispositivo di **%2$s**, la crittografia end-to-end è garantita.\n\nUlteriori informazioni su teamgram.org</string>
+    <string name="EncryptionKeyDescription">L\'immagine e il testo sono derivati dalla chiave di crittografia di questa chat segreta con **%1$s**.\n\nSe sono uguali sul dispositivo di **%2$s**, la crittografia end-to-end è garantita.\n\nUlteriori informazioni su papercraft-official.github.io</string>
     <string name="EncryptionKeyLink">https://papercraft-official.github.io/faq/it#chat-segrete</string>
     <string name="NumberUnknown">Sconosciuto</string>
     <string name="PhoneHidden">Sconosciuto</string>
@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Ancora nessuna maschera</string>
     <string name="EmojiSuggestions">Suggerimenti emoji</string>
     <string name="EmojiSuggestionsInfo">**Papercraft** ti consente di cercare emoji usando migliaia di parole chiave, ma c\'è sempre qualcosa mancante. Se vuoi suggerire nuovi sinonimi per le emoji, puoi aiutarci visitando:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Maschere</string>
     <string name="MasksInfo">Puoi aggiungere maschere alle foto che invii. Per farlo, apri l\'editor fotografico prima di inviare una foto.</string>
     <string name="FeaturedStickers">Sticker in primo piano</string>
@@ -2134,8 +2134,8 @@
     <string name="AuthAnotherClientTokenError">Token non valido o già scaduto.</string>
     <string name="AuthAnotherClientNotFound">Nessun token di autenticazione trovato</string>
     <string name="AuthAnotherClientOk">Autenticazione riuscita</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.org/</string>
-    <string name="AuthAnotherClientInfo1">Scarica Papercraft sul tuo computer da *desktop.teamgram.org*</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">Scarica Papercraft sul tuo computer da *desktop.papercraft-official.github.io*</string>
     <string name="AuthAnotherClientInfo2">Avvia Papercraft Desktop per ottenere il codice QR.</string>
     <string name="AuthAnotherClientInfo3">Scansiona il codice QR per connettere il tuo account.</string>
     <string name="AuthAnotherClientUrl">Questo codice può essere usato per consentire a qualcuno di accedere al tuo account Papercraft.\n\nPer confermare l\'accesso a Papercraft, vai in Impostazioni &gt; Dispositivi &gt; Scansiona QR e scansiona il codice.</string>
@@ -3166,7 +3166,7 @@
     <string name="InvalidLastName">Spiacenti, questo cognome non può essere usato</string>
     <string name="Loading">Carico...</string>
     <string name="NoPlayerInstalled">Non hai un lettore video, per favore installane uno per continuare</string>
-    <string name="NoMailInstalled">Per favore invia un’email descrivendo il problema a sms@telegram.org</string>
+    <string name="NoMailInstalled">Per favore invia un’email descrivendo il problema a sms@papercraft-official.github.io</string>
     <string name="NoHandleAppInstalled">Non hai applicazioni che possono gestire il tipo di file \'%1$s\': installane una per proseguire</string>
     <string name="InviteUser">Questo utente non ha ancora Papercraft, vuoi invitarlo?</string>
     <string name="AreYouSure">Sei sicuro?</string>

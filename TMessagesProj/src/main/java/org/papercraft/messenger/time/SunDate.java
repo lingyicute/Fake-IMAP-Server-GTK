@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger.time;
+package org.papercraft.messenger.time;
 
 import java.util.Calendar;
 import java.util.TimeZone;

@@ -1,6 +1,6 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import org.telegram.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.ActionBar.ThemeDescription;
 
 import java.util.ArrayList;
 

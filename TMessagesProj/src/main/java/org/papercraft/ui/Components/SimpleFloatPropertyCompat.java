@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import androidx.dynamicanimation.animation.FloatPropertyCompat;
 

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -31,19 +31,19 @@ import android.telephony.TelephonyManager;
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.camera.CameraXUtils;
-import org.lingyicute.messenger.extras.ExceptionHandler;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.camera.CameraXUtils;
+import org.papercraft.messenger.extras.ExceptionHandler;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
-import org.telegram.messenger.voip.VideoCapturerDevice;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.ForegroundDetector;
-import org.telegram.ui.LauncherIconController;
+import org.papercraft.messenger.voip.VideoCapturerDevice;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.ForegroundDetector;
+import org.papercraft.ui.LauncherIconController;
 
 import java.io.File;
 
@@ -137,7 +137,7 @@ public class ApplicationLoader extends Application {
         } catch (Exception e) {
             FileLog.e(e);
         }
-        return new File("/data/data/org.lingyicute.messenger/files");
+        return new File("/data/data/org.papercraft.messenger/files");
     }
 
     public static void postInitApplication() {

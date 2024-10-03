@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -26,14 +26,14 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ImageReceiver;
-import org.telegram.messenger.MediaController;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.BubbleActivity;
-import org.telegram.ui.Components.Crop.CropRotationWheel;
-import org.telegram.ui.Components.Crop.CropTransform;
-import org.telegram.ui.Components.Crop.CropView;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ImageReceiver;
+import org.papercraft.messenger.MediaController;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.BubbleActivity;
+import org.papercraft.ui.Components.Crop.CropRotationWheel;
+import org.papercraft.ui.Components.Crop.CropTransform;
+import org.papercraft.ui.Components.Crop.CropView;
 
 public class PhotoCropView extends FrameLayout {
 

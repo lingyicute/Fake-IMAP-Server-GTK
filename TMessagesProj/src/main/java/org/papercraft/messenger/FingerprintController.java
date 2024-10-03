@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -9,7 +9,7 @@ import android.security.keystore.KeyProperties;
 
 import androidx.annotation.RequiresApi;
 
-import org.lingyicute.messenger.ExteraUtils;
+import org.papercraft.messenger.ExteraUtils;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.KeyPairGenerator;

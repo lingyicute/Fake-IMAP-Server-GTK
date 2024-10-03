@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,11 +13,11 @@ import android.opengl.GLES20;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.BotWebViewVibrationEffect;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.Size;
+import org.papercraft.messenger.BotWebViewVibrationEffect;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.Size;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

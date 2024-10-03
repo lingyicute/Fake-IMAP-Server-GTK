@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.camera;
+package org.papercraft.messenger.camera;
 
 import static android.hardware.camera2.CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS;
 import static android.hardware.camera2.CameraMetadata.LENS_FACING_BACK;
@@ -17,11 +17,11 @@ import androidx.camera.video.Quality;
 import androidx.camera.video.QualitySelector;
 import androidx.core.content.ContextCompat;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.SharedConfig;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.SharedConfig;
 
 import java.util.ArrayList;
 import java.util.Comparator;

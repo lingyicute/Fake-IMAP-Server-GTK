@@ -6,10 +6,10 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.tgnet;
+package org.papercraft.tgnet;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

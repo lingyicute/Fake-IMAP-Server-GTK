@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
@@ -38,11 +38,11 @@ import android.widget.Toast;
 
 import androidx.collection.LongSparseArray;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.messenger.audioinfo.AudioInfo;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.LaunchActivity;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.messenger.audioinfo.AudioInfo;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.LaunchActivity;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

@@ -6,15 +6,15 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Adapters;
+package org.papercraft.ui.Adapters;
 
 import android.content.Context;
 import android.view.ViewGroup;
 
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Cells.LocationCell;
-import org.telegram.ui.Components.FlickerLoadingView;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Cells.LocationCell;
+import org.papercraft.ui.Components.FlickerLoadingView;
+import org.papercraft.ui.Components.RecyclerListView;
 
 import androidx.recyclerview.widget.RecyclerView;
 

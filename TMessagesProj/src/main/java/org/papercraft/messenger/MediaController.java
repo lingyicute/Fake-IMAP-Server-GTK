@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -66,23 +66,23 @@ import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 
-import org.telegram.messenger.audioinfo.AudioInfo;
-import org.telegram.messenger.video.MediaCodecVideoConvertor;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.AlertDialog;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Adapters.FiltersView;
-import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.EmbedBottomSheet;
-import org.telegram.ui.Components.PhotoFilterView;
-import org.telegram.ui.Components.PipRoundVideoView;
-import org.telegram.ui.Components.VideoPlayer;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.PhotoViewer;
+import org.papercraft.messenger.audioinfo.AudioInfo;
+import org.papercraft.messenger.video.MediaCodecVideoConvertor;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Adapters.FiltersView;
+import org.papercraft.ui.ChatActivity;
+import org.papercraft.ui.Components.EmbedBottomSheet;
+import org.papercraft.ui.Components.PhotoFilterView;
+import org.papercraft.ui.Components.PipRoundVideoView;
+import org.papercraft.ui.Components.VideoPlayer;
+import org.papercraft.ui.LaunchActivity;
+import org.papercraft.ui.PhotoViewer;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -104,8 +104,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.extras.PermissionUtils;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.extras.PermissionUtils;
 
 public class MediaController implements AudioManager.OnAudioFocusChangeListener, NotificationCenter.NotificationCenterDelegate, SensorEventListener {
 
@@ -213,7 +213,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         public float sharpenValue;
         public PhotoFilterView.CurvesToolValue curvesToolValue = new PhotoFilterView.CurvesToolValue();
         public float blurExcludeSize;
-        public org.telegram.ui.Components.Point blurExcludePoint;
+        public org.papercraft.ui.Components.Point blurExcludePoint;
         public float blurExcludeBlurSize;
         public float blurAngle;
     }

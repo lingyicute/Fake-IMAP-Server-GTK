@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;

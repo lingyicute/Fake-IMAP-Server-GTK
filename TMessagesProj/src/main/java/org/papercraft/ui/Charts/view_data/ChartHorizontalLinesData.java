@@ -1,6 +1,6 @@
-package org.telegram.ui.Charts.view_data;
+package org.papercraft.ui.Charts.view_data;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 public class ChartHorizontalLinesData {
 

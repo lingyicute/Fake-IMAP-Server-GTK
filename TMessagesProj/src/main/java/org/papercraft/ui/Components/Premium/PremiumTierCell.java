@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,19 +18,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BillingController;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.GenericProvider;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.CheckBox2;
-import org.telegram.ui.Components.CheckBoxBase;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.PremiumPreviewFragment;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BillingController;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.GenericProvider;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.CheckBox2;
+import org.papercraft.ui.Components.CheckBoxBase;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.PremiumPreviewFragment;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class PremiumTierCell extends ViewGroup {
     private CheckBox2 checkBox;

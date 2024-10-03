@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.camera;
+package org.papercraft.messenger.camera;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,9 +13,9 @@ import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.R;
-import org.telegram.ui.Components.AnimationProperties;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.Components.AnimationProperties;
 
 @SuppressLint("ViewConstructor")
 public class SlideControlView extends View {

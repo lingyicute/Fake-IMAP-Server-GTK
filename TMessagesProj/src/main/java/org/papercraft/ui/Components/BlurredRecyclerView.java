@@ -1,11 +1,11 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.SharedConfig;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.SharedConfig;
 
 public class BlurredRecyclerView extends RecyclerListView {
 

@@ -1,6 +1,6 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import org.telegram.messenger.ImageReceiver;
+import org.papercraft.messenger.ImageReceiver;
 
 public interface AttachableDrawable {
     void onAttachedToWindow(ImageReceiver parent);

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Cells;
+package org.papercraft.ui.Cells;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -30,19 +30,19 @@ import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
 
-import org.lingyicute.messenger.ExteraConfig;
-import org.lingyicute.messenger.extras.FolderIcons;
+import org.papercraft.messenger.ExteraConfig;
+import org.papercraft.messenger.extras.FolderIcons;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
-import org.telegram.ui.ActionBar.SimpleTextView;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.CheckBox2;
-import org.telegram.ui.Components.EditTextBoldCursor;
-import org.telegram.ui.Components.EditTextCaption;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.ui.ActionBar.SimpleTextView;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.CheckBox2;
+import org.papercraft.ui.Components.EditTextBoldCursor;
+import org.papercraft.ui.Components.EditTextCaption;
+import org.papercraft.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
 

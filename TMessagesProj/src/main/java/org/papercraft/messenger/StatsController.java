@@ -6,12 +6,12 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import org.telegram.messenger.utils.ImmutableByteArrayOutputStream;
+import org.papercraft.messenger.utils.ImmutableByteArrayOutputStream;
 
 import java.io.File;
 import java.io.RandomAccessFile;

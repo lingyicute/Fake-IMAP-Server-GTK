@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Premium;
+package org.papercraft.ui.Components.Premium;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,10 +6,10 @@ import android.widget.FrameLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import org.telegram.messenger.UserConfig;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.RecyclerListView;
 
 public class DoubleLimitsPageView extends FrameLayout implements PagerHeaderView {
 

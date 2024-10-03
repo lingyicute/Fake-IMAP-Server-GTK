@@ -1,12 +1,12 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 
-import org.telegram.messenger.LiteMode;
-import org.telegram.messenger.SharedConfig;
+import org.papercraft.messenger.LiteMode;
+import org.papercraft.messenger.SharedConfig;
 
 import java.util.Random;
 

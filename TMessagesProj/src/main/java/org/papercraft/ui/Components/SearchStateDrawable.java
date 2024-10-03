@@ -1,6 +1,6 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import static org.telegram.messenger.AndroidUtilities.lerp;
+import static org.papercraft.messenger.AndroidUtilities.lerp;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 
 import com.google.zxing.common.detector.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

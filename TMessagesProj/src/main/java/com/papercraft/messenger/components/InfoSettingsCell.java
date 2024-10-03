@@ -9,7 +9,7 @@
 
 */
 
-package org.lingyicute.messenger.components;
+package org.papercraft.messenger.components;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -24,15 +24,15 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import org.lingyicute.messenger.ExteraUtils;
-import org.lingyicute.messenger.extras.MonetHelper;
+import org.papercraft.messenger.ExteraUtils;
+import org.papercraft.messenger.extras.MonetHelper;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.LayoutHelper;
 
 public class InfoSettingsCell extends FrameLayout {
 

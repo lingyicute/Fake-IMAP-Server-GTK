@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.components;
+package org.papercraft.messenger.components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,11 +14,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.ChatActivityEnterView;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.ChatActivityEnterView;
+import org.papercraft.ui.Components.LayoutHelper;
 
 @SuppressLint("ViewConstructor")
 public class ChatActivityEnterViewStaticIconView extends FrameLayout {

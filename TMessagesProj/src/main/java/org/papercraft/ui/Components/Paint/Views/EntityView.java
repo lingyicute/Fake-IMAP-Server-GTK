@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.Paint.Views;
+package org.papercraft.ui.Components.Paint.Views;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,16 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.Point;
-import org.telegram.ui.Components.Rect;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.Point;
+import org.papercraft.ui.Components.Rect;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class EntityView extends FrameLayout {
     private final static List<Integer> STICKY_ANGLES = Arrays.asList(

@@ -1,11 +1,11 @@
-package org.telegram.ui.Charts.data;
+package org.papercraft.ui.Charts.data;
 
 import android.graphics.Color;
 import android.text.TextUtils;
 
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.SegmentTree;
+import org.papercraft.messenger.SegmentTree;
 
 import org.json.JSONArray;
 import org.json.JSONException;

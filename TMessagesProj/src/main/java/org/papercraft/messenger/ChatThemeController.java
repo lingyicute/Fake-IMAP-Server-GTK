@@ -1,4 +1,4 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,11 +7,11 @@ import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.LongSparseArray;
 
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.ResultCallback;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.EmojiThemes;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.ResultCallback;
+import org.papercraft.tgnet.SerializedData;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.EmojiThemes;
 
 import java.io.File;
 import java.io.FileOutputStream;

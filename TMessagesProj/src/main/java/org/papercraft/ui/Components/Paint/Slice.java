@@ -1,10 +1,10 @@
-package org.telegram.ui.Components.Paint;
+package org.papercraft.ui.Components.Paint;
 
 import android.graphics.RectF;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.DispatchQueue;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.DispatchQueue;
+import org.papercraft.messenger.FileLog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

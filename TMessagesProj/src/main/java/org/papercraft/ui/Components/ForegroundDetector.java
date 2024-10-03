@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.app.Activity;
 import android.app.Application;
@@ -14,8 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 

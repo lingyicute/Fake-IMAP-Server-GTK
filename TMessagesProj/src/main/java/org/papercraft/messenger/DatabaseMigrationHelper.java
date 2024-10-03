@@ -1,10 +1,10 @@
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLiteDatabase;
-import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.TLRPC;
+import org.papercraft.SQLite.SQLiteCursor;
+import org.papercraft.SQLite.SQLiteDatabase;
+import org.papercraft.SQLite.SQLitePreparedStatement;
+import org.papercraft.tgnet.NativeByteBuffer;
+import org.papercraft.tgnet.TLRPC;
 
 import java.io.File;
 import java.io.IOException;

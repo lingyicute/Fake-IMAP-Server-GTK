@@ -6,7 +6,7 @@
  * Copyright Grishka, 2013-2016.
  */
 
-package org.telegram.messenger.voip;
+package org.papercraft.messenger.voip;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;

@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Adapters;
+package org.papercraft.ui.Adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -14,13 +14,13 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.UserConfig;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.DialogCell;
-import org.telegram.ui.Cells.LoadingCell;
-import org.telegram.ui.Components.RecyclerListView;
+import org.papercraft.messenger.MediaDataController;
+import org.papercraft.messenger.MessageObject;
+import org.papercraft.messenger.UserConfig;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Cells.DialogCell;
+import org.papercraft.ui.Cells.LoadingCell;
+import org.papercraft.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 

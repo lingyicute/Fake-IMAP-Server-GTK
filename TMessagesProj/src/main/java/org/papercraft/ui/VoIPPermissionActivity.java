@@ -1,4 +1,4 @@
-package org.telegram.ui;
+package org.papercraft.ui;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -8,9 +8,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.voip.VoIPService;
-import org.telegram.ui.Components.voip.VoIPHelper;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.voip.VoIPService;
+import org.papercraft.ui.Components.voip.VoIPHelper;
 
 import java.util.ArrayList;
 

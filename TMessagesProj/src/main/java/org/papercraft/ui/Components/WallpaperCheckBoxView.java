@@ -1,4 +1,4 @@
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -12,8 +12,8 @@ import android.text.TextPaint;
 import android.util.Property;
 import android.view.View;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.ActionBar.Theme;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.ActionBar.Theme;
 
 public class WallpaperCheckBoxView extends View {
 

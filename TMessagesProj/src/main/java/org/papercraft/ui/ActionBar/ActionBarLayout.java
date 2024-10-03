@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.ActionBar;
+package org.papercraft.ui.ActionBar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -43,25 +43,25 @@ import androidx.annotation.Keep;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.math.MathUtils;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.Components.BackButtonMenu;
-import org.telegram.ui.Components.Bulletin;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.FloatingDebug.FloatingDebugController;
-import org.telegram.ui.Components.FloatingDebug.FloatingDebugProvider;
-import org.telegram.ui.Components.GroupCallPip;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
+import org.papercraft.messenger.ImageLoader;
+import org.papercraft.messenger.MessagesController;
+import org.papercraft.messenger.SharedConfig;
+import org.papercraft.ui.Components.BackButtonMenu;
+import org.papercraft.ui.Components.Bulletin;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.FloatingDebug.FloatingDebugController;
+import org.papercraft.ui.Components.FloatingDebug.FloatingDebugProvider;
+import org.papercraft.ui.Components.GroupCallPip;
+import org.papercraft.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
 public class ActionBarLayout extends FrameLayout implements INavigationLayout, FloatingDebugProvider {
 

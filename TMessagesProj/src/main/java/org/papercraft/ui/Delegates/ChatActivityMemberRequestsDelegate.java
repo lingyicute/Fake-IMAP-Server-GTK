@@ -1,4 +1,4 @@
-package org.telegram.ui.Delegates;
+package org.papercraft.ui.Delegates;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -17,18 +17,18 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import org.lingyicute.messenger.ExteraConfig;
+import org.papercraft.messenger.ExteraConfig;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.ActionBar.ThemeDescription;
-import org.telegram.ui.Components.AvatarsImageView;
-import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.MemberRequestsBottomSheet;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.LocaleController;
+import org.papercraft.messenger.R;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.ActionBar.ThemeDescription;
+import org.papercraft.ui.Components.AvatarsImageView;
+import org.papercraft.ui.Components.LayoutHelper;
+import org.papercraft.ui.Components.MemberRequestsBottomSheet;
 
 import java.util.List;
 

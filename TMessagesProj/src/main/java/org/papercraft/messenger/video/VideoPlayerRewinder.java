@@ -1,11 +1,11 @@
-package org.telegram.messenger.video;
+package org.papercraft.messenger.video;
 
 import com.google.android.exoplayer2.C;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.ui.Components.PhotoViewerWebView;
-import org.telegram.ui.Components.VideoForwardDrawable;
-import org.telegram.ui.Components.VideoPlayer;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.ui.Components.PhotoViewerWebView;
+import org.papercraft.ui.Components.VideoForwardDrawable;
+import org.papercraft.ui.Components.VideoPlayer;
 
 public class VideoPlayerRewinder {
 

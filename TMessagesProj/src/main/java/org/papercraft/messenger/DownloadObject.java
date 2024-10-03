@@ -6,9 +6,9 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
-import org.telegram.tgnet.TLObject;
+import org.papercraft.tgnet.TLObject;
 
 public class DownloadObject {
     public TLObject object;

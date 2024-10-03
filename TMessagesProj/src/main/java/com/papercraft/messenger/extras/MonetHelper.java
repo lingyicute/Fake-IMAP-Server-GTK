@@ -1,6 +1,6 @@
 // all credits to @Nekogram
 
-package org.lingyicute.messenger.extras;
+package org.papercraft.messenger.extras;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,10 +13,10 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 import androidx.core.graphics.ColorUtils;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.LauncherIconController;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.LauncherIconController;
 
 import java.io.File;
 import java.util.LinkedHashMap;

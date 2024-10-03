@@ -1,7 +1,7 @@
-package org.telegram.tgnet;
+package org.papercraft.tgnet;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
+import org.papercraft.messenger.BuildVars;
+import org.papercraft.messenger.FileLog;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

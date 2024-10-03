@@ -1,4 +1,4 @@
-package org.telegram.ui.Components.spoilers;
+package org.papercraft.ui.Components.spoilers;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import android.text.Spanned;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
+import org.papercraft.messenger.AndroidUtilities;
 
 import java.util.ArrayList;
 import java.util.List;

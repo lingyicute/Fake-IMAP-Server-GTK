@@ -6,9 +6,9 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.ui.Components;
+package org.papercraft.ui.Components;
 
-import org.telegram.ui.ActionBar.AlertDialog;
+import org.papercraft.ui.ActionBar.AlertDialog;
 
 public class PermissionAlert {
 

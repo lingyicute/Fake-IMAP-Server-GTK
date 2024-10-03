@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.camera;
+package org.papercraft.messenger.camera;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -28,14 +28,14 @@ import android.widget.ImageView;
 import androidx.camera.core.ImageCapture;
 import androidx.camera.view.PreviewView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.camera.CameraView;
-import org.telegram.messenger.camera.Size;
-import org.telegram.ui.Components.CubicBezierInterpolator;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.ApplicationLoader;
+import org.papercraft.messenger.NotificationCenter;
+import org.papercraft.messenger.Utilities;
+import org.papercraft.messenger.camera.CameraView;
+import org.papercraft.messenger.camera.Size;
+import org.papercraft.ui.Components.CubicBezierInterpolator;
+import org.papercraft.ui.Components.LayoutHelper;
 
 import java.io.File;
 

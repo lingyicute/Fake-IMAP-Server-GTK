@@ -1,10 +1,10 @@
-package org.telegram.ui.Components.Reactions;
+package org.papercraft.ui.Components.Reactions;
 
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.AnimatedEmojiSpan;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Components.AnimatedEmojiSpan;
 
 public class ReactionsUtils {
 

@@ -732,7 +732,7 @@ void ConnectionsManager::onConnectionClosed(Connection *connection, int reason) 
                         } else {
                             requestingSecondAddress = 0;
                         }
-                        // FIXME(@teamgram):
+                        // FIXME(@lingyicute):
                         // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
                     } else {
                         if (LOGS_ENABLED) DEBUG_D("connection has usefull data, don't request anything");
@@ -3305,15 +3305,15 @@ void ConnectionsManager::applyDnsConfig(NativeByteBuffer *buffer, std::string ph
             }
             if (requestingSecondAddress == 2) {
                 requestingSecondAddress = 3;
-                // FIXME(@teamgram)
+                // FIXME(@lingyicute)
                 // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
             } else if (requestingSecondAddress == 1) {
                 requestingSecondAddress = 2;
-                // FIXME(@teamgram)
+                // FIXME(@lingyicute)
                 // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
             } else if (requestingSecondAddress == 0) {
                 requestingSecondAddress = 1;
-                // FIXME(@teamgram)
+                // FIXME(@lingyicute)
                 // delegate->onRequestNewServerIpAndPort(requestingSecondAddress, instanceNum);
             } else {
                 requestingSecondAddress = 0;

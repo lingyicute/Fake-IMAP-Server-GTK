@@ -1,4 +1,4 @@
-package org.lingyicute.messenger.components;
+package org.papercraft.messenger.components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,14 +16,14 @@ import android.widget.GridLayout;
 
 import androidx.core.content.ContextCompat;
 
-import org.lingyicute.messenger.extras.FolderIcons;
+import org.papercraft.messenger.extras.FolderIcons;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.R;
-import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.LayoutHelper;
+import org.papercraft.messenger.AndroidUtilities;
+import org.papercraft.messenger.R;
+import org.papercraft.ui.ActionBar.ActionBarPopupWindow;
+import org.papercraft.ui.ActionBar.BaseFragment;
+import org.papercraft.ui.ActionBar.Theme;
+import org.papercraft.ui.Components.LayoutHelper;
 
 import java.util.concurrent.atomic.AtomicReference;
 

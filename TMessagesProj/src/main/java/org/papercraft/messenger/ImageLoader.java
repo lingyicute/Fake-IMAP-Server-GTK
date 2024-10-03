@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2018.
  */
 
-package org.telegram.messenger;
+package org.papercraft.messenger;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
@@ -35,18 +35,18 @@ import androidx.exifinterface.media.ExifInterface;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.telegram.DispatchQueuePriority;
-import org.telegram.messenger.secretmedia.EncryptedFileInputStream;
-import org.telegram.messenger.utils.BitmapsCache;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Cells.ChatMessageCell;
-import org.telegram.ui.Components.AnimatedFileDrawable;
-import org.telegram.ui.Components.Point;
-import org.telegram.ui.Components.RLottieDrawable;
-import org.telegram.ui.Components.SlotsDrawable;
-import org.telegram.ui.Components.ThemePreviewDrawable;
+import org.papercraft.DispatchQueuePriority;
+import org.papercraft.messenger.secretmedia.EncryptedFileInputStream;
+import org.papercraft.messenger.utils.BitmapsCache;
+import org.papercraft.tgnet.ConnectionsManager;
+import org.papercraft.tgnet.TLObject;
+import org.papercraft.tgnet.TLRPC;
+import org.papercraft.ui.Cells.ChatMessageCell;
+import org.papercraft.ui.Components.AnimatedFileDrawable;
+import org.papercraft.ui.Components.Point;
+import org.papercraft.ui.Components.RLottieDrawable;
+import org.papercraft.ui.Components.SlotsDrawable;
+import org.papercraft.ui.Components.ThemePreviewDrawable;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
