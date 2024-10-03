@@ -1,4 +1,4 @@
-package com.exteragram.messenger.components;
+package com.papercraft.messenger.components;
 
 import android.content.Context;
 import android.graphics.Canvas;

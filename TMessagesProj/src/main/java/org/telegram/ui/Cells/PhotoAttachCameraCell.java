@@ -28,7 +28,7 @@ import org.telegram.ui.Components.LayoutHelper;
 
 import java.io.File;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 @SuppressLint("NewApi")
 public class PhotoAttachCameraCell extends FrameLayout {

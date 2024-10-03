@@ -40,7 +40,7 @@ import org.telegram.ui.Components.CombinedDrawable;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.LocationActivity;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class SharingLiveLocationCell extends FrameLayout {
 

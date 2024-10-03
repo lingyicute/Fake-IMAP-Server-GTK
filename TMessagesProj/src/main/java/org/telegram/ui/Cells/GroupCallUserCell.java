@@ -54,7 +54,7 @@ import org.telegram.ui.Components.WaveDrawable;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class GroupCallUserCell extends FrameLayout {
 

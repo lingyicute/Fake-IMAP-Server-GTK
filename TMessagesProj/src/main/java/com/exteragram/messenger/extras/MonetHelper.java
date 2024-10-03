@@ -1,6 +1,6 @@
 // all credits to @Nekogram
 
-package com.exteragram.messenger.extras;
+package com.papercraft.messenger.extras;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

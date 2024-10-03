@@ -18,7 +18,7 @@ import org.telegram.ui.Cells.GroupCreateSectionCell;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class GroupCreateDividerItemDecoration extends RecyclerView.ItemDecoration {
 

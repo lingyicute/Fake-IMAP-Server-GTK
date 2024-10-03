@@ -84,13 +84,13 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.extras.ExceptionHandler;
-import com.exteragram.messenger.ExteraResources;
-import com.exteragram.messenger.extras.MonetHelper;
-import com.exteragram.messenger.preferences.MainPreferencesActivity;
-import com.exteragram.messenger.updater.UpdaterUtils;
+import com.papercraft.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraUtils;
+import com.papercraft.messenger.extras.ExceptionHandler;
+import com.papercraft.messenger.ExteraResources;
+import com.papercraft.messenger.extras.MonetHelper;
+import com.papercraft.messenger.preferences.MainPreferencesActivity;
+import com.papercraft.messenger.updater.UpdaterUtils;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -2698,9 +2698,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             NotificationCenter.getInstance(intentAccount[0]).postNotificationName(NotificationCenter.closeChats);
                                             push_user_id = userId;
                                             String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-                                            if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.com.exteragram.messenger.android.call")) {
+                                            if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.com.papercraft.messenger.android.call")) {
                                                 audioCallUser = true;
-                                            } else if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.com.exteragram.messenger.android.call.video")) {
+                                            } else if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.com.papercraft.messenger.android.call.video")) {
                                                 videoCallUser = true;
                                             }
                                         }

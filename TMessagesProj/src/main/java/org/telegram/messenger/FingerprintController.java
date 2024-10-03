@@ -9,7 +9,7 @@ import android.security.keystore.KeyProperties;
 
 import androidx.annotation.RequiresApi;
 
-import com.exteragram.messenger.ExteraUtils;
+import com.papercraft.messenger.ExteraUtils;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.KeyPairGenerator;

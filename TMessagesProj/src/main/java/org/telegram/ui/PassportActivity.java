@@ -142,7 +142,7 @@ import java.util.TimerTask;
 
 import javax.crypto.Cipher;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class PassportActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

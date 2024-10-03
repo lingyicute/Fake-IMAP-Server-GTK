@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.updater;
+package com.papercraft.messenger.updater;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -23,8 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
+import com.papercraft.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraUtils;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;

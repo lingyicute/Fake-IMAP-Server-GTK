@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.preferences;
+package com.papercraft.messenger.preferences;
 
 import android.content.Context;
 import android.os.Build;
@@ -24,10 +24,10 @@ import androidx.annotation.NonNull;
 import androidx.camera.video.Quality;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.camera.CameraXUtils;
-import com.exteragram.messenger.components.CameraTypeSelector;
+import com.papercraft.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraUtils;
+import com.papercraft.messenger.camera.CameraXUtils;
+import com.papercraft.messenger.components.CameraTypeSelector;
 
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.NotificationCenter;

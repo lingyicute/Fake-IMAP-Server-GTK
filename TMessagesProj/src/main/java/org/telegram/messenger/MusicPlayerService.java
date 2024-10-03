@@ -33,7 +33,7 @@ import android.os.IBinder;
 import android.text.TextUtils;
 import android.widget.RemoteViews;
 
-import com.exteragram.messenger.ExteraUtils;
+import com.papercraft.messenger.ExteraUtils;
 import com.google.android.exoplayer2.C;
 
 import org.telegram.messenger.audioinfo.AudioInfo;

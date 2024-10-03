@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.preferences;
+package com.papercraft.messenger.preferences;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -19,11 +19,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.components.FabShapeCell;
-import com.exteragram.messenger.components.MainScreenSetupCell;
-import com.exteragram.messenger.components.SolarIconsPreview;
+import com.papercraft.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraUtils;
+import com.papercraft.messenger.components.FabShapeCell;
+import com.papercraft.messenger.components.MainScreenSetupCell;
+import com.papercraft.messenger.components.SolarIconsPreview;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;

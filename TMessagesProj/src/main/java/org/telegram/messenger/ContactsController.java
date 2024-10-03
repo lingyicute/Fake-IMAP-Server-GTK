@@ -28,7 +28,7 @@ import android.util.SparseArray;
 
 import androidx.collection.LongSparseArray;
 
-import com.exteragram.messenger.premium.filter.ZalgoFilter;
+import com.papercraft.messenger.premium.filter.ZalgoFilter;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.tgnet.ConnectionsManager;
@@ -367,7 +367,7 @@ public class ContactsController extends BaseController {
     public void checkAppAccount() {
         AccountManager am = AccountManager.get(ApplicationLoader.applicationContext);
         try {
-            Account[] accounts = am.getAccountsByType("com.exteragram.messenger");
+            Account[] accounts = am.getAccountsByType("com.papercraft.messenger");
             systemAccount = null;
             for (int a = 0; a < accounts.length; a++) {
                 Account acc = accounts[a];
@@ -413,7 +413,7 @@ public class ContactsController extends BaseController {
         try {
             systemAccount = null;
             AccountManager am = AccountManager.get(ApplicationLoader.applicationContext);
-            Account[] accounts = am.getAccountsByType("com.exteragram.messenger");
+            Account[] accounts = am.getAccountsByType("com.papercraft.messenger");
             for (int a = 0; a < accounts.length; a++) {
                 Account acc = accounts[a];
                 boolean found = false;
@@ -489,7 +489,7 @@ public class ContactsController extends BaseController {
                 AndroidUtilities.runOnUIThread(() -> {
                     AccountManager am = AccountManager.get(ApplicationLoader.applicationContext);
                     try {
-                        Account[] accounts = am.getAccountsByType("com.exteragram.messenger");
+                        Account[] accounts = am.getAccountsByType("com.papercraft.messenger");
                         systemAccount = null;
                         for (int a = 0; a < accounts.length; a++) {
                             Account acc = accounts[a];
@@ -507,7 +507,7 @@ public class ContactsController extends BaseController {
 
                     }
                     try {
-                        systemAccount = new Account("" + getUserConfig().getClientUserId(), "com.exteragram.messenger");
+                        systemAccount = new Account("" + getUserConfig().getClientUserId(), "com.papercraft.messenger");
                         am.addAccountExplicitly(systemAccount, "", null);
                     } catch (Exception ignore) {
 

@@ -40,7 +40,7 @@ import org.telegram.ui.ActionBar.Theme;
 
 import androidx.core.graphics.ColorUtils;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class GroupCreateSpan extends View {
 

@@ -44,7 +44,7 @@ import org.telegram.ui.Components.VectorAvatarThumbDrawable;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class ImageReceiver implements NotificationCenter.NotificationCenterDelegate {
 

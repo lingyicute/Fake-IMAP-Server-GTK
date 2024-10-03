@@ -39,7 +39,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Objects;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class ReactionsLayoutInBubble {
 

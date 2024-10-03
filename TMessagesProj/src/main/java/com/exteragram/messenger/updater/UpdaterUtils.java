@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.updater;
+package com.papercraft.messenger.updater;
 
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
@@ -25,7 +25,7 @@ import android.text.Spanned;
 
 import androidx.core.content.FileProvider;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 import org.json.JSONObject;
 import org.telegram.messenger.AndroidUtilities;

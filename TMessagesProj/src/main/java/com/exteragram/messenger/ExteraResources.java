@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger;
+package com.papercraft.messenger;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -17,7 +17,7 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.exteragram.messenger.icons.BaseIconSet;
+import com.papercraft.messenger.icons.BaseIconSet;
 
 public class ExteraResources extends Resources {
 

@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.icons;
+package com.papercraft.messenger.icons;
 
 public class EmptyIconSet extends BaseIconSet {
     public EmptyIconSet() {

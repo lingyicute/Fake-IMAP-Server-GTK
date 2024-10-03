@@ -93,7 +93,7 @@ import org.telegram.ui.Components.URLSpanNoUnderline;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
-import com.exteragram.messenger.extras.PermissionUtils;
+import com.papercraft.messenger.extras.PermissionUtils;
 
 public class CameraScanActivity extends BaseFragment {
 

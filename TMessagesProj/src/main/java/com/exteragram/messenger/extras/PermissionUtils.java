@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.extras;
+package com.papercraft.messenger.extras;
 
 import android.Manifest;
 import android.app.Activity;

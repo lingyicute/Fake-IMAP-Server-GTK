@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.preferences;
+package com.papercraft.messenger.preferences;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -21,12 +21,12 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.components.AltSeekbar;
-import com.exteragram.messenger.components.DoubleTapCell;
-import com.exteragram.messenger.components.StickerShapeCell;
-import com.exteragram.messenger.components.StickerSizePreviewCell;
+import com.papercraft.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraUtils;
+import com.papercraft.messenger.components.AltSeekbar;
+import com.papercraft.messenger.components.DoubleTapCell;
+import com.papercraft.messenger.components.StickerShapeCell;
+import com.papercraft.messenger.components.StickerSizePreviewCell;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;

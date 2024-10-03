@@ -133,7 +133,7 @@
             android:value="AIzaSyBb4p4ukIreJ6uDHprBN5rpv6i1dvyn8zM" />
 
         <activity-alias
-            android:name="com.exteragram.messenger.DefaultIcon"
+            android:name="com.papercraft.messenger.DefaultIcon"
             android:enabled="true"
             android:exported="true"
             android:targetActivity="org.telegram.ui.LaunchActivity">
@@ -150,7 +150,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.MonetIcon"
+            android:name="com.papercraft.messenger.MonetIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_monet"
@@ -169,7 +169,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.GradientIcon"
+            android:name="com.papercraft.messenger.GradientIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_gradient"
@@ -185,7 +185,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.GoogleIcon"
+            android:name="com.papercraft.messenger.GoogleIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_google"
@@ -204,7 +204,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.VKIcon"
+            android:name="com.papercraft.messenger.VKIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_vk"
@@ -223,7 +223,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.Dsgn480Icon"
+            android:name="com.papercraft.messenger.Dsgn480Icon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_480dsgn"
@@ -242,7 +242,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.GlowIcon"
+            android:name="com.papercraft.messenger.GlowIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_glow"
@@ -258,7 +258,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.SpaceIcon"
+            android:name="com.papercraft.messenger.SpaceIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_space"
@@ -274,7 +274,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.WinterIcon"
+            android:name="com.papercraft.messenger.WinterIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_winter"
@@ -290,7 +290,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.RedIcon"
+            android:name="com.papercraft.messenger.RedIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_red"
@@ -354,7 +354,7 @@
                 tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.com.exteragram.messenger.android.profile" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.papercraft.messenger.android.profile" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -397,8 +397,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.item/vnd.com.exteragram.messenger.android.call" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.com.exteragram.messenger.android.call.video" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.papercraft.messenger.android.call" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.papercraft.messenger.android.call.video" />
             </intent-filter>
         </activity-alias>
 

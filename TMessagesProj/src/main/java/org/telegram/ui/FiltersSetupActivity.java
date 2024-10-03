@@ -59,8 +59,8 @@ import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.extras.FolderIcons;
+import com.papercraft.messenger.ExteraConfig;
+import com.papercraft.messenger.extras.FolderIcons;
 
 public class FiltersSetupActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

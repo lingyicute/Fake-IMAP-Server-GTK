@@ -9,17 +9,17 @@
 
 */
 
-package com.exteragram.messenger;
+package com.papercraft.messenger;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-import com.exteragram.messenger.camera.CameraXUtils;
-import com.exteragram.messenger.icons.BaseIconSet;
-import com.exteragram.messenger.icons.EmptyIconSet;
-import com.exteragram.messenger.icons.SolarIconSet;
+import com.papercraft.messenger.camera.CameraXUtils;
+import com.papercraft.messenger.icons.BaseIconSet;
+import com.papercraft.messenger.icons.EmptyIconSet;
+import com.papercraft.messenger.icons.SolarIconSet;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;

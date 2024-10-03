@@ -30,8 +30,8 @@ import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.extras.FolderIcons;
+import com.papercraft.messenger.ExteraConfig;
+import com.papercraft.messenger.extras.FolderIcons;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;

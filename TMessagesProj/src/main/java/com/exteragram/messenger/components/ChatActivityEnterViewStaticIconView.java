@@ -1,4 +1,4 @@
-package com.exteragram.messenger.components;
+package com.papercraft.messenger.components;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

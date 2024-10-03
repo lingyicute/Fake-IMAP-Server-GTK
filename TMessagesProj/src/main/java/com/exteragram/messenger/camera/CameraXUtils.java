@@ -1,4 +1,4 @@
-package com.exteragram.messenger.camera;
+package com.papercraft.messenger.camera;
 
 import static android.hardware.camera2.CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS;
 import static android.hardware.camera2.CameraMetadata.LENS_FACING_BACK;
@@ -17,7 +17,7 @@ import androidx.camera.video.Quality;
 import androidx.camera.video.QualitySelector;
 import androidx.core.content.ContextCompat;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import org.telegram.messenger.ApplicationLoader;

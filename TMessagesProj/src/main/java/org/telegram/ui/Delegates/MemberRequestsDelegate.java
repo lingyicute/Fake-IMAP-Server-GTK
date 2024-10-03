@@ -79,7 +79,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.papercraft.messenger.ExteraConfig;
 
 public class MemberRequestsDelegate implements MemberRequestCell.OnClickListener {
 

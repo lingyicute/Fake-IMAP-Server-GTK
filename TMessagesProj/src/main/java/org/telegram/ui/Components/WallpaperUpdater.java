@@ -38,7 +38,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import com.exteragram.messenger.extras.PermissionUtils;
+import com.papercraft.messenger.extras.PermissionUtils;
 
 public class WallpaperUpdater {
 
