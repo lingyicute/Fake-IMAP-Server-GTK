@@ -27666,7 +27666,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (messageObject != null && messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageObject.messageOwner.media.webpage != null && messageObject.messageOwner.media.webpage.cached_page != null) {
                         String lowerUrl = urlFinal.toLowerCase();
                         String lowerUrl2 = messageObject.messageOwner.media.webpage.url.toLowerCase();
-                        if ((lowerUrl.contains("www2.teamgram.net/blog") || Browser.isTelegraphUrl(lowerUrl, false) || lowerUrl.contains("papercraft-official.github.io/iv")) && (lowerUrl.contains(lowerUrl2) || lowerUrl2.contains(lowerUrl))) {
+                        if ((lowerUrl.contains("www2.papercraft-official.github.io/blog") || Browser.isTelegraphUrl(lowerUrl, false) || lowerUrl.contains("papercraft-official.github.io/iv")) && (lowerUrl.contains(lowerUrl2) || lowerUrl2.contains(lowerUrl))) {
                             ArticleViewer.getInstance().setParentActivity(getParentActivity(), ChatActivity.this);
                             ArticleViewer.getInstance().open(messageObject);
                             return;

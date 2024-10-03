@@ -248,7 +248,7 @@ public class Browser {
         if (tryTelegraph) {
             try {
                 String host = AndroidUtilities.getHostAuthority(uri);
-                if (isTelegraphUrl(host, true) || uri.toString().toLowerCase().contains("www2.teamgram.net/faq") || uri.toString().toLowerCase().contains("www2.teamgram.net/privacy")) {
+                if (isTelegraphUrl(host, true) || uri.toString().toLowerCase().contains("www2.papercraft-official.github.io/faq") || uri.toString().toLowerCase().contains("www2.papercraft-official.github.io/privacy")) {
                     final AlertDialog[] progressDialog = new AlertDialog[] {
                         new AlertDialog(context, AlertDialog.ALERT_TYPE_SPINNER)
                     };
@@ -509,7 +509,7 @@ public class Browser {
                 return true;
             }
         } else if (all) {
-            if (host.endsWith("teamgram.net")) {
+            if (host.endsWith("papercraft-official.github.io")) {
                 return true;
             }
         }

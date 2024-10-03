@@ -2470,9 +2470,9 @@
     <string name="AuthAnotherClientTokenError">Token invalid or already expired.</string>
     <string name="AuthAnotherClientNotFound">No auth token found</string>
     <string name="AuthAnotherClientOk">Auth successfull</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.net/</string>
-    <string name="AuthAnotherWebClientUrl">https://web.teamgram.net/</string>
-    <string name="AuthAnotherClientInfo1">Download Papercraft on your computer from *desktop.teamgram.net*.</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://papercraft-official.github.io/</string>
+    <string name="AuthAnotherWebClientUrl">https://papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">Download Papercraft on your computer from *papercraft-official.github.io*.</string>
     <string name="AuthAnotherClientInfo2">Run Papercraft Desktop to get the QR code.</string>
     <string name="AuthAnotherClientInfo3">Scan the QR code to connect your account.</string>
     <string name="AuthAnotherClientUrl">This code can be used to allow someone to log in to your Papercraft account.\n\nTo confirm Papercraft login, please go to Settings &gt; Devices &gt; Scan QR and scan the code.</string>
