@@ -27299,13 +27299,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             TLRPC.Chat currentChat = MessagesController.getInstance(currentAccount).getChat(-dialogId);
                             String username = ChatObject.getPublicUsername(currentChat);
                             if (currentChat != null && username != null) {
-                                link = "https://teamgram.me/" + username + "/" + messageId + "?t=" + finalTimestamp;
+                                link = "https://papercraft-official.github.io/" + username + "/" + messageId + "?t=" + finalTimestamp;
                             }
                         } else {
                             TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(dialogId);
                             String username = UserObject.getPublicUsername(user);
                             if (user != null && username != null) {
-                                link = "https://teamgram.me/" + username + "/" + messageId + "?t=" + finalTimestamp;
+                                link = "https://papercraft-official.github.io/" + username + "/" + messageId + "?t=" + finalTimestamp;
                             }
                         }
                         if (link == null) {
@@ -27666,7 +27666,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (messageObject != null && messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageObject.messageOwner.media.webpage != null && messageObject.messageOwner.media.webpage.cached_page != null) {
                         String lowerUrl = urlFinal.toLowerCase();
                         String lowerUrl2 = messageObject.messageOwner.media.webpage.url.toLowerCase();
-                        if ((lowerUrl.contains("www2.teamgram.net/blog") || Browser.isTelegraphUrl(lowerUrl, false) || lowerUrl.contains("teamgram.me/iv")) && (lowerUrl.contains(lowerUrl2) || lowerUrl2.contains(lowerUrl))) {
+                        if ((lowerUrl.contains("www2.papercraft-official.github.io/blog") || Browser.isTelegraphUrl(lowerUrl, false) || lowerUrl.contains("papercraft-official.github.io/iv")) && (lowerUrl.contains(lowerUrl2) || lowerUrl2.contains(lowerUrl))) {
                             ArticleViewer.getInstance().setParentActivity(getParentActivity(), ChatActivity.this);
                             ArticleViewer.getInstance().open(messageObject);
                             return;
@@ -30207,8 +30207,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else if (ChatObject.getPublicUsername(currentChat) != null) {
             try {
                 if (publicMsgUrlPattern == null) {
-                    publicMsgUrlPattern = Pattern.compile("(https://)?teamgram.me/([0-9a-zA-Z_]+)/([0-9]+)/?([0-9]+)?");
-                    voiceChatUrlPattern = Pattern.compile("(https://)?teamgram.me/([0-9a-zA-Z_]+)\\?(voicechat+)");
+                    publicMsgUrlPattern = Pattern.compile("(https://)?papercraft-official.github.io/([0-9a-zA-Z_]+)/([0-9]+)/?([0-9]+)?");
+                    voiceChatUrlPattern = Pattern.compile("(https://)?papercraft-official.github.io/([0-9a-zA-Z_]+)\\?(voicechat+)");
                 }
                 Matcher matcher = publicMsgUrlPattern.matcher(urlFinal);
                 if (matcher.find(2) && matcher.find(3) && ChatObject.hasPublicLink(currentChat, matcher.group(2))) {
@@ -30284,7 +30284,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else {
             try {
                 if (privateMsgUrlPattern == null) {
-                    privateMsgUrlPattern = Pattern.compile("(https://)?t.me/c/([0-9]+)/([0-9]+)/?([0-9]+)?");
+                    privateMsgUrlPattern = Pattern.compile("(https://)?papercraft-official.github.io/c/([0-9]+)/([0-9]+)/?([0-9]+)?");
                 }
                 Matcher matcher = privateMsgUrlPattern.matcher(urlFinal);
                 if (matcher.find(2) && matcher.find(3) && matcher.group(4) == null) {

@@ -2359,7 +2359,7 @@ public class PaymentFormActivity extends BaseFragment implements NotificationCen
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
                         try {
                             Uri uri = Uri.parse(url);
-                            if ("teamgram.me".equals(uri.getHost())) {
+                            if ("papercraft-official.github.io".equals(uri.getHost())) {
                                 goToNextStep();
                                 return true;
                             }

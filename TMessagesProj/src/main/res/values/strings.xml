@@ -1216,7 +1216,7 @@
     <string name="GroupEmptyTitle2">Groups can have:</string>
     <string name="GroupDescription1">Up to 200,000 members</string>
     <string name="GroupDescription2">Persistent chat history</string>
-    <string name="GroupDescription3">Public links such as teamgram.me/title</string>
+    <string name="GroupDescription3">Public links such as papercraft-official.github.io/title</string>
     <string name="GroupDescription4">Admins with different rights</string>
     <string name="ChatYourSelfDescription1">Forward messages here to save them</string>
     <string name="ChatYourSelfDescription2">Send media and files to store them</string>
@@ -2199,7 +2199,7 @@
     <string name="TelegramFAQ">Papercraft FAQ</string>
     <string name="TelegramFaq">Papercraft FAQ</string>
     <string name="TelegramFeatures">Papercraft Features</string>
-    <string name="TelegramFeaturesUrl">https://teamgram.me/PapercraftTips</string>
+    <string name="TelegramFeaturesUrl">https://papercraft-official.github.io/PapercraftTips</string>
     <string name="AddAccount">Add Account</string>
     <string name="SelectAccount">Select Account</string>
     <string name="TelegramFaqUrl">https://papercraft-official.github.io/faq</string>
@@ -2470,9 +2470,9 @@
     <string name="AuthAnotherClientTokenError">Token invalid or already expired.</string>
     <string name="AuthAnotherClientNotFound">No auth token found</string>
     <string name="AuthAnotherClientOk">Auth successfull</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.net/</string>
-    <string name="AuthAnotherWebClientUrl">https://web.teamgram.net/</string>
-    <string name="AuthAnotherClientInfo1">Download Papercraft on your computer from *desktop.teamgram.net*.</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://papercraft-official.github.io/</string>
+    <string name="AuthAnotherWebClientUrl">https://papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">Download Papercraft on your computer from *papercraft-official.github.io*.</string>
     <string name="AuthAnotherClientInfo2">Run Papercraft Desktop to get the QR code.</string>
     <string name="AuthAnotherClientInfo3">Scan the QR code to connect your account.</string>
     <string name="AuthAnotherClientUrl">This code can be used to allow someone to log in to your Papercraft account.\n\nTo confirm Papercraft login, please go to Settings &gt; Devices &gt; Scan QR and scan the code.</string>
@@ -5772,7 +5772,7 @@
     <string name="PinChatsLimitTitle">Pinned Chats</string>
     <string name="PinChatsLimitSubtitle">Pin up to %d chats in your main chat list</string>
     <string name="PublicLinksLimitTitle">Public Links</string>
-    <string name="PublicLinksLimitSubtitle">Reserve up to %d teamgram.me/name links</string>
+    <string name="PublicLinksLimitSubtitle">Reserve up to %d papercraft-official.github.io/name links</string>
     <string name="SavedGifsLimitTitle">Saved GIFs</string>
     <string name="SavedGifsLimitSubtitle">Save up to %d GIFs in your Favorite GIFs</string>
     <string name="FavoriteStickersLimitTitle">Favorite Stickers</string>

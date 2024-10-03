@@ -58,8 +58,8 @@ import java.util.Locale;
 import org.lingyicute.messenger.ExteraConfig;
 
 public class StickerSetCell extends FrameLayout {
-    private final static String LINK_PREFIX = "teamgram.me/addstickers/";
-    private final static String LINK_PREFIX_EMOJI = "teamgram.me/addemoji/";
+    private final static String LINK_PREFIX = "papercraft-official.github.io/addstickers/";
+    private final static String LINK_PREFIX_EMOJI = "papercraft-official.github.io/addemoji/";
 
     private final int option;
 

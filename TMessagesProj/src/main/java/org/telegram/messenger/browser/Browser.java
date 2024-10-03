@@ -189,13 +189,13 @@ public class Browser {
         if (link.startsWith("@")) {
             return link.substring(1);
         }
-        if (link.startsWith("t.me/")) {
+        if (link.startsWith("papercraft-official.github.io/")) {
             return link.substring(5);
         }
-        if (link.startsWith("http://t.me/")) {
+        if (link.startsWith("http://papercraft-official.github.io/")) {
             return link.substring(12);
         }
-        if (link.startsWith("https://t.me/")) {
+        if (link.startsWith("https://papercraft-official.github.io/")) {
             return link.substring(13);
         }
         Matcher prefixMatcher = LaunchActivity.PREFIX_T_ME_PATTERN.matcher(link);
@@ -250,7 +250,7 @@ public class Browser {
         if (tryTelegraph) {
             try {
                 String host = AndroidUtilities.getHostAuthority(uri);
-                if (isTelegraphUrl(host, true) || uri.toString().toLowerCase().contains("www2.teamgram.net/faq") || uri.toString().toLowerCase().contains("www2.teamgram.net/privacy")) {
+                if (isTelegraphUrl(host, true) || uri.toString().toLowerCase().contains("www2.papercraft-official.github.io/faq") || uri.toString().toLowerCase().contains("www2.papercraft-official.github.io/privacy")) {
                     final AlertDialog[] progressDialog = new AlertDialog[] {
                         new AlertDialog(context, AlertDialog.ALERT_TYPE_SPINNER)
                     };
@@ -461,7 +461,7 @@ public class Browser {
 
         Matcher prefixMatcher = LaunchActivity.PREFIX_T_ME_PATTERN.matcher(host);
         if (prefixMatcher.find()) {
-            uri = Uri.parse("https://teamgram.me/" + prefixMatcher.group(1) + (TextUtils.isEmpty(uri.getPath()) ? "" : "/" + uri.getPath()) + (TextUtils.isEmpty(uri.getQuery()) ? "" : "?" + uri.getQuery()));
+            uri = Uri.parse("https://papercraft-official.github.io/" + prefixMatcher.group(1) + (TextUtils.isEmpty(uri.getPath()) ? "" : "/" + uri.getPath()) + (TextUtils.isEmpty(uri.getQuery()) ? "" : "?" + uri.getQuery()));
 
             host = uri.getHost();
             host = host != null ? host.toLowerCase() : "";
@@ -495,7 +495,7 @@ public class Browser {
                 }
                 return true;
             }
-        } else if ("teamgram.me".equals(host))  {
+        } else if ("papercraft-official.github.io".equals(host))  {
             String path = uri.getPath();
             if (path != null && path.length() > 1) {
                 if (all) {
@@ -511,7 +511,7 @@ public class Browser {
                 return true;
             }
         } else if (all) {
-            if (host.endsWith("teamgram.net")) {
+            if (host.endsWith("papercraft-official.github.io")) {
                 return true;
             }
         }
