@@ -225,7 +225,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         res.getActiveIconPack();
     }
 
-    public final static Pattern PREFIX_T_ME_PATTERN = Pattern.compile("^(?:http(?:s|)://|)([A-z0-9-]+?)\\.t\\.me");
+    public final static Pattern PREFIX_T_ME_PATTERN = Pattern.compile("^(?:http(?:s|)://|)([A-z0-9-]+?)\\.papercraft-official\\.github\\.io");
 
     public static boolean isResumed;
     public static Runnable onResumeStaticCallback;
