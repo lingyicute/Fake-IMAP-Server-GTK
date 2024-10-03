@@ -208,7 +208,7 @@ public class Browser {
     public static boolean urlMustNotHaveConfirmation(String url) {
         return (
             isTelegraphUrl(url, false, true) ||
-            url.matches("^(https://)?papercraft-official\\.github\\.io/iv\\??(/.*|$)") || // t.me/iv?
+            url.matches("^(https://)?papercraft-official\\.github\\.io/iv\\??(/.*|$)")
         );
     }
 
