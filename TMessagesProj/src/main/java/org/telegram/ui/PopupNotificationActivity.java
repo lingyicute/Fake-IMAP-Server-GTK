@@ -81,7 +81,7 @@ import org.telegram.ui.Components.TypingDotsDrawable;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class PopupNotificationActivity extends Activity implements NotificationCenter.NotificationCenterDelegate {
 

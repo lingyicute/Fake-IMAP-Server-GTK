@@ -22,7 +22,7 @@ import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.LayoutHelper;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class GroupCallInvitedCell extends FrameLayout {

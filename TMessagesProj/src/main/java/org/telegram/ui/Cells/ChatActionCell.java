@@ -84,7 +84,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Stack;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class ChatActionCell extends BaseCell implements DownloadController.FileDownloadProgressListener, NotificationCenter.NotificationCenterDelegate {
     private final static boolean USE_PREMIUM_GIFT_LOCAL_STICKER = false;

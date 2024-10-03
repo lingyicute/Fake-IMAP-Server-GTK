@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.components;
+package org.lingyicute.messenger.components;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -24,8 +24,8 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.extras.MonetHelper;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.extras.MonetHelper;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;

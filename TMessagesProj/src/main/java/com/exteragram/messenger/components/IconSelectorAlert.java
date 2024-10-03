@@ -1,4 +1,4 @@
-package com.exteragram.messenger.components;
+package org.lingyicute.messenger.components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,7 +16,7 @@ import android.widget.GridLayout;
 
 import androidx.core.content.ContextCompat;
 
-import com.exteragram.messenger.extras.FolderIcons;
+import org.lingyicute.messenger.extras.FolderIcons;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.R;

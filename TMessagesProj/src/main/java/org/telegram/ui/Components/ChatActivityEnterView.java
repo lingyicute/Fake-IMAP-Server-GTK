@@ -100,11 +100,11 @@ import androidx.dynamicanimation.animation.SpringForce;
 import androidx.recyclerview.widget.ChatListItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.components.ChatActivityEnterViewStaticIconView;
-import com.exteragram.messenger.premium.BoostController;
-import com.exteragram.messenger.premium.encryption.EncryptionHelper;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.components.ChatActivityEnterViewStaticIconView;
+import org.lingyicute.messenger.premium.BoostController;
+import org.lingyicute.messenger.premium.encryption.EncryptionHelper;
 
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;

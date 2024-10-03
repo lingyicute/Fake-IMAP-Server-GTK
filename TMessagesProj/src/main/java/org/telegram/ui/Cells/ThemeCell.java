@@ -33,7 +33,7 @@ import org.telegram.ui.Components.LayoutHelper;
 import java.io.File;
 import java.io.FileInputStream;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class ThemeCell extends FrameLayout {
 

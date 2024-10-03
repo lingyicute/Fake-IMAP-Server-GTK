@@ -59,7 +59,7 @@ import java.util.Locale;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicReference;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class SharedLinkCell extends FrameLayout {
     private final static int SPOILER_TYPE_LINK = 0,

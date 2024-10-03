@@ -47,7 +47,7 @@ import org.telegram.ui.NotificationsSettingsActivity;
 
 import java.util.Locale;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class ProfileSearchCell extends BaseCell implements NotificationCenter.NotificationCenterDelegate {
 

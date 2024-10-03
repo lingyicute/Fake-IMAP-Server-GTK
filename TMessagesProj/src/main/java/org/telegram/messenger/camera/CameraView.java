@@ -50,7 +50,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
-import com.exteragram.messenger.camera.BaseCameraView;
+import org.lingyicute.messenger.camera.BaseCameraView;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;

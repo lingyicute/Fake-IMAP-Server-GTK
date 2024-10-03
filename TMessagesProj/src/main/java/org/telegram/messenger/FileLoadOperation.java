@@ -29,7 +29,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipException;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class FileLoadOperation {
 

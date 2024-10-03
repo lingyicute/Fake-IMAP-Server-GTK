@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.preferences;
+package org.lingyicute.messenger.preferences;
 
 import android.content.Context;
 import android.os.Build;
@@ -24,10 +24,10 @@ import androidx.annotation.NonNull;
 import androidx.camera.video.Quality;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.camera.CameraXUtils;
-import com.exteragram.messenger.components.CameraTypeSelector;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.camera.CameraXUtils;
+import org.lingyicute.messenger.components.CameraTypeSelector;
 
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.NotificationCenter;

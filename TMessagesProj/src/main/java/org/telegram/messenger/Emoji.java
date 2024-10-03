@@ -28,8 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.premium.filter.ZalgoFilter;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.premium.filter.ZalgoFilter;
 
 import org.telegram.ui.Components.AnimatedEmojiSpan;
 

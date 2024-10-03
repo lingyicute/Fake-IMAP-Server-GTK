@@ -52,8 +52,8 @@ import org.telegram.ui.Components.RecyclerListView;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.exteragram.messenger.extras.FolderIcons;
-import com.exteragram.messenger.components.IconSelectorAlert;
+import org.lingyicute.messenger.extras.FolderIcons;
+import org.lingyicute.messenger.components.IconSelectorAlert;
 
 public class FilterCreateActivity extends BaseFragment {
 

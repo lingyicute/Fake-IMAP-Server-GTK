@@ -42,7 +42,7 @@ import org.telegram.ui.Components.MediaActionDrawable;
 import org.telegram.ui.Components.RadialProgress2;
 import org.telegram.ui.FilteredSearchView;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class SharedAudioCell extends FrameLayout implements DownloadController.FileDownloadProgressListener, NotificationCenter.NotificationCenterDelegate {
 

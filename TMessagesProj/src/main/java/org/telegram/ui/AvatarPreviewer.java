@@ -26,7 +26,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.util.Consumer;
 import androidx.core.util.Preconditions;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLoader;

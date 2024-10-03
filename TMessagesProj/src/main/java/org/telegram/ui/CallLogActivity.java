@@ -71,8 +71,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class CallLogActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

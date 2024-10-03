@@ -30,7 +30,7 @@ import org.telegram.ui.Components.CheckBoxBase;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.PremiumPreviewFragment;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class PremiumTierCell extends ViewGroup {
     private CheckBox2 checkBox;

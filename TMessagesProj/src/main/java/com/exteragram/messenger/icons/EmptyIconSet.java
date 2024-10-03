@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.icons;
+package org.lingyicute.messenger.icons;
 
 public class EmptyIconSet extends BaseIconSet {
     public EmptyIconSet() {

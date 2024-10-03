@@ -21,7 +21,7 @@ import android.view.View;
 
 import androidx.core.graphics.ColorUtils;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;

@@ -90,8 +90,8 @@ import org.telegram.ui.Components.spoilers.SpoilersTextView;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
 
 public class TwoStepVerificationSetupActivity extends BaseFragment {
 

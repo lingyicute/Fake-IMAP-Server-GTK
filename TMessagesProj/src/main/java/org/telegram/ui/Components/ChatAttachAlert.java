@@ -115,9 +115,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.extras.PermissionUtils;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.extras.PermissionUtils;
 
 public class ChatAttachAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate, BottomSheet.BottomSheetDelegateInterface {
 

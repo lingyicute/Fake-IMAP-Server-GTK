@@ -61,7 +61,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class ContextLinkCell extends FrameLayout implements DownloadController.FileDownloadProgressListener {
 

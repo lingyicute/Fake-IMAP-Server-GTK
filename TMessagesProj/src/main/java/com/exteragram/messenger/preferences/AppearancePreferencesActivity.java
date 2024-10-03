@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.preferences;
+package org.lingyicute.messenger.preferences;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -19,11 +19,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.components.FabShapeCell;
-import com.exteragram.messenger.components.MainScreenSetupCell;
-import com.exteragram.messenger.components.SolarIconsPreview;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.components.FabShapeCell;
+import org.lingyicute.messenger.components.MainScreenSetupCell;
+import org.lingyicute.messenger.components.SolarIconsPreview;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;

@@ -49,7 +49,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.exteragram.messenger.ExteraUtils;
+import org.lingyicute.messenger.ExteraUtils;
 
 public class AppIconsSelectorCell extends RecyclerListView implements NotificationCenter.NotificationCenterDelegate {
     public final static float ICONS_ROUND_RADIUS = 100;

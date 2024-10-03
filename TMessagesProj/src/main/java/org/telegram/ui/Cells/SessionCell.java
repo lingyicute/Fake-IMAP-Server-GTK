@@ -49,7 +49,7 @@ import org.telegram.ui.Components.DotDividerSpan;
 import org.telegram.ui.Components.FlickerLoadingView;
 import org.telegram.ui.Components.LayoutHelper;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 public class SessionCell extends FrameLayout {
 

@@ -9,7 +9,7 @@
 
 */
 
-package com.exteragram.messenger.preferences;
+package org.lingyicute.messenger.preferences;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -21,12 +21,12 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.components.AltSeekbar;
-import com.exteragram.messenger.components.DoubleTapCell;
-import com.exteragram.messenger.components.StickerShapeCell;
-import com.exteragram.messenger.components.StickerSizePreviewCell;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.components.AltSeekbar;
+import org.lingyicute.messenger.components.DoubleTapCell;
+import org.lingyicute.messenger.components.StickerShapeCell;
+import org.lingyicute.messenger.components.StickerSizePreviewCell;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;

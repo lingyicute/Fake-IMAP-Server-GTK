@@ -84,13 +84,13 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
-import com.exteragram.messenger.extras.ExceptionHandler;
-import com.exteragram.messenger.ExteraResources;
-import com.exteragram.messenger.extras.MonetHelper;
-import com.exteragram.messenger.preferences.MainPreferencesActivity;
-import com.exteragram.messenger.updater.UpdaterUtils;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
+import org.lingyicute.messenger.extras.ExceptionHandler;
+import org.lingyicute.messenger.ExteraResources;
+import org.lingyicute.messenger.extras.MonetHelper;
+import org.lingyicute.messenger.preferences.MainPreferencesActivity;
+import org.lingyicute.messenger.updater.UpdaterUtils;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -2698,9 +2698,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             NotificationCenter.getInstance(intentAccount[0]).postNotificationName(NotificationCenter.closeChats);
                                             push_user_id = userId;
                                             String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-                                            if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.chatengine.messenger.android.call")) {
+                                            if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.lingyicute.messenger.android.call")) {
                                                 audioCallUser = true;
-                                            } else if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.chatengine.messenger.android.call.video")) {
+                                            } else if (TextUtils.equals(mimeType, "vnd.android.cursor.item/vnd.org.lingyicute.messenger.android.call.video")) {
                                                 videoCallUser = true;
                                             }
                                         }

@@ -46,7 +46,7 @@ import androidx.annotation.UiThread;
 import androidx.collection.LongSparseArray;
 import androidx.core.view.inputmethod.InputContentInfoCompat;
 
-import com.exteragram.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraConfig;
 
 import org.json.JSONObject;
 import org.telegram.messenger.audioinfo.AudioInfo;

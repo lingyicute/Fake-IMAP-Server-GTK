@@ -45,8 +45,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.ExteraUtils;
+import org.lingyicute.messenger.ExteraConfig;
+import org.lingyicute.messenger.ExteraUtils;
 
 public class LocaleController {
 
