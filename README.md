@@ -3,10 +3,10 @@
 ## Papercraft
 *[Licensed under the GNU General Public License v2.0](https://github.com/lingyicute/Papercraft/blob/default/LICENSE)*
 
-Experimental **third-party** Telegram client based on [official sources](https://github.com/DrKLO/Telegram).
+Experimental **third-party** Papercraft client based on [official sources](https://github.com/DrKLO/Papercraft).
 
-[![Channel](https://img.shields.io/badge/Channel-Telegram-blue.svg)](https://t.me/exteragram)
-[![Chat](https://img.shields.io/badge/Chat-Telegram-blue.svg)](https://t.me/exteraChat)
+[![Channel](https://img.shields.io/badge/Channel-Papercraft-blue.svg)](https://t.me/exteragram)
+[![Chat](https://img.shields.io/badge/Chat-Papercraft-blue.svg)](https://t.me/exteraChat)
 [![Downloads](https://img.shields.io/badge/Download%20at%20-%20Telegram-blue.svg)](https://t.me/exterareleases)
 
 ## Importing API hash and keys
@@ -33,10 +33,10 @@ MAPS_V2_API = abcdef01234567-abcdef012345678910111213
 ```
 
 ## Papercraft Localization
-Since **Papercraft** is a fork of **Telegram for Android** and most localizations follow translations of **Telegram for Android**, check it out [here](https://translations.telegram.org/en/android/). As for specialized strings for **Papercraft**, we use **Crowdin** to translate **Papercraft**. Join the project at [Crowdin](https://crowdin.com/project/exteralocales)!
+Since **Papercraft** is a fork of **Papercraft for Android** and most localizations follow translations of **Papercraft for Android**, check it out [here](https://translations.telegram.org/en/android/). As for specialized strings for **Papercraft**, we use **Crowdin** to translate **Papercraft**. Join the project at [Crowdin](https://crowdin.com/project/exteralocales)!
 
  ## Thanks to:
-- [Telegram](https://github.com/DrKLO/Telegram)
+- [Papercraft](https://github.com/DrKLO/Papercraft)
 - [Catogram](https://github.com/Catogram/Catogram) and [Catogram X](https://github.com/CatogramX/CatogramX)
 - [Nekogram](https://gitlab.com/Nekogram/Nekogram) and [Nekogram X](https://github.com/NekoX-Dev/NekoX)
 - [OwlGram](https://github.com/OwlGramDev/OwlGram)

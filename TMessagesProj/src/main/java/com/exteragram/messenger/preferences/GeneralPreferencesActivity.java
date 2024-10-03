@@ -54,7 +54,7 @@ public class GeneralPreferencesActivity extends BasePreferencesActivity {
             LocaleController.getString("PasswordOff", R.string.PasswordOff)
     }, id = new CharSequence[]{
             LocaleController.getString("Hide", R.string.Hide),
-            "Telegram API",
+            "Papercraft API",
             "Bot API"
     };
 

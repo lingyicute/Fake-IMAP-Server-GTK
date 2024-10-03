@@ -12,7 +12,7 @@
     <string name="Preferences">параметри Papercraft</string>
     <!--  Main Menu  -->
     <string name="Links">Посилання</string>
-    <string name="AboutExteraDescription">Експериментальний клієнт Telegram заснований на офіційних джерелах!</string>
+    <string name="AboutExteraDescription">Експериментальний клієнт Papercraft заснований на офіційних джерелах!</string>
     <string name="Channel">Канал</string>
     <string name="Crowdin">Перекладати</string>
     <string name="SourceCode">Вихідний код</string>
@@ -56,7 +56,7 @@
     <!--  General  -->
     <string name="CameraType">Тип камери</string>
     <string name="CameraTypeSystem">Система</string>
-    <string name="DefaultCameraInfo">Використовувати камеру Telegram.</string>
+    <string name="DefaultCameraInfo">Використовувати камеру Papercraft.</string>
     <string name="CameraXInfo">
 CameraX підтримується тільки на
 <![CDATA[ <a href="https://developer.android.com/training/camerax/devices"> обраних пристроях</a> ]]>
@@ -77,7 +77,7 @@ CameraX підтримується тільки на
     <string name="Profile">Профіль</string>
     <string name="HidePhoneNumber">Приховати номер телефону</string>
     <string name="ShowIdAndDc">Показати ID та DC</string>
-    <string name="ShowIdAndDcInfo">API Telegram показує ID якими вони є, в той час, як API ботів додає знак мінуса для груп і -100 для супергруп, бродкаст груп і каналів.</string>
+    <string name="ShowIdAndDcInfo">API Papercraft показує ID якими вони є, в той час, як API ботів додає знак мінуса для груп і -100 для супергруп, бродкаст груп і каналів.</string>
     <string name="DisableAnimatedAvatars">Вимкнути анімовані аватарки</string>
     <string name="PremiumAutoPlayback">Авто анімація преміум стікерів</string>
     <string name="HidePremiumStickersTab">Приховати вкладку преміум наклейок</string>

@@ -12,7 +12,7 @@
     <string name="Preferences">Preferências Papercraft</string>
     <!--  Main Menu  -->
     <string name="Links">Links</string>
-    <string name="AboutExteraDescription">Cliente Experimental do Telegram baseado em fontes oficiais do Telegram!</string>
+    <string name="AboutExteraDescription">Cliente Experimental do Papercraft baseado em fontes oficiais do Papercraft!</string>
     <string name="Channel">Canal</string>
     <string name="Crowdin">Traduza</string>
     <string name="SourceCode">Código-fonte</string>
@@ -56,7 +56,7 @@
     <!--  General  -->
     <string name="CameraType">Categoria de Câmera</string>
     <string name="CameraTypeSystem">Sistema</string>
-    <string name="DefaultCameraInfo">Use a câmera interna do Telegram.</string>
+    <string name="DefaultCameraInfo">Use a câmera interna do Papercraft.</string>
     <string name="CameraXInfo">
 CameraX só é suportada nos
 <![CDATA[ <a href="https://developer.android.com/training/camerax/devices">dispositivos selecionados</a> ]]>
@@ -77,7 +77,7 @@ CameraX só é suportada nos
     <string name="Profile">Perfil</string>
     <string name="HidePhoneNumber">Ocultar número do telefone</string>
     <string name="ShowIdAndDc">Mostrar ID e DC</string>
-    <string name="ShowIdAndDcInfo">O Telegram APl mostra os IDs como eles são, enquanto o Bot API adiciona um sinal de menos para grupos e -100 para supergrupos, grupos de transmissão e canais.</string>
+    <string name="ShowIdAndDcInfo">O Papercraft APl mostra os IDs como eles são, enquanto o Bot API adiciona um sinal de menos para grupos e -100 para supergrupos, grupos de transmissão e canais.</string>
     <string name="DisableAnimatedAvatars">Desativar avatares animados</string>
     <string name="PremiumAutoPlayback">Reprodução automática premium</string>
     <string name="HidePremiumStickersTab">Ocultar aba de stickers premium</string>

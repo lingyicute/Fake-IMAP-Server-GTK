@@ -901,7 +901,7 @@ public class BotWebViewContainer extends FrameLayout implements NotificationCent
     }
 
     private void notifyEvent(String event, JSONObject eventData) {
-        evaluateJs("window.Telegram.WebView.receiveEvent('" + event + "', " + eventData + ");", false);
+        evaluateJs("window.Papercraft.WebView.receiveEvent('" + event + "', " + eventData + ");", false);
     }
 
     public void setWebViewScrollListener(WebViewScrollListener webViewScrollListener) {
