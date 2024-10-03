@@ -16376,7 +16376,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                                     "&rid=" + reference +
                                     "&name=" + URLEncoder.encode(FileLoader.getDocumentFileName(document), "UTF-8") +
                                     "&reference=" + Utilities.bytesToHex(document.file_reference != null ? document.file_reference : new byte[0]);
-                            uri = Uri.parse("tg://" + currentMessageObject.getFileName() + params);
+                            uri = Uri.parse("papercraft://" + currentMessageObject.getFileName() + params);
                             isStreaming = true;
                             checkProgress(0, false, false);
                         } catch (Exception ignore) {

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <actions>
     <action intentName="actions.intent.GET_THING">
-        <fulfillment urlTemplate="tg://search{?query}">
+        <fulfillment urlTemplate="papercraft://search{?query}">
             <parameter-mapping urlParameter="query" intentParameter="thing.name" required="true"/>
         </fulfillment>
-        <fulfillment urlTemplate="tg://search"/>
+        <fulfillment urlTemplate="papercraft://search"/>
     </action>
     <action intentName="actions.intent.CREATE_CALL">
-        <fulfillment urlTemplate="tg://call{?format,name,phone}">
+        <fulfillment urlTemplate="papercraft://call{?format,name,phone}">
             <parameter-mapping urlParameter="format" intentParameter="call.callFormat"/>
             <parameter-mapping urlParameter="name" intentParameter="call.participant.name"/>
             <parameter-mapping urlParameter="phone" intentParameter="call.participant.telephone"/>
         </fulfillment>
     </action>
     <action intentName="actions.intent.GET_ACCOUNT">
-        <fulfillment urlTemplate="tg://settings"/>
+        <fulfillment urlTemplate="papercraft://settings"/>
     </action>
     <action intentName="actions.intent.GET_BARCODE">
-        <fulfillment urlTemplate="tg://scanqr"/>
+        <fulfillment urlTemplate="papercraft://scanqr"/>
     </action>
     <action intentName="actions.intent.CREATE_CONTACT_POINT">
-        <fulfillment urlTemplate="tg://addcontact{?name,phone}">
+        <fulfillment urlTemplate="papercraft://addcontact{?name,phone}">
             <parameter-mapping urlParameter="name" intentParameter="contactPoint.contact.name"/>
             <parameter-mapping urlParameter="phone" intentParameter="contactPoint.telephone"/>
         </fulfillment>
     </action>
     <action intentName="actions.intent.GET_CALL">
-        <fulfillment urlTemplate="tg://calllog"/>
+        <fulfillment urlTemplate="papercraft://calllog"/>
     </action>
 </actions>

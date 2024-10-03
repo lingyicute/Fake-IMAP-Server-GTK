@@ -2267,9 +2267,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                     }
                                     break;
                                 }
-                                case "tg": {
+                                case "papercraft": {
                                     String url = data.toString();
-                                    if (url.startsWith("tg:premium_offer") || url.startsWith("tg://premium_offer")) {
+                                    if (url.startsWith("papercraft:premium_offer") || url.startsWith("papercraft://premium_offer")) {
                                         String finalUrl = url;
                                         AndroidUtilities.runOnUIThread(() -> {
                                         if (!actionBarLayout.getFragmentStack().isEmpty()) {
@@ -2277,8 +2277,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             Uri uri = Uri.parse(finalUrl);
                                             fragment.presentFragment(new PremiumPreviewFragment(uri.getQueryParameter("ref")));
                                         }});
-                                    } else if (url.startsWith("tg:resolve") || url.startsWith("tg://resolve")) {
-                                        url = url.replace("tg:resolve", "tg://telegram.org").replace("tg://resolve", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:resolve") || url.startsWith("papercraft://resolve")) {
+                                        url = url.replace("papercraft:resolve", "papercraft://telegram.org").replace("papercraft://resolve", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         username = data.getQueryParameter("domain");
                                         if (username == null) {
@@ -2332,16 +2332,16 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                                 commentId = null;
                                             }
                                         }
-                                    } else if (url.startsWith("tg:invoice") || url.startsWith("tg://invoice")) {
-                                        url = url.replace("tg:invoice", "tg://invoice");
+                                    } else if (url.startsWith("papercraft:invoice") || url.startsWith("papercraft://invoice")) {
+                                        url = url.replace("papercraft:invoice", "papercraft://invoice");
                                         data = Uri.parse(url);
                                         inputInvoiceSlug = data.getQueryParameter("slug");
-                                    } else if (url.startsWith("tg:contact") || url.startsWith("tg://contact")) {
-                                        url = url.replace("tg:contact", "tg://contact");
+                                    } else if (url.startsWith("papercraft:contact") || url.startsWith("papercraft://contact")) {
+                                        url = url.replace("papercraft:contact", "papercraft://contact");
                                         data = Uri.parse(url);
                                         contactToken = data.getQueryParameter("token");
-                                    } else if (url.startsWith("tg:privatepost") || url.startsWith("tg://privatepost")) {
-                                        url = url.replace("tg:privatepost", "tg://telegram.org").replace("tg://privatepost", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:privatepost") || url.startsWith("papercraft://privatepost")) {
+                                        url = url.replace("papercraft:privatepost", "papercraft://telegram.org").replace("papercraft://privatepost", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         messageId = Utilities.parseInt(data.getQueryParameter("post"));
                                         channelId = Utilities.parseLong(data.getQueryParameter("channel"));
@@ -2363,8 +2363,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         if (commentId == 0) {
                                             commentId = null;
                                         }
-                                    } else if (url.startsWith("tg:bg") || url.startsWith("tg://bg")) {
-                                        url = url.replace("tg:bg", "tg://telegram.org").replace("tg://bg", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:bg") || url.startsWith("papercraft://bg")) {
+                                        url = url.replace("papercraft:bg", "papercraft://telegram.org").replace("papercraft://bg", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         wallPaper = new TLRPC.TL_wallPaper();
                                         wallPaper.settings = new TLRPC.TL_wallPaperSettings();
@@ -2447,20 +2447,20 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
 
                                             }
                                         }
-                                    } else if (url.startsWith("tg:join") || url.startsWith("tg://join")) {
-                                        url = url.replace("tg:join", "tg://telegram.org").replace("tg://join", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:join") || url.startsWith("papercraft://join")) {
+                                        url = url.replace("papercraft:join", "papercraft://telegram.org").replace("papercraft://join", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         group = data.getQueryParameter("invite");
-                                    } else if (url.startsWith("tg:addstickers") || url.startsWith("tg://addstickers")) {
-                                        url = url.replace("tg:addstickers", "tg://telegram.org").replace("tg://addstickers", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:addstickers") || url.startsWith("papercraft://addstickers")) {
+                                        url = url.replace("papercraft:addstickers", "papercraft://telegram.org").replace("papercraft://addstickers", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         sticker = data.getQueryParameter("set");
-                                    } else if (url.startsWith("tg:addemoji") || url.startsWith("tg://addemoji")) {
-                                        url = url.replace("tg:addemoji", "tg://telegram.org").replace("tg://addemoji", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:addemoji") || url.startsWith("papercraft://addemoji")) {
+                                        url = url.replace("papercraft:addemoji", "papercraft://telegram.org").replace("papercraft://addemoji", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         emoji = data.getQueryParameter("set");
-                                    } else if (url.startsWith("tg:msg") || url.startsWith("tg://msg") || url.startsWith("tg://share") || url.startsWith("tg:share")) {
-                                        url = url.replace("tg:msg", "tg://telegram.org").replace("tg://msg", "tg://telegram.org").replace("tg://share", "tg://telegram.org").replace("tg:share", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:msg") || url.startsWith("papercraft://msg") || url.startsWith("papercraft://share") || url.startsWith("papercraft:share")) {
+                                        url = url.replace("papercraft:msg", "papercraft://telegram.org").replace("papercraft://msg", "papercraft://telegram.org").replace("papercraft://share", "papercraft://telegram.org").replace("papercraft:share", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         message = data.getQueryParameter("url");
                                         if (message == null) {
@@ -2479,22 +2479,22 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         while (message.endsWith("\n")) {
                                             message = message.substring(0, message.length() - 1);
                                         }
-                                    } else if (url.startsWith("tg:confirmphone") || url.startsWith("tg://confirmphone")) {
-                                        url = url.replace("tg:confirmphone", "tg://telegram.org").replace("tg://confirmphone", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:confirmphone") || url.startsWith("papercraft://confirmphone")) {
+                                        url = url.replace("papercraft:confirmphone", "papercraft://telegram.org").replace("papercraft://confirmphone", "papercraft://telegram.org");
                                         data = Uri.parse(url);
 
                                         phone = data.getQueryParameter("phone");
                                         phoneHash = data.getQueryParameter("hash");
-                                    } else if (url.startsWith("tg:login") || url.startsWith("tg://login")) {
-                                        url = url.replace("tg:login", "tg://telegram.org").replace("tg://login", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:login") || url.startsWith("papercraft://login")) {
+                                        url = url.replace("papercraft:login", "papercraft://telegram.org").replace("papercraft://login", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         login = data.getQueryParameter("token");
                                         int intCode = Utilities.parseInt(data.getQueryParameter("code"));
                                         if (intCode != 0) {
                                             code = "" + intCode;
                                         }
-                                    } else if (url.startsWith("tg:user") || url.startsWith("tg://user")) {
-                                        url = url.replace("tg:user", "tg://telegram.org").replace("tg://user", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:user") || url.startsWith("papercraft://user")) {
+                                        url = url.replace("papercraft:user", "papercraft://telegram.org").replace("papercraft://user", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         String userID = data.getQueryParameter("id");
                                         if (userID != null) {
@@ -2503,8 +2503,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             } catch (NumberFormatException ignore) {
                                             }
                                         }
-                                    } else if (url.startsWith("tg:openmessage") || url.startsWith("tg://openmessage")) {
-                                        url = url.replace("tg:openmessage", "tg://telegram.org").replace("tg://openmessage", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:openmessage") || url.startsWith("papercraft://openmessage")) {
+                                        url = url.replace("papercraft:openmessage", "papercraft://telegram.org").replace("papercraft://openmessage", "papercraft://telegram.org");
                                         data = Uri.parse(url);
 
                                         String userID = data.getQueryParameter("user_id");
@@ -2527,8 +2527,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             } catch (NumberFormatException ignore) {
                                             }
                                         }
-                                    } else if (url.startsWith("tg:passport") || url.startsWith("tg://passport") || url.startsWith("tg:secureid")) {
-                                        url = url.replace("tg:passport", "tg://telegram.org").replace("tg://passport", "tg://telegram.org").replace("tg:secureid", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:passport") || url.startsWith("papercraft://passport") || url.startsWith("papercraft:secureid")) {
+                                        url = url.replace("papercraft:passport", "papercraft://telegram.org").replace("papercraft://passport", "papercraft://telegram.org").replace("papercraft:secureid", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         auth = new HashMap<>();
                                         String scope = data.getQueryParameter("scope");
@@ -2541,15 +2541,15 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         auth.put("scope", scope);
                                         auth.put("public_key", data.getQueryParameter("public_key"));
                                         auth.put("callback_url", data.getQueryParameter("callback_url"));
-                                    } else if (url.startsWith("tg:setlanguage") || url.startsWith("tg://setlanguage")) {
-                                        url = url.replace("tg:setlanguage", "tg://telegram.org").replace("tg://setlanguage", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:setlanguage") || url.startsWith("papercraft://setlanguage")) {
+                                        url = url.replace("papercraft:setlanguage", "papercraft://telegram.org").replace("papercraft://setlanguage", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         lang = data.getQueryParameter("lang");
-                                    } else if (url.startsWith("tg:addtheme") || url.startsWith("tg://addtheme")) {
-                                        url = url.replace("tg:addtheme", "tg://telegram.org").replace("tg://addtheme", "tg://telegram.org");
+                                    } else if (url.startsWith("papercraft:addtheme") || url.startsWith("papercraft://addtheme")) {
+                                        url = url.replace("papercraft:addtheme", "papercraft://telegram.org").replace("papercraft://addtheme", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         theme = data.getQueryParameter("slug");
-                                    } else if (url.startsWith("tg:settings") || url.startsWith("tg://settings")) {
+                                    } else if (url.startsWith("papercraft:settings") || url.startsWith("papercraft://settings")) {
                                         if (url.contains("themes")) {
                                             open_settings = 2;
                                         } else if (url.contains("devices")) {
@@ -2567,8 +2567,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         } else {
                                             open_settings = 1;
                                         }
-                                    } else if ((url.startsWith("tg:search") || url.startsWith("tg://search"))) {
-                                        url = url.replace("tg:search", "tg://telegram.org").replace("tg://search", "tg://telegram.org");
+                                    } else if ((url.startsWith("papercraft:search") || url.startsWith("papercraft://search"))) {
+                                        url = url.replace("papercraft:search", "papercraft://telegram.org").replace("papercraft://search", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         searchQuery = data.getQueryParameter("query");
                                         if (searchQuery != null) {
@@ -2576,9 +2576,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         } else {
                                             searchQuery = "";
                                         }
-                                    } else if ((url.startsWith("tg:calllog") || url.startsWith("tg://calllog"))) {
+                                    } else if ((url.startsWith("papercraft:calllog") || url.startsWith("papercraft://calllog"))) {
                                         showCallLog = true;
-                                    } else if ((url.startsWith("tg:call") || url.startsWith("tg://call"))) {
+                                    } else if ((url.startsWith("papercraft:call") || url.startsWith("papercraft://call"))) {
                                         if (UserConfig.getInstance(currentAccount).isClientActivated()) {
                                             final String extraForceCall = "extra_force_call";
                                             if (ContactsController.getInstance(currentAccount).contactsLoaded || intent.hasExtra(extraForceCall)) {
@@ -2615,20 +2615,20 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                                 ContactsLoadingObserver.observe((contactsLoaded) -> handleIntent(copyIntent, true, false, false), 1000);
                                             }
                                         }
-                                    } else if ((url.startsWith("tg:scanqr") || url.startsWith("tg://scanqr"))) {
+                                    } else if ((url.startsWith("papercraft:scanqr") || url.startsWith("papercraft://scanqr"))) {
                                         scanQr = true;
-                                    } else if ((url.startsWith("tg:addcontact") || url.startsWith("tg://addcontact"))) {
-                                        url = url.replace("tg:addcontact", "tg://telegram.org").replace("tg://addcontact", "tg://telegram.org");
+                                    } else if ((url.startsWith("papercraft:addcontact") || url.startsWith("papercraft://addcontact"))) {
+                                        url = url.replace("papercraft:addcontact", "papercraft://telegram.org").replace("papercraft://addcontact", "papercraft://telegram.org");
                                         data = Uri.parse(url);
                                         newContactName = data.getQueryParameter("name");
                                         newContactPhone = data.getQueryParameter("phone");
                                         newContact = true;
-                                    } else if ((url.startsWith("tg:extera") || url.startsWith("tg://extera"))) {
+                                    } else if ((url.startsWith("papercraft:extera") || url.startsWith("papercraft://extera"))) {
                                         open_settings = 7;
-                                    } else if ((url.startsWith("tg:update") || url.startsWith("tg://update"))) {
+                                    } else if ((url.startsWith("papercraft:update") || url.startsWith("papercraft://update"))) {
                                         checkUpdates = true;
                                     } else {
-                                        unsupportedUrl = url.replace("tg://", "").replace("tg:", "");
+                                        unsupportedUrl = url.replace("papercraft://", "").replace("papercraft:", "");
                                         int index;
                                         if ((index = unsupportedUrl.indexOf('?')) >= 0) {
                                             unsupportedUrl = unsupportedUrl.substring(0, index);
@@ -2639,7 +2639,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             }
                         }
                         if (intent.hasExtra(EXTRA_ACTION_TOKEN)) {
-                            final boolean success = UserConfig.getInstance(currentAccount).isClientActivated() && "tg".equals(scheme) && unsupportedUrl == null;
+                            final boolean success = UserConfig.getInstance(currentAccount).isClientActivated() && "papercraft".equals(scheme) && unsupportedUrl == null;
                             final Action assistAction = new AssistActionBuilder()
                                     .setActionToken(intent.getStringExtra(EXTRA_ACTION_TOKEN))
                                     .setActionStatus(success ? Action.Builder.STATUS_TYPE_COMPLETED : Action.Builder.STATUS_TYPE_FAILED)
@@ -3003,7 +3003,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     AlertDialog progressDialog = new AlertDialog(LaunchActivity.this, AlertDialog.ALERT_TYPE_SPINNER);
                     progressDialog.setCanCancel(false);
                     progressDialog.show();
-                    byte[] token = Base64.decode(code.substring("tg://login?token=".length()), Base64.URL_SAFE);
+                    byte[] token = Base64.decode(code.substring("papercraft://login?token=".length()), Base64.URL_SAFE);
                     TLRPC.TL_auth_acceptLoginToken req = new TLRPC.TL_auth_acceptLoginToken();
                     req.token = token;
                     ConnectionsManager.getInstance(currentAccount).sendRequest(req, (response, error) -> AndroidUtilities.runOnUIThread(() -> {
@@ -7329,7 +7329,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             public boolean processQr(String link, Runnable onLoadEnd) {
                 AndroidUtilities.runOnUIThread(() -> {
                     try {
-                        String code = link.substring("tg://login?token=".length());
+                        String code = link.substring("papercraft://login?token=".length());
                         code = code.replaceAll("/", "_");
                         code = code.replaceAll("\\+", "-");
                         byte[] token = Base64.decode(code, Base64.URL_SAFE);

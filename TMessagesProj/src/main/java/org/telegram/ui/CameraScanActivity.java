@@ -1266,7 +1266,7 @@ public class CameraScanActivity extends BaseFragment {
                 Uri uri = Uri.parse(text);
                 String path = uri.getPath().replace("/", "");
             } else {
-                if (!text.startsWith("tg://login?token=") && currentType != TYPE_QR_WEB_BOT) {
+                if (!text.startsWith("papercraft://login?token=") && currentType != TYPE_QR_WEB_BOT) {
                     onNoQrFound();
                     return null;
                 }

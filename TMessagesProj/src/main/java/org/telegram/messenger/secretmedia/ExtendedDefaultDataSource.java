@@ -223,7 +223,7 @@ public final class ExtendedDefaultDataSource implements DataSource {
                     dataSource = getFileDataSource();
                 }
             }
-        } else if ("tg".equals(scheme)) {
+        } else if ("papercraft".equals(scheme)) {
             dataSource = getStreamDataSource();
         } else if (SCHEME_ASSET.equals(scheme)) {
             dataSource = getAssetDataSource();

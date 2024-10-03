@@ -30184,8 +30184,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             progressDialogLinkSpan = span;
             cell.invalidate();
         } : null;
-        if (urlFinal.startsWith("tg:privatepost") || urlFinal.startsWith("tg://privatepost")) {
-            String urlTmp = urlFinal.replace("tg:privatepost", "tg://telegram.org").replace("tg://privatepost", "tg://telegram.org");
+        if (urlFinal.startsWith("papercraft:privatepost") || urlFinal.startsWith("papercraft://privatepost")) {
+            String urlTmp = urlFinal.replace("papercraft:privatepost", "papercraft://telegram.org").replace("papercraft://privatepost", "papercraft://telegram.org");
             Uri data = Uri.parse(urlTmp);
             int messageId = Utilities.parseInt(data.getQueryParameter("post"));
             long channelId = Utilities.parseLong(data.getQueryParameter("channel"));
@@ -30242,8 +30242,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                     return true;
-                } else if (urlFinal.startsWith("tg:resolve") || urlFinal.startsWith("tg://resolve")) {
-                    String urlTmp = urlFinal.replace("tg:resolve", "tg://telegram.org").replace("tg://resolve", "tg://telegram.org");
+                } else if (urlFinal.startsWith("papercraft:resolve") || urlFinal.startsWith("papercraft://resolve")) {
+                    String urlTmp = urlFinal.replace("papercraft:resolve", "papercraft://telegram.org").replace("papercraft://resolve", "papercraft://telegram.org");
                     Uri data = Uri.parse(urlTmp);
                     String usernameE = data.getQueryParameter("domain").toLowerCase();
                     int messageId = Utilities.parseInt(data.getQueryParameter("post"));
