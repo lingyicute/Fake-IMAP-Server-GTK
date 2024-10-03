@@ -1,4 +1,4 @@
-name: ci compile
+name: Release
 
 on:
   push:
@@ -60,3 +60,18 @@ jobs:
           bash build.sh
       - name: Find
         run: find "/home" -type f -name "*.apk" -print
+      - name: Upload Aritfact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release Unsigned APK
+          path: ${{ github.workspace }}/TMessagesProj/build/outputs/apk
+      - name: Upload Aritfact 2
+        uses: actions/upload-artifact@v4
+        with:
+          name: release Unsigned APK 2 
+          path: ${{ github.workspace }}/TMessagesProj/app/build/outputs/apk
+      - name: Upload Aritfact 3
+        uses: actions/upload-artifact@v4
+        with:
+          name: release Unsigned APK 3
+          path: ${{ github.workspace }}/build/outputs/apk
