@@ -427,13 +427,13 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
 
     private void setButtonText() {
         if (forceAbout) {
-            premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.AboutTelegramPremium));
+            premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.AboutPapercraftPremium));
         } else if (onlySelectedType) {
             if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_REACTIONS) {
                 premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.UnlockPremiumReactions));
                 premiumButtonView.setIcon(R.raw.unlock_icon);
             } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_ADS || startType == PremiumPreviewFragment.PREMIUM_FEATURE_DOWNLOAD_SPEED || startType == PremiumPreviewFragment.PREMIUM_FEATURE_ADVANCED_CHAT_MANAGEMENT ||  startType == PremiumPreviewFragment.PREMIUM_FEATURE_VOICE_TO_TEXT) {
-                premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.AboutTelegramPremium));
+                premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.AboutPapercraftPremium));
             } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_APPLICATION_ICONS) {
                 premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.UnlockPremiumIcons));
                 premiumButtonView.setIcon(R.raw.unlock_icon);

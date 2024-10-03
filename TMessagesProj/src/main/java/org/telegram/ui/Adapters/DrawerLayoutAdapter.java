@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -330,7 +330,7 @@ public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter {
         if (ExteraConfig.inviteFriends || ExteraConfig.telegramFeatures || ExteraConfig.scanQr) items.add(null);
         if (ExteraConfig.scanQr) items.add(new Item(16, LocaleController.getString("AuthAnotherClient", R.string.AuthAnotherClient), scanQrIcon));
         if (ExteraConfig.inviteFriends) items.add(new Item(7, LocaleController.getString("InviteFriends", R.string.InviteFriends), inviteIcon));
-        if (ExteraConfig.telegramFeatures) items.add(new Item(13, LocaleController.getString("TelegramFeatures", R.string.TelegramFeatures), helpIcon));
+        if (ExteraConfig.telegramFeatures) items.add(new Item(13, LocaleController.getString("PapercraftFeatures", R.string.PapercraftFeatures), helpIcon));
     }
 
     public int getId(int position) {

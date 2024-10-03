@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -978,7 +978,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                             imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon), PorterDuff.Mode.MULTIPLY));
                         }
                     } else if (position == passportRow) {
-                        textCell.setText(LocaleController.getString("TelegramPassport", R.string.TelegramPassport), true);
+                        textCell.setText(LocaleController.getString("PapercraftPassport", R.string.PapercraftPassport), true);
                     } else if (position == deleteAccountRow) {
                         if (getContactsController().getLoadingDeleteInfo()) {
                             showLoading = true;
@@ -999,7 +999,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     } else if (position == secretMapRow) {
                         switch (SharedConfig.mapPreviewType) {
                             case 0:
-                                value = LocaleController.getString("MapPreviewProviderTelegram", R.string.MapPreviewProviderTelegram);
+                                value = LocaleController.getString("MapPreviewProviderPapercraft", R.string.MapPreviewProviderPapercraft);
                                 break;
                             case 1:
                                 value = LocaleController.getString("MapPreviewProviderGoogle", R.string.MapPreviewProviderGoogle);

@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 1.3.x.
+ * This is the source code of Papercraft for Android v. 1.3.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -1310,7 +1310,7 @@ public class ContactsController extends BaseController {
                             }
                             getMessagesStorage().putCachedPhoneBook(contactsMap, false, false);
                             AndroidUtilities.runOnUIThread(() -> {
-                                mergePhonebookAndTelegramContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal);
+                                mergePhonebookAndPapercraftContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal);
                                 updateUnregisteredContacts();
                                 getNotificationCenter().postNotificationName(NotificationCenter.contactsDidLoad);
                                 getNotificationCenter().postNotificationName(NotificationCenter.contactsImported);
@@ -1398,7 +1398,7 @@ public class ContactsController extends BaseController {
                                         delayedContactsUpdate.clear();
                                     }
                                     AndroidUtilities.runOnUIThread(() -> {
-                                        mergePhonebookAndTelegramContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal);
+                                        mergePhonebookAndPapercraftContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal);
                                         getNotificationCenter().postNotificationName(NotificationCenter.contactsImported);
                                     });
                                     if (hasErrors[0]) {
@@ -1422,7 +1422,7 @@ public class ContactsController extends BaseController {
                             delayedContactsUpdate.clear();
                         }
                         AndroidUtilities.runOnUIThread(() -> {
-                            mergePhonebookAndTelegramContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal);
+                            mergePhonebookAndPapercraftContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal);
                             updateUnregisteredContacts();
                             getNotificationCenter().postNotificationName(NotificationCenter.contactsDidLoad);
                             getNotificationCenter().postNotificationName(NotificationCenter.contactsImported);
@@ -1442,7 +1442,7 @@ public class ContactsController extends BaseController {
                         applyContactsUpdates(delayedContactsUpdate, null, null, null);
                         delayedContactsUpdate.clear();
                     }
-                    AndroidUtilities.runOnUIThread(() -> mergePhonebookAndTelegramContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal));
+                    AndroidUtilities.runOnUIThread(() -> mergePhonebookAndPapercraftContacts(phoneBookSectionsDictFinal, phoneBookSectionsArrayFinal, phoneBookByShortPhonesFinal));
                 });
                 if (!contactsMap.isEmpty()) {
                     getMessagesStorage().putCachedPhoneBook(contactsMap, false, false);
@@ -1760,7 +1760,7 @@ public class ContactsController extends BaseController {
         }
     }
 
-    private void mergePhonebookAndTelegramContacts(final HashMap<String, ArrayList<Object>> phoneBookSectionsDictFinal, final ArrayList<String> phoneBookSectionsArrayFinal, final HashMap<String, Contact> phoneBookByShortPhonesFinal) {
+    private void mergePhonebookAndPapercraftContacts(final HashMap<String, ArrayList<Object>> phoneBookSectionsDictFinal, final ArrayList<String> phoneBookSectionsArrayFinal, final HashMap<String, Contact> phoneBookByShortPhonesFinal) {
         final ArrayList<TLRPC.TL_contact> contactsCopy = new ArrayList<>(contacts);
         Utilities.globalQueue.postRunnable(() -> {
             for (int a = 0, size = contactsCopy.size(); a < size; a++) {
@@ -2702,7 +2702,7 @@ public class ContactsController extends BaseController {
             // 1. Check if we already have the invisible group/label and create it if we don't
             Cursor cursor = resolver.query(groupsURI, new String[]{ContactsContract.Groups._ID},
                     ContactsContract.Groups.TITLE + "=? AND " + ContactsContract.Groups.ACCOUNT_TYPE + "=? AND " + ContactsContract.Groups.ACCOUNT_NAME + "=?",
-                    new String[]{"TelegramConnectionService", systemAccount.type, systemAccount.name}, null);
+                    new String[]{"PapercraftConnectionService", systemAccount.type, systemAccount.name}, null);
             int groupID;
             if (cursor != null && cursor.moveToFirst()) {
                 groupID = cursor.getInt(0);
@@ -2716,7 +2716,7 @@ public class ContactsController extends BaseController {
                 values.put(ContactsContract.Groups.ACCOUNT_NAME, systemAccount.name);
                 values.put(ContactsContract.Groups.GROUP_VISIBLE, 0);
                 values.put(ContactsContract.Groups.GROUP_IS_READ_ONLY, 1);
-                values.put(ContactsContract.Groups.TITLE, "TelegramConnectionService");
+                values.put(ContactsContract.Groups.TITLE, "PapercraftConnectionService");
                 Uri res = resolver.insert(groupsURI, values);
                 groupID = Integer.parseInt(res.getLastPathSegment());
             }
@@ -2788,7 +2788,7 @@ public class ContactsController extends BaseController {
 
             Cursor cursor = resolver.query(ContactsContract.Groups.CONTENT_URI, new String[]{ContactsContract.Groups._ID},
                     ContactsContract.Groups.TITLE + "=? AND " + ContactsContract.Groups.ACCOUNT_TYPE + "=? AND " + ContactsContract.Groups.ACCOUNT_NAME + "=?",
-                    new String[]{"TelegramConnectionService", systemAccount.type, systemAccount.name}, null);
+                    new String[]{"PapercraftConnectionService", systemAccount.type, systemAccount.name}, null);
             int groupID;
             if (cursor != null && cursor.moveToFirst()) {
                 groupID = cursor.getInt(0);

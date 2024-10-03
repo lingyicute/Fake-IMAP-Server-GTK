@@ -455,7 +455,7 @@ public class AppearancePreferencesActivity extends BasePreferencesActivity {
                     } else if (position == inviteFriendsRow) {
                         textCell.setTextAndCheckAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), ExteraConfig.inviteFriends, icons[6], true);
                     } else if (position == telegramFeaturesRow) {
-                        textCell.setTextAndCheckAndIcon(LocaleController.getString("TelegramFeatures", R.string.TelegramFeatures), ExteraConfig.telegramFeatures, icons[7], false);
+                        textCell.setTextAndCheckAndIcon(LocaleController.getString("PapercraftFeatures", R.string.PapercraftFeatures), ExteraConfig.telegramFeatures, icons[7], false);
                     }
                     break;
                 case 7:

@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -4444,7 +4444,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 	private PhoneAccountHandle addAccountToTelecomManager() {
 		TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
 		TLRPC.User self = UserConfig.getInstance(currentAccount).getCurrentUser();
-		PhoneAccountHandle handle = new PhoneAccountHandle(new ComponentName(this, TelegramConnectionService.class), "" + self.id);
+		PhoneAccountHandle handle = new PhoneAccountHandle(new ComponentName(this, PapercraftConnectionService.class), "" + self.id);
 		PhoneAccount account = new PhoneAccount.Builder(handle, ContactsController.formatName(self.first_name, self.last_name))
 				.setCapabilities(PhoneAccount.CAPABILITY_SELF_MANAGED)
 				.setIcon(Icon.createWithResource(this, R.drawable.ic_launcher_dr))

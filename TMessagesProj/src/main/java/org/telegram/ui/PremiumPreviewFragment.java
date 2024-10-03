@@ -1401,8 +1401,8 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
         private boolean setTierListViewVisibility;
         private boolean tierListViewVisible;
         public void updateText() {
-            titleView.setText(LocaleController.getString(forcePremium ? R.string.TelegramPremiumSubscribedTitle : R.string.TelegramPremium));
-            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(getUserConfig().isPremium() || forcePremium ? R.string.TelegramPremiumSubscribedSubtitle : R.string.TelegramPremiumSubtitle)));
+            titleView.setText(LocaleController.getString(forcePremium ? R.string.PapercraftPremiumSubscribedTitle : R.string.PapercraftPremium));
+            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(getUserConfig().isPremium() || forcePremium ? R.string.PapercraftPremiumSubscribedSubtitle : R.string.PapercraftPremiumSubtitle)));
             boolean tierNotVisible = forcePremium || BuildVars.IS_BILLING_UNAVAILABLE || IS_PREMIUM_TIERS_UNAVAILABLE || subscriptionTiers.size() <= 1;
             if (!setTierListViewVisibility || !tierNotVisible) {
                 tierListView.setVisibility(tierNotVisible ? GONE : VISIBLE);

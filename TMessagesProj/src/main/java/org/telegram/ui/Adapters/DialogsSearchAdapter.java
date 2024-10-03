@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -1611,7 +1611,7 @@ public class DialogsSearchAdapter extends RecyclerListView.SelectionAdapter {
                     }
                     if (!searchContacts.isEmpty()) {
                         if (position == 0) {
-                            title = LocaleController.getString("InviteToTelegramShort", R.string.InviteToTelegramShort);
+                            title = LocaleController.getString("InviteToPapercraftShort", R.string.InviteToPapercraftShort);
                         }
                         position -= 1 + searchContacts.size();
                     }

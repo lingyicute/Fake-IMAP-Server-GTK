@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -22257,7 +22257,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 span.full = false;
                 emoji.setSpan(span, 0, emoji.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
-            SpannableString link = new SpannableString(LocaleController.getString("TelegramPremium", R.string.TelegramPremium));
+            SpannableString link = new SpannableString(LocaleController.getString("PapercraftPremium", R.string.PapercraftPremium));
             link.setSpan(new ClickableSpan() {
                 @Override
                 public void onClick(@NonNull View view) {

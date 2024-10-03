@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -103,7 +103,7 @@ public class InviteUserCell extends FrameLayout {
         statusTextView.setTag(Theme.key_windowBackgroundWhiteGrayText);
         statusTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         if (currentContact.imported > 0) {
-            statusTextView.setText(LocaleController.formatPluralString("TelegramContacts", currentContact.imported));
+            statusTextView.setText(LocaleController.formatPluralString("PapercraftContacts", currentContact.imported));
         } else {
             statusTextView.setText(currentContact.phones.get(0));
         }

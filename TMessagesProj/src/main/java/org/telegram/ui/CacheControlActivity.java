@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -1599,7 +1599,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
                     subtitle[i].setText(LocaleController.getString("StorageUsageCalculating", R.string.StorageUsageCalculating));
                 } else if (i == 1) {
                     subtitle[i].setAlpha(0);
-                    subtitle[i].setText(LocaleController.getString("StorageUsageTelegram", R.string.StorageUsageTelegram));
+                    subtitle[i].setText(LocaleController.getString("StorageUsagePapercraft", R.string.StorageUsagePapercraft));
                     subtitle[i].setVisibility(View.INVISIBLE);
                 } else if (i == 2) {
                     subtitle[i].setText(LocaleController.getString("StorageCleared2", R.string.StorageCleared2));
@@ -1642,9 +1642,9 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
             );
             if (hasCache) {
                 if (percent < 0.01f) {
-                    subtitle[1].setText(LocaleController.formatString("StorageUsageTelegramLess", R.string.StorageUsageTelegramLess, formatPercent(percent)));
+                    subtitle[1].setText(LocaleController.formatString("StorageUsagePapercraftLess", R.string.StorageUsagePapercraftLess, formatPercent(percent)));
                 } else {
-                    subtitle[1].setText(LocaleController.formatString("StorageUsageTelegram", R.string.StorageUsageTelegram, formatPercent(percent)));
+                    subtitle[1].setText(LocaleController.formatString("StorageUsagePapercraft", R.string.StorageUsagePapercraft, formatPercent(percent)));
                 }
                 switchSubtitle(1);
             } else {

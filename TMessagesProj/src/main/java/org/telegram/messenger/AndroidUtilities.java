@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for Android v. 5.x.x.
+ * This is the source code of Papercraft for Android v. 5.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -3722,7 +3722,7 @@ public class AndroidUtilities {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         if (!TextUtils.isEmpty(secret)) {
             TextView titleTextView = new TextView(activity);
-            titleTextView.setText(LocaleController.getString("UseProxyTelegramInfo2", R.string.UseProxyTelegramInfo2));
+            titleTextView.setText(LocaleController.getString("UseProxyPapercraftInfo2", R.string.UseProxyPapercraftInfo2));
             titleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextGray4));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             titleTextView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);

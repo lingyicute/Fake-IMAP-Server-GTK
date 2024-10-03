@@ -54,7 +54,7 @@ public class GeneralPreferencesActivity extends BasePreferencesActivity {
             LocaleController.getString("PasswordOff", R.string.PasswordOff)
     }, id = new CharSequence[]{
             LocaleController.getString("Hide", R.string.Hide),
-            "Telegram API",
+            "Papercraft API",
             "Bot API"
     };
 
@@ -287,7 +287,7 @@ public class GeneralPreferencesActivity extends BasePreferencesActivity {
                     } else if (position == profileHeaderRow) {
                         headerCell.setText(LocaleController.getString("Profile", R.string.Profile));
                     } else if (position == premiumHeaderRow) {
-                        headerCell.setText(LocaleController.getString("TelegramPremium", R.string.TelegramPremium));
+                        headerCell.setText(LocaleController.getString("PapercraftPremium", R.string.PapercraftPremium));
                     } else if (position == speedBoostersHeaderRow) {
                         headerCell.setText(LocaleController.getString("DownloadSpeedBoost", R.string.DownloadSpeedBoost));
                     } else if (position == cameraTypeHeaderRow) {
