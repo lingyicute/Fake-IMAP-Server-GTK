@@ -415,7 +415,7 @@ public class EmbedBottomSheet extends BottomSheet {
                 }
                 videoView.loadVideo(null, null, null, null, false);
                 HashMap<String, String> args = new HashMap<>();
-                args.put("Referer", "messenger.papercraft-official.github.io");
+                args.put("Referer", "papercraft-official.github.io");
                 try {
                     webView.loadUrl(embedUrl, args);
                 } catch (Exception e) {

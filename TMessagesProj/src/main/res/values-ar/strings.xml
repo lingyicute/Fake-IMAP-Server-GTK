@@ -1587,7 +1587,7 @@
     <string name="NoMasks">لا توجد أقنعة بعد</string>
     <string name="EmojiSuggestions">اقتراحات الرموز التعبيرية</string>
     <string name="EmojiSuggestionsInfo">يسمح لك **تيليجرام** بالعثور على الرموز التعبيرية عبر آلاف الكلمات، لكن من المؤكد أنه لايزال هناك نقصٌ ما، في حال كنت ترغب في اقتراح كلمة مفتاحية جديدة لرمز تعبيري ما، يمكنك مساعدتنا عبر زيارة:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">الأقنعة</string>
     <string name="MasksInfo">يمكنك إضافة أقنعة للصور التي ترسلها، لعمل ذلك قم بفتح محرر الصور قبل إرسال الصورة.</string>
     <string name="FeaturedStickers">الملصقات الشائعة</string>

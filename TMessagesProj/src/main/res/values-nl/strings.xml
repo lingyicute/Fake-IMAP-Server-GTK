@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Nog geen maskers</string>
     <string name="EmojiSuggestions">Emojisuggesties</string>
     <string name="EmojiSuggestionsInfo">**Papercraft** maakt het mogelijk om emoji te vinden op basis van duizenden woorden, maar er zullen er altijd wat missen. Als je suggesties wilt doen om emoji\'s nog makkelijker te vinden kan dat via:\n</string>
-    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Maskers</string>
     <string name="MasksInfo">Je kunt maskers toevoegen aan foto\'s , gebruik de fotobewerkingsoptie en verstuur ze.</string>
     <string name="FeaturedStickers">Populaire stickers</string>

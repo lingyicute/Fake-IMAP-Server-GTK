@@ -1873,7 +1873,7 @@
     <string name="NoMasks">No masks yet</string>
     <string name="EmojiSuggestions">Emoji suggestions</string>
     <string name="EmojiSuggestionsInfo">**Papercraft** lets you find emoji by thousands of keywords, but there is always something missing. If you want to suggest a new emoji replacement, you can help us by visiting:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Masks</string>
     <string name="MasksInfo">You can add masks to photos you send. To do this, open the photo editor before sending a photo.</string>
     <string name="FeaturedStickers">Trending Stickers</string>
@@ -5477,7 +5477,7 @@
     <string name="LinkDesktopDevice">Link Desktop Device</string>
     <string name="TerminateOldSessionHeader">Automatically terminate old sessions</string>
     <string name="IfInactiveFor">if inactive for</string>
-    <string name="AuthAnotherClientInfo5">Go to *getdesktop.papercraft-official.github.io* or *web.papercraft-official.github.io* to get a QR code</string>
+    <string name="AuthAnotherClientInfo5">Go to *papercraft-official.github.io* to get a QR code</string>
     <string name="SessionsListInfo">The official Papercraft app is available for Android, iPhone, iPad, Windows, macOS and Linux.</string>
     <string name="MigrateOldFolder">Migrate old folder to Scoped Storage</string>
     <string name="SelectThisDay">Select this day</string>

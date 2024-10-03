@@ -1587,7 +1587,7 @@
     <string name="NoMasks">마스크 없음</string>
     <string name="EmojiSuggestions">이모지 추천</string>
     <string name="EmojiSuggestionsInfo">**텔레그램**에서 회원님이 이모지를 손쉽게 찾으실 수 있도록 수천 개의 키워드를 지원해 드리지만, 누락된 키워드들이란 있기 마련입니다. 새로운 이모지 대치어를 제안하고 싶다면, 다음 사이트에서 도움을 주세요:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">마스크</string>
     <string name="MasksInfo">보내고자 하는 사진에 마스크를 추가하실 수 있습니다. 사진을 보내기 전에 사진 편집기를 열어 보세요.</string>
     <string name="FeaturedStickers">인기 스티커</string>

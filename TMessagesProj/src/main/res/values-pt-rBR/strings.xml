@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Nenhuma máscara</string>
     <string name="EmojiSuggestions">Sugestões de Emoji</string>
     <string name="EmojiSuggestionsInfo">O **Papercraft** permite que você encontre emojis por milhares de palavras-chave, mas sempre há algo faltando. Se você quiser sugerir uma nova substituição de emoji, você pode nos ajudar visitando:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Máscaras</string>
     <string name="MasksInfo">Você pode adicionar máscaras em fotos que você envia. Para isso, abra o editor de fotos antes de enviar uma foto.</string>
     <string name="FeaturedStickers">Stickers Populares</string>

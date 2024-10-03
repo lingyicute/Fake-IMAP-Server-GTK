@@ -33,7 +33,7 @@ MAPS_V2_API = abcdef01234567-abcdef012345678910111213
 ```
 
 ## Papercraft Localization
-Since **Papercraft** is a fork of **Papercraft for Android** and most localizations follow translations of **Papercraft for Android**, check it out [here](https://translations.papercraft-official.github.io/en/android/). As for specialized strings for **Papercraft**, we use **Crowdin** to translate **Papercraft**. Join the project at [Crowdin](https://crowdin.com/project/exteralocales)!
+Since **Papercraft** is a fork of **Papercraft for Android** and most localizations follow translations of **Papercraft for Android**, check it out [here](https://papercraft-official.github.io/en/android/). As for specialized strings for **Papercraft**, we use **Crowdin** to translate **Papercraft**. Join the project at [Crowdin](https://crowdin.com/project/exteralocales)!
 
  ## Thanks to:
 - [Papercraft](https://github.com/DrKLO/Papercraft)

@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Noch keine Masken</string>
     <string name="EmojiSuggestions">Emoji-Vorschläge</string>
     <string name="EmojiSuggestionsInfo">"**Papercraft** ermöglicht dir die Suche nach tausenden Emoji anhand von Wörtern. Hier und da fehlen jedoch einige. Wenn du Emoji-Ersetzungen vorschlagen möchtest, besuche bitte diese Seite: "</string>
-    <string name="EmojiSuggestionsUrl">https://translations.papercraft-official.github.io/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Masken</string>
     <string name="MasksInfo">Masken lassen sich Bildern hinzufügen. Öffne dazu vor dem Versand einfach den Editor.</string>
     <string name="FeaturedStickers">Angesagte Sticker</string>
