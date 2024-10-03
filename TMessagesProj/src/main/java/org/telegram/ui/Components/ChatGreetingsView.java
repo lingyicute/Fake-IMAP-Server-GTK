@@ -30,8 +30,6 @@ public class ChatGreetingsView extends LinearLayout {
     private Listener listener;
 
     private final int currentAccount;
-
-    public BackupImageView stickerToSendView;
     private final Theme.ResourcesProvider resourcesProvider;
     boolean wasDraw;
 
@@ -50,12 +48,8 @@ public class ChatGreetingsView extends LinearLayout {
         descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         descriptionView.setGravity(Gravity.CENTER_HORIZONTAL);
 
-
-        stickerToSendView = new BackupImageView(context);
-
         addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 20, 14, 20, 14));
         addView(descriptionView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 20, 12, 20, 0));
-        addView(stickerToSendView, LayoutHelper.createLinear(112, 112, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 16));
 
         updateColors();
 
@@ -66,7 +60,6 @@ public class ChatGreetingsView extends LinearLayout {
             titleView.setText(LocaleController.formatString("NearbyPeopleGreetingsMessage", R.string.NearbyPeopleGreetingsMessage, user.first_name, LocaleController.formatDistance(distance, 1)));
             descriptionView.setText(LocaleController.getString("NearbyPeopleGreetingsDescription", R.string.NearbyPeopleGreetingsDescription));
         }
-        stickerToSendView.setContentDescription(descriptionView.getText());
 
         preloadedGreetingsSticker = sticker;
         if (preloadedGreetingsSticker == null) {
@@ -74,61 +67,6 @@ public class ChatGreetingsView extends LinearLayout {
         }
     }
 
-    private void setSticker(TLRPC.Document sticker) {
-        if (sticker == null) {
-            return;
-        }
-        SvgHelper.SvgDrawable svgThumb = DocumentObject.getSvgThumb(sticker, Theme.key_chat_serviceBackground, 1.0f);
-        if (svgThumb != null) {
-            stickerToSendView.setImage(ImageLocation.getForDocument(sticker), createFilter(sticker), svgThumb, 0, sticker);
-        } else {
-            TLRPC.PhotoSize thumb = FileLoader.getClosestPhotoSizeWithSize(sticker.thumbs, 90);
-            stickerToSendView.setImage(ImageLocation.getForDocument(sticker), createFilter(sticker), ImageLocation.getForDocument(thumb, sticker), null, 0, sticker);
-        }
-        stickerToSendView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onGreetings(sticker);
-            }
-        });
-    }
-
-    public static String createFilter(TLRPC.Document document) {
-        float maxHeight;
-        float maxWidth;
-        int photoWidth = 0;
-        int photoHeight = 0;
-        if (AndroidUtilities.isTablet()) {
-            maxHeight = maxWidth = AndroidUtilities.getMinTabletSide() * 0.4f;
-        } else {
-            maxHeight = maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) * 0.5f;
-        }
-        for (int a = 0; a < document.attributes.size(); a++) {
-            TLRPC.DocumentAttribute attribute = document.attributes.get(a);
-            if (attribute instanceof TLRPC.TL_documentAttributeImageSize) {
-                photoWidth = attribute.w;
-                photoHeight = attribute.h;
-                break;
-            }
-        }
-        if (MessageObject.isAnimatedStickerDocument(document, true) && photoWidth == 0 && photoHeight == 0) {
-            photoWidth = photoHeight = 512;
-        }
-
-        if (photoWidth == 0) {
-            photoHeight = (int) maxHeight;
-            photoWidth = photoHeight + AndroidUtilities.dp(100);
-        }
-        photoHeight *= maxWidth / photoWidth;
-        photoWidth = (int) maxWidth;
-        if (photoHeight > maxHeight) {
-            photoWidth *= maxHeight / photoHeight;
-            photoHeight = (int) maxHeight;
-        }
-
-        int w = (int) (photoWidth / AndroidUtilities.density);
-        int h = (int) (photoHeight / AndroidUtilities.density);
-        return String.format(Locale.US, "%d_%d", w, h);
-    }
 
     private void updateColors() {
         titleView.setTextColor(getThemedColor(Theme.key_chat_serviceText));
