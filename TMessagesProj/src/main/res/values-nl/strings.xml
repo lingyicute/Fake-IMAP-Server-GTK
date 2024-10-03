@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Nog geen maskers</string>
     <string name="EmojiSuggestions">Emojisuggesties</string>
     <string name="EmojiSuggestionsInfo">**Papercraft** maakt het mogelijk om emoji te vinden op basis van duizenden woorden, maar er zullen er altijd wat missen. Als je suggesties wilt doen om emoji\'s nog makkelijker te vinden kan dat via:\n</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Maskers</string>
     <string name="MasksInfo">Je kunt maskers toevoegen aan foto\'s , gebruik de fotobewerkingsoptie en verstuur ze.</string>
     <string name="FeaturedStickers">Populaire stickers</string>
@@ -2134,8 +2134,8 @@
     <string name="AuthAnotherClientTokenError">Token ongeldig of al verlopen.</string>
     <string name="AuthAnotherClientNotFound">Geen authenticatie-token gevonden</string>
     <string name="AuthAnotherClientOk">Authenticatie gelukt</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.org/</string>
-    <string name="AuthAnotherClientInfo1">Download Papercraft op je computer via *desktop.teamgram.org*</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">Download Papercraft op je computer via *papercraft-official.github.io*</string>
     <string name="AuthAnotherClientInfo2">Gebruik Papercraft Desktop om de QR-code te krijgen.</string>
     <string name="AuthAnotherClientInfo3">Scan de QR-Code om met je account te verbinden.</string>
     <string name="AuthAnotherClientUrl">Met deze code kun je iemand toestaan om in te loggen op je Papercraft-account\n\nOm de login te bevestigen ga naar, Instellingen &gt; Apparaten &gt; Scan QR en scan de code.</string>

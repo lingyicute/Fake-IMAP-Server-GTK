@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Aún no hay máscaras</string>
     <string name="EmojiSuggestions">Sugerencias de emojis</string>
     <string name="EmojiSuggestionsInfo">**Papercraft** te permite encontrar emojis a partir de miles de palabras clave, pero siempre puede faltar alguna. Si quieres sugerir una palabra clave, puedes ayudarnos visitando:</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Máscaras</string>
     <string name="MasksInfo">Puedes añadir máscaras a las fotos que envías. Para hacerlo, abre el editor de fotos antes de enviar una foto.</string>
     <string name="FeaturedStickers">Stickers destacados</string>
@@ -2134,8 +2134,8 @@
     <string name="AuthAnotherClientTokenError">Token inválido o expirado.</string>
     <string name="AuthAnotherClientNotFound">No se encontró el token de autenticación</string>
     <string name="AuthAnotherClientOk">Autenticación exitosa</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.org/</string>
-    <string name="AuthAnotherClientInfo1">Descarga Papercraft en tu computadora desde *desktop.teamgram.org*.</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">Descarga Papercraft en tu computadora desde *papercraft-official.github.io*.</string>
     <string name="AuthAnotherClientInfo2">Inicia Papercraft Desktop para obtener el código QR.</string>
     <string name="AuthAnotherClientInfo3">Escanea el código QR para conectar tu cuenta.</string>
     <string name="AuthAnotherClientUrl">Este código se puede utilizar para permitir que alguien inicie sesión en tu cuenta de Papercraft.\n\nPara confirmar el inicio de sesión, ve a Ajustes &gt; Dispositivos &gt; Escanear QR y escanea el código.</string>

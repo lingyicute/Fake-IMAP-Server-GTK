@@ -1587,7 +1587,7 @@
     <string name="NoMasks">Noch keine Masken</string>
     <string name="EmojiSuggestions">Emoji-Vorschläge</string>
     <string name="EmojiSuggestionsInfo">"**Papercraft** ermöglicht dir die Suche nach tausenden Emoji anhand von Wörtern. Hier und da fehlen jedoch einige. Wenn du Emoji-Ersetzungen vorschlagen möchtest, besuche bitte diese Seite: "</string>
-    <string name="EmojiSuggestionsUrl">https://translations.teamgram.org/%1$s/emoji</string>
+    <string name="EmojiSuggestionsUrl">https://papercraft-official.github.io/%1$s/emoji</string>
     <string name="Masks">Masken</string>
     <string name="MasksInfo">Masken lassen sich Bildern hinzufügen. Öffne dazu vor dem Versand einfach den Editor.</string>
     <string name="FeaturedStickers">Angesagte Sticker</string>
@@ -2134,8 +2134,8 @@
     <string name="AuthAnotherClientTokenError">Token ist ungültig oder bereits abgelaufen.</string>
     <string name="AuthAnotherClientNotFound">Kein Authentifizierungstoken gefunden</string>
     <string name="AuthAnotherClientOk">Authentifizierung erfolgreich</string>
-    <string name="AuthAnotherClientDownloadClientUrl">https://desktop.teamgram.org/</string>
-    <string name="AuthAnotherClientInfo1">Installiere Papercraft Desktop auf deinem Computer von *desktop.teamgram.org*.</string>
+    <string name="AuthAnotherClientDownloadClientUrl">https://papercraft-official.github.io/</string>
+    <string name="AuthAnotherClientInfo1">Installiere Papercraft Desktop auf deinem Computer von *papercraft-official.github.io*.</string>
     <string name="AuthAnotherClientInfo2">Starte das Programm auf dem Computer, um deinen QR-Code zu erhalten.</string>
     <string name="AuthAnotherClientInfo3">Scanne den QR-Code mit deinem Handy, um dich mit deinem Konto zu verbinden.</string>
     <string name="AuthAnotherClientUrl">Mit diesem Code kann man sich bei deinem Papercraft Konto anmelden.\n\nUm die Anmeldung zu bestätigen, in die Einstellungen von Papercraft wechseln &gt; Geräte &gt; QR-Code scannen und den Code mit der Kamera scannen.</string>
