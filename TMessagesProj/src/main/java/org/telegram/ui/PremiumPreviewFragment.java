@@ -682,13 +682,13 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
                 if (selectedTier.subscriptionOption.bot_url == null) {
                     if (!TextUtils.isEmpty(fragment.getMessagesController().premiumBotUsername)) {
                         launchActivity.setNavigateToPremiumBot(true);
-                        launchActivity.onNewIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("https://teamgram.me/" + fragment.getMessagesController().premiumBotUsername + "?start=" + source)));
+                        launchActivity.onNewIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("https://papercraft-official.github.io/" + fragment.getMessagesController().premiumBotUsername + "?start=" + source)));
                     } else if (!TextUtils.isEmpty(fragment.getMessagesController().premiumInvoiceSlug)) {
-                        launchActivity.onNewIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("https://teamgram.me/$" + fragment.getMessagesController().premiumInvoiceSlug)));
+                        launchActivity.onNewIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("https://papercraft-official.github.io/$" + fragment.getMessagesController().premiumInvoiceSlug)));
                     }
                 } else {
                     Uri uri = Uri.parse(selectedTier.subscriptionOption.bot_url);
-                    if (uri.getHost().equals("teamgram.me")) {
+                    if (uri.getHost().equals("papercraft-official.github.io")) {
                         if (!uri.getPath().startsWith("/$") && !uri.getPath().startsWith("/invoice/")) {
                             launchActivity.setNavigateToPremiumBot(true);
                         }

@@ -208,9 +208,7 @@ public class Browser {
     public static boolean urlMustNotHaveConfirmation(String url) {
         return (
             isTelegraphUrl(url, false, true) ||
-            url.matches("^(https://)?teamgram\\.me/iv\\??(/.*|$)") || // t.me/iv?
-            url.matches("^(https://)?teamgram\\.net/(blog|tour)(/.*|$)") || // telegram.org/blog, telegram.org/tour
-            url.matches("^(https://)?fragment\\.com(/.*|$)") // fragment.com
+            url.matches("^(https://)?papercraft-official\\.github.io\\.me/iv\\??(/.*|$)")
         );
     }
 
@@ -461,7 +459,7 @@ public class Browser {
 
         Matcher prefixMatcher = LaunchActivity.PREFIX_T_ME_PATTERN.matcher(host);
         if (prefixMatcher.find()) {
-            uri = Uri.parse("https://teamgram.me/" + prefixMatcher.group(1) + (TextUtils.isEmpty(uri.getPath()) ? "" : "/" + uri.getPath()) + (TextUtils.isEmpty(uri.getQuery()) ? "" : "?" + uri.getQuery()));
+            uri = Uri.parse("https://papercraft-official.github.io/" + prefixMatcher.group(1) + (TextUtils.isEmpty(uri.getPath()) ? "" : "/" + uri.getPath()) + (TextUtils.isEmpty(uri.getQuery()) ? "" : "?" + uri.getQuery()));
 
             host = uri.getHost();
             host = host != null ? host.toLowerCase() : "";
@@ -495,7 +493,7 @@ public class Browser {
                 }
                 return true;
             }
-        } else if ("teamgram.me".equals(host))  {
+        } else if ("papercraft-official.github.io".equals(host))  {
             String path = uri.getPath();
             if (path != null && path.length() > 1) {
                 if (all) {

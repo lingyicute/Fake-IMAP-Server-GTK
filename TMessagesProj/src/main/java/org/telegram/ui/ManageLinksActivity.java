@@ -818,7 +818,7 @@ public class ManageLinksActivity extends BaseFragment {
                     linkActionView.setCanEdit(adminId == getAccountInstance().getUserConfig().clientUserId);
                     if (isPublic && adminId == getAccountInstance().getUserConfig().clientUserId) {
                         if (info != null) {
-                            linkActionView.setLink("https://teamgram.me/" + ChatObject.getPublicUsername(currentChat));
+                            linkActionView.setLink("https://papercraft-official.github.io/" + ChatObject.getPublicUsername(currentChat));
                             linkActionView.setUsers(0, null);
                             linkActionView.hideRevokeOption(true);
                         }
@@ -1292,10 +1292,10 @@ public class ManageLinksActivity extends BaseFragment {
                 SpannableStringBuilder builder = new SpannableStringBuilder(invite.title);
                 Emoji.replaceEmoji(builder, titleView.getPaint().getFontMetricsInt(), (int) titleView.getPaint().getTextSize(), false);
                 titleView.setText(builder);
-            } else if (invite.link.startsWith("https://teamgram.me/+")) {
-                titleView.setText(invite.link.substring("https://teamgram.me/+".length()));
-            } else if (invite.link.startsWith("https://teamgram.me/joinchat/")) {
-                titleView.setText(invite.link.substring("https://teamgram.me/joinchat/".length()));
+            } else if (invite.link.startsWith("https://papercraft-official.github.io/+")) {
+                titleView.setText(invite.link.substring("https://papercraft-official.github.io/+".length()));
+            } else if (invite.link.startsWith("https://papercraft-official.github.io/joinchat/")) {
+                titleView.setText(invite.link.substring("https://papercraft-official.github.io/joinchat/".length()));
             } else if (invite.link.startsWith("https://")) {
                 titleView.setText(invite.link.substring("https://".length()));
             } else {
