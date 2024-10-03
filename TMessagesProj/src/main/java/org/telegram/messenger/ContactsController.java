@@ -985,12 +985,12 @@ public class ContactsController extends BaseController {
             /*if (schedule) {
                 try {
                     AccountManager am = AccountManager.get(ApplicationLoader.applicationContext);
-                    Account[] accounts = am.getAccountsByType("org.chatengine.account");
+                    Account[] accounts = am.getAccountsByType("com.papercraft.account");
                     boolean recreateAccount = false;
                     if (getUserConfig().isClientActivated()) {
                         if (accounts.length != 1) {
                             FileLog.e("detected account deletion!");
-                            currentAccount = new Account(getUserConfig().getCurrentUser().phone, "org.chatengine.account");
+                            currentAccount = new Account(getUserConfig().getCurrentUser().phone, "com.papercraft.account");
                             am.addAccountExplicitly(currentAccount, "", null);
                             AndroidUtilities.runOnUIThread(new Runnable() {
                                 @Override
