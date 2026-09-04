@@ -72,11 +72,25 @@ jobs:
           cache-key: flatpak-builder-${{ github.sha }}
           upload-artifact: true
 
-      - name: Create Release
+  release:
+    name: Publish release
+    needs: flatpak
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: List artifacts
+        run: ls -hla artifacts
+
+      - name: Create Release and Upload Assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "nightly-${{ github.run_number }}"  fake-imap-server.flatpak \
+          gh release create "nightly-${{ github.run_number }}" artifacts/*.flatpak \
             --title "Nightly No.${{ github.run_number }}" \
             --notes-file - << 'EOF'
           自动构建 No.${{ github.run_number }}
