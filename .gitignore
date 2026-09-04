@@ -1,8 +1,0 @@
-.idea/
-.gradle/
-build/
-obj/
-*.iml
-local.properties
-.externalNativeBuild
-.cxx
