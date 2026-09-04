@@ -1,4 +1,4 @@
-app-id: io.github.fakeimap.FakeImapServer
+app-id: uk._92li.fakeimap.FakeImapServer
 runtime: org.gnome.Platform
 runtime-version: '47'
 sdk: org.gnome.Sdk

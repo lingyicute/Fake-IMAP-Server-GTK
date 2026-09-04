@@ -8,10 +8,10 @@
 ├── src/fake_imap_server.py                      # 协议层 + GTK4 界面
 ├── tests/smoke_test.py                          # RFC 3501/9051 语法一致性冒烟测试
 ├── data/
-│   ├── io.github.fakeimap.FakeImapServer.svg            # 圆角矩形图标
-│   ├── io.github.fakeimap.FakeImapServer.desktop        # 桌面入口
-│   └── io.github.fakeimap.FakeImapServer.metainfo.xml   # AppStream 元信息
-├── io.github.fakeimap.FakeImapServer.yml        # Flatpak 清单
+│   ├── uk._92li.fakeimap.FakeImapServer.svg            # 圆角矩形图标
+│   ├── uk._92li.fakeimap.FakeImapServer.desktop        # 桌面入口
+│   └── uk._92li.fakeimap.FakeImapServer.metainfo.xml   # AppStream 元信息
+├── uk._92li.fakeimap.FakeImapServer.yml        # Flatpak 清单
 └── .github/workflows/build.yml                  # CI：先跑协议测试，再 flatpak-builder 打包
 ```
 
@@ -61,9 +61,9 @@
 
 ```bash
 flatpak install flathub org.gnome.Platform//47 org.gnome.Sdk//47
-flatpak-builder --user --install --force-clean build-dir io.github.fakeimap.FakeImapServer.yml
-flatpak run io.github.fakeimap.FakeImapServer
-flatpak run --env=FAKE_IMAP_PORT=143 --env=FAKE_IMAP_FOLDERS=INBOX,Sent io.github.fakeimap.FakeImapServer
+flatpak-builder --user --install --force-clean build-dir uk._92li.fakeimap.FakeImapServer.yml
+flatpak run uk._92li.fakeimap.FakeImapServer
+flatpak run --env=FAKE_IMAP_PORT=143 --env=FAKE_IMAP_FOLDERS=INBOX,Sent uk._92li.fakeimap.FakeImapServer
 ```
 
 不打包直接跑（需 GTK4 + PyGObject）：

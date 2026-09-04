@@ -38,8 +38,8 @@ jobs:
         run: |
           python3 - <<'PY'
           import yaml
-          m = yaml.safe_load(open('io.github.fakeimap.FakeImapServer.yml'))
-          assert m['app-id'] == 'io.github.fakeimap.FakeImapServer', 'app-id 不匹配'
+          m = yaml.safe_load(open('uk._92li.fakeimap.FakeImapServer.yml'))
+          assert m['app-id'] == 'uk._92li.fakeimap.FakeImapServer', 'app-id 不匹配'
           assert m['command'] == 'fake-imap-server', 'command 不匹配'
           assert '--share=network' in m['finish-args'], '缺网络权限则无法监听端口'
           assert any(s.startswith('--socket=') for s in m['finish-args']), '缺显示套接字'
@@ -47,12 +47,12 @@ jobs:
           PY
 
       - name: Validate desktop entry
-        run: desktop-file-validate data/io.github.fakeimap.FakeImapServer.desktop
+        run: desktop-file-validate data/uk._92li.fakeimap.FakeImapServer.desktop
 
       - name: Validate SVG and metainfo XML
         run: |
-          xmlstarlet val data/io.github.fakeimap.FakeImapServer.svg
-          xmlstarlet val data/io.github.fakeimap.FakeImapServer.metainfo.xml
+          xmlstarlet val data/uk._92li.fakeimap.FakeImapServer.svg
+          xmlstarlet val data/uk._92li.fakeimap.FakeImapServer.metainfo.xml
 
   flatpak:
     name: Build Flatpak bundle
@@ -68,7 +68,7 @@ jobs:
         uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
         with:
           bundle: fake-imap-server.flatpak
-          manifest-path: io.github.fakeimap.FakeImapServer.yml
+          manifest-path: uk._92li.fakeimap.FakeImapServer.yml
           cache-key: flatpak-builder-${{ github.sha }}
           upload-artifact: true
 
