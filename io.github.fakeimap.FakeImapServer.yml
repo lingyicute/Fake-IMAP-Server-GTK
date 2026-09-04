@@ -1,0 +1,29 @@
+app-id: io.github.fakeimap.FakeImapServer
+runtime: org.gnome.Platform
+runtime-version: '47'
+sdk: org.gnome.Sdk
+command: fake-imap-server
+
+finish-args:
+  # 需要网络才能监听 IMAP 端口
+  - --share=network
+  # GTK4 窗口
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+
+cleanup:
+  - /share/doc
+
+modules:
+  - name: fake-imap-server
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 src/fake_imap_server.py ${FLATPAK_DEST}/bin/fake-imap-server
+      - install -Dm644 data/${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 data/${FLATPAK_ID}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -Dm644 data/${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
+    sources:
+      - type: dir
+        path: .

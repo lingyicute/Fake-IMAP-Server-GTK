@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d8bff"/>
+      <stop offset="1" stop-color="#1f5fd6"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e9f0fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#0b2a66" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- 圆角矩形背景 -->
+  <rect x="8" y="8" width="112" height="112" rx="26" ry="26" fill="url(#bg)"/>
+  <!-- 顶部高光 -->
+  <path d="M34 8h60a26 26 0 0 1 26 26v6H8v-6A26 26 0 0 1 34 8z" fill="#ffffff" opacity="0.12"/>
+
+  <!-- 信封 -->
+  <g filter="url(#shadow)">
+    <rect x="28" y="40" width="72" height="50" rx="8" ry="8" fill="url(#paper)"/>
+    <!-- 信封盖 -->
+    <path d="M28 48 L64 72 L100 48" fill="none" stroke="#2f6fe0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- 底部折线 -->
+    <path d="M32 86 L54 66 M96 86 L74 66" fill="none" stroke="#2f6fe0" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- “假”的提示：虚线圈 + 斜杠 -->
+  <g transform="translate(88 32)">
+    <circle r="16" fill="#ff5f56"/>
+    <circle r="12" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="4 3"/>
+    <path d="M-7 7 L7 -7" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

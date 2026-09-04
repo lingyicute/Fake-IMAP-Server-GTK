@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Fake IMAP Server
+Name[zh_CN]=Fake IMAP Server
+Comment=A fake IMAP server that accepts any request and replies with empty responses
+Comment[zh_CN]=接受任意 IMAP 请求并进行空应答的假 IMAP 服务
+Exec=fake-imap-server
+Icon=io.github.fakeimap.FakeImapServer
+Terminal=false
+Type=Application
+Categories=Network;Development;Utility;
+Keywords=imap;mail;fake;mock;server;
+StartupNotify=true
