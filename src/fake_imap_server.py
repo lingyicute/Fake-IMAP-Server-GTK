@@ -1,42 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Fake IMAP Server
-----------------
-接受任意 IMAP 请求并进行「空应答」的假 IMAP 服务；GTK4 小窗口显示
-“Fake IMAP Server 正在运行”，关闭窗口即终止进程。
-
-协议实现要点（RFC 3501 / RFC 9051）
-===================================
-* 语法：所有响应行以 CRLF 结尾；完成应答形如
-      tag SP ("OK"|"NO"|"BAD"|"PREAUTH") SP resp-text
-  其中 `resp-text = ["[" resp-code "]" SP] text`，而 `text = 1*TEXT-CHAR` 为**必填**，
-  因此绝不发送裸的 "<tag> OK"（那是语法错误）。
-* tag：RFC 9051 `tag = ASTRING-CHAR - "+"`（RFC 3501：可打印 US-ASCII 且不含 '+'）。
-  服务器区分大小写地原样回显客户端 tag，且**跨字面量续行**仍能正确取到 tag。
-* 续行：`continue-req = "+" SP (resp-text / base64) CRLF`；同步字面量 `{n}` 前先回 "+"，
-  非同步字面量 `{n+}`（LITERAL+）不索要继续符；字面量之后的字节会拼接回当前命令。
-* 「空应答」的边界：对**没有强制 untagged 数据**的命令只回 "<tag> OK <text>"；
-  对 RFC **要求**必须携带 untagged 数据的命令（SELECT/EXAMINE 的 EXISTS/RECENT/FLAGS/
-  UIDVALIDITY/UIDNEXT，SEARCH 的 * SEARCH，LIST 的根分隔符，STATUS、NAMESPACE、
-  ENABLED、ID、MYRIGHTS、IDLE 的 "+"、LOGOUT 的 * BYE）给出语法完整但内容为空的
-  最小骨架 —— 省略它们不是“空应答”，而是协议错误。
-* 不谎称拥有消息：SELECT 后 EXISTS=0，故 FETCH/STORE/COPY 回 NO，
-  这是空邮箱下唯一合规的应答。
-* 严格校验语法（RFC 9051 §2.2.1 "Servers SHOULD strictly enforce the syntax"）：
-  非法 tag / 缺命令名 → BAD；无 tag 的行 → untagged `* BAD`（§7.1 允许）。
-
-环境变量
---------
-  FAKE_IMAP_HOST         监听地址，默认 127.0.0.1
-  FAKE_IMAP_PORT         监听端口，默认 1143（0 = 随机端口）
-  FAKE_IMAP_HEADLESS     1/true 不创建 GTK4 窗口（纯服务，便于 CI/测试）
-  FAKE_IMAP_FOLDERS      逗号分隔的邮箱列表，默认空 = 服务器真的没有任何邮箱
-  FAKE_IMAP_ENFORCE_STATE
-                         1 = 严格状态机（未登录执行 select 阶段命令回 BAD）
-  FAKE_IMAP_READ_TIMEOUT 命令间空闲秒数，默认 1800（超时回 * BYE 并断开）
-  FAKE_IMAP_IDLE_TIMEOUT IDLE 最长保持秒数，默认 1800（到期正常结束 IDLE）
-"""
 
 import os
 import re
@@ -245,16 +208,14 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
         with _LOCK:
             STATS["connections"] += 1
         print(f"[+] connect {self.peer}", flush=True)
-        # 问候语带 [CAPABILITY]，省掉客户端一发 CAPABILITY 往返（§7.2.1 允许）
-        self.ok(b"*", f"{APP_NAME} ready", code="CAPABILITY " + CAPABILITIES)
-
         try:
+            # 问候语带 [CAPABILITY]，省掉客户端一发 CAPABILITY 往返（§7.2.1 允许）
+            self.ok(b"*", f"{APP_NAME} ready", code="CAPABILITY " + CAPABILITIES)
             while True:
                 self.deadline = time.monotonic() + READ_TIMEOUT
                 try:
                     cmd = self.read_command()
                 except SyntaxViolation as e:
-                    # 只拒绝这一条命令，保持连接可用（tag 非法时退化为 untagged BAD）
                     self.done(e.tag or b"*", b"BAD", str(e) or "syntax error")
                     continue
                 except (TimeoutError, ValueError) as e:
@@ -264,7 +225,6 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
                     return
                 tag, name, args = cmd
                 if not name:
-                    # 只有 tag 没有命令名：仍回 tagged BAD，否则客户端会一直等完成应答
                     if tag:
                         self.bad(tag, "missing command name")
                     else:
@@ -272,7 +232,8 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
                     continue
                 with _LOCK:
                     STATS["commands"] += 1
-                shown = f"{tag.decode('latin-1')} {name.decode('latin-1')} {args.decode('latin-1')[:100]}".strip()
+                shown = f"{tag.decode('latin-1')} {name.decode('latin-1')} " \
+                        f"{args.decode('latin-1')[:100]}".strip()
                 print(f"[>] {self.peer} {shown}", flush=True)
                 if not self.dispatch(tag, name, args):
                     return
@@ -630,6 +591,14 @@ def run_headless():
     server = FakeImapServer((HOST, PORT), FakeImapHandler)
     print(f"[*] {APP_NAME} listening on {HOST}:{server.server_address[1]} (headless)",
           flush=True)
+
+    # 关键修复：真正开始 accept 循环。放在独立线程，主线程留给信号处理；
+    # shutdown() 不能在 serve_forever 所在线程调用（会死锁），所以两者必须分线程。
+    worker = threading.Thread(target=server.serve_forever,
+                              kwargs={"poll_interval": 0.2},
+                              name="fake-imap", daemon=True)
+    worker.start()
+
     stop = threading.Event()
     signal.signal(signal.SIGINT, lambda *a: stop.set())
     signal.signal(signal.SIGTERM, lambda *a: stop.set())
@@ -637,10 +606,10 @@ def run_headless():
         while not stop.wait(0.2):
             pass
     finally:
-        server.shutdown()
+        server.shutdown()          # serve_forever 正在运行，这里才能正常返回
         server.server_close()
+        worker.join(2)
         print("[*] stopped", flush=True)
-
 
 def main(argv):
     global HOST, PORT, HEADLESS

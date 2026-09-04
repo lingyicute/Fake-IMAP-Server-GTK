@@ -60,7 +60,7 @@
 ## 构建 / 运行
 
 ```bash
-flatpak install flathub org.gnome.Platform//47 org.gnome.Sdk//47
+flatpak install flathub org.gnome.Platform//50 org.gnome.Sdk//50
 flatpak-builder --user --install --force-clean build-dir uk._92li.fakeimap.FakeImapServer.yml
 flatpak run uk._92li.fakeimap.FakeImapServer
 flatpak run --env=FAKE_IMAP_PORT=143 --env=FAKE_IMAP_FOLDERS=INBOX,Sent uk._92li.fakeimap.FakeImapServer
