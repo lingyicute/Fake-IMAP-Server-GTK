@@ -72,12 +72,7 @@ jobs:
           cache-key: flatpak-builder-${{ github.sha }}
           upload-artifact: true
 
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: fake-imap-server.flatpak
-
-      - name: Create Release and Upload Assets
+      - name: Create Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
