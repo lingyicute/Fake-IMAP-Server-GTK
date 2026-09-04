@@ -51,7 +51,7 @@ import socketserver
 
 # ------------------------------------------------------------------ 配置
 
-APP_ID = "io.github.fakeimap.FakeImapServer"
+APP_ID = "uk._92li.fakeimap.FakeImapServer"
 APP_NAME = "Fake IMAP Server"
 VERSION = "1.0.0"
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.fakeimap.FakeImapServer</id>
+  <id>uk._92li.fakeimap.FakeImapServer</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
 
@@ -24,7 +24,7 @@
     </p>
   </description>
 
-  <launchable type="desktop-id">io.github.fakeimap.FakeImapServer.desktop</launchable>
+  <launchable type="desktop-id">uk._92li.fakeimap.FakeImapServer.desktop</launchable>
 
   <categories>
     <category>Network</category>
