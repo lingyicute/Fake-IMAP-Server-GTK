@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.fakeimap.FakeImapServer</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <name>Fake IMAP Server</name>
+  <summary>Accepts any IMAP request and replies with an empty response</summary>
+  <summary xml:lang="zh_CN">接受任意 IMAP 请求并进行空应答</summary>
+
+  <description>
+    <p>
+      Fake IMAP Server is a tiny mock IMAP service intended for testing.
+      It listens on a TCP port, greets clients like a real IMAP server, and
+      answers every command with an empty "OK" response without doing anything.
+    </p>
+    <p xml:lang="zh_CN">
+      Fake IMAP Server 是一个用于测试的微型假 IMAP 服务。它监听一个 TCP 端口，
+      像真实 IMAP 服务器一样发送问候，然后对任何命令都只返回空的 OK 应答。
+    </p>
+    <p>
+      A small GTK4 window shows that the server is running; closing the window
+      terminates the process.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">io.github.fakeimap.FakeImapServer.desktop</launchable>
+
+  <categories>
+    <category>Network</category>
+    <category>Development</category>
+  </categories>
+
+  <provides>
+    <binary>fake-imap-server</binary>
+  </provides>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="1.0.0" date="2026-01-01">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
+</component>

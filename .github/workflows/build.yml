@@ -1,0 +1,79 @@
+name: Build Flatpak
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  # 先验协议一致性：语法不过就别再打包了
+  protocol-check:
+    name: IMAP RFC conformance smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Byte-compile
+        run: python3 -m py_compile src/fake_imap_server.py tests/smoke_test.py
+
+      - name: Run smoke test
+        run: python3 tests/smoke_test.py
+
+  metadata:
+    name: Validate Flatpak metadata
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install validators
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            desktop-file-utils xmlstarlet python3-yaml
+
+      - name: Validate YAML manifest
+        run: |
+          python3 - <<'PY'
+          import yaml
+          m = yaml.safe_load(open('io.github.fakeimap.FakeImapServer.yml'))
+          assert m['app-id'] == 'io.github.fakeimap.FakeImapServer', 'app-id 不匹配'
+          assert m['command'] == 'fake-imap-server', 'command 不匹配'
+          assert '--share=network' in m['finish-args'], '缺网络权限则无法监听端口'
+          assert any(s.startswith('--socket=') for s in m['finish-args']), '缺显示套接字'
+          print('manifest OK:', m['runtime'], m['runtime-version'])
+          PY
+
+      - name: Validate desktop entry
+        run: desktop-file-validate data/io.github.fakeimap.FakeImapServer.desktop
+
+      - name: Validate SVG and metainfo XML
+        run: |
+          xmlstarlet val data/io.github.fakeimap.FakeImapServer.svg
+          xmlstarlet val data/io.github.fakeimap.FakeImapServer.metainfo.xml
+
+  flatpak:
+    name: Build Flatpak bundle
+    needs: [ protocol-check, metadata ]
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-47
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and bundle
+        uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
+        with:
+          bundle: fake-imap-server.flatpak
+          manifest-path: io.github.fakeimap.FakeImapServer.yml
+          cache-key: flatpak-builder-${{ github.sha }}
+          upload-artifact: true
+
+      - name: Release on tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: fake-imap-server.flatpak
