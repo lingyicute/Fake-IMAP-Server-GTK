@@ -234,6 +234,15 @@ def main():
         c.send("bad+tag NOOP")               # tag 含 '+'，违反 ABNF
         line = c.readline()
         check("含 '+' 的 tag → BAD（且连接保持可用）", line.endswith(b"BAD malformed tag"), line)
+        c.send("a(b NOOP")                   # tag 含 '('，违反 ABNF
+        line = c.readline()
+        check("含 '(' 的 tag → BAD（且连接保持可用）", line.endswith(b"BAD malformed tag"), line)
+        c.send('ab"cd NOOP')                 # tag 含 '"'（quoted-specials），违反 ABNF
+        line = c.readline()
+        check("含 '\"' 的 tag → BAD（且连接保持可用）", line.endswith(b"BAD malformed tag"), line)
+        c.send("ab\\cd NOOP")                # tag 含 '\\'（quoted-specials），违反 ABNF
+        line = c.readline()
+        check("含 '\\' 的 tag → BAD（且连接保持可用）", line.endswith(b"BAD malformed tag"), line)
         c.send("A999")                       # 只有 tag、无命令名
         line = c.readline()
         check("缺命令名 → 回 tagged BAD（不让客户端空等）",

@@ -44,8 +44,10 @@ CAPABILITIES = "IMAP4rev1 LITERAL+ ENABLE IDLE NAMESPACE UNSELECT ID"
 
 LITERAL_RE = re.compile(r"\{(\d+)(\+?)\}$")
 # tag = 1*<ASTRING-CHAR except "+">（RFC 3501 / RFC 9051）。ASTRING-CHAR 需排除
-# atom-specials："(" ")" "{" SP CTL "%" "*"（"]" 属于 resp-specials，允许）。
-TAG_RE = re.compile(rb"^[\x21-\x24\x26\x27\x2c-\x7a\x7c-\x7e]+$")
+# atom-specials："(" ")" "{" SP CTL list-wildcards（"%" "*"）quoted-specials（DQUOTE "\"）。
+# 其中 "]" 属于 resp-specials，在 ASTRING 中加回、允许；"}" 不是 atom-specials，允许。
+# 注：用“排除式”字符类直接列出非法字符，比“范围枚举允许字符”更不易漏项。
+TAG_RE = re.compile(rb"^[^\x00-\x20\x22\x25\x28\x29\x2a\x2b\x5c\x7b\x7f-\xff]+$")
 
 STATS = {"connections": 0, "commands": 0, "bytes": 0}
 _LOCK = threading.Lock()
@@ -317,14 +319,18 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
             return False
 
         if ENFORCE_STATE:
-            if name_s in NEED_SELECTED and self.state != SELECTED:
+            # 四个集合互斥，任一命令至多属于其中之一：ANY_STATE（command-any）
+            # 在所有状态放行；未知命令沿用本 fake server 的宽容策略，同样放行。
+            if name_s in ANY_STATE:
+                pass
+            elif name_s in NEED_SELECTED and self.state != SELECTED:
                 self.bad(tag, f"{name_s} invalid in "
                               f"{'authenticated' if self.state == AUTH else 'not authenticated'} state")
                 return True
-            if name_s in NEED_AUTH and self.state == PRE_AUTH:
+            elif name_s in NEED_AUTH and self.state == PRE_AUTH:
                 self.bad(tag, f"{name_s} invalid in unauthenticated state")
                 return True
-            if name_s in NONAUTH_ONLY and self.state != PRE_AUTH:
+            elif name_s in NONAUTH_ONLY and self.state != PRE_AUTH:
                 self.bad(tag, f"{name_s} invalid in "
                               f"{'authenticated' if self.state == AUTH else 'selected'} state")
                 return True
