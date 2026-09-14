@@ -26,12 +26,13 @@
 | `CAPABILITY` | `* CAPABILITY …` + `OK` | §7.2.1 |
 | `SELECT` / `EXAMINE` | `* 0 EXISTS`、`* 0 RECENT`、`* FLAGS (…)`、`* OK [PERMANENTFLAGS …]`、`* OK [UIDVALIDITY 1]`、`* OK [UIDNEXT 1]`、`OK [READ-WRITE]`/`[READ-ONLY]` | §6.3.1 进入 selected 状态的硬性要求 |
 | `LIST "" ""` / `LIST "" "*"` | `* LIST (\Noselect) "/" ""` | §6.3.8 根查询必须给出分隔符 |
+| `LIST "" "<pattern>"` | 只回与 pattern 匹配的邮箱（`*` 跨分隔符、`%` 不跨） | §6.3.8 |
 | `SEARCH` / `SORT` / `THREAD` | `* SEARCH` / `* SORT` / `* THREAD`（空结果也要有该行） | §6.4.4 / RFC 5256 |
 | `STATUS` | `* STATUS "INBOX" (MESSAGES 0 UNSEEN 0 UIDNEXT 1 UIDVALIDITY 1 HIGHESTMODSEQ 0)` | §6.3.6 |
 | `NAMESPACE` | `* NAMESPACE (("" "/")) NIL NIL` | RFC 2342 |
 | `MYRIGHTS` | `* MYRIGHTS "INBOX" "lksatwen"` | RFC 4314 |
 | `ENABLE` | `* ENABLED`（**不是** `* ENABLE`） | RFC 5161 |
-| `ID` | `* NIL ("name" "Fake IMAP Server" …)` | RFC 2971 |
+| `ID` | `* ID ("name" "Fake IMAP Server" …)` | RFC 2971 |
 | 同步字面量 `{n}` | 先 `+ go ahead`，吞掉 n 字节，**续行拼回原命令**，tag 不丢失 | §4.3 / §7.5 |
 | 非同步字面量 `{n+}` | 不继续索要数据（LITERAL+） | RFC 3516 |
 | `IDLE` | 先 `+ idling`，收到 `DONE` 后才发完成应答 | RFC 2177 |
@@ -53,7 +54,7 @@
 | `FAKE_IMAP_PORT` | `1143` | 监听端口，`0` 为随机端口 |
 | `FAKE_IMAP_HEADLESS` | – | `1` 不建窗口，纯服务（CI/服务器用） |
 | `FAKE_IMAP_FOLDERS` | 空 | 逗号分隔邮箱名，如 `INBOX,Sent,Drafts,Trash` |
-| `FAKE_IMAP_ENFORCE_STATE` | – | `1` 严格按未认证/已认证/已选择状态校验命令 |
+| `FAKE_IMAP_ENFORCE_STATE` | – | `1` 严格按 RFC 9051 状态机校验命令（command-any / command-auth / command-nonauth / command-select，`IDLE`、`NAMESPACE` 在已认证态即可用） |
 | `FAKE_IMAP_READ_TIMEOUT` | `1800` | 命令间空闲秒数，超时回 `* BYE` 并断开 |
 | `FAKE_IMAP_IDLE_TIMEOUT` | `1800` | `IDLE` 最长保持秒数 |
 

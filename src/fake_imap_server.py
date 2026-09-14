@@ -43,21 +43,25 @@ MAX_CONCURRENT = 128       # 并发连接上限
 CAPABILITIES = "IMAP4rev1 LITERAL+ ENABLE IDLE NAMESPACE UNSELECT ID"
 
 LITERAL_RE = re.compile(r"\{(\d+)(\+?)\}$")
-# 可打印 US-ASCII，不含 '+'（RFC 3501 对 tag 的注释 / RFC 9051: ASTRING-CHAR - "+"）
-TAG_RE = re.compile(rb"^[\x21-\x2a\x2c-\x7e]+$")
+# tag = 1*<ASTRING-CHAR except "+">（RFC 3501 / RFC 9051）。ASTRING-CHAR 需排除
+# atom-specials："(" ")" "{" SP CTL "%" "*"（"]" 属于 resp-specials，允许）。
+TAG_RE = re.compile(rb"^[\x21-\x24\x26\x27\x2c-\x7a\x7c-\x7e]+$")
 
 STATS = {"connections": 0, "commands": 0, "bytes": 0}
 _LOCK = threading.Lock()
 
 PRE_AUTH, AUTH, SELECTED = 0, 1, 2
 
-ANY_STATE = {"CAPABILITY", "NOOP", "LOGOUT", "STARTTLS", "AUTHENTICATE",
-             "LOGIN", "ENABLE", "ID"}
+# RFC 9051 状态机：命令按允许的状态分类（仅 ENFORCE_STATE=1 时校验）。
+ANY_STATE = {"CAPABILITY", "NOOP", "LOGOUT", "ID"}           # command-any
+NONAUTH_ONLY = {"LOGIN", "AUTHENTICATE", "STARTTLS"}         # command-nonauth
 NEED_AUTH = {"SELECT", "EXAMINE", "CREATE", "DELETE", "RENAME", "SUBSCRIBE",
              "UNSUBSCRIBE", "LIST", "LSUB", "STATUS", "APPEND", "MYRIGHTS",
-             "LISTRIGHTS", "GETQUOTA", "GETQUOTAROOT", "SETQUOTA"}
+             "LISTRIGHTS", "GETQUOTA", "GETQUOTAROOT", "SETQUOTA",
+             "NAMESPACE", "ENABLE", "IDLE"}
+# IDLE（RFC 2177）与 NAMESPACE（RFC 9051）在「已认证」态即可用，不属于 NEED_SELECTED。
 NEED_SELECTED = {"SEARCH", "FETCH", "STORE", "COPY", "EXPUNGE", "CHECK",
-                 "CLOSE", "UNSELECT", "SORT", "THREAD", "IDLE", "MOVE"}
+                 "CLOSE", "UNSELECT", "SORT", "THREAD", "MOVE"}
 
 
 def _b(s):
@@ -71,10 +75,60 @@ def _quote(tok):
         return b'""'
     if tok.upper() == b"NIL":
         return b"NIL"
-    safe = all(0x21 <= c <= 0x7E and c not in b'"\\(){}[]% ' for c in tok)
+    # 除 atom-specials 外，'*' 与 '%' 是 LIST 通配符，含它们的邮箱名必须加引号，
+    # 否则会破坏应答的 ABNF 或让客户端按通配符解读。
+    safe = all(0x21 <= c <= 0x7E and c not in b'*%"\\(){}[] ' for c in tok)
     if safe and not tok.isdigit():
         return tok
     return b'"' + tok.replace(b"\\", b"\\\\").replace(b'"', b'\\"') + b'"'
+
+
+def _tokenize(s):
+    """按空白切分命令参数，尊重双引号（引号内的空格不算分隔符），返回去掉引号的 token。"""
+    tokens = []
+    i, n = 0, len(s)
+    while i < n:
+        while i < n and s[i:i + 1] in (b" ", b"\t"):
+            i += 1
+        if i >= n:
+            break
+        if s[i:i + 1] == b'"':
+            i += 1
+            tok = bytearray()
+            while i < n and s[i:i + 1] != b'"':
+                if s[i:i + 1] == b"\\" and i + 1 < n:
+                    i += 1
+                tok += s[i:i + 1]
+                i += 1
+            if i < n:
+                i += 1                    # 跳过收尾引号
+            tokens.append(bytes(tok))
+        else:
+            j = i
+            while j < n and s[j:j + 1] not in (b" ", b"\t"):
+                j += 1
+            tokens.append(s[i:j])
+            i = j
+    return tokens
+
+
+def _mailbox_arg(args, default=b"INBOX"):
+    """从命令参数里取出邮箱名（首个 token），引号已剥离；无参数用默认值。"""
+    toks = _tokenize(args)
+    return toks[0] if toks else default
+
+
+def _imap_pattern_to_regex(pat: bytes):
+    """把 IMAP LIST 通配符（'*' 跨分隔符、'%' 不跨分隔符）编译成正则。"""
+    parts = []
+    for ch in pat:
+        if ch == 0x2A:              # '*'
+            parts.append(b".*")
+        elif ch == 0x25:            # '%'
+            parts.append(b"[^/]*")
+        else:
+            parts.append(re.escape(bytes([ch])))
+    return re.compile(b"^" + b"".join(parts) + b"$")
 
 
 class SyntaxViolation(Exception):
@@ -100,8 +154,6 @@ class LineReader:
         self.eof = False
 
     def _fill(self, deadline):
-        if len(self.buf) > 4 * MAX_LINE and b"\n" not in self.buf:
-            raise ValueError("command line too long")
         timeout = None if deadline is None else max(0.0, deadline - time.monotonic())
         r, _, _ = select.select([self.sock], [], [], timeout)
         if not r:
@@ -118,6 +170,10 @@ class LineReader:
     def read_line(self, deadline):
         """返回去掉 CRLF 的一行；对端关闭返回 None。"""
         while b"\n" not in self.buf:
+            # 上限只针对“命令行”，不能套到 read_exact 的字面量上
+            # （否则 >32KB 且不含换行的字面量会被误判为“行过长”而断开）。
+            if len(self.buf) > 4 * MAX_LINE:
+                raise ValueError("command line too long")
             if not self._fill(deadline):
                 self.buf = b""      # 未以 CRLF 结束的半行不是合法命令，直接丢弃
                 return None
@@ -268,6 +324,10 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
             if name_s in NEED_AUTH and self.state == PRE_AUTH:
                 self.bad(tag, f"{name_s} invalid in unauthenticated state")
                 return True
+            if name_s in NONAUTH_ONLY and self.state != PRE_AUTH:
+                self.bad(tag, f"{name_s} invalid in "
+                              f"{'authenticated' if self.state == AUTH else 'selected'} state")
+                return True
 
         handler = getattr(self, "cmd_" + re.sub(r"\W", "", name_s.lower()), None)
         try:
@@ -322,18 +382,18 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
         self._leave_selected(tag, "UNSELECT completed")
 
     def cmd_expunge(self, tag, args, uid):
-        self.send(b"* 0 EXPUNGE")
+        # 空邮箱没有可删除的消息，EXPUNGE 不应产生任何 untagged 数据：
+        # "* n EXPUNGE" 的 n 是 ≥1 的消息序号，"* 0 EXPUNGE" 违反 ABNF。
         self.ok(tag, "EXPUNGE completed")
 
-    def _list_line(self, name: bytes):
-        self.send(b'* LIST (\\HasNoChildren) "/" ' + _quote(name))
+    def _list_line(self, name: bytes, lsub=False):
+        kind = b"LSUB" if lsub else b"LIST"
+        self.send(b"* " + kind + b' (\\HasNoChildren) "/" ' + _quote(name))
 
     def cmd_list(self, tag, args, uid, lsub=False):
-        # 解析 reference / pattern（宽松处理：取末尾两个带引号/裸 token）
-        pattern = b""
-        toks = args.replace(b'"', b"").split()
-        if len(toks) >= 2:
-            pattern = toks[-1]
+        # 解析 reference / pattern（引号已剥离；pattern 取最后一个 token）。
+        toks = _tokenize(args)
+        pattern = toks[-1] if toks else b""
         kind = "LSUB" if lsub else "LIST"
         if lsub and not FOLDERS:
             self.ok(tag, "LSUB completed")            # 未订阅任何邮箱：空结果合规
@@ -341,17 +401,18 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
         # `LIST "" ""` 是根查询，必须回分隔符（§6.3.8）；模式 "*" 也匹配空根名，
         # 因此“一个邮箱都没有”时仍要给出 \Noselect 根，而不是彻底空列表。
         if not pattern or pattern == b"*":
-            self.send(b'* LIST (\\Noselect) "/" ""')
+            self.send(b"* " + (b"LSUB" if lsub else b"LIST") + b' (\\Noselect) "/" ""')
+        rx = _imap_pattern_to_regex(pattern)
         for f in FOLDERS:
-            self._list_line(_b(f))
+            if rx.match(_b(f)):                       # 只回匹配 pattern 的邮箱
+                self._list_line(_b(f), lsub=lsub)
         self.ok(tag, f"{kind} completed")
 
     def cmd_lsub(self, tag, args, uid):
         self.cmd_list(tag, args, uid, lsub=True)
 
     def cmd_status(self, tag, args, uid):
-        mailbox = _quote(args.split(b"[")[0].split(b"(")[0].split()[-1]
-                         if args.split() else b"INBOX")
+        mailbox = _quote(_mailbox_arg(args))
         self.send(b'* STATUS ' + mailbox +
                   b" (MESSAGES 0 UNSEEN 0 UIDNEXT 1 UIDVALIDITY 1 HIGHESTMODSEQ 0)")
         self.ok(tag, "STATUS completed")
@@ -373,12 +434,12 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
         self.ok(tag, "NAMESPACE completed")
 
     def cmd_myrights(self, tag, args, uid):
-        mailbox = _quote(args.split()[0] if args.split() else b"INBOX")
+        mailbox = _quote(_mailbox_arg(args))
         self.send(b"* MYRIGHTS " + mailbox + b' "lksatwen"')
         self.ok(tag, "MYRIGHTS completed")
 
     def cmd_listrights(self, tag, args, uid):
-        mailbox = _quote(args.split()[0] if args.split() else b"INBOX")
+        mailbox = _quote(_mailbox_arg(args))
         self.send(b'* LISTRIGHTS ' + mailbox + b' "" "l kx s a t w n e"')
         self.ok(tag, "LISTRIGHTS completed")
 
@@ -388,8 +449,9 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
         self.ok(tag, "ENABLE completed")
 
     def cmd_id(self, tag, args, uid):
-        # RFC 2971：以 untagged * NIL 回应字段列表
-        self.send(b'* NIL ("name" "' + _b(APP_NAME) + b'" "vendor" "fake-imap" '
+        # RFC 2971：应答必须是 "* ID" 带字段列表，或裸 "* NIL"；
+        # "* NIL (…)" 是非法组合。
+        self.send(b'* ID ("name" "' + _b(APP_NAME) + b'" "vendor" "fake-imap" '
                   b'"version" "' + _b(VERSION) + b'")')
         self.ok(tag, "ID completed")
 
@@ -437,7 +499,7 @@ class FakeImapHandler(socketserver.BaseRequestHandler):
         self.ok(tag, "GETQUOTA completed")    # 无配额 → 空应答本身即合规
 
     def cmd_getquotaroot(self, tag, args, uid):
-        mailbox = _quote(args.split()[0] if args.split() else b"INBOX")
+        mailbox = _quote(_mailbox_arg(args))
         self.send(b"* QUOTAROOT " + mailbox + b' ""')
         self.ok(tag, "GETQUOTAROOT completed")
 
@@ -551,7 +613,7 @@ if HAS_GTK:
                 status.add_css_class("error")
             box.append(status)
 
-            self.stats_label = Gtk.Label(label=f"监听 127.0.0.1:{self.port()} · 连接 0 · 命令 0")
+            self.stats_label = Gtk.Label(label=f"监听 {HOST}:{self.port()} · 连接 0 · 命令 0")
             self.stats_label.add_css_class("dim-label")
             self.stats_label.set_wrap(True)
             box.append(self.stats_label)
@@ -577,7 +639,7 @@ if HAS_GTK:
                 c, q, kb = STATS["connections"], STATS["commands"], STATS["bytes"] // 1024
             if self.stats_label:
                 self.stats_label.set_text(
-                    f"监听 127.0.0.1:{self.port()} · 连接 {c} · 命令 {q} · {kb} KiB")
+                    f"监听 {HOST}:{self.port()} · 连接 {c} · 命令 {q} · {kb} KiB")
             return GLib.SOURCE_CONTINUE
 
         def do_shutdown(self):

@@ -106,8 +106,12 @@ def free_port():
         return s.getsockname()[1]
 
 
-def run_server(port):
+def run_server(port, folders=None, extra=None):
     env = dict(os.environ, FAKE_IMAP_HEADLESS="1", FAKE_IMAP_PORT=str(port))
+    if folders:
+        env["FAKE_IMAP_FOLDERS"] = folders
+    if extra:
+        env.update(extra)
     return subprocess.Popen(
         [sys.executable, "-W", "ignore", SRC, "--headless", "--port", str(port)],
         env=env, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
@@ -183,8 +187,8 @@ def main():
         check("ENABLE 的 untagged 是 '* ENABLED'（RFC 5161）",
               b"* ENABLED" in b"\n".join(u), b"\n".join(u))
         tag, u, done = c.cmd('ID ("name" "probe")')
-        check("ID 回 untagged * NIL (…)",
-              any(l.startswith(b'* NIL ("name"') for l in u), b"\n".join(u))
+        check("ID 回 untagged * ID (…)（RFC 2971，不得是 * NIL (…)）",
+              any(l.startswith(b'* ID ("name"') for l in u), b"\n".join(u))
         tag, u, done = c.cmd("UID SEARCH ALL")
         check("UID 前缀被正确剥离并回 OK", done.startswith(b"A") and b" OK " in done, done)
         tag, u, done = c.cmd("GETQUOTA """)
@@ -274,6 +278,78 @@ def main():
             closed = c3.s.recv(10) == b""
         check("LOGOUT 后服务器主动关闭连接", closed, "still open")
         c3.close()
+
+        print("\n9. 邮箱列表 / 通配符 / LSUB / EXPUNGE（带 FAKE_IMAP_FOLDERS）")
+        port2 = free_port()
+        proc2 = run_server(port2, folders="INBOX,Sent,Projects/Work,Sent Items")
+        wait_port(port2, proc2)
+        try:
+            cf = Client(port2)
+            cf.readline()
+            tag, u, done = cf.cmd('LIST "" "Sent"')
+            body = b"\n".join(u)
+            check('LIST "" "Sent" 只回 Sent（按 pattern 过滤）',
+                  b"Sent" in body and b"INBOX" not in body
+                  and b"Projects/Work" not in body, body)
+            tag, u, done = cf.cmd('LIST "" "%"')
+            body = b"\n".join(u)
+            check('LIST "" "%" 不跨分隔符（不含 Projects/Work）',
+                  b"INBOX" in body and b"Sent" in body
+                  and b"Projects/Work" not in body, body)
+            tag, u, done = cf.cmd('LIST "" ""')
+            check('根查询仍回 \\Noselect 根',
+                  b'* LIST (\\Noselect) "/" ""' in b"\n".join(u), b"\n".join(u))
+            tag, u, done = cf.cmd('STATUS "Sent Items" (MESSAGES UNSEEN)')
+            check('STATUS 正确回显带空格邮箱名（无嵌套引号）',
+                  b'* STATUS "Sent Items" (' in b"\n".join(u), b"\n".join(u))
+            tag, u, done = cf.cmd('LSUB "" "*"')
+            check('LSUB 的 untagged 是 * LSUB（不是 * LIST）',
+                  any(l.startswith(b"* LSUB ") for l in u), b"\n".join(u))
+            tag, u, done = cf.cmd("EXPUNGE")
+            check('空邮箱 EXPUNGE 不产生 "* 0 EXPUNGE"',
+                  not any(b"EXPUNGE" in l for l in u), b"\n".join(u))
+            cf.close()
+        finally:
+            proc2.terminate()
+            with contextlib.suppress(subprocess.TimeoutExpired):
+                proc2.wait(5)
+            if proc2.poll() is None:
+                proc2.kill()
+
+        print("\n10. 状态机（ENFORCE_STATE=1）与含通配符的邮箱名")
+        port3 = free_port()
+        proc3 = run_server(port3, folders="INBOX,Foo*Bar",
+                           extra={"FAKE_IMAP_ENFORCE_STATE": "1"})
+        wait_port(port3, proc3)
+        try:
+            ce = Client(port3)
+            ce.readline()
+            tag, u, done = ce.cmd("LOGIN u p")
+            check("LOGIN 成功", b" OK " in done, done)
+            tag, u, done = ce.cmd('LIST "" "*"')
+            check('邮箱名含 "*" 时回显为带引号 qstring',
+                  b'"Foo*Bar"' in b"\n".join(u), b"\n".join(u))
+            tag, u, done = ce.cmd("NAMESPACE")
+            check("已认证态 NAMESPACE 可用（RFC 9051）",
+                  b"* NAMESPACE" in b"\n".join(u), b"\n".join(u))
+            tag = ce.next_tag()
+            ce.send(f"{tag} IDLE")
+            cont = ce.readline()
+            check("已认证态 IDLE 可用（RFC 2177，不要求 selected）",
+                  cont.startswith(b"+ "), cont)
+            ce.send("DONE")
+            done = ce.readline()
+            check("IDLE 正常结束", done.startswith(tag.encode() + b" OK"), done)
+            tag, u, done = ce.cmd("LOGIN u p")
+            check("已认证态再 LOGIN → BAD（command-nonauth）",
+                  done.split(b" ")[1] == b"BAD", done)
+            ce.close()
+        finally:
+            proc3.terminate()
+            with contextlib.suppress(subprocess.TimeoutExpired):
+                proc3.wait(5)
+            if proc3.poll() is None:
+                proc3.kill()
 
         time.sleep(0.2)
         check("进程未因异常输入退出", proc.poll() is None, f"exit={proc.poll()}")
