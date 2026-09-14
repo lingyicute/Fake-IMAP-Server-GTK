@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>uk._92li.fakeimap.FakeImapServer</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>MIT</project_license>
+  <project_license>AGPL-3.0-only</project_license>
 
   <name>Fake IMAP Server</name>
   <summary>Accepts any IMAP request and replies with an empty response</summary>
